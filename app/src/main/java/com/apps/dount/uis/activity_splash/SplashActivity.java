@@ -30,9 +30,7 @@ public class SplashActivity extends BaseActivity {
     private ActivitySplashBinding binding;
     private CompositeDisposable disposable = new CompositeDisposable();
     private Animation animation;
-    private Animation animation1;
-    private Animation animation2;
-    private Animation animation3;
+
     private Preferences preferences;
 
     @Override
@@ -75,9 +73,7 @@ public class SplashActivity extends BaseActivity {
 
     private void animateMethod() {
         animation = AnimationUtils.loadAnimation(getBaseContext(), R.anim.lanuch);
-        animation1 = AnimationUtils.loadAnimation(getBaseContext(), R.anim.slide_up);
-        animation2 = AnimationUtils.loadAnimation(getBaseContext(), R.anim.slide_up);
-        animation3 = AnimationUtils.loadAnimation(getBaseContext(), R.anim.slide_up);
+
 
         binding.cons.startAnimation(animation);
 
@@ -90,7 +86,7 @@ public class SplashActivity extends BaseActivity {
             @Override
             public void onAnimationEnd(Animation animation) {
 
-                binding.tv1.startAnimation(animation1);
+              navigateToHomeActivity();
 
             }
 
@@ -99,60 +95,7 @@ public class SplashActivity extends BaseActivity {
 
             }
         });
-        animation1.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {
-                binding.tv1.setVisibility(View.VISIBLE);
 
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                binding.tv2.startAnimation(animation2);
-
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-
-            }
-        });
-        animation2.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {
-                binding.tv2.setVisibility(View.VISIBLE);
-
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                binding.tv3.startAnimation(animation3);
-
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-
-            }
-        });
-        animation3.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {
-                binding.tv3.setVisibility(View.VISIBLE);
-
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                navigateToHomeActivity();
-
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-
-            }
-        });
 
 
     }

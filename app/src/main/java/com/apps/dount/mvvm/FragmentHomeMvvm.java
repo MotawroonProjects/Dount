@@ -35,8 +35,7 @@ public class FragmentHomeMvvm extends AndroidViewModel {
     private MutableLiveData<Boolean> isLoadingLiveData;
     private MutableLiveData<List<DepartmentModel>> departmentLivData;
     private MutableLiveData<List<ProductModel>> offerlistMutableLiveData;
-    private MutableLiveData<ProductModel> boxMutableLiveData;
-    private MutableLiveData<List<DepartmentModel>> departmentfeaturedLivData;
+
 
 
     public FragmentHomeMvvm(@NonNull Application application) {
@@ -51,12 +50,7 @@ public class FragmentHomeMvvm extends AndroidViewModel {
         return offerlistMutableLiveData;
     }
 
-    public MutableLiveData<ProductModel> getbox() {
-        if (boxMutableLiveData == null) {
-            boxMutableLiveData = new MutableLiveData<>();
-        }
-        return boxMutableLiveData;
-    }
+
 
     public MutableLiveData<SliderDataModel> getSliderDataModelMutableLiveData() {
         if (sliderDataModelMutableLiveData == null) {
@@ -80,13 +74,7 @@ public class FragmentHomeMvvm extends AndroidViewModel {
         return departmentLivData;
     }
 
-    public LiveData<List<DepartmentModel>> getCategoryfeaturedData() {
-        if (departmentfeaturedLivData == null) {
-            departmentfeaturedLivData = new MutableLiveData<>();
 
-        }
-        return departmentfeaturedLivData;
-    }
 
     public void getSlider() {
 
@@ -192,76 +180,6 @@ public class FragmentHomeMvvm extends AndroidViewModel {
                 });
     }
 
-    public void getBox(String lang) {
-
-
-        isLoadingLiveData.setValue(true);
-
-        Api.getService(Tags.base_url)
-                .getBox(lang)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new SingleObserver<Response<SingleProductDataModel>>() {
-                    @Override
-                    public void onSubscribe(@NonNull Disposable d) {
-                        disposable.add(d);
-                    }
-
-                    @Override
-                    public void onSuccess(@NonNull Response<SingleProductDataModel> response) {
-                        isLoadingLiveData.postValue(false);
-                        if (response.isSuccessful() && response.body() != null) {
-                            if (response.body().getStatus() == 200) {
-                                // List<ProductModel> list = response.body().getData();
-                                boxMutableLiveData.setValue(response.body().getData());
-                            }
-                        }
-                    }
-
-                    @Override
-                    public void onError(@NonNull Throwable e) {
-                        isLoadingLiveData.setValue(false);
-                    }
-                });
-    }
-
-    public void getFeatured(String lang) {
-        isLoadingLiveData.postValue(true);
-        Api.getService(Tags.base_url)
-                .getFeatured(lang)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-
-                .subscribe(new SingleObserver<Response<DepartmentDataModel>>() {
-                    @Override
-                    public void onSubscribe(@NonNull Disposable d) {
-                        disposable.add(d);
-                    }
-
-                    @Override
-                    public void onSuccess(@NonNull Response<DepartmentDataModel> response) {
-                        isLoadingLiveData.postValue(false);
-
-                        if (response.isSuccessful() && response.body() != null) {
-                            if (response.body().getStatus() == 200) {
-                                List<DepartmentModel> list = response.body().getData();
-                                if (list.size() > 0) {
-                                    departmentfeaturedLivData.setValue(list);
-                                }
-
-
-                            }
-                        }
-                    }
-
-                    @Override
-                    public void onError(@NonNull Throwable e) {
-                        isLoadingLiveData.postValue(false);
-                        Log.e(TAG, "onError: ", e);
-                    }
-                });
-
-    }
 
     @Override
     protected void onCleared() {

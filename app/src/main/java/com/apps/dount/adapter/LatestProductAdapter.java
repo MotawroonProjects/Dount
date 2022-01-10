@@ -12,19 +12,19 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.apps.dount.R;
-import com.apps.dount.databinding.OfferItemRowBinding;
+import com.apps.dount.databinding.LatestProductRowBinding;
 import com.apps.dount.model.ProductModel;
 import com.apps.dount.uis.activity_home.fragments_home_navigaion.FragmentHome;
 
 import java.util.List;
 
-public class OffersAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class LatestProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private List<ProductModel> list;
     private Context context;
     private LayoutInflater inflater;
     private Fragment fragment;
 
-    public OffersAdapter(Context context, Fragment fragment) {
+    public LatestProductAdapter(Context context, Fragment fragment) {
         this.context = context;
         inflater = LayoutInflater.from(context);
         this.fragment = fragment;
@@ -33,7 +33,7 @@ public class OffersAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        OfferItemRowBinding binding = DataBindingUtil.inflate(inflater, R.layout.offer_item_row, parent, false);
+        LatestProductRowBinding binding = DataBindingUtil.inflate(inflater, R.layout.latest_product_row, parent, false);
         return new MyHolder(binding);
     }
 
@@ -41,8 +41,7 @@ public class OffersAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         MyHolder myHolder = (MyHolder) holder;
         myHolder.binding.setModel(list.get(position));
-        myHolder.binding.priceOld.setPaintFlags(myHolder.binding.priceOld.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-        myHolder.binding.amountOld.setPaintFlags(myHolder.binding.amountOld.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+
         myHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,9 +64,9 @@ public class OffersAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
 
     public static class MyHolder extends RecyclerView.ViewHolder {
-        public OfferItemRowBinding binding;
+        public LatestProductRowBinding binding;
 
-        public MyHolder(OfferItemRowBinding binding) {
+        public MyHolder(LatestProductRowBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
 

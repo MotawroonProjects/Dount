@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
@@ -20,8 +21,7 @@ import android.view.ViewGroup;
 import com.apps.dount.R;
 
 import com.apps.dount.adapter.DepartmentAdapter;
-import com.apps.dount.adapter.MainDepartmentAdapter;
-import com.apps.dount.adapter.OffersAdapter;
+import com.apps.dount.adapter.LatestProductAdapter;
 import com.apps.dount.adapter.SliderAdapter;
 import com.apps.dount.model.DepartmentModel;
 import com.apps.dount.model.ProductModel;
@@ -53,13 +53,11 @@ public class FragmentHome extends BaseFragment {
     private FragmentHomeBinding binding;
     private FragmentHomeMvvm fragmentHomeMvvm;
     private DepartmentAdapter departmentAdapter;
-    private OffersAdapter offersAdapter;
-    private MainDepartmentAdapter mainDepartmentAdapter;
+    private LatestProductAdapter latestProductAdapter;
     private SliderAdapter sliderAdapter;
     private List<SliderDataModel.SliderModel> sliderModelList;
     private CompositeDisposable disposable = new CompositeDisposable();
     private Timer timer;
-    private ProductModel productBoxmodel;
     private ActivityResultLauncher<Intent> launcher;
     private int req = 1;
 
@@ -121,8 +119,7 @@ public class FragmentHome extends BaseFragment {
                 binding.progBarSlider.setVisibility(View.VISIBLE);
                 binding.progBarDepartment.setVisibility(View.VISIBLE);
                 binding.progBarOffers.setVisibility(View.VISIBLE);
-                binding.progBarBox.setVisibility(View.VISIBLE);
-                binding.progBar.setVisibility(View.VISIBLE);
+
 
             }
             // binding.swipeRefresh.setRefreshing(isLoading);
@@ -170,7 +167,7 @@ public class FragmentHome extends BaseFragment {
                 if (productModels != null && productModels.size() > 0) {
                     binding.progBarOffers.setVisibility(View.GONE);
 
-                    offersAdapter.updateList(productModels);
+                    latestProductAdapter.updateList(productModels);
                     binding.tvNoOffer.setVisibility(View.GONE);
 
                 } else {
@@ -180,46 +177,16 @@ public class FragmentHome extends BaseFragment {
                 }
             }
         });
-        fragmentHomeMvvm.getbox().observe(activity, new androidx.lifecycle.Observer<ProductModel>() {
 
-            @Override
-            public void onChanged(ProductModel productModel) {
-
-                if (productModel != null) {
-                    FragmentHome.this.productBoxmodel = productModel;
-                    binding.progBarBox.setVisibility(View.GONE);
-
-                    binding.setModel(productModel);
-                }
-            }
-        });
-        fragmentHomeMvvm.getCategoryfeaturedData().observe(activity, new androidx.lifecycle.Observer<List<DepartmentModel>>() {
-            @Override
-            public void onChanged(List<DepartmentModel> departmentModels) {
-                if (departmentModels != null && departmentModels.size() > 0) {
-                    binding.progBar.setVisibility(View.GONE);
-
-                    mainDepartmentAdapter.updateList(departmentModels);
-                    binding.tvNoData.setVisibility(View.GONE);
-                } else {
-                    binding.progBar.setVisibility(View.GONE);
-
-                    binding.tvNoData.setVisibility(View.VISIBLE);
-
-                }
-            }
-        });
         departmentAdapter = new DepartmentAdapter(activity, this);
         binding.recyclerDepartment.setLayoutManager(new LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false));
         binding.recyclerDepartment.setAdapter(departmentAdapter);
 
-        offersAdapter = new OffersAdapter(activity, this);
-        binding.recyclerOffers.setLayoutManager(new LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false));
-        binding.recyclerOffers.setAdapter(offersAdapter);
+        latestProductAdapter = new LatestProductAdapter(activity, this);
+        binding.recyclerOffers.setLayoutManager(new GridLayoutManager(activity, 3));
+        binding.recyclerOffers.setAdapter(latestProductAdapter);
 
-        mainDepartmentAdapter = new MainDepartmentAdapter(activity, this);
-        binding.nestedRecycler.setLayoutManager(new LinearLayoutManager(activity));
-        binding.nestedRecycler.setAdapter(mainDepartmentAdapter);
+
 
         sliderAdapter = new SliderAdapter(sliderModelList, activity);
         binding.pager.setAdapter(sliderAdapter);
@@ -230,16 +197,7 @@ public class FragmentHome extends BaseFragment {
         fragmentHomeMvvm.getSlider();
         fragmentHomeMvvm.getDepartment(getLang());
         fragmentHomeMvvm.getOffers(getLang());
-        fragmentHomeMvvm.getBox(getLang());
-        fragmentHomeMvvm.getFeatured(getLang());
-        binding.imBox.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (productBoxmodel != null) {
-                    showProductDetials(productBoxmodel.getId());
-                }
-            }
-        });
+
     }
 
 

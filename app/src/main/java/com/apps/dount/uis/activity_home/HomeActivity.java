@@ -13,6 +13,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -48,7 +49,6 @@ public class HomeActivity extends BaseActivity implements Listeners.Verification
     private ActivityHomeBinding binding;
     private NavController navController;
     private HomeActivityMvvm homeActivityMvvm;
-    private ActionBarDrawerToggle toggle;
     private Preferences preferences;
     private UserModel userModel;
     private ActivityResultLauncher<Intent> launcher;
@@ -72,44 +72,27 @@ public class HomeActivity extends BaseActivity implements Listeners.Verification
             binding.setModel(userModel);
         }
         homeActivityMvvm = ViewModelProviders.of(this).get(HomeActivityMvvm.class);
-        launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
-            if (req == 1 && result.getResultCode() == Activity.RESULT_OK) {
-                userModel = getUserModel();
-                // Log.e("sssssss", Tags.base_url+userModel.getData().getPhoto());
-                if (userModel.getData().getPhoto() != null) {
-                    Picasso.get().load(Tags.base_url + userModel.getData().getPhoto()).into(binding.image);
-                }
-                binding.setModel(userModel);
-                updateFirebase();
-            } else if (req == 2 && result.getResultCode() == Activity.RESULT_OK) {
-                updateCartCount();
-                userModel = getUserModel();
-                binding.setModel(getUserModel());
-                updateFirebase();
-            }
-            else if (req == 3 && result.getResultCode() == Activity.RESULT_OK&&result.getData()!=null) {
-                String lang = result.getData().getStringExtra("lang");
-                refreshActivity(lang);
-            }
-        });
+
 
         setSupportActionBar(binding.toolBar);
         navController = Navigation.findNavController(this, R.id.navHostFragment);
-        NavigationUI.setupActionBarWithNavController(this, navController, binding.drawerLayout);
-        NavigationUI.setupWithNavController(binding.navView, navController);
+        NavigationUI.setupWithNavController(binding.bottomNav, navController);
+        NavigationUI.setupWithNavController(binding.toolBar, navController);
+        NavigationUI.setupActionBarWithNavController(this, navController);
 
-        navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
-            if (binding.toolBar.getNavigationIcon() != null) {
-                binding.toolBar.getNavigationIcon().setColorFilter(ContextCompat.getColor(HomeActivity.this, R.color.black), PorterDuff.Mode.SRC_ATOP);
 
-            }
-        });
-        toggle = new ActionBarDrawerToggle(this, binding.drawerLayout, binding.toolBar, R.string.open, R.string.close);
+//        navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
+//            if (binding.toolBar.getNavigationIcon() != null) {
+//                binding.toolBar.getNavigationIcon().setColorFilter(ContextCompat.getColor(HomeActivity.this, R.color.black), PorterDuff.Mode.SRC_ATOP);
+//
+//            }
+//        });
+
+
 //
 //        toggle.setHomeAsUpIndicator(R.drawable.ic_menu);
 
 
-        toggle.syncState();
         binding.imgNotification.setOnClickListener(v -> {
 
 
@@ -139,106 +122,11 @@ public class HomeActivity extends BaseActivity implements Listeners.Verification
         if (getUserModel() != null) {
             homeActivityMvvm.updateFirebase(this, getUserModel());
         }
-        binding.wallet.setOnClickListener(view -> {
-            if (userModel != null) {
-                Intent intent = new Intent(HomeActivity.this, WalletActivity.class);
-                startActivity(intent);
-            } else {
-                navigationToLoginActivity();
-            }
-        });
-        binding.llEditProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (userModel == null) {
-                    navigationToLoginActivity();
-                } else {
-                    navigationToSignupActivity();
-                }
-            }
-        });
-        binding.contactUs.setOnClickListener(view -> {
-            Intent intent = new Intent(HomeActivity.this, ContactUsActivity.class);
-            startActivity(intent);
 
-        });
-        binding.favourite.setOnClickListener(view -> {
-            if (userModel != null) {
-                Intent intent = new Intent(HomeActivity.this, FavouriteActivity.class);
-                startActivity(intent);
-            } else {
-                navigationToLoginActivity();
-            }
-
-        });
-        binding.llMyOrders.setOnClickListener(view -> {
-            if (userModel != null) {
-                Intent intent = new Intent(HomeActivity.this, MyOrderActivity.class);
-                startActivity(intent);
-            } else {
-                navigationToLoginActivity();
-            }
-        });
-        binding.imLogOut.setOnClickListener(view -> {
-            if (getUserModel() == null) {
-                logout();
-            } else {
-                homeActivityMvvm.logout(this, getUserModel());
-            }
-
-        });
-        binding.shareApp.setOnClickListener(view -> {
-            if (userModel != null) {
-                Intent intent = new Intent(HomeActivity.this, ShareActivity.class);
-                startActivity(intent);
-            } else {
-                navigationToLoginActivity();
-            }
-        });
-
-
-        binding.home.setOnClickListener(view -> {
-            binding.drawerLayout.closeDrawer(GravityCompat.START);
-
-
-        });
-        binding.flCart.setOnClickListener(v -> {
-            req = 2;
-            Intent intent = new Intent(HomeActivity.this, CartActivity.class);
-            launcher.launch(intent);
-
-        });
-        binding.llcart.setOnClickListener(v -> {
-            req = 2;
-            Intent intent = new Intent(HomeActivity.this, CartActivity.class);
-            launcher.launch(intent);
-
-        });
-        binding.llChangeLangeuage.setOnClickListener(v -> {
-            req = 3;
-            Intent intent = new Intent(this, LanguageActivity.class);
-            launcher.launch(intent);
-        });
-
-        if (userModel == null) {
-            binding.tvName.setOnClickListener(view -> navigationToLoginActivity());
-
-        }
 
 
     }
 
-    private void navigationToLoginActivity() {
-        req = 1;
-        Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
-        launcher.launch(intent);
-    }
-
-    private void navigationToSignupActivity() {
-        req = 1;
-        Intent intent = new Intent(HomeActivity.this, SignUpActivity.class);
-        launcher.launch(intent);
-    }
 
     public void refreshActivity(String lang) {
         Paper.book().write("lang", lang);
@@ -254,11 +142,6 @@ public class HomeActivity extends BaseActivity implements Listeners.Verification
 
     }
 
-    @Override
-    public boolean onNavigateUp() {
-
-        return NavigationUI.navigateUp(navController, binding.drawerLayout);
-    }
 
     @Override
     public void onBackPressed() {
@@ -266,7 +149,7 @@ public class HomeActivity extends BaseActivity implements Listeners.Verification
         if (currentFragmentId == R.id.home) {
             finish();
 
-        } else {
+        }  else {
             navController.popBackStack();
         }
 
@@ -289,7 +172,7 @@ public class HomeActivity extends BaseActivity implements Listeners.Verification
         clearUserModel(this);
         userModel = getUserModel();
         binding.setModel(null);
-        navigationToLoginActivity();
+       // navigationToLoginActivity();
     }
 
     public void updateCartCount() {

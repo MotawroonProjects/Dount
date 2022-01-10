@@ -24,36 +24,18 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/color11"
+            android:background="@color/color6"
             android:orientation="vertical">
 
-            <androidx.appcompat.widget.Toolbar
+            <ImageView
                 android:id="@+id/top"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/toolbar_color8_shape"
-                app:layout_constraintTop_toTopOf="parent">
+                android:layout_height="90dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/toplogin"
+                app:layout_constraintTop_toTopOf="parent"
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="@string/personal_information"
-                        android:textColor="@color/white"
-                        android:textSize="18sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </androidx.appcompat.widget.Toolbar>
+                />
 
             <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
@@ -139,30 +121,7 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginEnd="16dp"
-                        android:orientation="horizontal">
 
-                        <ImageView
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:layout_gravity="center"
-                            android:src="@drawable/ic_user"
-                            app:tint="@color/color2" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:alpha=".7"
-                            android:gravity="center"
-                            android:text="@string/name"
-                            android:textColor="@color/gray16"
-                            android:textSize="15sp" />
-
-                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -177,32 +136,36 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:orientation="vertical">
-
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:alpha=".7"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginEnd="8dp"
+                                android:gravity="center"
+                                android:text="@string/first_name"
+                                android:textColor="@color/black"
+                                android:textSize="15sp" />
                             <EditText
                                 error="@{model.error_first_name}"
                                 android:layout_width="match_parent"
                                 android:layout_height="40dp"
                                 android:layout_marginStart="8dp"
                                 android:layout_marginEnd="8dp"
-                                android:background="@color/transparent"
 
+                                android:background="@drawable/small_stroke_color1_white"
                                 android:gravity="center"
-                                android:hint="@string/first_name"
                                 android:paddingLeft="8dp"
                                 android:paddingRight="8dp"
                                 android:singleLine="true"
                                 android:text="@={model.first_name}"
                                 android:textColor="@color/white"
+
                                 android:textColorHint="@color/gray14"
                                 android:textSize="14sp"
                                 tools:ignore="TextFields" />
 
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="1dp"
-                                android:layout_marginStart="8dp"
-                                android:layout_marginEnd="8dp"
-                                android:background="@color/color2" />
+
                         </LinearLayout>
 
                         <LinearLayout
@@ -210,16 +173,24 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:orientation="vertical">
-
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:alpha=".7"
+                                android:gravity="center"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginEnd="8dp"
+                                android:text="@string/last_name"
+                                android:textColor="@color/black"
+                                android:textSize="15sp" />
                             <EditText
                                 error="@{model.error_seconed_name}"
                                 android:layout_width="match_parent"
                                 android:layout_height="40dp"
                                 android:layout_marginStart="8dp"
                                 android:layout_marginEnd="8dp"
-                                android:background="@color/transparent"
+                                android:background="@drawable/small_stroke_color1_white"
                                 android:gravity="center"
-                                android:hint="@string/last_name"
                                 android:paddingLeft="8dp"
                                 android:paddingRight="8dp"
                                 android:singleLine="true"
@@ -229,12 +200,7 @@
                                 android:textSize="14sp"
                                 tools:ignore="TextFields" />
 
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="1dp"
-                                android:layout_marginStart="8dp"
-                                android:layout_marginEnd="8dp"
-                                android:background="@color/color2" />
+
                         </LinearLayout>
 
                     </LinearLayout>
@@ -247,9 +213,9 @@
                         android:layout_marginTop="20dp"
                         android:layout_marginEnd="20dp"
                         android:alpha=".7"
-                        android:buttonTint="@color/white"
+                        android:buttonTint="@color/color2"
                         android:text="@string/invited_by_a_user"
-                        android:textColor="@color/gray16" />
+                        android:textColor="@color/black" />
 
                     <LinearLayout
                         android:id="@+id/llCode"
@@ -258,7 +224,7 @@
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="40dp"
                         android:layout_marginEnd="16dp"
-                        android:background="@drawable/small_color9_stroke_color8"
+                        android:background="@drawable/small_stroke_color1_white"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
                         android:paddingStart="8dp"

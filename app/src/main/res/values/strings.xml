@@ -139,6 +139,13 @@
     <string name="app_link">App Link : </string>
     <string name="wallet_not">The wallet balance is not enough</string>
     <string name="language_setting">Language Setting</string>
+    <string name="latest_products">Latest Products</string>
+    <string name="my_profile">My Profile</string>
+    <string name="my_orders">My Orders</string>
+    <string name="previous_order">Previous Order</string>
+    <string name="branches">Branches</string>
+    <string name="delivery_available">Delivery available</string>
+    <string name="un_delivery_available">Un Delivery available</string>
 
 
 </resources>

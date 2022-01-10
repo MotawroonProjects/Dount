@@ -11,6 +11,26 @@
         android:name="com.apps.dount.uis.activity_home.fragments_home_navigaion.FragmentHome"
         android:label=""
         tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/departmnet"
+        android:name="com.apps.dount.uis.activity_home.fragments_home_navigaion.FragmentDepartment"
+        android:label=""
+        tools:layout="@layout/fragment_department" />
+    <fragment
+        android:id="@+id/offer"
+        android:name="com.apps.dount.uis.activity_home.fragments_home_navigaion.FragmentOffer"
+        android:label=""
+        tools:layout="@layout/fragment_offer" />
+    <fragment
+        android:id="@+id/branches"
+        android:name="com.apps.dount.uis.activity_home.fragments_home_navigaion.FragmentBranches"
+        android:label=""
+        tools:layout="@layout/fragment_branches" />
+    <fragment
+        android:id="@+id/profile"
+        android:name="com.apps.dount.uis.activity_home.fragments_home_navigaion.FragmentProfile"
+        android:label=""
+        tools:layout="@layout/fragment_profile" />
 
 
     

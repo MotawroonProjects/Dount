@@ -18,13 +18,13 @@ import com.apps.dount.uis.activity_home.fragments_home_navigaion.FragmentHome;
 
 import java.util.List;
 
-public class DepartmentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class Department2Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private List<DepartmentModel> list;
     private Context context;
     private LayoutInflater inflater;
     private Fragment fragment;
 
-    public DepartmentAdapter(Context context, Fragment fragment) {
+    public Department2Adapter(Context context, Fragment fragment) {
         this.context = context;
         inflater = LayoutInflater.from(context);
         this.fragment = fragment;
@@ -33,7 +33,7 @@ public class DepartmentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        CategoryRowBinding binding = DataBindingUtil.inflate(inflater, R.layout.category_row, parent, false);
+        DepartmentItemRowBinding binding = DataBindingUtil.inflate(inflater, R.layout.department_item_row, parent, false);
         return new MyHolder(binding);
     }
 
@@ -68,9 +68,9 @@ public class DepartmentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
 
     public static class MyHolder extends RecyclerView.ViewHolder {
-        public CategoryRowBinding binding;
+        public DepartmentItemRowBinding binding;
 
-        public MyHolder(CategoryRowBinding binding) {
+        public MyHolder(DepartmentItemRowBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
 

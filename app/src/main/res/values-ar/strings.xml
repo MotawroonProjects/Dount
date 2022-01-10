@@ -141,4 +141,11 @@
     <string name="app_link">رابط التطبيق : </string>
     <string name="wallet_not">رصيد المحفظه لا يكفى </string>
     <string name="language_setting">اعدادات اللغه</string>
+    <string name="latest_products">احدث المنتجات</string>
+    <string name="my_profile">حسابى</string>
+    <string name="my_orders">طلباتى</string>
+    <string name="previous_order">طلباتى السابقه</string>
+    <string name="branches">الفروع</string>
+    <string name="delivery_available">متاح للتوصيل</string>
+    <string name="un_delivery_available">غير متاح للتوصيل</string>
 </resources>

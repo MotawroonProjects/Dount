@@ -10,7 +10,6 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.apps.dount.R;
-import com.apps.dount.databinding.OfferItemRowBinding;
 import com.apps.dount.databinding.OrderRowBinding;
 import com.apps.dount.model.OrderModel;
 import com.apps.dount.uis.activity_my_orders.MyOrderActivity;
