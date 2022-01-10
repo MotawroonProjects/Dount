@@ -84,12 +84,7 @@ public class VerificationCodeActivity extends BaseActivity {
                 finish();
             }
         });
-        binding.llBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+
 
     }
 
