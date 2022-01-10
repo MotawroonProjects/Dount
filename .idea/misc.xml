@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Akkaber/app/src/main/res/drawable/add_bg.xml" value="0.15885416666666666" />
+        <entry key="..\:/Akkaber/app/src/main/res/drawable/checkbox_bg.xml" value="0.2890625" />
+        <entry key="..\:/Akkaber/app/src/main/res/drawable/circle_color2.xml" value="0.14479166666666668" />
+        <entry key="..\:/Akkaber/app/src/main/res/drawable/circle_fill_color10.xml" value="0.2890625" />
+        <entry key="..\:/Akkaber/app/src/main/res/drawable/circle_fill_color2.xml" value="0.14479166666666668" />
+        <entry key="..\:/Akkaber/app/src/main/res/drawable/circle_not_bg.xml" value="0.14479166666666668" />
+        <entry key="..\:/Akkaber/app/src/main/res/drawable/circle_red.xml" value="0.2890625" />
+        <entry key="..\:/Akkaber/app/src/main/res/drawable/ic_empty_heart.xml" value="0.2890625" />
+        <entry key="..\:/Akkaber/app/src/main/res/drawable/ic_fill_heart.xml" value="0.2890625" />
+        <entry key="..\:/Akkaber/app/src/main/res/drawable/ic_group_1537.xml" value="0.2890625" />
+        <entry key="..\:/Akkaber/app/src/main/res/drawable/ic_lines.xml" value="0.2890625" />
+        <entry key="..\:/Akkaber/app/src/main/res/drawable/ic_plus.xml" value="0.15885416666666666" />
+        <entry key="..\:/Akkaber/app/src/main/res/drawable/ic_qr_shape.xml" value="0.1515625" />
+        <entry key="..\:/Akkaber/app/src/main/res/drawable/minus2_bg.xml" value="0.11481481481481481" />
+        <entry key="..\:/Akkaber/app/src/main/res/drawable/radio_bg.xml" value="0.15885416666666666" />
+        <entry key="..\:/Akkaber/app/src/main/res/drawable/rounded_color2.xml" value="0.14479166666666668" />
+        <entry key="..\:/Akkaber/app/src/main/res/drawable/rounded_gray9.xml" value="0.11481481481481481" />
+        <entry key="..\:/Akkaber/app/src/main/res/drawable/rounded_primary.xml" value="0.14479166666666668" />
+        <entry key="..\:/Akkaber/app/src/main/res/drawable/rounded_top.xml" value="0.15885416666666666" />
+        <entry key="..\:/Akkaber/app/src/main/res/drawable/small_color9_stroke_color8.xml" value="0.15885416666666666" />
+        <entry key="..\:/Akkaber/app/src/main/res/drawable/small_gray15_stroke_color7.xml" value="0.14479166666666668" />
+        <entry key="..\:/Akkaber/app/src/main/res/drawable/small_gray15_stroke_color8.xml" value="0.15885416666666666" />
+        <entry key="..\:/Akkaber/app/src/main/res/drawable/small_rounded_primary.xml" value="0.14479166666666668" />
+        <entry key="..\:/Akkaber/app/src/main/res/drawable/small_stroke_color2.xml" value="0.14479166666666668" />
+        <entry key="..\:/Akkaber/app/src/main/res/drawable/small_stroke_color2_color7.xml" value="0.2890625" />
+        <entry key="..\:/Akkaber/app/src/main/res/drawable/small_stroke_gray_white.xml" value="0.15885416666666666" />
+        <entry key="..\:/Akkaber/app/src/main/res/drawable/small_stroke_primary.xml" value="0.15" />
+        <entry key="..\:/Akkaber/app/src/main/res/drawable/small_stroke_white_gray.xml" value="0.2890625" />
+        <entry key="..\:/Akkaber/app/src/main/res/drawable/toolbar_color8_shape.xml" value="0.14479166666666668" />
+        <entry key="..\:/Akkaber/app/src/main/res/drawable/toolbar_shape.xml" value="0.14479166666666668" />
+        <entry key="..\:/Akkaber/app/src/main/res/drawable/top_small_stroke_white_gray.xml" value="0.2890625" />
+        <entry key="..\:/Akkaber/app/src/main/res/layout/activity_cart.xml" value="0.1" />
+        <entry key="..\:/Akkaber/app/src/main/res/layout/activity_category_detials.xml" value="0.14270833333333333" />
+        <entry key="..\:/Akkaber/app/src/main/res/layout/activity_contact_us.xml" value="0.25" />
+        <entry key="..\:/Akkaber/app/src/main/res/layout/activity_favourite.xml" value="0.25885416666666666" />
+        <entry key="..\:/Akkaber/app/src/main/res/layout/activity_home.xml" value="0.17" />
+        <entry key="..\:/Akkaber/app/src/main/res/layout/activity_language.xml" value="0.1390625" />
+        <entry key="..\:/Akkaber/app/src/main/res/layout/activity_login.xml" value="0.2602739726027397" />
+        <entry key="..\:/Akkaber/app/src/main/res/layout/activity_map.xml" value="0.17" />
+        <entry key="..\:/Akkaber/app/src/main/res/layout/activity_notification.xml" value="0.25885416666666666" />
+        <entry key="..\:/Akkaber/app/src/main/res/layout/activity_order_detials.xml" value="0.21" />
+        <entry key="..\:/Akkaber/app/src/main/res/layout/activity_orders.xml" value="0.1390625" />
+        <entry key="..\:/Akkaber/app/src/main/res/layout/activity_payment.xml" value="0.3579088471849866" />
+        <entry key="..\:/Akkaber/app/src/main/res/layout/activity_product_detials.xml" value="0.33500627352572143" />
+        <entry key="..\:/Akkaber/app/src/main/res/layout/activity_share.xml" value="0.31862745098039214" />
+        <entry key="..\:/Akkaber/app/src/main/res/layout/activity_sign_up.xml" value="0.2819634703196347" />
+        <entry key="..\:/Akkaber/app/src/main/res/layout/activity_splash.xml" value="0.13913496612819176" />
+        <entry key="..\:/Akkaber/app/src/main/res/layout/activity_verification_code.xml" value="0.33" />
+        <entry key="..\:/Akkaber/app/src/main/res/layout/activity_wallet.xml" value="0.14270833333333333" />
+        <entry key="..\:/Akkaber/app/src/main/res/layout/bottom_sheet_dialog.xml" value="0.1390625" />
+        <entry key="..\:/Akkaber/app/src/main/res/layout/cart_row.xml" value="0.33" />
+        <entry key="..\:/Akkaber/app/src/main/res/layout/department_item_row.xml" value="0.14270833333333333" />
+        <entry key="..\:/Akkaber/app/src/main/res/layout/exo_player_layout.xml" value="0.1390625" />
+        <entry key="..\:/Akkaber/app/src/main/res/layout/favourite_row.xml" value="0.1390625" />
+        <entry key="..\:/Akkaber/app/src/main/res/layout/fragment_app.xml" value="0.1390625" />
+        <entry key="..\:/Akkaber/app/src/main/res/layout/fragment_current_reservation.xml" value="0.1390625" />
+        <entry key="..\:/Akkaber/app/src/main/res/layout/fragment_home.xml" value="0.14270833333333333" />
+        <entry key="..\:/Akkaber/app/src/main/res/layout/fragment_profile.xml" value="0.27291666666666664" />
+        <entry key="..\:/Akkaber/app/src/main/res/layout/home_cooking_item_row.xml" value="0.27291666666666664" />
+        <entry key="..\:/Akkaber/app/src/main/res/layout/intro_row.xml" value="0.27291666666666664" />
+        <entry key="..\:/Akkaber/app/src/main/res/layout/lamb_for_barbecue_row.xml" value="0.27291666666666664" />
+        <entry key="..\:/Akkaber/app/src/main/res/layout/main_department_item_row.xml" value="0.27291666666666664" />
+        <entry key="..\:/Akkaber/app/src/main/res/layout/minced_item_row.xml" value="0.14270833333333333" />
+        <entry key="..\:/Akkaber/app/src/main/res/layout/notification_row.xml" value="0.27291666666666664" />
+        <entry key="..\:/Akkaber/app/src/main/res/layout/offer_item_row.xml" value="0.33" />
+        <entry key="..\:/Akkaber/app/src/main/res/layout/order_product_row.xml" value="0.1390625" />
+        <entry key="..\:/Akkaber/app/src/main/res/layout/order_product_row2.xml" value="0.21" />
+        <entry key="..\:/Akkaber/app/src/main/res/layout/order_row.xml" value="0.33" />
+        <entry key="..\:/Akkaber/app/src/main/res/layout/others_item_row.xml" value="0.27291666666666664" />
+        <entry key="..\:/Akkaber/app/src/main/res/layout/product_item_row.xml" value="0.14270833333333333" />
+        <entry key="..\:/Akkaber/app/src/main/res/layout/product_row.xml" value="0.14270833333333333" />
+        <entry key="..\:/Akkaber/app/src/main/res/layout/size_row.xml" value="0.5" />
+        <entry key="..\:/Akkaber/app/src/main/res/layout/slider.xml" value="0.27291666666666664" />
+        <entry key="..\:/Akkaber/app/src/main/res/layout/sub_product_item_row.xml" value="0.27291666666666664" />
+        <entry key="..\:/Akkaber/app/src/main/res/layout/toolbar.xml" value="0.27291666666666664" />
+        <entry key="..\:/Akkaber/app/src/main/res/layout/trotters_item_row.xml" value="0.27291666666666664" />
+        <entry key="..\:/Akkaber/app/src/main/res/layout/type_row.xml" value="0.33" />
+        <entry key="..\:/Akkaber/app/src/main/res/layout/way_row.xml" value="0.27291666666666664" />
+        <entry key="..\:/Akkaber/app/src/main/res/layout/wrap_row.xml" value="0.27291666666666664" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/drawable-v24/horizontal_line2.xml" value="0.2703125" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/drawable/bottom_nav_item_bg.xml" value="0.14635416666666667" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/drawable/btn_change_lang.xml" value="0.26615384615384613" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/drawable/btn_shape.xml" value="0.26615384615384613" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/drawable/card_shape.xml" value="0.26615384615384613" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/drawable/circle_primary.xml" value="0.26615384615384613" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/drawable/circle_white.xml" value="0.26615384615384613" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/drawable/horizontal_line.xml" value="0.2703125" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/drawable/ic_call.xml" value="0.26615384615384613" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/drawable/ic_gmail.xml" value="0.26615384615384613" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/drawable/ic_left_arrow.xml" value="0.26615384615384613" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/drawable/ic_line.xml" value="0.2703125" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/drawable/ic_location.xml" value="0.26615384615384613" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/drawable/ic_logout.xml" value="0.26615384615384613" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/drawable/ic_nav_nearby.xml" value="0.26615384615384613" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/drawable/ic_shape.xml" value="0.19074074074074074" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/drawable/ic_share.xml" value="0.2703125" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/drawable/ic_subject.xml" value="0.26615384615384613" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/drawable/ic_user.xml" value="0.26615384615384613" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/drawable/ic_wallet.xml" value="0.2703125" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/drawable/ic_whatts.xml" value="0.26615384615384613" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/drawable/line.xml" value="0.14635416666666667" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/drawable/linear_shape.xml" value="0.26615384615384613" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/drawable/linear_shape2.xml" value="0.26615384615384613" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/drawable/pin_view_item.xml" value="0.14635416666666667" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/drawable/tab_gallery_indicator.xml" value="0.14635416666666667" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/drawable/tab_intro_slider.xml" value="0.2703125" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/drawable/toolbar_shape.xml" value="0.26615384615384613" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/layout-v21/activity_contact_us.xml" value="0.23822463768115942" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/layout/activity_about_app.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/layout/activity_category_detials.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/layout/activity_contact_us.xml" value="0.13020833333333334" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/layout/activity_favourite.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/layout/activity_home.xml" value="0.264" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/layout/activity_intro_slider.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/layout/activity_language.xml" value="0.11614583333333334" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/layout/activity_login.xml" value="0.13020833333333334" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/layout/activity_notification.xml" value="0.13020833333333334" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/layout/activity_share.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/layout/activity_sign_up.xml" value="0.38073394495412843" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/layout/activity_splash.xml" value="0.13020833333333334" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/layout/activity_verification_code.xml" value="0.13020833333333334" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/layout/activity_wallet.xml" value="0.2513586956521739" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/layout/bottom_sheet_dialog.xml" value="0.13020833333333334" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/layout/department_item_raw.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/layout/department_item_row.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/layout/exo_player_layout.xml" value="0.13020833333333334" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/layout/favourite_row.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/layout/fragment_app.xml" value="0.13020833333333334" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/layout/fragment_current_reservation.xml" value="0.13020833333333334" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/layout/fragment_home.xml" value="0.13020833333333334" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/layout/fragment_my_reservations.xml" value="0.13020833333333334" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/layout/fragment_profile.xml" value="0.11614583333333334" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/layout/home_cooking_item_raw.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/layout/home_cooking_item_row.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/layout/intro_row.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/layout/lamb_for_barbecue_raw.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/layout/lamb_for_barbecue_row.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/layout/minced_item_raw.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/layout/minced_item_row.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/layout/nested_recycler.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/layout/notification_row.xml" value="0.12360688956433637" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/layout/offer_item_raw.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/layout/offer_item_row.xml" value="0.152" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/layout/others_item_raw.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/layout/others_item_row.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/layout/product_item_row.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/layout/product_row.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/layout/recycler_wallet_row.xml" value="0.2513586956521739" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/layout/slider.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/layout/slider_raw.xml" value="0.2" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/layout/toolbar.xml" value="0.23822463768115942" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/layout/trotters_item_raw.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/layout/trotters_item_row.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/layout/wallet_row.xml" value="0.24728260869565216" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/menu/drawer_menu.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidProjects/Akaber/app/src/main/res/menu/menu.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidProjects/Wedding-master/app/src/main/res/layout/activity_about_app.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidProjects/Wedding-master/app/src/main/res/layout/activity_contact_us.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidProjects/Wedding-master/app/src/main/res/layout/fragment_edit_profile.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidProjects/Wedding-master/app/src/main/res/layout/fragment_profile.xml" value="0.24010416666666667" />
+        <entry key="..\:/AndroidProjects/Wedding-master/app/src/main/res/layout/toolbar.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Ahmed/AndroidStudioProjects/Akkaber/app/src/main/res/layout/activity_contact_us.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/Ahmed/AndroidStudioProjects/Akkaber/app/src/main/res/layout/activity_favourite.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/Ahmed/AndroidStudioProjects/Akkaber/app/src/main/res/layout/activity_home.xml" value="0.3414965986394558" />
+        <entry key="..\:/Users/Ahmed/AndroidStudioProjects/Akkaber/app/src/main/res/layout/activity_language.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/Ahmed/AndroidStudioProjects/Akkaber/app/src/main/res/layout/activity_orders.xml" value="0.2324074074074074" />
+        <entry key="..\:/Users/Ahmed/AndroidStudioProjects/Akkaber/app/src/main/res/layout/activity_share.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/Ahmed/AndroidStudioProjects/Akkaber/app/src/main/res/layout/activity_wallet.xml" value="0.2324074074074074" />
+        <entry key="..\:/Users/Ahmed/AndroidStudioProjects/Akkaber/app/src/main/res/layout/type_row.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/Ahmed/AndroidStudioProjects/Akkaber/app/src/main/res/layout/way_row.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/drawable/bottom_nav_item_bg.xml" value="0.2203125" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/drawable/circle_color1.xml" value="0.2203125" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/drawable/circle_primary.xml" value="0.2203125" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/drawable/ic_language.xml" value="0.2203125" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/drawable/ic_mask_group_3.xml" value="0.2203125" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/drawable/ic_rate.xml" value="0.2203125" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/drawable/ic_start_fill.xml" value="0.2203125" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/drawable/ic_store.xml" value="0.2203125" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/drawable/line.xml" value="0.2203125" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/drawable/pin_view_item.xml" value="0.2203125" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/drawable/rounded_colo1.xml" value="0.2203125" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/drawable/rounded_color1.xml" value="0.2203125" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/drawable/rounded_primary.xml" value="0.2203125" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/drawable/rounded_top.xml" value="0.2203125" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/drawable/shape_stroke_gray_color1.xml" value="0.2203125" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/drawable/smakk_rounded_primary.xml" value="0.2203125" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/drawable/small_rounded_primary.xml" value="0.2203125" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/drawable/small_stroke_primary.xml" value="0.2203125" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/drawable/small_stroke_white.xml" value="0.1125" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/drawable/stroke_fill_color2.xml" value="0.2203125" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/drawable/stroke_gray.xml" value="0.2203125" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/drawable/tab_gallery_indicator.xml" value="0.2203125" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/layout/activity_about_app.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/layout/activity_contact_us.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/layout/activity_home.xml" value="0.22" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/layout/activity_language.xml" value="0.25" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/layout/activity_login.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/layout/activity_notification.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/layout/activity_sign_up.xml" value="0.19010416666666666" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/layout/activity_splash.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/layout/activity_verification_code.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/layout/basic_item_row.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/layout/bottom_sheet_dialog.xml" value="0.45180722891566266" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/layout/bottom_sheet_service_details.xml" value="0.33" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/layout/category_row.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/layout/exo_player_layout.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/layout/filter_rate_row.xml" value="0.67" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/layout/fragment_app.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/layout/fragment_choose_day.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/layout/fragment_current_reservation.xml" value="0.19010416666666666" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/layout/fragment_edit_reservation.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/layout/fragment_home.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/layout/fragment_login.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/layout/fragment_my_reservations.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/layout/fragment_nearby.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/layout/fragment_notification.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/layout/fragment_profile.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/layout/fragment_reservation_confirmation.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/layout/fragment_search.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/layout/fragment_service_details.xml" value="0.22" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/layout/fragment_signup.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/layout/fragment_verification_code.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/layout/map_wedding_hall_row.xml" value="0.5" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/layout/notification_row.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/layout/offer_row.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/layout/order_row.xml" value="0.25" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/layout/previous_order_row.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/layout/toolbar.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/layout/wedding_hall_row.xml" value="0.5" />
+        <entry key="..\:/Users/Arb Develpor/Desktop/emad/Projects/Wedding/app/src/main/res/menu/menu.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/HP/Desktop/Wedding/app/src/main/res/drawable/circle_white.xml" value="0.2890625" />
+        <entry key="..\:/Users/HP/Desktop/Wedding/app/src/main/res/drawable/ic_gallery.xml" value="0.2890625" />
+        <entry key="..\:/Users/HP/Desktop/Wedding/app/src/main/res/drawable/tab_gallery_indicator.xml" value="0.15885416666666666" />
+        <entry key="..\:/Users/HP/Desktop/Wedding/app/src/main/res/layout/fragment_app.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/HP/Desktop/Wedding/app/src/main/res/layout/fragment_edit_profile.xml" value="0.14270833333333333" />
+        <entry key="..\:/Users/HP/Desktop/Wedding/app/src/main/res/layout/fragment_home.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/HP/Desktop/Wedding/app/src/main/res/layout/fragment_login.xml" value="0.14270833333333333" />
+        <entry key="..\:/Users/HP/Desktop/Wedding/app/src/main/res/layout/fragment_nearby.xml" value="0.14270833333333333" />
+        <entry key="..\:/Users/HP/Desktop/Wedding/app/src/main/res/layout/fragment_profile.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/HP/Desktop/Wedding/app/src/main/res/layout/fragment_reservation_confirmation.xml" value="0.14270833333333333" />
+        <entry key="..\:/Users/HP/Desktop/Wedding/app/src/main/res/layout/fragment_service_details.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/HP/Desktop/Wedding/app/src/main/res/layout/fragment_signup.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/HP/Desktop/Wedding/app/src/main/res/layout/fragment_verification_code.xml" value="0.14270833333333333" />
+        <entry key="..\:/Users/HP/Desktop/Wedding/app/src/main/res/layout/slider.xml" value="0.25885416666666666" />
+        <entry key="..\:/Users/HP/Desktop/akaper/app/src/main/res/drawable/circle_color2.xml" value="0.2890625" />
+        <entry key="..\:/Users/HP/Desktop/akaper/app/src/main/res/drawable/circle_not_bg.xml" value="0.2890625" />
+        <entry key="..\:/Users/HP/Desktop/akaper/app/src/main/res/drawable/circle_primary.xml" value="0.2890625" />
+        <entry key="..\:/Users/HP/Desktop/akaper/app/src/main/res/drawable/ic_calender.xml" value="0.2890625" />
+        <entry key="..\:/Users/HP/Desktop/akaper/app/src/main/res/drawable/ic_calender2.xml" value="0.2890625" />
+        <entry key="..\:/Users/HP/Desktop/akaper/app/src/main/res/layout/activity_category_detials.xml" value="0.14351851851851852" />
+        <entry key="..\:/Users/HP/Desktop/akaper/app/src/main/res/layout/activity_favourite.xml" value="0.14444444444444443" />
+        <entry key="..\:/Users/HP/Desktop/akaper/app/src/main/res/layout/activity_home.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/HP/Desktop/akaper/app/src/main/res/layout/activity_order_detials.xml" value="0.33" />
+        <entry key="..\:/Users/HP/Desktop/akaper/app/src/main/res/layout/activity_orders.xml" value="0.5" />
+        <entry key="..\:/Users/HP/Desktop/akaper/app/src/main/res/layout/order_row.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/HP/Desktop/akaper/app/src/main/res/layout/product_row.xml" value="0.14444444444444443" />
+        <entry key="..\:/android/FlutterProjects/Wedding/app/src/main/res/drawable/ic_left_arrow.xml" value="0.1125" />
+        <entry key="..\:/android/FlutterProjects/Wedding/app/src/main/res/layout/activity_main.xml" value="0.1935185185185185" />
+        <entry key="..\:/android/FlutterProjects/Wedding/app/src/main/res/layout/activity_splash.xml" value="0.20416666666666666" />
+        <entry key="..\:/android/FlutterProjects/Wedding/app/src/main/res/layout/toolbar.xml" value="0.1935185185185185" />
+        <entry key="..\:/android/Projects/Wedding/app/src/main/res/drawable/btn_change_lang.xml" value="0.2203125" />
+        <entry key="..\:/android/Projects/Wedding/app/src/main/res/drawable/ic_call.xml" value="0.2203125" />
+        <entry key="..\:/android/Projects/Wedding/app/src/main/res/drawable/ic_edit_account.xml" value="0.2203125" />
+        <entry key="..\:/android/Projects/Wedding/app/src/main/res/drawable/ic_empty_user.xml" value="0.2203125" />
+        <entry key="..\:/android/Projects/Wedding/app/src/main/res/drawable/ic_left_arrow.xml" value="0.2203125" />
+        <entry key="..\:/android/Projects/Wedding/app/src/main/res/drawable/ic_line.xml" value="0.2203125" />
+        <entry key="..\:/android/Projects/Wedding/app/src/main/res/drawable/ic_load_avatar.xml" value="0.2203125" />
+        <entry key="..\:/android/Projects/Wedding/app/src/main/res/drawable/ic_nav_home.xml" value="0.2203125" />
+        <entry key="..\:/android/Projects/Wedding/app/src/main/res/drawable/ic_search.xml" value="0.2203125" />
+        <entry key="..\:/android/Projects/Wedding/app/src/main/res/drawable/ic_subject.xml" value="0.2203125" />
+        <entry key="..\:/android/Projects/Wedding/app/src/main/res/drawable/ic_user.xml" value="0.2203125" />
+        <entry key="..\:/android/Projects/Wedding/app/src/main/res/drawable/pin_view_item.xml" value="0.2203125" />
+        <entry key="..\:/android/Projects/Wedding/app/src/main/res/drawable/small_rounded_primary.xml" value="0.2203125" />
+        <entry key="..\:/android/Projects/Wedding/app/src/main/res/drawable/small_rounded_red_strock.xml" value="0.2203125" />
+        <entry key="..\:/android/Projects/Wedding/app/src/main/res/drawable/small_stroke_white.xml" value="0.2203125" />
+        <entry key="..\:/android/Projects/Wedding/app/src/main/res/layout/activity_about_app.xml" value="0.20416666666666666" />
+        <entry key="..\:/android/Projects/Wedding/app/src/main/res/layout/activity_contact_us.xml" value="0.20102564102564102" />
+        <entry key="..\:/android/Projects/Wedding/app/src/main/res/layout/activity_home.xml" value="0.20416666666666666" />
+        <entry key="..\:/android/Projects/Wedding/app/src/main/res/layout/activity_language.xml" value="0.20102564102564102" />
+        <entry key="..\:/android/Projects/Wedding/app/src/main/res/layout/activity_login.xml" value="0.20102564102564102" />
+        <entry key="..\:/android/Projects/Wedding/app/src/main/res/layout/activity_notification.xml" value="0.22" />
+        <entry key="..\:/android/Projects/Wedding/app/src/main/res/layout/activity_splash.xml" value="0.20416666666666666" />
+        <entry key="..\:/android/Projects/Wedding/app/src/main/res/layout/activity_user_sign_up.xml" value="0.20102564102564102" />
+        <entry key="..\:/android/Projects/Wedding/app/src/main/res/layout/activity_verification_code.xml" value="0.20102564102564102" />
+        <entry key="..\:/android/Projects/Wedding/app/src/main/res/layout/fragment_home.xml" value="0.20102564102564102" />
+        <entry key="..\:/android/Projects/Wedding/app/src/main/res/layout/fragment_more.xml" value="0.20416666666666666" />
+        <entry key="..\:/android/Projects/Wedding/app/src/main/res/layout/fragment_order.xml" value="0.20102564102564102" />
+        <entry key="..\:/android/Projects/Wedding/app/src/main/res/layout/fragment_orders.xml" value="0.20416666666666666" />
+        <entry key="..\:/android/Projects/Wedding/app/src/main/res/layout/fragment_profile.xml" value="0.20102564102564102" />
+        <entry key="..\:/android/Projects/Wedding/app/src/main/res/layout/layout_not_sign_in.xml" value="0.20416666666666666" />
+        <entry key="..\:/android/Projects/Wedding/app/src/main/res/layout/layout_user_profile.xml" value="0.20416666666666666" />
+        <entry key="..\:/android/Projects/Wedding/app/src/main/res/layout/notification_row.xml" value="0.20416666666666666" />
+        <entry key="..\:/android/Projects/Wedding/app/src/main/res/layout/order_row.xml" value="0.20416666666666666" />
+        <entry key="..\:/android/Projects/Wedding/app/src/main/res/layout/place_holder_notification.xml" value="0.20416666666666666" />
+        <entry key="..\:/android/Projects/Wedding/app/src/main/res/layout/slider_row.xml" value="0.20416666666666666" />
+        <entry key="..\:/android/Projects/Wedding/app/src/main/res/layout/toolbar.xml" value="0.20416666666666666" />
+        <entry key="..\:/android/Projects/Wedding/app/src/main/res/menu/menu.xml" value="0.20102564102564102" />
+        <entry key="..\:/wedding/app/src/main/res/drawable/pin_view_item.xml" value="0.15885416666666666" />
+        <entry key="..\:/wedding/app/src/main/res/layout/additional_items_row.xml" value="0.27291666666666664" />
+        <entry key="..\:/wedding/app/src/main/res/layout/basic_item_row.xml" value="0.27291666666666664" />
+        <entry key="..\:/wedding/app/src/main/res/layout/fragment_login.xml" value="0.14270833333333333" />
+        <entry key="..\:/wedding/app/src/main/res/layout/fragment_reservation_confirmation.xml" value="0.27291666666666664" />
+        <entry key="..\:/wedding/app/src/main/res/layout/fragment_service_details.xml" value="0.27291666666666664" />
+        <entry key="..\:/wedding/app/src/main/res/layout/fragment_verification_code.xml" value="0.21" />
+      </map>
+    </option>
+  </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

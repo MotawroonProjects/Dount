@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "4454143444",
+    "project_id": "akaber-ios",
+    "storage_bucket": "akaber-ios.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:4454143444:android:953e6c072e207d917b3241",
+        "android_client_info": {
+          "package_name": "com.apps.akkaber"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "4454143444-8inemq1f5652ssimqc2vgf4umfmh9pd8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.apps.akkaber",
+            "certificate_hash": "02234e9655300f70fcb3d1f946434728fcb0fcea"
+          }
+        },
+        {
+          "client_id": "4454143444-3kgr7901m6hko21av5ohk938mgq5rd6u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBs3sit5Khe5kbIh_JCPnZd4VMf8e4HodY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "4454143444-3kgr7901m6hko21av5ohk938mgq5rd6u.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "4454143444-s3qh2j2mkjtcrgf4vmin86r3sso8rktc.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.motaweron.zbaeh"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
