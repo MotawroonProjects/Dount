@@ -29,6 +29,7 @@ android:background="@color/color6"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fillViewport="true"
+            android:paddingTop="56dp"
        >
 
             <LinearLayout

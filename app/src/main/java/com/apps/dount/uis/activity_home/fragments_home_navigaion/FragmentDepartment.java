@@ -1,11 +1,15 @@
 package com.apps.dount.uis.activity_home.fragments_home_navigaion;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
@@ -18,12 +22,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.apps.dount.R;
 import com.apps.dount.adapter.Department2Adapter;
 import com.apps.dount.adapter.DepartmentAdapter;
-import com.apps.dount.adapter.MainDepartmentAdapter;
 import com.apps.dount.databinding.FragmentDepartmentBinding;
 import com.apps.dount.model.DepartmentModel;
 import com.apps.dount.mvvm.FragmentDepartmentMvvm;
 import com.apps.dount.mvvm.FragmentHomeMvvm;
 import com.apps.dount.uis.activity_base.BaseFragment;
+import com.apps.dount.uis.activity_category_detials.CategoryDetialsActivity;
 import com.apps.dount.uis.activity_home.HomeActivity;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
@@ -35,7 +39,8 @@ public class FragmentDepartment extends BaseFragment {
     private HomeActivity activity;
     private Department2Adapter departmentAdapter;
     private FragmentDepartmentMvvm fragmentDepartmentMvvm;
-
+    private ActivityResultLauncher<Intent> launcher;
+    private int req = 1;
     public static FragmentDepartment newInstance() {
         FragmentDepartment fragment = new FragmentDepartment();
         return fragment;
@@ -45,6 +50,11 @@ public class FragmentDepartment extends BaseFragment {
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         activity = (HomeActivity) context;
+        launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+            if (req == 2 && result.getResultCode() == Activity.RESULT_OK) {
+                activity.updateCartCount();
+            }
+        });
     }
 
     @Override
@@ -96,5 +106,12 @@ public class FragmentDepartment extends BaseFragment {
         fragmentDepartmentMvvm.getDepartment(getLang());
     }
 
+
+    public void showcategory(DepartmentModel departmentModel) {
+
+        Intent intent = new Intent(activity, CategoryDetialsActivity.class);
+        intent.putExtra("catid", departmentModel.getId());
+        launcher.launch(intent);
+    }
 
 }

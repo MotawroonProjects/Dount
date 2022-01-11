@@ -26,9 +26,12 @@ import androidx.navigation.Navigation;
 import com.apps.dount.R;
 import com.apps.dount.databinding.FragmentProfileBinding;
 import com.apps.dount.uis.activity_base.BaseFragment;
+import com.apps.dount.uis.activity_contact_us.ContactUsActivity;
 import com.apps.dount.uis.activity_home.HomeActivity;
 import com.apps.dount.uis.activity_language.LanguageActivity;
 import com.apps.dount.uis.activity_login.LoginActivity;
+import com.apps.dount.uis.activity_share.ShareActivity;
+import com.apps.dount.uis.activity_wallet.WalletActivity;
 
 import java.util.List;
 
@@ -90,8 +93,29 @@ public class FragmentProfile extends BaseFragment {
                 navigateToLoginActivity();
             }
         });
-
-
+        binding.llSahre.setOnClickListener(view -> {
+            if (getUserModel() != null) {
+                Intent intent = new Intent(activity, ShareActivity.class);
+                startActivity(intent);
+            } else {
+                navigateToLoginActivity();
+            }
+        });
+        binding.llWallet.setOnClickListener(view -> {
+            if (getUserModel() != null) {
+                Intent intent = new Intent(activity, WalletActivity.class);
+                startActivity(intent);
+            } else {
+                navigateToLoginActivity();
+            }
+        });
+        binding.llContactUs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(activity, ContactUsActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void navigateToLoginActivity() {

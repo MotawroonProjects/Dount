@@ -40,7 +40,7 @@
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="start"
-                        app:cardBackgroundColor="@color/color7"
+                        app:cardBackgroundColor="@color/gray23"
                         app:cardCornerRadius="10dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"

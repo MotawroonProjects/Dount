@@ -73,36 +73,18 @@
                     android:layout_weight="1"
 
                     />
-
-                <LinearLayout
-                    android:id="@+id/llShow"
+                <Button
+                    android:id="@+id/btnServices"
+                    order_status="@{model.status}"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/small_stroke_color1_white"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="14sp" />
 
-                    <TextView
-                        android:id="@+id/tvShow"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="end"
-                        android:layout_marginStart="5dp"
-                        android:ellipsize="end"
-                        android:gravity="end"
-                        android:maxLines="2"
-                        android:text="@string/show_detials"
-                        android:textColor="@color/color2"
-                        android:textSize="15sp" />
-
-                    <ImageView
-                        android:id="@+id/imageShow"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="5dp"
-                        android:rotation='@{lang.equals("ar")?180:0}'
-                        android:src="@drawable/ic_arrow_right"
-                        app:tint="@color/color6" />
-                </LinearLayout>
 
             </LinearLayout>
 
@@ -142,35 +124,7 @@
                     </LinearLayout>
                 </FrameLayout>
 
-                <FrameLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1">
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:layout_gravity="center"
-                            android:src="@drawable/ic_clock" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="end"
-                            android:layout_marginStart="8dp"
-                            android:ellipsize="end"
-                            android:gravity="end"
-                            android:maxLines="2"
-                            android:text="02:20 م "
-                            android:textColor="@color/gray10"
-                            android:textSize="15sp" />
-                    </LinearLayout>
-                </FrameLayout>
 
             </LinearLayout>
 

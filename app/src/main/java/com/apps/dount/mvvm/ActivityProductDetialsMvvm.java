@@ -145,7 +145,7 @@ public class ActivityProductDetialsMvvm extends AndroidViewModel {
 
     }
 
-    public void add_to_cart(ProductModel productModel, String desc, int amount, double wayprice, double wrapprice, double total, double price, Context context) {
+    public void add_to_cart(ProductModel productModel, int amount, double total, double price, Context context) {
         preferences = Preferences.getInstance();
         cartDataModel = preferences.getCartData(context);
 
@@ -164,16 +164,13 @@ public class ActivityProductDetialsMvvm extends AndroidViewModel {
             }
 
         }
-        int pos = isProductItemSelected(productModel.getId(), desc);
+        int pos = isProductItemSelected(productModel.getId());
 
         if (pos == -1) {
             ItemCartModel itemCartModel = new ItemCartModel();
             itemCartModel.setProduct_id(productModel.getId());
-            itemCartModel.setOrder_desc(desc);
             itemCartModel.setQty(amount);
             itemCartModel.setTotal_price(total);
-            itemCartModel.setWay_price(wayprice);
-            itemCartModel.setWrap_price(wrapprice);
             itemCartModel.setProduct_price(price);
             itemCartModel.setImage(productModel.getBackground());
             itemCartModel.setTitle(productModel.getTitle());
@@ -207,7 +204,7 @@ public class ActivityProductDetialsMvvm extends AndroidViewModel {
     }
 
 
-    public int isProductItemSelected(String product_id, String desc) {
+    public int isProductItemSelected(String product_id) {
 
         int pos = -1;
 
@@ -216,7 +213,7 @@ public class ActivityProductDetialsMvvm extends AndroidViewModel {
             cartModelList = cartDataModel.getDetails();
             for (int index = 0; index < cartModelList.size(); index++) {
                 ItemCartModel cartModel = cartModelList.get(index);
-                if (product_id.equals(cartModel.getProduct_id()) && desc.equals(cartModel.getOrder_desc())) {
+                if (product_id.equals(cartModel.getProduct_id())) {
                     pos = index;
                     return pos;
                 }

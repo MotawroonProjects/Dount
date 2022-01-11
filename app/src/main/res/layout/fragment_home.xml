@@ -20,19 +20,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/color1"
-        android:paddingTop="56dp"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        android:paddingTop="56dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
             android:orientation="vertical">
+
             <com.google.android.material.appbar.AppBarLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/color1"
-                >
+                android:background="@color/color1">
 
                 <com.google.android.material.appbar.CollapsingToolbarLayout
                     android:layout_width="match_parent"
@@ -40,6 +40,7 @@
                     app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
                     <LinearLayout
+                        android:id="@+id/llSearch"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/color1"
@@ -48,7 +49,6 @@
                         android:padding="12dp">
 
                         <LinearLayout
-                            android:id="@+id/llSearch"
                             android:layout_width="0dp"
                             android:layout_height="50dp"
                             android:layout_weight="1"
@@ -85,7 +85,7 @@
                             android:id="@+id/imageFilter"
                             android:layout_width="50dp"
                             android:layout_height="50dp"
-                            android:background="@drawable/circle_primary"
+                            android:background="@drawable/circle_primary_strok"
                             android:padding="10dp"
                             android:src="@drawable/ic_filter"
 
@@ -96,10 +96,11 @@
 
 
             </com.google.android.material.appbar.AppBarLayout>
+
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp">
+                android:layout_marginTop="5dp">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerDepartment"
@@ -128,29 +129,39 @@
                     />
             </FrameLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/white" />
+
             <FrameLayout
                 android:id="@+id/flSlider"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-               >
+                android:layout_marginTop="3dp">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
+
                     <FrameLayout
                         android:layout_width="match_parent"
-                        android:layout_weight="1"
-                        android:layout_height="0dp">
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
 
                     </FrameLayout>
+
                     <FrameLayout
                         android:layout_width="match_parent"
+                        android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:background="@color/white"
-                        android:layout_height="0dp">
+                        android:background="@color/white">
 
                     </FrameLayout>
                 </LinearLayout>
+
                 <androidx.viewpager.widget.ViewPager
                     android:id="@+id/pager"
                     android:layout_width="match_parent"
@@ -167,15 +178,12 @@
             </FrameLayout>
 
 
-
-
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:background="@color/white"
-                android:paddingTop="15dp"
-                >
+                android:paddingTop="15dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -207,7 +215,6 @@
 
                             />
                     </LinearLayout>
-
 
 
                     <FrameLayout
@@ -245,8 +252,6 @@
 
                 </LinearLayout>
             </FrameLayout>
-
-
 
 
         </LinearLayout>

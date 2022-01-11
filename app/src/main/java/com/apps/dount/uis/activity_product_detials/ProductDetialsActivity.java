@@ -1,7 +1,6 @@
 package com.apps.dount.uis.activity_product_detials;
 
 import android.content.Intent;
-import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -9,22 +8,12 @@ import android.widget.Toast;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.apps.dount.R;
-import com.apps.dount.adapter.SizeAdapter;
-import com.apps.dount.adapter.TypeAdapter;
-import com.apps.dount.adapter.WayAdapter;
-import com.apps.dount.adapter.WrapAdapter;
 import com.apps.dount.databinding.ActivityProductDetialsBinding;
 import com.apps.dount.model.ProductModel;
 import com.apps.dount.model.SingleProductDataModel;
-import com.apps.dount.model.SizeModel;
-import com.apps.dount.model.TypeModel;
 import com.apps.dount.model.UserModel;
-import com.apps.dount.model.WayModel;
-import com.apps.dount.model.WrapModel;
 import com.apps.dount.mvvm.ActivityProductDetialsMvvm;
 import com.apps.dount.preferences.Preferences;
 import com.apps.dount.uis.activity_base.BaseActivity;
@@ -36,18 +25,13 @@ public class ProductDetialsActivity extends BaseActivity {
     private UserModel userModel;
     private Preferences preferences;
     private String proid;
-    private TypeAdapter typeAdapter;
     private String user_id = null;
-    private SizeAdapter sizeAdapter;
-    private WayAdapter wayAdapter;
-    private WrapAdapter wrapAdapter;
-    private double wayprice, wrapprice, price;
+
     private ProductModel productmodel;
-    private int amount = 1;
-    private TypeModel typeModel;
-    private String sizeid = "";
-    private String desc = "", typedesc = "", sizedesc = "", waydesc = "", wrapdesc = "";
+
     private boolean isDataChanged = false,isfav=false;
+    private double price;
+    private int amount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,10 +50,7 @@ public class ProductDetialsActivity extends BaseActivity {
 
     private void initView() {
         binding.tvTotal.setText("0");
-        binding.priceOld.setPaintFlags(binding.priceOld.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-        binding.amountOld.setPaintFlags(binding.amountOld.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-        binding.priceOldtype.setPaintFlags(binding.priceOldtype.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-        binding.amountOldtype.setPaintFlags(binding.amountOldtype.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+
         preferences = Preferences.getInstance();
         userModel = preferences.getUserData(this);
         if (userModel != null) {
@@ -130,30 +111,6 @@ public class ProductDetialsActivity extends BaseActivity {
                 if (singleProductDataModel.getData() != null) {
                     ProductDetialsActivity.this.productmodel = singleProductDataModel.getData();
                     binding.setModel(singleProductDataModel.getData());
-                    if (singleProductDataModel.getData().getTypes() != null && singleProductDataModel.getData().getTypes().size() > 0) {
-
-                        TypeModel typeModel = singleProductDataModel.getData().getTypes().get(0);
-                        ProductDetialsActivity.this.typeModel = typeModel;
-                        typeModel.setIsselected(true);
-                        singleProductDataModel.getData().getTypes().set(0, typeModel);
-                        binding.setTypeModel(typeModel);
-                        typeAdapter.updateData(singleProductDataModel.getData().getTypes());
-                        if (typeModel.getPrice().equals("0")) {
-                            sizeAdapter.updateData(typeModel.getSizes());
-
-                        } else {
-                            if (typeModel.getOffer() == null) {
-                                price = Double.parseDouble(typeModel.getPrice());
-                                binding.tvTotal.setText(price + "");
-                            } else {
-                                price = Double.parseDouble(typeModel.getOffer().getPrice_after());
-                                binding.tvTotal.setText(price + "");
-
-                            }
-
-                        }
-                        //binding.cardNoData.setVisibility(View.GONE);
-                    } else {
                         if (singleProductDataModel.getData().getOffer() == null) {
                             price = Double.parseDouble(singleProductDataModel.getData().getPrice());
                             binding.tvTotal.setText(price + "");
@@ -163,30 +120,13 @@ public class ProductDetialsActivity extends BaseActivity {
 
                         }
                     }
-                    if (singleProductDataModel.getData().getWays() != null && singleProductDataModel.getData().getWays().size() > 0) {
-                        wayAdapter.updateData(singleProductDataModel.getData().getWays());
-                    }
-                    if (singleProductDataModel.getData().getWrapping() != null && singleProductDataModel.getData().getWrapping().size() > 0) {
-                        wrapAdapter.updateData(singleProductDataModel.getData().getWrapping());
-                    }
+
                 }
-            }
+
         });
         //  setUpToolbar(binding.toolbar, getString(R.string.contact_us), R.color.white, R.color.black);
         binding.setLang(getLang());
 
-        typeAdapter = new TypeAdapter(this);
-        binding.recViewAges.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
-        binding.recViewAges.setAdapter(typeAdapter);
-        sizeAdapter = new SizeAdapter(this);
-        binding.recViewSizes.setLayoutManager(new LinearLayoutManager(this));
-        binding.recViewSizes.setAdapter(sizeAdapter);
-        wayAdapter = new WayAdapter(this);
-        binding.recViewWays.setLayoutManager(new LinearLayoutManager(this));
-        binding.recViewWays.setAdapter(wayAdapter);
-        wrapAdapter = new WrapAdapter(this);
-        binding.recViewWrap.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
-        binding.recViewWrap.setAdapter(wrapAdapter);
         binding.llBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -196,7 +136,7 @@ public class ProductDetialsActivity extends BaseActivity {
         binding.imageIncrease.setOnClickListener(view -> {
             amount++;
             binding.tvAmount.setText(String.valueOf(amount));
-            binding.tvTotal.setText(((price * amount) + wayprice + wrapprice) + "");
+            binding.tvTotal.setText(((price * amount) ) + "");
 
         });
 
@@ -204,33 +144,18 @@ public class ProductDetialsActivity extends BaseActivity {
             if (amount > 1) {
                 amount--;
                 binding.tvAmount.setText(String.valueOf(amount));
-                binding.tvTotal.setText(((price * amount) + wayprice + wrapprice) + "");
+                binding.tvTotal.setText(((price * amount)) + "");
 
             }
         });
-        binding.btBuy.setOnClickListener(new View.OnClickListener() {
+        binding.flTotal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!productmodel.getPrice().equals("0")) {
                     addTocart();
 
-                } else {
-                    if (typeModel != null) {
-                        if (typeModel.getPrice().equals("0")) {
-                            if (!sizeid.equals("")) {
-                                addTocart();
-
-                            } else {
-                                Toast.makeText(ProductDetialsActivity.this, getResources().getString(R.string.ch_size), Toast.LENGTH_LONG).show();
-                            }
-                        } else {
-                            addTocart();
-                        }
-                    }
                 }
-            }
         });
-        binding.flFavourite.setOnClickListener(new View.OnClickListener() {
+        binding.checkbox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (userModel != null) {
@@ -255,79 +180,11 @@ public class ProductDetialsActivity extends BaseActivity {
     }
 
     private void addTocart() {
-        double total = ((price * amount) + wayprice + wrapprice);
+        double total = ((price * amount) );
         ;
-        desc = "";
-        desc += typedesc + " " + sizedesc + " " + waydesc + " " + wrapdesc;
-        activityProductDetialsMvvm.add_to_cart(productmodel, desc, amount, wayprice, wrapprice, total, price, this);
+
+        activityProductDetialsMvvm.add_to_cart(productmodel, amount, total, price, this);
     }
 
-    public void showSizes(TypeModel currentModel) {
-        desc = "";
-        typedesc = "";
-        sizedesc = "";
-        waydesc = "";
-        wrapdesc = "";
-        sizeid = "";
-        typedesc = currentModel.getTitle();
-        amount = 1;
-        this.typeModel = currentModel;
-        binding.tvAmount.setText(String.valueOf(amount));
-        if (productmodel.getWays() != null && productmodel.getWays().size() > 0) {
-            wayAdapter.updateslection();
-            wayprice = 0;
-        }
-        if (productmodel.getWrapping() != null && productmodel.getWrapping().size() > 0) {
-            wrapAdapter.updateslection();
-            wrapprice = 0;
-        }
-        binding.setTypeModel(currentModel);
-        if (currentModel.getPrice().equals("0")) {
-            sizeAdapter.updateslection();
-            sizeAdapter.updateData(currentModel.getSizes());
-            price = 0;
-            binding.tvTotal.setText(((price * amount) + wayprice + wrapprice) + "");
 
-        } else {
-            if (currentModel.getOffer() != null) {
-                binding.tvTotal.setText(((Double.parseDouble(currentModel.getOffer().getPrice_after()) * amount) + wayprice + wrapprice) + "");
-                price = Double.parseDouble(currentModel.getOffer().getPrice_after());
-
-            } else {
-                binding.tvTotal.setText(((Double.parseDouble(currentModel.getPrice()) * amount) + wayprice + wrapprice) + "");
-                price = Double.parseDouble(currentModel.getPrice());
-
-            }
-        }
-    }
-
-    public void choosesize(SizeModel currentModel) {
-        desc = "";
-        sizedesc = currentModel.getTitle();
-        sizeid = currentModel.getId();
-        if (currentModel.getOffer() != null) {
-            binding.tvTotal.setText(((Double.parseDouble(currentModel.getOffer().getPrice_after()) * amount) + wayprice + wrapprice) + "");
-            price = Double.parseDouble(currentModel.getOffer().getPrice_after());
-
-        } else {
-            binding.tvTotal.setText(((Double.parseDouble(currentModel.getPrice()) * amount) + wayprice + wrapprice) + "");
-            price = Double.parseDouble(currentModel.getPrice());
-
-        }
-    }
-
-    public void chooseway(WayModel currentModel) {
-        desc = "";
-        waydesc = currentModel.getTitle();
-        wayprice = Double.parseDouble(currentModel.getPrice());
-        binding.tvTotal.setText(((price * amount) + wayprice + wrapprice) + "");
-
-    }
-
-    public void choosewrap(WrapModel currentModel) {
-        desc = "";
-        wrapdesc = currentModel.getTitle();
-        wrapprice = Double.parseDouble(currentModel.getPrice());
-        binding.tvTotal.setText(((price * amount) + wayprice + wrapprice) + "");
-    }
 }

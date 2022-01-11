@@ -14,6 +14,7 @@ import com.apps.dount.R;
 import com.apps.dount.databinding.CategoryRowBinding;
 import com.apps.dount.databinding.DepartmentItemRowBinding;
 import com.apps.dount.model.DepartmentModel;
+import com.apps.dount.uis.activity_home.fragments_home_navigaion.FragmentDepartment;
 import com.apps.dount.uis.activity_home.fragments_home_navigaion.FragmentHome;
 
 import java.util.List;
@@ -44,8 +45,8 @@ public class Department2Adapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         myHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (fragment instanceof FragmentHome) {
-                    FragmentHome fragmentHome = (FragmentHome) fragment;
+                if (fragment instanceof FragmentDepartment) {
+                    FragmentDepartment fragmentHome = (FragmentDepartment) fragment;
                     fragmentHome.showcategory(list.get(holder.getLayoutPosition()));
                 }
             }

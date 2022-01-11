@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Akkaber</string>
+    <string name="app_name">Dount</string>
     <string name="map_api_key">AIzaSyAnjvMAJEmiAv3yeCDUXWv-PboXiT_uaoQ</string>
     <string name="search_key">AIzaSyAnjvMAJEmiAv3yeCDUXWv-PboXiT_uaoQ</string>
     <string name="name">Name</string>
@@ -146,6 +146,10 @@
     <string name="branches">Branches</string>
     <string name="delivery_available">Delivery available</string>
     <string name="un_delivery_available">Un Delivery available</string>
+    <string name="filter_result">Filter Results</string>
+    <string name="department">Department</string>
+    <string name="reset">Reset</string>
+    <string name="activation">Activation</string>
 
 
 </resources>

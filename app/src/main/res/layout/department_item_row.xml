@@ -16,33 +16,33 @@
         android:layout_margin="8dp">
 
 
-            <com.makeramen.roundedimageview.RoundedImageView
-                android:id="@+id/image"
-                image="@{model.photo}"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                app:riv_corner_radius="20dp"
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/image"
+            image="@{model.photo}"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:src="@drawable/lamb"
 
-                app:riv_mutate_background="true"
+            app:layout_constraintEnd_toEndOf="parent"
 
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:src="@drawable/lamb" />
-
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:riv_corner_radius="20dp"
+            app:riv_mutate_background="true" />
 
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
+            android:layout_gravity="bottom|center"
+            android:background="@drawable/toolbar_shape"
             android:gravity="center"
-            android:padding="5dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp"
+            android:paddingBottom="7dp"
+            android:paddingTop="7dp"
             android:text="@{model.title}"
             android:textColor="@color/black"
-            android:background="@drawable/toolbar_shape"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -41,24 +41,7 @@ public class ContactUsActivity extends BaseActivity {
         binding.setSettingModel(settingModel);
         contactusActivityMvvm = ViewModelProviders.of(this).get(ContactusActivityMvvm.class);
 //         setUpToolbar(binding.toolbar, getString(R.string.contact_us), R.color.white, R.color.black);
-        contactusActivityMvvm.getIsLoading().observe(this, new Observer<Boolean>() {
-            @Override
-            public void onChanged(Boolean aBoolean) {
-                if (aBoolean) {
-                    binding.progBar.setVisibility(View.VISIBLE);
-                    binding.llContactus.setVisibility(View.INVISIBLE);
-                } else {
-                    binding.progBar.setVisibility(View.GONE);
-                    binding.llContactus.setVisibility(View.VISIBLE);
-                }
-            }
-        });
-        contactusActivityMvvm.getMutableLiveData().observe(this, settingModels -> {
-            settingModel = settingModels;
-            binding.setSettingModel(settingModel);
-        });
 
-        contactusActivityMvvm.getSetting(getLang());
 
 
         contactUsModel = new ContactUsModel();

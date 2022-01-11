@@ -27,22 +27,8 @@ import retrofit2.Response;
 public class ContactusActivityMvvm extends AndroidViewModel {
     private Context context;
 
-    private MutableLiveData<SettingModel> mutableLiveData;
-    private MutableLiveData<Boolean> isLoading;
 
-    public MutableLiveData<SettingModel> getMutableLiveData() {
-        if (mutableLiveData == null) {
-            mutableLiveData = new MutableLiveData<>();
-        }
-        return mutableLiveData;
-    }
 
-    public MutableLiveData<Boolean> getIsLoading() {
-        if (isLoading == null) {
-            isLoading = new MutableLiveData<>();
-        }
-        return isLoading;
-    }
 
     public MutableLiveData<Boolean> send = new MutableLiveData<>();
 
@@ -54,38 +40,6 @@ public class ContactusActivityMvvm extends AndroidViewModel {
 
     }
 
-    public void getSetting(String lang) {
-
-
-        isLoading.setValue(true);
-
-        Api.getService(Tags.base_url)
-                .getSetting(lang)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new SingleObserver<Response<SettingDataModel>>() {
-                    @Override
-                    public void onSubscribe(@NonNull Disposable d) {
-                        disposable.add(d);
-                    }
-
-                    @Override
-                    public void onSuccess(@NonNull Response<SettingDataModel> response) {
-                        isLoading.postValue(false);
-                        if (response.isSuccessful() && response.body() != null) {
-                            if (response.body().getStatus() == 200) {
-
-                                mutableLiveData.setValue(response.body().getData());
-                            }
-                        }
-                    }
-
-                    @Override
-                    public void onError(@NonNull Throwable e) {
-                        isLoading.setValue(false);
-                    }
-                });
-    }
 
 
     public void contactus(Context context, ContactUsModel contactUsModel) {

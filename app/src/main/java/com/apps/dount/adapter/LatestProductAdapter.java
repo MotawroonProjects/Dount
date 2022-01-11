@@ -14,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.apps.dount.R;
 import com.apps.dount.databinding.LatestProductRowBinding;
 import com.apps.dount.model.ProductModel;
+import com.apps.dount.model.UserModel;
+import com.apps.dount.uis.activity_category_detials.CategoryDetialsActivity;
 import com.apps.dount.uis.activity_home.fragments_home_navigaion.FragmentHome;
 
 import java.util.List;
@@ -23,11 +25,12 @@ public class LatestProductAdapter extends RecyclerView.Adapter<RecyclerView.View
     private Context context;
     private LayoutInflater inflater;
     private Fragment fragment;
-
-    public LatestProductAdapter(Context context, Fragment fragment) {
+   private UserModel userModel;
+    public LatestProductAdapter(Context context, Fragment fragment, UserModel userModel) {
         this.context = context;
         inflater = LayoutInflater.from(context);
         this.fragment = fragment;
+        this.userModel=userModel;
     }
 
     @NonNull
@@ -40,8 +43,8 @@ public class LatestProductAdapter extends RecyclerView.Adapter<RecyclerView.View
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         MyHolder myHolder = (MyHolder) holder;
+        myHolder.binding.setUsermodel(userModel);
         myHolder.binding.setModel(list.get(position));
-
         myHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -49,6 +52,11 @@ public class LatestProductAdapter extends RecyclerView.Adapter<RecyclerView.View
                     FragmentHome fragmentHome = (FragmentHome) fragment;
                     fragmentHome.showProductDetials(list.get(holder.getLayoutPosition()).getProduct_id());
                 }
+                else  if (context instanceof CategoryDetialsActivity) {
+                    CategoryDetialsActivity categoryDetialsActivity = (CategoryDetialsActivity) context;
+                    categoryDetialsActivity.showProductDetials(list.get(holder.getLayoutPosition()).getId());
+                }
+
             }
         });
     }

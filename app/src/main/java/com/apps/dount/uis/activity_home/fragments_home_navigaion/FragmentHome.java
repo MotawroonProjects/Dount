@@ -32,6 +32,7 @@ import com.apps.dount.databinding.FragmentHomeBinding;
 import com.apps.dount.uis.activity_category_detials.CategoryDetialsActivity;
 import com.apps.dount.uis.activity_home.HomeActivity;
 import com.apps.dount.uis.activity_product_detials.ProductDetialsActivity;
+import com.apps.dount.uis.activity_search.SearchActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -182,10 +183,9 @@ public class FragmentHome extends BaseFragment {
         binding.recyclerDepartment.setLayoutManager(new LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false));
         binding.recyclerDepartment.setAdapter(departmentAdapter);
 
-        latestProductAdapter = new LatestProductAdapter(activity, this);
+        latestProductAdapter = new LatestProductAdapter(activity, this, getUserModel());
         binding.recyclerOffers.setLayoutManager(new GridLayoutManager(activity, 3));
         binding.recyclerOffers.setAdapter(latestProductAdapter);
-
 
 
         sliderAdapter = new SliderAdapter(sliderModelList, activity);
@@ -197,7 +197,14 @@ public class FragmentHome extends BaseFragment {
         fragmentHomeMvvm.getSlider();
         fragmentHomeMvvm.getDepartment(getLang());
         fragmentHomeMvvm.getOffers(getLang());
-
+        binding.llSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                req = 2;
+                Intent intent = new Intent(activity, SearchActivity.class);
+                launcher.launch(intent);
+            }
+        });
     }
 
 

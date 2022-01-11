@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">اكابر</string>
+    <string name="app_name">دونات</string>
     <string name="map_api_key">AIzaSyAnjvMAJEmiAv3yeCDUXWv-PboXiT_uaoQ</string>
     <string name="search_key">AIzaSyAnjvMAJEmiAv3yeCDUXWv-PboXiT_uaoQ</string>
     <string name="name">الإسم</string>
@@ -124,8 +124,8 @@
     <string name="slicing_method">طريقة التقطيع : </string>
     <string name="packaging_method">طريقة التغليف : </string>
     <string name="free">مجانا</string>
-    <string name="total">الاجمالى</string>
-    <string name="add_to_cart">اضافة الى السله</string>
+    <string name="total">الاجمالى : </string>
+    <string name="add_to_cart">اضف للسله</string>
     <string name="ch_size">اختر الحجم</string>
     <string name="suc_add_to_cart">تم الاضافه الى السله بنجاح</string>
     <string name="pay">دفع</string>
@@ -148,4 +148,8 @@
     <string name="branches">الفروع</string>
     <string name="delivery_available">متاح للتوصيل</string>
     <string name="un_delivery_available">غير متاح للتوصيل</string>
+    <string name="filter_result">تصفية النتائج</string>
+    <string name="department">القسم</string>
+    <string name="reset">اعادة تعيين</string>
+    <string name="activation">تفعيل</string>
 </resources>

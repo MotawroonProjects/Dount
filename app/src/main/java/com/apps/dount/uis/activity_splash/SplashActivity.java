@@ -86,7 +86,7 @@ public class SplashActivity extends BaseActivity {
             @Override
             public void onAnimationEnd(Animation animation) {
 
-              navigateToHomeActivity();
+                navigateToHomeActivity();
 
             }
 
@@ -97,24 +97,18 @@ public class SplashActivity extends BaseActivity {
         });
 
 
-
     }
 
 
     private void navigateToHomeActivity() {
         Intent intent;
-        if (preferences.getAppSetting(this) == null || preferences.getAppSetting(SplashActivity.this).isShowIntroSlider()) {
-            intent = new Intent(this, IntroSliderActivity.class);
-            startActivity(intent);
-            finish();
-        } else {
 
 
-            intent = new Intent(this, HomeActivity.class);
+        intent = new Intent(this, HomeActivity.class);
 
-            startActivity(intent);
-            finish();
-        }
+        startActivity(intent);
+        finish();
+
     }
 
     @Override
