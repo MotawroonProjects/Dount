@@ -86,6 +86,8 @@
     <string name="yourBalance">Your Balance</string>
     <string name="shareContent">Share the app to get extra credit that you_can_use </string>
     <string name="to_buy">to buy from our store</string>
+    <string name="shareContent1">Share the app to get extra credit that you_can_use to buy from our store</string>
+
     <string name="shareNow">Share now</string>
     <string name="purchaseGifts">Purchase gifts</string>
     <string name="share">Share</string>
@@ -150,6 +152,7 @@
     <string name="department">Department</string>
     <string name="reset">Reset</string>
     <string name="activation">Activation</string>
+    <string name="edit">Edit</string>
 
 
 </resources>

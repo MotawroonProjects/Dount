@@ -14,9 +14,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.apps.dount.R;
 import com.apps.dount.adapter.LatestProductAdapter;
-import com.apps.dount.adapter.Product2Adapter;
 import com.apps.dount.databinding.ActivityCategoryDetialsBinding;
-import com.apps.dount.databinding.ActivityContactUsBinding;
 import com.apps.dount.model.SingleDepartmentDataModel;
 import com.apps.dount.model.UserModel;
 import com.apps.dount.mvvm.ActivityCategoryDetialsMvvm;
@@ -79,8 +77,9 @@ public class CategoryDetialsActivity extends BaseActivity {
         //  setUpToolbar(binding.toolbar, getString(R.string.contact_us), R.color.white, R.color.black);
         binding.setLang(getLang());
 
-        product2Adapter = new LatestProductAdapter(this,null,userModel);
-        binding.recView.setLayoutManager(new GridLayoutManager(this, 3));
+        product2Adapter = new LatestProductAdapter(this, null, userModel);
+
+        binding.recView.setLayoutManager(new GridLayoutManager(this, 2));
         binding.recView.setAdapter(product2Adapter);
         binding.llBack.setOnClickListener(new View.OnClickListener() {
             @Override

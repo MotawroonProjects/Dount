@@ -97,6 +97,7 @@
                                 android:gravity="center"
                                 android:text="@string/product_detials"
                                 android:textSize="18sp"
+                                android:textColor="@color/black2"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -124,16 +125,14 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <androidx.cardview.widget.CardView
+                    <FrameLayout
                         android:layout_width="match_parent"
                         android:layout_height="250dp"
                         android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
                         android:layout_marginBottom="5dp"
                         android:layout_marginTop="16dp"
-                        app:cardBackgroundColor="@color/white"
-                        app:cardCornerRadius="20dp"
-                        app:cardElevation="5dp">
+                        android:background="@drawable/small_color8_stroke_white">
 
                         <com.github.siyamed.shapeimageview.RoundedImageView
                             android:id="@+id/image"
@@ -151,12 +150,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="end"
+                            android:layout_marginTop="10dp"
                             android:layout_marginEnd="20dp"
                             android:button="@drawable/checkbox_bg"
                             android:checked='@{model.is_favorite.equals("yes")?true:false}'
                             android:clickable="false"
                             android:gravity="center" />
-                    </androidx.cardview.widget.CardView>
+                    </FrameLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"

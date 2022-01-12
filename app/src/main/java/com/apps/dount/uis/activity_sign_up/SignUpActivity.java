@@ -77,12 +77,24 @@ public class SignUpActivity extends BaseActivity {
             model.setSeconed_name(userModel.getData().getLast_name());
             binding.llCode.setVisibility(View.GONE);
             binding.checkbox.setVisibility(View.GONE);
+            binding.fl.setVisibility(View.VISIBLE);
+            binding.top.setVisibility(View.GONE);
             if (userModel.getData().getPhoto() != null) {
                 binding.icon.setVisibility(View.GONE);
                 //Log.e("ldlldl", Tags.base_url + userModel.getData().getPhoto());
                 Picasso.get().load(Tags.base_url + userModel.getData().getPhoto()).into(binding.image);
             }
         }
+        else{
+            binding.fl.setVisibility(View.GONE);
+            binding.top.setVisibility(View.VISIBLE);
+        }
+        binding.llBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         binding.setModel(model);
         binding.setLang(getLang());
         launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {

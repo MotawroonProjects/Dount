@@ -93,10 +93,7 @@ public class HomeActivity extends BaseActivity implements Listeners.Verification
 //        toggle.setHomeAsUpIndicator(R.drawable.ic_menu);
 
 
-        binding.imgNotification.setOnClickListener(v -> {
 
-
-        });
         homeActivityMvvm.logout.observe(this, aBoolean -> {
             if (aBoolean) {
                 logout();
@@ -123,7 +120,11 @@ public class HomeActivity extends BaseActivity implements Listeners.Verification
             homeActivityMvvm.updateFirebase(this, getUserModel());
         }
 
+        binding.flCart.setOnClickListener(v -> {
+                Intent intent = new Intent(this, CartActivity.class);
+                startActivity(intent);
 
+        });
 
     }
 

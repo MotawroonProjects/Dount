@@ -59,7 +59,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:scaleType="fitXY"
-                            android:src="@drawable/circle_avatar" />
+                            android:src="@drawable/logo" />
                     </androidx.cardview.widget.CardView>
 
 
@@ -97,7 +97,7 @@
                             android:layout_margin="5dp"
                             android:layout_marginTop="10dp"
                             android:text='@{model==null?@string/login:model.data.first_name+" "+model.data.last_name,default=@string/login}'
-                            android:textColor="@color/black2"
+                            android:textColor="@{model!=null?@color/black2:@color/color5}"
                             android:textSize="15sp"
 
                             />
@@ -107,11 +107,13 @@
 
 
                     <ImageView
-                        android:id="@+id/imLogOut"
+                        android:id="@+id/imSetting"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:layout_gravity="end"
                         android:layout_margin="10dp"
+                        android:visibility='@{model!=null?View.VISIBLE:View.GONE,default=gone}'
+
                         android:src="@drawable/ic_setting" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -126,6 +128,8 @@
                     android:layout_height="24dp"
                     android:layout_gravity="center"
                     android:src="@drawable/ic_line3"
+                    android:rotation='@{lang.equals("ar")?180:0}'
+
                     app:tint="@color/colorPrimary" />
 
                 <TextView
@@ -148,8 +152,8 @@
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardOrder"
-                    android:layout_width="90dp"
-                    android:layout_height="90dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_margin="3dp"
                     app:cardCornerRadius="20dp"
                     app:contentPadding="4dp"
@@ -187,8 +191,8 @@
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardpreviousOrder"
-                    android:layout_width="90dp"
-                    android:layout_height="90dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_margin="3dp"
                     app:cardCornerRadius="20dp"
                     app:contentPadding="4dp"
@@ -217,6 +221,8 @@
                             android:layout_marginTop="5dp"
                             android:layout_marginBottom="5dp"
                             android:text="@string/previous_order"
+                            android:gravity="center"
+                            android:lines="1"
                             android:textColor="@color/gray8"
                             android:textSize="13sp"
                             app:layout_constraintEnd_toEndOf="@id/imageOrders"
@@ -227,8 +233,8 @@
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardFavourite"
-                    android:layout_width="90dp"
-                    android:layout_height="90dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_margin="3dp"
                     app:cardCornerRadius="20dp"
                     app:contentPadding="4dp"
@@ -280,6 +286,8 @@
                     android:layout_height="24dp"
                     android:layout_gravity="center"
                     android:src="@drawable/ic_line3"
+                    android:rotation='@{lang.equals("ar")?180:0}'
+
                     app:tint="@color/colorPrimary" />
 
                 <TextView
@@ -305,7 +313,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="5dp"
                     android:orientation="vertical">
 
                     <LinearLayout
@@ -336,6 +344,13 @@
                             android:textSize="15sp" />
                     </LinearLayout>
 
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="@color/color8" />
+
                     <LinearLayout
                         android:id="@+id/llSahre"
                         android:layout_width="match_parent"
@@ -363,6 +378,13 @@
                             android:textColor="@color/gray4"
                             android:textSize="15sp" />
                     </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/color8"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        />
 
                     <LinearLayout
                         android:id="@+id/llLanguage"
@@ -406,6 +428,14 @@
 
                             />
                     </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/color8"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        />
+
 
                     <LinearLayout
                         android:id="@+id/llAbout"
@@ -434,6 +464,13 @@
                             android:textColor="@color/gray4"
                             android:textSize="15sp" />
                     </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/color8"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        />
 
                     <LinearLayout
                         android:id="@+id/llContactUs"
@@ -462,6 +499,13 @@
                             android:textColor="@color/gray4"
                             android:textSize="15sp" />
                     </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/color8"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        />
 
 
                     <LinearLayout
@@ -504,7 +548,7 @@
                 android:layout_marginBottom="20dp"
                 android:gravity="center"
                 android:paddingStart="12dp"
-
+android:visibility='@{model!=null?View.VISIBLE:View.GONE,default=gone}'
                 android:paddingEnd="12dp">
 
                 <ImageView
@@ -522,7 +566,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/logout"
-                    android:textColor="@color/black"
+                    android:textColor="@color/gray22"
                     android:textSize="15sp"
 
                     />

@@ -84,6 +84,7 @@
                                 android:gravity="center"
                                 android:text="@string/order_detials"
                                 android:textSize="18sp"
+                                android:textColor="@color/black2"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -178,7 +179,7 @@
                                     android:gravity="end"
                                     android:maxLines="2"
                                     android:text="@{model.total}"
-                                    android:textColor="@color/color2"
+                                    android:textColor="@color/color9"
                                     android:textSize="15sp"
                                     android:textStyle="bold" />
 
@@ -215,7 +216,8 @@
                                             android:layout_width="24dp"
                                             android:layout_height="24dp"
                                             android:layout_gravity="center"
-                                            android:src="@drawable/ic_calender" />
+                                            android:src="@drawable/ic_calender"
+                                            app:tint="@color/color9" />
 
                                         <TextView
                                             android:layout_width="wrap_content"
@@ -245,7 +247,8 @@
                                             android:layout_width="24dp"
                                             android:layout_height="24dp"
                                             android:layout_gravity="center"
-                                            android:src="@drawable/ic_clock" />
+                                            android:src="@drawable/ic_clock"
+                                            app:tint="@color/color9" />
 
                                         <TextView
                                             android:layout_width="wrap_content"
@@ -293,7 +296,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="3px"
                                 android:layout_marginTop="8dp"
-                                android:background="@color/color7" />
+                                android:background="@color/color1" />
 
                             <androidx.recyclerview.widget.RecyclerView
                                 android:id="@+id/recView"

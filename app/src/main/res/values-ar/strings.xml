@@ -22,7 +22,7 @@
     <string name="terms_and_conditions">الشروط والاحكام</string>
     <string name="about_us">عن التطبيق</string>
     <string name="privacy_policy">السياسة والخصوصية</string>
-    <string name="contact_us">إتصل بنا</string>
+    <string name="contact_us">تواصل معنا</string>
     <string name="wait">إنتطر قليلا...</string>
     <string name="current">الحالية</string>
     <string name="prev">السابقة</string>
@@ -87,6 +87,7 @@
     <string name="yourBalance">رصيدك</string>
     <string name="shareContent">شارك التطبيق للحصول علي رصيد اضافي يمكنك استخدام </string>
     <string name="to_buy">للشراء من متجرنا</string>
+    <string name="shareContent1">شارك التطبيق للحصول علي رصيد اضافي يمكنك استخدامها للشراء من متجرنا </string>
 
     <string name="shareNow">شارك الان</string>
     <string name="purchaseGifts">هدايا الشراء</string>
@@ -152,4 +153,5 @@
     <string name="department">القسم</string>
     <string name="reset">اعادة تعيين</string>
     <string name="activation">تفعيل</string>
+    <string name="edit">Edit</string>
 </resources>

@@ -44,7 +44,7 @@ public class OrderDetialsActivity extends BaseActivity {
 
     private void initView() {
         order2ProductAdapter = new Order2ProductAdapter(this);
-        binding.recView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
+        binding.recView.setLayoutManager(new LinearLayoutManager(this));
         binding.recView.setAdapter(order2ProductAdapter);
         binding.setLang(getLang());
         activityOrderDetialsMvvm = ViewModelProviders.of(this).get(ActivityOrderDetialsMvvm.class);
@@ -92,7 +92,7 @@ public class OrderDetialsActivity extends BaseActivity {
     }
 
     private void updateUi1() {
-        binding.tv1.setTextColor(getResources().getColor(R.color.color2));
+        binding.tv1.setTextColor(getResources().getColor(R.color.color9));
         binding.tv2.setTextColor(getResources().getColor(R.color.gray11));
         binding.tv3.setTextColor(getResources().getColor(R.color.gray11));
         binding.tv4.setTextColor(getResources().getColor(R.color.gray11));
@@ -102,18 +102,18 @@ public class OrderDetialsActivity extends BaseActivity {
         binding.tvOrder3.setVisibility(View.GONE);
         binding.tvOrder4.setVisibility(View.GONE);
         binding.tvOrder5.setVisibility(View.GONE);
-        binding.image1.setBackground(getResources().getDrawable(R.drawable.circle_color2));
+        binding.image1.setBackground(getResources().getDrawable(R.drawable.circle_color9));
         binding.image2.setBackground(getResources().getDrawable(R.drawable.circle_not_bg));
         binding.image3.setBackground(getResources().getDrawable(R.drawable.circle_not_bg));
         binding.image4.setBackground(getResources().getDrawable(R.drawable.circle_not_bg));
         binding.image5.setBackground(getResources().getDrawable(R.drawable.circle_not_bg));
 
-        binding.image1.setColorFilter(ContextCompat.getColor(this, R.color.color2), PorterDuff.Mode.SRC_IN);
+        binding.image1.setColorFilter(ContextCompat.getColor(this, R.color.color9), PorterDuff.Mode.SRC_IN);
         binding.image2.setColorFilter(ContextCompat.getColor(this, R.color.gray11), PorterDuff.Mode.SRC_IN);
         binding.image3.setColorFilter(ContextCompat.getColor(this, R.color.gray11), PorterDuff.Mode.SRC_IN);
         binding.image4.setColorFilter(ContextCompat.getColor(this, R.color.gray11), PorterDuff.Mode.SRC_IN);
         binding.image5.setColorFilter(ContextCompat.getColor(this, R.color.gray11), PorterDuff.Mode.SRC_IN);
-        binding.view11.setBackgroundColor(getResources().getColor(R.color.color2));
+        binding.view11.setBackgroundColor(getResources().getColor(R.color.color9));
         binding.view1.setBackgroundColor(getResources().getColor(R.color.gray13));
         binding.view21.setBackgroundColor(getResources().getColor(R.color.gray13));
         binding.view2.setBackgroundColor(getResources().getColor(R.color.gray13));
@@ -126,7 +126,7 @@ public class OrderDetialsActivity extends BaseActivity {
 
     private void updateUi2() {
         binding.tv1.setTextColor(getResources().getColor(R.color.gray11));
-        binding.tv2.setTextColor(getResources().getColor(R.color.color2));
+        binding.tv2.setTextColor(getResources().getColor(R.color.color9));
         binding.tv3.setTextColor(getResources().getColor(R.color.gray11));
         binding.tv4.setTextColor(getResources().getColor(R.color.gray11));
         binding.tv5.setTextColor(getResources().getColor(R.color.gray11));
@@ -135,19 +135,19 @@ public class OrderDetialsActivity extends BaseActivity {
         binding.tvOrder3.setVisibility(View.GONE);
         binding.tvOrder4.setVisibility(View.GONE);
         binding.tvOrder5.setVisibility(View.GONE);
-        binding.image1.setBackground(getResources().getDrawable(R.drawable.circle_color2));
-        binding.image2.setBackground(getResources().getDrawable(R.drawable.circle_color2));
+        binding.image1.setBackground(getResources().getDrawable(R.drawable.circle_color9));
+        binding.image2.setBackground(getResources().getDrawable(R.drawable.circle_color9));
         binding.image3.setBackground(getResources().getDrawable(R.drawable.circle_not_bg));
         binding.image4.setBackground(getResources().getDrawable(R.drawable.circle_not_bg));
         binding.image5.setBackground(getResources().getDrawable(R.drawable.circle_not_bg));
-        binding.image1.setColorFilter(ContextCompat.getColor(this, R.color.color2), PorterDuff.Mode.SRC_IN);
-        binding.image2.setColorFilter(ContextCompat.getColor(this, R.color.color2), PorterDuff.Mode.SRC_IN);
+        binding.image1.setColorFilter(ContextCompat.getColor(this, R.color.color9), PorterDuff.Mode.SRC_IN);
+        binding.image2.setColorFilter(ContextCompat.getColor(this, R.color.color9), PorterDuff.Mode.SRC_IN);
         binding.image3.setColorFilter(ContextCompat.getColor(this, R.color.gray11), PorterDuff.Mode.SRC_IN);
         binding.image4.setColorFilter(ContextCompat.getColor(this, R.color.gray11), PorterDuff.Mode.SRC_IN);
         binding.image5.setColorFilter(ContextCompat.getColor(this, R.color.gray11), PorterDuff.Mode.SRC_IN);
-        binding.view11.setBackgroundColor(getResources().getColor(R.color.color2));
-        binding.view1.setBackgroundColor(getResources().getColor(R.color.color2));
-        binding.view21.setBackgroundColor(getResources().getColor(R.color.color2));
+        binding.view11.setBackgroundColor(getResources().getColor(R.color.color9));
+        binding.view1.setBackgroundColor(getResources().getColor(R.color.color9));
+        binding.view21.setBackgroundColor(getResources().getColor(R.color.color9));
         binding.view2.setBackgroundColor(getResources().getColor(R.color.gray13));
         binding.view31.setBackgroundColor(getResources().getColor(R.color.gray13));
         binding.view3.setBackgroundColor(getResources().getColor(R.color.gray13));
@@ -160,7 +160,7 @@ public class OrderDetialsActivity extends BaseActivity {
     private void updateUi3() {
         binding.tv1.setTextColor(getResources().getColor(R.color.gray11));
         binding.tv2.setTextColor(getResources().getColor(R.color.gray11));
-        binding.tv3.setTextColor(getResources().getColor(R.color.color2));
+        binding.tv3.setTextColor(getResources().getColor(R.color.color9));
         binding.tv4.setTextColor(getResources().getColor(R.color.gray11));
         binding.tv5.setTextColor(getResources().getColor(R.color.gray11));
         binding.tvOrder1.setVisibility(View.VISIBLE);
@@ -168,21 +168,21 @@ public class OrderDetialsActivity extends BaseActivity {
         binding.tvOrder3.setVisibility(View.VISIBLE);
         binding.tvOrder4.setVisibility(View.GONE);
         binding.tvOrder5.setVisibility(View.GONE);
-        binding.image1.setBackground(getResources().getDrawable(R.drawable.circle_color2));
-        binding.image2.setBackground(getResources().getDrawable(R.drawable.circle_color2));
-        binding.image3.setBackground(getResources().getDrawable(R.drawable.circle_color2));
+        binding.image1.setBackground(getResources().getDrawable(R.drawable.circle_color9));
+        binding.image2.setBackground(getResources().getDrawable(R.drawable.circle_color9));
+        binding.image3.setBackground(getResources().getDrawable(R.drawable.circle_color9));
         binding.image4.setBackground(getResources().getDrawable(R.drawable.circle_not_bg));
         binding.image5.setBackground(getResources().getDrawable(R.drawable.circle_not_bg));
-        binding.image1.setColorFilter(ContextCompat.getColor(this, R.color.color2), PorterDuff.Mode.SRC_IN);
-        binding.image2.setColorFilter(ContextCompat.getColor(this, R.color.color2), PorterDuff.Mode.SRC_IN);
-        binding.image3.setColorFilter(ContextCompat.getColor(this, R.color.color2), PorterDuff.Mode.SRC_IN);
+        binding.image1.setColorFilter(ContextCompat.getColor(this, R.color.color9), PorterDuff.Mode.SRC_IN);
+        binding.image2.setColorFilter(ContextCompat.getColor(this, R.color.color9), PorterDuff.Mode.SRC_IN);
+        binding.image3.setColorFilter(ContextCompat.getColor(this, R.color.color9), PorterDuff.Mode.SRC_IN);
         binding.image4.setColorFilter(ContextCompat.getColor(this, R.color.gray11), PorterDuff.Mode.SRC_IN);
         binding.image5.setColorFilter(ContextCompat.getColor(this, R.color.gray11), PorterDuff.Mode.SRC_IN);
-        binding.view11.setBackgroundColor(getResources().getColor(R.color.color2));
-        binding.view1.setBackgroundColor(getResources().getColor(R.color.color2));
-        binding.view21.setBackgroundColor(getResources().getColor(R.color.color2));
-        binding.view2.setBackgroundColor(getResources().getColor(R.color.color2));
-        binding.view31.setBackgroundColor(getResources().getColor(R.color.color2));
+        binding.view11.setBackgroundColor(getResources().getColor(R.color.color9));
+        binding.view1.setBackgroundColor(getResources().getColor(R.color.color9));
+        binding.view21.setBackgroundColor(getResources().getColor(R.color.color9));
+        binding.view2.setBackgroundColor(getResources().getColor(R.color.color9));
+        binding.view31.setBackgroundColor(getResources().getColor(R.color.color9));
         binding.view3.setBackgroundColor(getResources().getColor(R.color.gray13));
         binding.view41.setBackgroundColor(getResources().getColor(R.color.gray13));
         binding.view4.setBackgroundColor(getResources().getColor(R.color.gray13));
@@ -194,30 +194,30 @@ public class OrderDetialsActivity extends BaseActivity {
         binding.tv1.setTextColor(getResources().getColor(R.color.gray11));
         binding.tv2.setTextColor(getResources().getColor(R.color.gray11));
         binding.tv3.setTextColor(getResources().getColor(R.color.gray11));
-        binding.tv4.setTextColor(getResources().getColor(R.color.color2));
+        binding.tv4.setTextColor(getResources().getColor(R.color.color9));
         binding.tv5.setTextColor(getResources().getColor(R.color.gray11));
         binding.tvOrder1.setVisibility(View.VISIBLE);
         binding.tvOrder2.setVisibility(View.VISIBLE);
         binding.tvOrder3.setVisibility(View.VISIBLE);
         binding.tvOrder4.setVisibility(View.VISIBLE);
         binding.tvOrder5.setVisibility(View.GONE);
-        binding.image1.setBackground(getResources().getDrawable(R.drawable.circle_color2));
-        binding.image2.setBackground(getResources().getDrawable(R.drawable.circle_color2));
-        binding.image3.setBackground(getResources().getDrawable(R.drawable.circle_color2));
-        binding.image4.setBackground(getResources().getDrawable(R.drawable.circle_color2));
+        binding.image1.setBackground(getResources().getDrawable(R.drawable.circle_color9));
+        binding.image2.setBackground(getResources().getDrawable(R.drawable.circle_color9));
+        binding.image3.setBackground(getResources().getDrawable(R.drawable.circle_color9));
+        binding.image4.setBackground(getResources().getDrawable(R.drawable.circle_color9));
         binding.image5.setBackground(getResources().getDrawable(R.drawable.circle_not_bg));
-        binding.image1.setColorFilter(ContextCompat.getColor(this, R.color.color2), PorterDuff.Mode.SRC_IN);
-        binding.image2.setColorFilter(ContextCompat.getColor(this, R.color.color2), PorterDuff.Mode.SRC_IN);
-        binding.image3.setColorFilter(ContextCompat.getColor(this, R.color.color2), PorterDuff.Mode.SRC_IN);
-        binding.image4.setColorFilter(ContextCompat.getColor(this, R.color.color2), PorterDuff.Mode.SRC_IN);
+        binding.image1.setColorFilter(ContextCompat.getColor(this, R.color.color9), PorterDuff.Mode.SRC_IN);
+        binding.image2.setColorFilter(ContextCompat.getColor(this, R.color.color9), PorterDuff.Mode.SRC_IN);
+        binding.image3.setColorFilter(ContextCompat.getColor(this, R.color.color9), PorterDuff.Mode.SRC_IN);
+        binding.image4.setColorFilter(ContextCompat.getColor(this, R.color.color9), PorterDuff.Mode.SRC_IN);
         binding.image5.setColorFilter(ContextCompat.getColor(this, R.color.gray11), PorterDuff.Mode.SRC_IN);
-        binding.view11.setBackgroundColor(getResources().getColor(R.color.color2));
-        binding.view1.setBackgroundColor(getResources().getColor(R.color.color2));
-        binding.view21.setBackgroundColor(getResources().getColor(R.color.color2));
-        binding.view2.setBackgroundColor(getResources().getColor(R.color.color2));
-        binding.view31.setBackgroundColor(getResources().getColor(R.color.color2));
-        binding.view3.setBackgroundColor(getResources().getColor(R.color.color2));
-        binding.view41.setBackgroundColor(getResources().getColor(R.color.color2));
+        binding.view11.setBackgroundColor(getResources().getColor(R.color.color9));
+        binding.view1.setBackgroundColor(getResources().getColor(R.color.color9));
+        binding.view21.setBackgroundColor(getResources().getColor(R.color.color9));
+        binding.view2.setBackgroundColor(getResources().getColor(R.color.color9));
+        binding.view31.setBackgroundColor(getResources().getColor(R.color.color9));
+        binding.view3.setBackgroundColor(getResources().getColor(R.color.color9));
+        binding.view41.setBackgroundColor(getResources().getColor(R.color.color9));
         binding.view4.setBackgroundColor(getResources().getColor(R.color.gray13));
 
 
@@ -228,30 +228,30 @@ public class OrderDetialsActivity extends BaseActivity {
         binding.tv2.setTextColor(getResources().getColor(R.color.gray11));
         binding.tv3.setTextColor(getResources().getColor(R.color.gray11));
         binding.tv4.setTextColor(getResources().getColor(R.color.gray11));
-        binding.tv5.setTextColor(getResources().getColor(R.color.color2));
+        binding.tv5.setTextColor(getResources().getColor(R.color.color9));
         binding.tvOrder1.setVisibility(View.VISIBLE);
         binding.tvOrder2.setVisibility(View.VISIBLE);
         binding.tvOrder3.setVisibility(View.VISIBLE);
         binding.tvOrder4.setVisibility(View.VISIBLE);
         binding.tvOrder5.setVisibility(View.VISIBLE);
-        binding.image1.setBackground(getResources().getDrawable(R.drawable.circle_color2));
-        binding.image2.setBackground(getResources().getDrawable(R.drawable.circle_color2));
-        binding.image3.setBackground(getResources().getDrawable(R.drawable.circle_color2));
-        binding.image4.setBackground(getResources().getDrawable(R.drawable.circle_color2));
-        binding.image5.setBackground(getResources().getDrawable(R.drawable.circle_color2));
-        binding.image1.setColorFilter(ContextCompat.getColor(this, R.color.color2), PorterDuff.Mode.SRC_IN);
-        binding.image2.setColorFilter(ContextCompat.getColor(this, R.color.color2), PorterDuff.Mode.SRC_IN);
-        binding.image3.setColorFilter(ContextCompat.getColor(this, R.color.color2), PorterDuff.Mode.SRC_IN);
-        binding.image4.setColorFilter(ContextCompat.getColor(this, R.color.color2), PorterDuff.Mode.SRC_IN);
-        binding.image5.setColorFilter(ContextCompat.getColor(this, R.color.color2), PorterDuff.Mode.SRC_IN);
-        binding.view11.setBackgroundColor(getResources().getColor(R.color.color2));
-        binding.view1.setBackgroundColor(getResources().getColor(R.color.color2));
-        binding.view21.setBackgroundColor(getResources().getColor(R.color.color2));
-        binding.view2.setBackgroundColor(getResources().getColor(R.color.color2));
-        binding.view31.setBackgroundColor(getResources().getColor(R.color.color2));
-        binding.view3.setBackgroundColor(getResources().getColor(R.color.color2));
-        binding.view41.setBackgroundColor(getResources().getColor(R.color.color2));
-        binding.view4.setBackgroundColor(getResources().getColor(R.color.color2));
+        binding.image1.setBackground(getResources().getDrawable(R.drawable.circle_color9));
+        binding.image2.setBackground(getResources().getDrawable(R.drawable.circle_color9));
+        binding.image3.setBackground(getResources().getDrawable(R.drawable.circle_color9));
+        binding.image4.setBackground(getResources().getDrawable(R.drawable.circle_color9));
+        binding.image5.setBackground(getResources().getDrawable(R.drawable.circle_color9));
+        binding.image1.setColorFilter(ContextCompat.getColor(this, R.color.color9), PorterDuff.Mode.SRC_IN);
+        binding.image2.setColorFilter(ContextCompat.getColor(this, R.color.color9), PorterDuff.Mode.SRC_IN);
+        binding.image3.setColorFilter(ContextCompat.getColor(this, R.color.color9), PorterDuff.Mode.SRC_IN);
+        binding.image4.setColorFilter(ContextCompat.getColor(this, R.color.color9), PorterDuff.Mode.SRC_IN);
+        binding.image5.setColorFilter(ContextCompat.getColor(this, R.color.color9), PorterDuff.Mode.SRC_IN);
+        binding.view11.setBackgroundColor(getResources().getColor(R.color.color9));
+        binding.view1.setBackgroundColor(getResources().getColor(R.color.color9));
+        binding.view21.setBackgroundColor(getResources().getColor(R.color.color9));
+        binding.view2.setBackgroundColor(getResources().getColor(R.color.color9));
+        binding.view31.setBackgroundColor(getResources().getColor(R.color.color9));
+        binding.view3.setBackgroundColor(getResources().getColor(R.color.color9));
+        binding.view41.setBackgroundColor(getResources().getColor(R.color.color9));
+        binding.view4.setBackgroundColor(getResources().getColor(R.color.color9));
 
 
     }

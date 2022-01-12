@@ -70,6 +70,14 @@
 
         </activity>
         <activity
+            android:name=".uis.activity_previous_orders.PreviousOrderActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize">
+
+
+        </activity>
+        <activity
             android:name="com.apps.dount.uis.activity_category_detials.CategoryDetialsActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:exported="true"

@@ -61,9 +61,12 @@ public class FilterActivity extends BaseActivity {
                 // binding.cardNoData.setVisibility(View.GONE);
                 binding.progBar.setVisibility(View.VISIBLE);
                 binding.nested.setVisibility(View.GONE);
+                binding.ll.setVisibility(View.GONE);
             } else {
                 binding.progBar.setVisibility(View.GONE);
                 binding.nested.setVisibility(View.VISIBLE);
+                binding.ll.setVisibility(View.VISIBLE);
+
             }
             // binding.swipeRefresh.setRefreshing(isLoading);
         });

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "401105557326",
+    "project_id": "dount-bf1de",
+    "storage_bucket": "dount-bf1de.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:401105557326:android:d6cf57ae3de41c49bcb01f",
+        "android_client_info": {
+          "package_name": "com.apps.dount"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "401105557326-pcbbsppees63ur6ngmb8f2cbr8e1ntdk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.apps.dount",
+            "certificate_hash": "02234e9655300f70fcb3d1f946434728fcb0fcea"
+          }
+        },
+        {
+          "client_id": "401105557326-a6lnijsgqn3vhv15e0r8k43hfks9qlu9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAw2vfBNXTYH4-KLT_VqhygahICgO900kI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "401105557326-a6lnijsgqn3vhv15e0r8k43hfks9qlu9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

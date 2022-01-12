@@ -19,6 +19,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/color6"
         android:orientation="vertical">
 
         <FrameLayout
@@ -106,7 +107,6 @@
                     android:id="@+id/recView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/gray0"
 
                     />
 
@@ -139,7 +139,7 @@
             <FrameLayout
                 android:id="@+id/flTotal"
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
+                android:layout_height="75dp"
                 android:layout_gravity="bottom"
                 android:background="@drawable/top_small_stroke_white_gray">
 
@@ -162,22 +162,23 @@
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginEnd="20dp"
                             android:orientation="horizontal">
+
 
                             <TextView
                                 android:id="@+id/tvtitle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center_vertical"
                                 android:paddingLeft="3dp"
                                 android:paddingRight="3dp"
                                 android:text="@string/total"
-                                android:textColor="@color/black"
+                                android:textColor="@color/gray21"
                                 android:textSize="16sp"
 
-                                />
 
+                                />
                             <TextView
                                 android:id="@+id/tvTotal"
                                 android:layout_width="wrap_content"
@@ -185,7 +186,7 @@
                                 android:layout_gravity="center_vertical"
                                 android:paddingLeft="3dp"
                                 android:paddingRight="3dp"
-                                android:textColor="@color/color2"
+                                android:textColor="@color/color9"
                                 android:textSize="16sp" />
 
                             <TextView
@@ -196,7 +197,7 @@
                                 android:paddingRight="3dp"
                                 android:text="@string/price2"
 
-                                android:textColor="@color/color2"
+                                android:textColor="@color/color9"
                                 android:textSize="16sp"
 
                                 />
@@ -215,7 +216,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_margin="5dp"
-                        android:background="@drawable/rounded_color2"
+                        android:background="@drawable/rounded_primary"
                         android:padding="3dp"
                         android:text="@string/pay"
                         android:textColor="@color/white" />

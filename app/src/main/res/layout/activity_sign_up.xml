@@ -27,12 +27,85 @@
             android:background="@color/color6"
             android:orientation="vertical">
 
+            <FrameLayout
+                android:id="@+id/fl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+
+                    app:cardBackgroundColor="@color/white">
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="30dp">
+
+
+                    <androidx.appcompat.widget.Toolbar
+                        android:id="@+id/toolBar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/llBack"
+                                android:layout_width="35dp"
+                                android:layout_height="35dp"
+                                android:layout_gravity="start"
+                                app:cardBackgroundColor="@color/color7"
+                                app:cardCornerRadius="10dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent">
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:padding="5dp"
+                                    android:rotation='@{lang.equals("en")?180:0}'
+                                    android:src="@drawable/ic_left" />
+                            </androidx.cardview.widget.CardView>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="@string/edit_profile"
+                                android:textColor="@color/black2"
+                                android:textSize="18sp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    </androidx.appcompat.widget.Toolbar>
+                </androidx.cardview.widget.CardView>
+
+            </FrameLayout>
+
             <ImageView
                 android:id="@+id/top"
                 android:layout_width="match_parent"
                 android:layout_height="90dp"
                 android:scaleType="fitXY"
                 android:src="@drawable/toplogin"
+                android:visibility="gone"
                 app:layout_constraintTop_toTopOf="parent"
 
                 />
@@ -121,8 +194,6 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-
-
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -136,30 +207,32 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:orientation="vertical">
+
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginEnd="16dp"
                                 android:alpha=".7"
-                                android:layout_marginStart="8dp"
-                                android:layout_marginEnd="8dp"
                                 android:gravity="center"
                                 android:text="@string/first_name"
                                 android:textColor="@color/black"
                                 android:textSize="15sp" />
+
                             <EditText
                                 error="@{model.error_first_name}"
                                 android:layout_width="match_parent"
                                 android:layout_height="40dp"
                                 android:layout_marginStart="8dp"
+                                android:layout_marginTop="3dp"
                                 android:layout_marginEnd="8dp"
-
                                 android:background="@drawable/small_stroke_color1_white"
                                 android:gravity="center"
                                 android:paddingLeft="8dp"
                                 android:paddingRight="8dp"
                                 android:singleLine="true"
                                 android:text="@={model.first_name}"
-                                android:textColor="@color/white"
+                                android:textColor="@color/black"
 
                                 android:textColorHint="@color/gray14"
                                 android:textSize="14sp"
@@ -173,21 +246,24 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:orientation="vertical">
+
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginEnd="16dp"
                                 android:alpha=".7"
                                 android:gravity="center"
-                                android:layout_marginStart="8dp"
-                                android:layout_marginEnd="8dp"
                                 android:text="@string/last_name"
                                 android:textColor="@color/black"
                                 android:textSize="15sp" />
+
                             <EditText
                                 error="@{model.error_seconed_name}"
                                 android:layout_width="match_parent"
                                 android:layout_height="40dp"
                                 android:layout_marginStart="8dp"
+                                android:layout_marginTop="3dp"
                                 android:layout_marginEnd="8dp"
                                 android:background="@drawable/small_stroke_color1_white"
                                 android:gravity="center"
@@ -195,7 +271,7 @@
                                 android:paddingRight="8dp"
                                 android:singleLine="true"
                                 android:text="@={model.seconed_name}"
-                                android:textColor="@color/white"
+                                android:textColor="@color/black"
                                 android:textColorHint="@color/gray14"
                                 android:textSize="14sp"
                                 tools:ignore="TextFields" />
@@ -224,7 +300,7 @@
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="40dp"
                         android:layout_marginEnd="16dp"
-                        android:background="@drawable/small_stroke_color1_white"
+                        android:background="@drawable/small_stroke_color4_white"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
                         android:paddingStart="8dp"
@@ -267,10 +343,10 @@
 
                         android:layout_marginTop="40dp"
                         android:layout_marginBottom="20dp"
-                        android:background="@drawable/rounded_color2"
+                        android:background="@drawable/rounded_primary"
                         android:minWidth="180dp"
                         android:text="@string/confirm"
-                        android:textColor="@color/black"
+                        android:textColor="@color/white"
                         android:textSize="18sp" />
 
                 </LinearLayout>

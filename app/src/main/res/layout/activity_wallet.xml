@@ -52,7 +52,7 @@
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="start"
-                        app:cardBackgroundColor="@color/color7"
+                        app:cardBackgroundColor="@color/gray23"
                         app:cardCornerRadius="8dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -71,6 +71,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="@string/wallet"
+                        android:textColor="@color/black2"
                         android:textSize="18sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -124,7 +125,7 @@
                                  android:layout_height="wrap_content"
                                  android:layout_marginEnd="5dp"
                                  android:text='@{model.data.total+""}'
-                                 android:textColor="@color/color2"
+                                 android:textColor="@color/color9"
                                  android:textSize="50sp" />
 
                              <TextView
@@ -148,7 +149,7 @@
                          android:layout_width="150dp"
                          android:layout_height="wrap_content"
                          android:layout_margin="10dp"
-                         android:background="@drawable/linear_shape"
+                         android:background="@drawable/small_color9_stroke_white"
                          app:cardCornerRadius="20dp">
 
                          <LinearLayout
@@ -166,7 +167,8 @@
                                      android:layout_width="50dp"
                                      android:layout_height="50dp"
                                      android:layout_margin="8dp"
-                                     android:src="@drawable/ic_rec_icon" />
+                                     android:src="@drawable/ic_rec_icon2"
+                                    />
 
                                  <TextView
                                      android:layout_width="wrap_content"
@@ -174,7 +176,7 @@
                                      android:layout_gravity="center_vertical"
                                      android:layout_margin="5dp"
                                      android:text='@{model.data.purchase_gifts+""}'
-                                     android:textColor="@color/color5"
+                                     android:textColor="@color/color9"
                                      android:textSize="18sp" />
 
                                  <TextView
@@ -182,7 +184,7 @@
                                      android:layout_height="wrap_content"
                                      android:layout_gravity="center_vertical"
                                      android:text="@string/price2"
-                                     android:textColor="@color/color5" />
+                                     android:textColor="@color/color9" />
                              </LinearLayout>
 
                              <TextView
@@ -200,7 +202,7 @@
                          android:layout_width="150dp"
                          android:layout_height="wrap_content"
                          android:layout_margin="10dp"
-                         android:background="@drawable/linear_shape"
+                         android:background="@drawable/small_color9_stroke_white"
                          app:cardCornerRadius="20dp">
 
                          <LinearLayout
@@ -218,7 +220,8 @@
                                      android:layout_width="50dp"
                                      android:layout_height="50dp"
                                      android:layout_margin="8dp"
-                                     android:src="@drawable/ic_rec_icon" />
+                                     android:src="@drawable/ic_rec_icon"
+                                      />
 
                                  <TextView
                                      android:layout_width="wrap_content"
@@ -226,7 +229,7 @@
                                      android:layout_gravity="center_vertical"
                                      android:layout_margin="5dp"
                                      android:text='@{model.data.share_gifts+""}'
-                                     android:textColor="@color/color5"
+                                     android:textColor="@color/color9"
                                      android:textSize="18sp" />
 
                                  <TextView
@@ -234,7 +237,7 @@
                                      android:layout_height="wrap_content"
                                      android:layout_gravity="center_vertical"
                                      android:text="@string/price2"
-                                     android:textColor="@color/color5" />
+                                     android:textColor="@color/color9" />
                              </LinearLayout>
 
                              <TextView
@@ -266,7 +269,7 @@
                      android:layout_height="wrap_content"
                      android:layout_gravity="center_horizontal"
                      android:text="@string/shareNow"
-                     android:textColor="@color/color2"
+                     android:textColor="@color/color9"
                      android:textSize="18sp" />
              </LinearLayout>
          </ScrollView>

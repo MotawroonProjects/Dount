@@ -27,10 +27,14 @@ import com.apps.dount.R;
 import com.apps.dount.databinding.FragmentProfileBinding;
 import com.apps.dount.uis.activity_base.BaseFragment;
 import com.apps.dount.uis.activity_contact_us.ContactUsActivity;
+import com.apps.dount.uis.activity_favourite.FavouriteActivity;
 import com.apps.dount.uis.activity_home.HomeActivity;
 import com.apps.dount.uis.activity_language.LanguageActivity;
 import com.apps.dount.uis.activity_login.LoginActivity;
+import com.apps.dount.uis.activity_my_orders.MyOrderActivity;
+import com.apps.dount.uis.activity_previous_orders.PreviousOrderActivity;
 import com.apps.dount.uis.activity_share.ShareActivity;
+import com.apps.dount.uis.activity_sign_up.SignUpActivity;
 import com.apps.dount.uis.activity_wallet.WalletActivity;
 
 import java.util.List;
@@ -93,6 +97,42 @@ public class FragmentProfile extends BaseFragment {
                 navigateToLoginActivity();
             }
         });
+
+        binding.cardFavourite.setOnClickListener(view -> {
+            if (getUserModel() != null) {
+                Intent intent = new Intent(activity, FavouriteActivity.class);
+                startActivity(intent);
+            } else {
+                navigateToLoginActivity();
+            }
+        });
+        binding.imSetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (getUserModel() == null) {
+                    navigateToLoginActivity();
+                } else {
+                    navigationToSignupActivity();
+                }
+            }
+        });
+        binding.cardOrder.setOnClickListener(view -> {
+            if (getUserModel() != null) {
+                Intent intent = new Intent(activity, MyOrderActivity.class);
+                startActivity(intent);
+            } else {
+                navigateToLoginActivity();
+            }
+        });
+
+        binding.cardpreviousOrder.setOnClickListener(view -> {
+            if (getUserModel() != null) {
+                Intent intent = new Intent(activity, PreviousOrderActivity.class);
+                startActivity(intent);
+            } else {
+                navigateToLoginActivity();
+            }
+        });
         binding.llSahre.setOnClickListener(view -> {
             if (getUserModel() != null) {
                 Intent intent = new Intent(activity, ShareActivity.class);
@@ -123,6 +163,11 @@ public class FragmentProfile extends BaseFragment {
         Intent intent = new Intent(activity, LoginActivity.class);
         launcher.launch(intent);
 
+    }
+    private void navigationToSignupActivity() {
+        req = 1;
+        Intent intent = new Intent(activity, SignUpActivity.class);
+        launcher.launch(intent);
     }
 
     private void logout() {

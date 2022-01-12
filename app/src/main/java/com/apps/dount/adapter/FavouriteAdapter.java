@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.apps.dount.R;
 import com.apps.dount.databinding.FavouriteRowBinding;
 import com.apps.dount.model.ProductModel;
+import com.apps.dount.model.UserModel;
 import com.apps.dount.uis.activity_favourite.FavouriteActivity;
 
 import java.util.List;
@@ -21,10 +22,11 @@ public class FavouriteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     private Context context;
     private LayoutInflater inflater;
 
-
-    public FavouriteAdapter(Context context) {
+    private UserModel userModel;
+    public FavouriteAdapter(Context context,UserModel userModel) {
         this.context = context;
         inflater = LayoutInflater.from(context);
+        this.userModel=userModel;
 
     }
 
@@ -39,6 +41,7 @@ public class FavouriteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         MyHolder myHolder = (MyHolder) holder;
         myHolder.binding.setModel(list.get(position));
+        myHolder.binding.setUsermodel(userModel);
         myHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

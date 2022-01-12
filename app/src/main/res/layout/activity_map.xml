@@ -33,7 +33,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:padding="4dp">
+                android:padding="7dp">
 
                 <LinearLayout
                     android:id="@+id/llSearch"
@@ -96,7 +96,7 @@
                     android:layout_height="40dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginTop="7dp"
-                    android:background="@drawable/circle_fill_color2">
+                    android:background="@drawable/circle_fill_color9">
 
                     <ImageView
                         android:layout_width="30dp"

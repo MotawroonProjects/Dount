@@ -52,7 +52,7 @@
                     android:layout_height="50dp"
                     android:layout_margin="4dp"
                     android:layout_weight="1"
-                    android:background="@drawable/small_stroke_color1_white"
+                    android:background="@drawable/small_stroke_color4_white"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
                     android:paddingStart="16dp"

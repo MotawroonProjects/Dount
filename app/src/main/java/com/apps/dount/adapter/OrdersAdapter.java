@@ -41,7 +41,7 @@ public class OrdersAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         MyHolder myHolder = (MyHolder) holder;
         myHolder.binding.setLang(getLang());
         myHolder.binding.setModel(list.get(position));
-        myHolder.binding.llShow.setOnClickListener(new View.OnClickListener() {
+        myHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (context instanceof MyOrderActivity) {

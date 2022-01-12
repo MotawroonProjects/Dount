@@ -52,7 +52,7 @@
                             android:layout_width="0dp"
                             android:layout_height="50dp"
                             android:layout_weight="1"
-                            android:background="@drawable/small_stroke_color1_white"
+                            android:background="@drawable/small_stroke_color4_white"
                             android:gravity="center_vertical"
                             android:orientation="horizontal"
                             android:paddingStart="16dp"
@@ -200,6 +200,7 @@
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             android:layout_gravity="center"
+                            android:rotation='@{lang.equals("ar")?180:0}'
                             android:src="@drawable/ic_line3"
                             app:tint="@color/color5" />
 
@@ -209,7 +210,7 @@
                             android:layout_gravity="center"
 
                             android:text="@string/latest_products"
-                            android:textColor="@color/black"
+                            android:textColor="@color/colorPrimary"
                             android:textSize="18sp"
                             android:textStyle="bold"
 

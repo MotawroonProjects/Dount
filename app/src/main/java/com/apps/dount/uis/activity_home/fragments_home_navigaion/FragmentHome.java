@@ -112,6 +112,7 @@ public class FragmentHome extends BaseFragment {
     }
 
     private void initView() {
+        binding.setLang(getLang());
         sliderModelList = new ArrayList<>();
         fragmentHomeMvvm = ViewModelProviders.of(this).get(FragmentHomeMvvm.class);
 
