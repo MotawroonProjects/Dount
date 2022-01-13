@@ -125,9 +125,17 @@ public class FragmentProfile extends BaseFragment {
             }
         });
 
-        binding.cardpreviousOrder.setOnClickListener(view -> {
+//        binding.cardpreviousOrder.setOnClickListener(view -> {
+//            if (getUserModel() != null) {
+//                Intent intent = new Intent(activity, PreviousOrderActivity.class);
+//                startActivity(intent);
+//            } else {
+//                navigateToLoginActivity();
+//            }
+//        });
+        binding.cardWallet.setOnClickListener(view -> {
             if (getUserModel() != null) {
-                Intent intent = new Intent(activity, PreviousOrderActivity.class);
+                Intent intent = new Intent(activity, WalletActivity.class);
                 startActivity(intent);
             } else {
                 navigateToLoginActivity();

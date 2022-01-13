@@ -158,7 +158,7 @@
                     app:cardCornerRadius="20dp"
                     app:contentPadding="4dp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/cardpreviousOrder"
+                    app:layout_constraintEnd_toStartOf="@id/cardWallet"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
@@ -190,7 +190,7 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/cardpreviousOrder"
+                    android:id="@+id/cardWallet"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_margin="3dp"
@@ -213,14 +213,14 @@
                             android:id="@+id/imageReturn"
                             android:layout_width="30dp"
                             android:layout_height="30dp"
-                            android:src="@drawable/checklist" />
+                            android:src="@drawable/ic_wallet" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
                             android:layout_marginBottom="5dp"
-                            android:text="@string/previous_order"
+                            android:text="@string/wallet"
                             android:gravity="center"
                             android:lines="1"
                             android:textColor="@color/gray8"
@@ -230,6 +230,47 @@
                             app:layout_constraintTop_toBottomOf="@id/imageOrders" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
+<!--                <androidx.cardview.widget.CardView-->
+<!--                    android:id="@+id/cardpreviousOrder"-->
+<!--                    android:layout_width="100dp"-->
+<!--                    android:layout_height="100dp"-->
+<!--                    android:layout_margin="3dp"-->
+<!--                    app:cardCornerRadius="20dp"-->
+<!--                    app:contentPadding="4dp"-->
+<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                    app:layout_constraintEnd_toStartOf="@id/cardFavourite"-->
+<!--                    app:layout_constraintStart_toEndOf="@id/cardOrder"-->
+
+<!--                    app:layout_constraintTop_toTopOf="parent">-->
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_gravity="center"-->
+<!--                        android:gravity="center"-->
+<!--                        android:orientation="vertical">-->
+
+<!--                        <ImageView-->
+<!--                            android:id="@+id/imageReturn"-->
+<!--                            android:layout_width="30dp"-->
+<!--                            android:layout_height="30dp"-->
+<!--                            android:src="@drawable/checklist" />-->
+
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginTop="5dp"-->
+<!--                            android:layout_marginBottom="5dp"-->
+<!--                            android:text="@string/previous_order"-->
+<!--                            android:gravity="center"-->
+<!--                            android:lines="1"-->
+<!--                            android:textColor="@color/gray8"-->
+<!--                            android:textSize="13sp"-->
+<!--                            app:layout_constraintEnd_toEndOf="@id/imageOrders"-->
+<!--                            app:layout_constraintStart_toStartOf="@id/imageOrders"-->
+<!--                            app:layout_constraintTop_toBottomOf="@id/imageOrders" />-->
+<!--                    </LinearLayout>-->
+<!--                </androidx.cardview.widget.CardView>-->
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardFavourite"
@@ -240,7 +281,7 @@
                     app:contentPadding="4dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/cardpreviousOrder"
+                    app:layout_constraintStart_toEndOf="@id/cardWallet"
                     app:layout_constraintTop_toTopOf="parent">
 
                     <LinearLayout
@@ -326,6 +367,7 @@
                         android:minHeight="56dp"
                         android:orientation="horizontal"
                         android:paddingStart="16dp"
+                        android:visibility="gone"
                         android:paddingEnd="16dp">
 
                         <ImageView
@@ -347,6 +389,7 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
+                        android:visibility="gone"
                         android:layout_marginStart="16dp"
                         android:layout_marginEnd="16dp"
                         android:background="@color/color8" />

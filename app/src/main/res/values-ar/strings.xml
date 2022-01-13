@@ -131,7 +131,7 @@
     <string name="suc_add_to_cart">تم الاضافه الى السله بنجاح</string>
     <string name="pay">دفع</string>
     <string name="products">المنتجات</string>
-    <string name="shipping_site">موقع الشحن</string>
+    <string name="shipping_site">موقع التوصيل</string>
     <string name="payment">الدفع</string>
     <string name="electronic_payment">دفع الكترونى</string>
     <string name="cash">كاش</string>
@@ -153,5 +153,11 @@
     <string name="department">القسم</string>
     <string name="reset">اعادة تعيين</string>
     <string name="activation">تفعيل</string>
-    <string name="edit">Edit</string>
+    <string name="edit">تعديل</string>
+    <string name="bill">الفاتورة</string>
+    <string name="write_note">دون ملاحظه : </string>
+    <string name="write_here">اكتب هنا </string>
+    <string name="latest_offers">احدث العروض</string>
+    <string name="delivery_from_another_branch">التوصيل من فرع اخر</string>
+    <string name="receipt_from_the_branch">الاستلام من الفرع</string>
 </resources>

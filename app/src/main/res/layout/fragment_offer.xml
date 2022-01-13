@@ -21,16 +21,14 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-android:background="@color/color6"
-        >
+        android:background="@color/color6">
 
         <androidx.core.widget.NestedScrollView
             android:id="@+id/nested"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fillViewport="true"
-            android:paddingTop="56dp"
-       >
+            android:paddingTop="56dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -40,21 +38,47 @@ android:background="@color/color6"
                 <FrameLayout
                     android:id="@+id/flSlider"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    >
+                    android:layout_height="200dp">
 
-                <androidx.viewpager.widget.ViewPager
-                    android:id="@+id/pager"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="5dp" />
+                    <androidx.viewpager.widget.ViewPager
+                        android:id="@+id/pager"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="5dp" />
 
-                <ProgressBar
-                    android:id="@+id/progBarSlider"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_gravity="center" />
+                    <ProgressBar
+                        android:id="@+id/progBarSlider"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center" />
                 </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
+                        android:rotation='@{lang.equals("ar")?180:0}'
+                        android:src="@drawable/ic_line3"
+                        app:tint="@color/color5" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+
+                        android:text="@string/latest_offers"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+
+                        />
+                </LinearLayout>
+
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
@@ -111,9 +135,6 @@ android:background="@color/color6"
                 </FrameLayout>
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
-
-
-
 
 
     </FrameLayout>

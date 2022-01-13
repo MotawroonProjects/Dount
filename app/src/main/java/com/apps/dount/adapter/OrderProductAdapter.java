@@ -2,6 +2,7 @@ package com.apps.dount.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -50,7 +51,9 @@ public class OrderProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
         myHolder.binding.setModel(list.get(position));
 
-
+        if (position == list.size() - 1) {
+            ((MyHolder) holder).binding.view.setVisibility(View.GONE);
+        }
     }
 
     @Override

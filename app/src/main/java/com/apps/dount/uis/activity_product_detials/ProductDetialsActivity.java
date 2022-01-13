@@ -31,7 +31,7 @@ public class ProductDetialsActivity extends BaseActivity {
 
     private boolean isDataChanged = false,isfav=false;
     private double price;
-    private int amount;
+    private int amount=1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

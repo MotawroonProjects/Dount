@@ -3,14 +3,18 @@ package com.apps.dount.uis.activity_payment;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -32,6 +36,8 @@ import com.apps.dount.uis.activity_my_orders.MyOrderActivity;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import eightbitlab.com.blurview.RenderScriptBlur;
 
 public class PaymentActivity extends BaseActivity {
     private ActivityPaymentBinding binding;
@@ -90,9 +96,8 @@ public class PaymentActivity extends BaseActivity {
                     Intent intent = new Intent(PaymentActivity.this, MyOrderActivity.class);
                     startActivity(intent);
                     finish();
-                }
-                else{
-                    Toast.makeText(PaymentActivity.this,getResources().getString(R.string.wallet_not),Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(PaymentActivity.this, getResources().getString(R.string.wallet_not), Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -136,30 +141,67 @@ public class PaymentActivity extends BaseActivity {
                 back();
             }
         });
-        binding.radiocash.setOnClickListener(new View.OnClickListener() {
+        binding.cardCountry.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.expandLayout.expand(true);
+            }
+        });
+        binding.flArive.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.expandLayout.collapse(true);
+            }
+        });
+        binding.flDeliver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.expandLayout.collapse(true);
+            }
+        });
+        binding.flCash.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 cartDataModel.setPay("cash");
-                binding.radioonline.setChecked(false);
-                binding.radiowallet.setChecked(false);
+                binding.tvCash.setTextColor(getResources().getColor(R.color.white));
+                binding.imCash.setColorFilter(ContextCompat.getColor(PaymentActivity.this, R.color.white), PorterDuff.Mode.SRC_IN);
+                binding.tvOnline.setTextColor(getResources().getColor(R.color.color9));
+                binding.imOnline.setColorFilter(ContextCompat.getColor(PaymentActivity.this, R.color.color9), PorterDuff.Mode.SRC_IN);
+                binding.tvWallet.setTextColor(getResources().getColor(R.color.color9));
+                binding.imWallet.setColorFilter(ContextCompat.getColor(PaymentActivity.this, R.color.color9), PorterDuff.Mode.SRC_IN);
+                binding.flCash.setBackground(getResources().getDrawable(R.drawable.rounded_color9));
+                binding.flOnline.setBackground(getResources().getDrawable(R.drawable.small_color9_stroke_white));
+                binding.flWallet.setBackground(getResources().getDrawable(R.drawable.small_color9_stroke_white));
 
             }
         });
-        binding.radioonline.setOnClickListener(new View.OnClickListener() {
+        binding.flOnline.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cartDataModel.setPay("online");
-                binding.radiocash.setChecked(false);
-                binding.radiowallet.setChecked(false);
+                binding.tvCash.setTextColor(getResources().getColor(R.color.color9));
+                binding.imCash.setColorFilter(ContextCompat.getColor(PaymentActivity.this, R.color.color9), PorterDuff.Mode.SRC_IN);
+                binding.tvOnline.setTextColor(getResources().getColor(R.color.white));
+                binding.imOnline.setColorFilter(ContextCompat.getColor(PaymentActivity.this, R.color.white), PorterDuff.Mode.SRC_IN);
+                binding.tvWallet.setTextColor(getResources().getColor(R.color.color9));
+                binding.imWallet.setColorFilter(ContextCompat.getColor(PaymentActivity.this, R.color.color9), PorterDuff.Mode.SRC_IN);
+                binding.flCash.setBackground(getResources().getDrawable(R.drawable.small_color9_stroke_white));
+                binding.flOnline.setBackground(getResources().getDrawable(R.drawable.rounded_color9));
+                binding.flWallet.setBackground(getResources().getDrawable(R.drawable.small_color9_stroke_white));
 
             }
         });
-        binding.radiowallet.setOnClickListener(new View.OnClickListener() {
+        binding.flWallet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cartDataModel.setPay("wallet");
-                binding.radiocash.setChecked(false);
-                binding.radioonline.setChecked(false);
+                binding.tvCash.setTextColor(getResources().getColor(R.color.color9));
+                binding.imCash.setColorFilter(ContextCompat.getColor(PaymentActivity.this, R.color.color9), PorterDuff.Mode.SRC_IN);
+                binding.tvOnline.setTextColor(getResources().getColor(R.color.color9));
+                binding.imOnline.setColorFilter(ContextCompat.getColor(PaymentActivity.this, R.color.color9), PorterDuff.Mode.SRC_IN);
+                binding.tvWallet.setTextColor(getResources().getColor(R.color.white));
+                binding.imWallet.setColorFilter(ContextCompat.getColor(PaymentActivity.this, R.color.white), PorterDuff.Mode.SRC_IN);
+                binding.flCash.setBackground(getResources().getDrawable(R.drawable.small_color9_stroke_white));
+                binding.flOnline.setBackground(getResources().getDrawable(R.drawable.small_color9_stroke_white));
+                binding.flWallet.setBackground(getResources().getDrawable(R.drawable.rounded_color9));
 
             }
         });
