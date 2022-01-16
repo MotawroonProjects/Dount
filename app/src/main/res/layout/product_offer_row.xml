@@ -54,9 +54,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{model.title}"
                     android:layout_marginStart="15dp"
                     android:layout_marginEnd="15sp"
+                    android:text="@{model.title}"
                     android:textColor="@color/gray20"
                     android:textSize="10sp" />
 
@@ -64,8 +64,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
-                    android:layout_marginEnd="15sp"
                     android:layout_marginTop="7dp"
+                    android:layout_marginEnd="15sp"
                     android:layout_marginBottom="5dp"
                     android:orientation="horizontal">
 
@@ -74,11 +74,12 @@
                         android:layout_height="24dp"
                         android:layout_gravity="center"
                         android:src="@drawable/ic_mony" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="5dp"
                         android:layout_marginStart="5dp"
+                        android:layout_marginEnd="5dp"
                         android:text="@{model.price_after}"
                         android:textColor="@color/colorPrimary"
                         android:textSize="12sp"

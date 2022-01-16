@@ -159,6 +159,9 @@
     <string name="latest_offers">Latest Offers</string>
     <string name="delivery_from_another_branch">Delivery From Another Branch</string>
     <string name="receipt_from_the_branch">Receipt From The Branch</string>
+    <string name="your_request_has_been_successfully_sent">Your Request Has Been Successfully Sent</string>
+    <string name="delivery_to">Delivery to :</string>
+    <string name="m">M</string>
 
 
 </resources>

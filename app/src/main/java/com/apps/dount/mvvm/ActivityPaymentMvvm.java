@@ -40,6 +40,11 @@ import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.location.LocationSettingsResult;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
 
+import java.util.Locale;
+import java.util.concurrent.TimeUnit;
+
+import io.reactivex.Observable;
+import io.reactivex.Observer;
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
@@ -54,6 +59,7 @@ public class ActivityPaymentMvvm extends AndroidViewModel implements GoogleApiCl
     private LocationRequest locationRequest;
     private LocationCallback locationCallback;
     private MutableLiveData<LocationModel> locationModelMutableLiveData;
+    private MutableLiveData<Boolean> timeend;
     private MutableLiveData<String> ship;
     private MutableLiveData<Boolean> send;
 
@@ -73,6 +79,13 @@ public class ActivityPaymentMvvm extends AndroidViewModel implements GoogleApiCl
         }
 
         return send;
+    }
+    public LiveData<Boolean> getTime() {
+        if (timeend == null) {
+            timeend = new MutableLiveData<>();
+        }
+
+        return timeend;
     }
 
     public LiveData<String> getShip() {
@@ -297,6 +310,39 @@ public class ActivityPaymentMvvm extends AndroidViewModel implements GoogleApiCl
                     public void onError(@NonNull Throwable e) {
                         dialog.dismiss();
                         Log.e(TAG, "onError: ", e);
+                    }
+                });
+
+    }
+    public void startTimer() {
+        timeend.postValue(false);
+        Observable.intervalRange(1, 15, 1, 1, TimeUnit.SECONDS)
+                .subscribeOn(Schedulers.computation())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<Long>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
+                        disposable.add(d);
+                    }
+
+                    @Override
+                    public void onNext(@NonNull Long aLong) {
+
+
+
+
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+
+                        timeend.postValue(true);
                     }
                 });
 

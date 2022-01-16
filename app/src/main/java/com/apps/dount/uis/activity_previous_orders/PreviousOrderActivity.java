@@ -19,6 +19,7 @@ import com.apps.dount.mvvm.ActivityPreviousOrdersMvvm;
 import com.apps.dount.preferences.Preferences;
 import com.apps.dount.uis.activity_base.BaseActivity;
 import com.apps.dount.uis.activity_order_detials.OrderDetialsActivity;
+import com.apps.dount.uis.activity_previous_order_detials.PreviousOrderDetialsActivity;
 
 import java.util.List;
 
@@ -75,7 +76,7 @@ public class PreviousOrderActivity extends BaseActivity {
 
 
     public void show(OrderModel orderModel) {
-        Intent intent = new Intent(this, OrderDetialsActivity.class);
+        Intent intent = new Intent(this, PreviousOrderDetialsActivity.class);
         intent.putExtra("order_id", orderModel.getId());
         startActivity(intent);
     }

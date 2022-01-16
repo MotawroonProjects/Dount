@@ -258,6 +258,7 @@
         <entry key="..\:/Dount/app/src/main/res/drawable/ic_subject.xml" value="0.216796875" />
         <entry key="..\:/Dount/app/src/main/res/drawable/ic_terms.xml" value="0.216796875" />
         <entry key="..\:/Dount/app/src/main/res/drawable/ic_user.xml" value="0.216796875" />
+        <entry key="..\:/Dount/app/src/main/res/drawable/ic_user3.xml" value="0.16" />
         <entry key="..\:/Dount/app/src/main/res/drawable/ic_wallet.xml" value="0.216796875" />
         <entry key="..\:/Dount/app/src/main/res/drawable/ic_wallet_bg.xml" value="0.1" />
         <entry key="..\:/Dount/app/src/main/res/drawable/ic_whatts.xml" value="0.216796875" />
@@ -283,7 +284,8 @@
         <entry key="..\:/Dount/app/src/main/res/layout/activity_map.xml" value="0.1" />
         <entry key="..\:/Dount/app/src/main/res/layout/activity_order_detials.xml" value="0.10703125" />
         <entry key="..\:/Dount/app/src/main/res/layout/activity_orders.xml" value="0.2046875" />
-        <entry key="..\:/Dount/app/src/main/res/layout/activity_payment.xml" value="0.3663101604278075" />
+        <entry key="..\:/Dount/app/src/main/res/layout/activity_payment.xml" value="0.3583617747440273" />
+        <entry key="..\:/Dount/app/src/main/res/layout/activity_previous_order_detials.xml" value="0.22" />
         <entry key="..\:/Dount/app/src/main/res/layout/activity_previous_orders.xml" value="0.10703125" />
         <entry key="..\:/Dount/app/src/main/res/layout/activity_product_detials.xml" value="0.2153846153846154" />
         <entry key="..\:/Dount/app/src/main/res/layout/activity_search.xml" value="0.33" />
@@ -291,11 +293,14 @@
         <entry key="..\:/Dount/app/src/main/res/layout/activity_sign_up.xml" value="0.23333333333333334" />
         <entry key="..\:/Dount/app/src/main/res/layout/activity_verification_code.xml" value="0.23214285714285715" />
         <entry key="..\:/Dount/app/src/main/res/layout/activity_wallet.xml" value="0.1" />
+        <entry key="..\:/Dount/app/src/main/res/layout/branch_row.xml" value="0.25" />
         <entry key="..\:/Dount/app/src/main/res/layout/cart_row.xml" value="0.25" />
         <entry key="..\:/Dount/app/src/main/res/layout/category_row.xml" value="0.2046875" />
         <entry key="..\:/Dount/app/src/main/res/layout/depart_filter_row.xml" value="0.17916666666666667" />
         <entry key="..\:/Dount/app/src/main/res/layout/department_item_row.xml" value="0.14270833333333333" />
+        <entry key="..\:/Dount/app/src/main/res/layout/exo_player_layout.xml" value="0.2046875" />
         <entry key="..\:/Dount/app/src/main/res/layout/favourite_row.xml" value="0.22" />
+        <entry key="..\:/Dount/app/src/main/res/layout/fragment_branches.xml" value="0.148828125" />
         <entry key="..\:/Dount/app/src/main/res/layout/fragment_home.xml" value="0.21" />
         <entry key="..\:/Dount/app/src/main/res/layout/fragment_offer.xml" value="0.1" />
         <entry key="..\:/Dount/app/src/main/res/layout/fragment_profile.xml" value="0.22" />
@@ -307,6 +312,11 @@
         <entry key="..\:/Dount/app/src/main/res/layout/previous_order_row.xml" value="0.17" />
         <entry key="..\:/Dount/app/src/main/res/layout/product_offer_row.xml" value="0.15" />
         <entry key="..\:/Dount/app/src/main/res/layout/product_row.xml" value="0.27291666666666664" />
+        <entry key="..\:/Dount/app/src/main/res/layout/size_row.xml" value="0.2046875" />
+        <entry key="..\:/Dount/app/src/main/res/layout/toolbar.xml" value="0.2046875" />
+        <entry key="..\:/Dount/app/src/main/res/layout/type_row.xml" value="0.2046875" />
+        <entry key="..\:/Dount/app/src/main/res/layout/way_row.xml" value="0.2046875" />
+        <entry key="..\:/Dount/app/src/main/res/layout/wrap_row.xml" value="0.2046875" />
         <entry key="..\:/Users/Ahmed/AndroidStudioProjects/Akkaber/app/src/main/res/drawable/bottom_nav_item_bg.xml" value="0.25092592592592594" />
         <entry key="..\:/Users/Ahmed/AndroidStudioProjects/Akkaber/app/src/main/res/drawable/checkbox_bg.xml" value="0.1140625" />
         <entry key="..\:/Users/Ahmed/AndroidStudioProjects/Akkaber/app/src/main/res/drawable/circle_primary.xml" value="0.26615384615384613" />

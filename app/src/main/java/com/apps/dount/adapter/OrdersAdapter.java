@@ -13,6 +13,7 @@ import com.apps.dount.R;
 import com.apps.dount.databinding.OrderRowBinding;
 import com.apps.dount.model.OrderModel;
 import com.apps.dount.uis.activity_my_orders.MyOrderActivity;
+import com.apps.dount.uis.activity_previous_orders.PreviousOrderActivity;
 
 import java.util.List;
 
@@ -46,6 +47,10 @@ public class OrdersAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             public void onClick(View view) {
                 if (context instanceof MyOrderActivity) {
                     MyOrderActivity myOrderActivity = (MyOrderActivity) context;
+                    myOrderActivity.show(list.get(holder.getLayoutPosition()));
+                }
+                else   if (context instanceof PreviousOrderActivity) {
+                    PreviousOrderActivity myOrderActivity = (PreviousOrderActivity) context;
                     myOrderActivity.show(list.get(holder.getLayoutPosition()));
                 }
             }

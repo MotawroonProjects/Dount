@@ -27,6 +27,14 @@
         tools:ignore="AllowBackup"
         tools:targetApi="q">
         <activity
+            android:name=".uis.activity_previous_order_detials.PreviousOrderDetialsActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan">
+
+        </activity>
+
+        <activity
             android:name="com.apps.dount.uis.activity_map.MapActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:exported="true"

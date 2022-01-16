@@ -8,6 +8,8 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -87,17 +89,23 @@ public class PaymentActivity extends BaseActivity {
             binding.setLocationModel(locationModel);
             activityPaymentMvvm.getShip(locationModel.getLat(), locationModel.getLng());
 
+
         });
         activityPaymentMvvm.getSend().observe(this, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {
                 if (aBoolean) {
-                    preferences.clearCart(PaymentActivity.this);
-                    Intent intent = new Intent(PaymentActivity.this, MyOrderActivity.class);
-                    startActivity(intent);
-                    finish();
+                    openSheet();
                 } else {
                     Toast.makeText(PaymentActivity.this, getResources().getString(R.string.wallet_not), Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        activityPaymentMvvm.getTime().observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                if (aBoolean) {
+                    closeSheet();
                 }
             }
         });
@@ -267,6 +275,65 @@ public class PaymentActivity extends BaseActivity {
                 binding.setModel(cartDataModel);
             }
         }
+    }
+
+    public void openSheet() {
+
+        Animation animation = AnimationUtils.loadAnimation(this, R.anim.slide_up);
+
+        binding.flData.clearAnimation();
+        binding.flData.startAnimation(animation);
+
+
+        animation.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+                binding.flData.setVisibility(View.VISIBLE);
+                activityPaymentMvvm.startTimer();
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+
+    }
+
+    private void closeSheet() {
+        Animation animation = AnimationUtils.loadAnimation(this, R.anim.slide_down);
+
+        binding.flData.clearAnimation();
+        binding.flData.startAnimation(animation);
+
+        animation.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                binding.flData.setVisibility(View.GONE);
+
+                preferences.clearCart(PaymentActivity.this);
+                Intent intent = new Intent(PaymentActivity.this, MyOrderActivity.class);
+                startActivity(intent);
+                finish();
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+
     }
 
 
