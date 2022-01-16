@@ -116,8 +116,8 @@ public class FragmentBranches extends BaseFragment implements OnMapReadyCallback
         branchModels.add(new BranchModel());
         branchModels.add(new BranchModel());
         branchModels.add(new BranchModel());
-        SnapHelper snapHelper = new PagerSnapHelper();
-        snapHelper.attachToRecyclerView(binding.recView);
+//        SnapHelper snapHelper = new PagerSnapHelper();
+//        snapHelper.attachToRecyclerView(binding.recView);
         binding.recView.setLayoutManager(new LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false));
         binding.recView.setAdapter(branchAdapter);
         branchAdapter.updateList(branchModels);
