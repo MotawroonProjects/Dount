@@ -5,28 +5,43 @@ import java.util.List;
 
 public class DepartmentModel implements Serializable {
     private String id;
-    private String photo;
-    private String slider;
-    private List<ProductModel> products;
-    private String title;
+    private String is_sale;
+    private String name;
+    private String image;
+    private Object parent_id;
+    private String is_active;
+    private String created_at;
+    private String updated_at;
 
     public String getId() {
         return id;
     }
 
-    public String getPhoto() {
-        return photo;
+    public String getIs_sale() {
+        return is_sale;
     }
 
-    public String getSlider() {
-        return slider;
+    public String getName() {
+        return name;
     }
 
-    public List<ProductModel> getProducts() {
-        return products;
+    public String getImage() {
+        return image;
     }
 
-    public String getTitle() {
-        return title;
+    public Object getParent_id() {
+        return parent_id;
+    }
+
+    public String getIs_active() {
+        return is_active;
+    }
+
+    public String getCreated_at() {
+        return created_at;
+    }
+
+    public String getUpdated_at() {
+        return updated_at;
     }
 }

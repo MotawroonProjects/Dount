@@ -9,9 +9,13 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.apps.dount.model.SingleDepartmentDataModel;
+import com.apps.dount.model.ProductDataModel;
+import com.apps.dount.model.ProductDataModel;
 import com.apps.dount.remote.Api;
 import com.apps.dount.tags.Tags;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -27,7 +31,7 @@ public class ActivityCategoryDetialsMvvm extends AndroidViewModel {
     private MutableLiveData<Boolean> isLoadingLivData;
 
     private CompositeDisposable disposable = new CompositeDisposable();
-    private MutableLiveData<SingleDepartmentDataModel> departmentLivData;
+    private MutableLiveData<ProductDataModel> departmentLivData;
 
 
     public ActivityCategoryDetialsMvvm(@NonNull Application application) {
@@ -35,7 +39,7 @@ public class ActivityCategoryDetialsMvvm extends AndroidViewModel {
         context = application.getApplicationContext();
     }
 
-    public LiveData<SingleDepartmentDataModel> getCategoryData() {
+    public LiveData<ProductDataModel> getCategoryData() {
         if (departmentLivData == null) {
             departmentLivData = new MutableLiveData<>();
 
@@ -51,20 +55,22 @@ public class ActivityCategoryDetialsMvvm extends AndroidViewModel {
     }
 
     public void getDepartmentDetials(String lang, String id) {
+        List<String> ids=new ArrayList<>();
+        ids.add(id);
         isLoadingLivData.postValue(true);
         Api.getService(Tags.base_url)
-                .getSingleDepartment(lang, id)
+                .getSingleDepartment(ids)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
 
-                .subscribe(new SingleObserver<Response<SingleDepartmentDataModel>>() {
+                .subscribe(new SingleObserver<Response<ProductDataModel>>() {
                     @Override
                     public void onSubscribe(@NonNull Disposable d) {
                         disposable.add(d);
                     }
 
                     @Override
-                    public void onSuccess(@NonNull Response<SingleDepartmentDataModel> response) {
+                    public void onSuccess(@NonNull Response<ProductDataModel> response) {
                         isLoadingLivData.postValue(false);
 
                         if (response.isSuccessful() && response.body() != null) {

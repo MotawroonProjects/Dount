@@ -3,11 +3,11 @@ package com.apps.dount.model;
 import java.io.Serializable;
 
 public class StatusResponse implements Serializable {
-    protected int status;
+    protected int code;
     protected String message;
 
     public int getStatus() {
-        return status;
+        return code;
     }
 
     public String getMessage() {

@@ -38,7 +38,7 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        image="@{model.photo}"
+                        image="@{model.image}"
                         android:layout_width="match_parent"
                         android:layout_height="80dp"
                         android:layout_margin="8dp"
@@ -48,7 +48,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="@{model.title}"
+                        android:text="@{model.name}"
                         android:textColor="@color/gray20"
                         android:textSize="10sp" />
 
@@ -72,7 +72,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="5dp"
-                    android:text="@{model.price_after}"
+                    android:text="@{model.price}"
                     android:textColor="@color/colorPrimary"
                     android:textSize="12sp"
 
@@ -100,7 +100,7 @@
             android:layout_gravity="end"
             android:layout_margin="3dp"
             android:button="@drawable/checkbox_bg"
-            android:checked='@{model.is_favorite.equals("yes")?true:false}'
+            android:checked='@{model.is_favorite?true:false}'
             android:clickable="false"
             android:visibility='@{usermodel==null?View.GONE:View.VISIBLE,default=gone}' />
     </androidx.cardview.widget.CardView>

@@ -74,7 +74,7 @@ public class ActivityFavouriteMvvm extends AndroidViewModel {
                            // Log.e("ddlldldl",response.body().getStatus()+"");
                             if (response.body().getStatus() == 200) {
                                 // List<ProductModel> list = response.body().getData();
-                                listMutableLiveData.setValue(response.body().getProducts());
+                                listMutableLiveData.setValue(response.body().getData());
                             }
                         }
                     }

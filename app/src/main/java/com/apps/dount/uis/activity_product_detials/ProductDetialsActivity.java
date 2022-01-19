@@ -74,16 +74,13 @@ public class ProductDetialsActivity extends BaseActivity {
                 if (aBoolean) {
                     isfav=true;
                     if (productmodel != null) {
-                        if (productmodel.getIs_favorite() == null) {
-                            productmodel.setIs_favorite("yes");
 
-                        } else {
-                            if (productmodel.getIs_favorite().equals("yes")) {
-                                productmodel.setIs_favorite("no");
+                            if (productmodel.isIs_favorite()) {
+                                productmodel.setIs_favorite(false);
                             } else {
-                                productmodel.setIs_favorite("yes");
+                                productmodel.setIs_favorite(true);
                             }
-                        }
+
                         binding.setModel(productmodel);
 
                     }
@@ -111,14 +108,14 @@ public class ProductDetialsActivity extends BaseActivity {
                 if (singleProductDataModel.getData() != null) {
                     ProductDetialsActivity.this.productmodel = singleProductDataModel.getData();
                     binding.setModel(singleProductDataModel.getData());
-                        if (singleProductDataModel.getData().getOffer() == null) {
+//                        if (singleProductDataModel.getData().getOffer() == null) {
                             price = Double.parseDouble(singleProductDataModel.getData().getPrice());
                             binding.tvTotal.setText(price + "");
-                        } else {
-                            price = Double.parseDouble(singleProductDataModel.getData().getOffer().getPrice_after());
-                            binding.tvTotal.setText(price + "");
-
-                        }
+//                        } else {
+//                            price = Double.parseDouble(singleProductDataModel.getData().getOffer().getPrice_after());
+//                            binding.tvTotal.setText(price + "");
+//
+//                        }
                     }
 
                 }

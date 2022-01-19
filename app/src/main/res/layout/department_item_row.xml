@@ -18,7 +18,7 @@
 
         <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/image"
-            image="@{model.photo}"
+            image="@{model.image}"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:src="@drawable/lamb"
@@ -41,7 +41,7 @@
             android:paddingRight="40dp"
             android:paddingBottom="7dp"
             android:paddingTop="7dp"
-            android:text="@{model.title}"
+            android:text="@{model.name}"
             android:textColor="@color/black"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"

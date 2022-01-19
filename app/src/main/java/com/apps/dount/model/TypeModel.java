@@ -14,12 +14,12 @@ public class TypeModel implements Serializable {
     private boolean isselected;
     private List<SizeModel> sizes;
 
-    public String getProduct_id() {
+    public String getId() {
         return product_id;
     }
 
-    public String getId() {
-        return id;
+    public String getProduct_id() {
+        return product_id;
     }
 
     public String getTitle() {

@@ -17,6 +17,8 @@ import com.apps.dount.model.SliderDataModel;
 import com.apps.dount.model.StatusResponse;
 import com.apps.dount.model.UserModel;
 
+import java.util.List;
+
 import io.reactivex.Observable;
 import io.reactivex.Single;
 import okhttp3.MultipartBody;
@@ -41,11 +43,11 @@ public interface Service {
 
 
     @FormUrlEncoded
-    @POST("api/login")
+    @POST("api/auth/login")
     Single<Response<UserModel>> login(@Field("phone") String phone);
 
     @FormUrlEncoded
-    @POST("api/register")
+    @POST("api/auth/register")
     Single<Response<UserModel>> signUp(@Field("first_name") String first_name,
                                        @Field("last_name") String last_name,
                                        @Field("phone_code") String phone_code,
@@ -64,7 +66,7 @@ public interface Service {
 
 
     @Multipart
-    @POST("api/register")
+    @POST("api/auth/register")
     Observable<Response<UserModel>> signUpwithImage(@Part("first_name") RequestBody first_name,
                                                     @Part("last_name") RequestBody last_name,
                                                     @Part("phone_code") RequestBody phone_code,
@@ -123,15 +125,17 @@ public interface Service {
     @GET("api/banners")
     Single<Response<SliderDataModel>> getSlider();
 
-    @GET("api/categories")
+    @GET("api/home/categories")
     Single<Response<DepartmentDataModel>> getDepartments(@Header("lang") String lang);
 
-    @GET("api/getCategoryById")
-    Single<Response<SingleDepartmentDataModel>> getSingleDepartment(@Header("lang") String lang,
-                                                                    @Query(value = "id") String id);
+    @GET("api/home/products")
+    Single<Response<ProductDataModel>> getSingleDepartment(@Query(value = "category_ids") List<String> id);
 
     @GET("api/offers")
     Single<Response<ProductDataModel>> getOffers(@Header("lang") String lang);
+
+    @GET("api/home/products")
+    Single<Response<ProductDataModel>> getProducts();
 
     @GET("api/box")
     Single<Response<SingleProductDataModel>> getBox(@Header("lang") String lang);

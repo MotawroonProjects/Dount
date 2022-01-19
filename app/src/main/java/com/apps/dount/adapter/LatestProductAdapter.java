@@ -50,7 +50,7 @@ public class LatestProductAdapter extends RecyclerView.Adapter<RecyclerView.View
             public void onClick(View view) {
                 if (fragment instanceof FragmentHome) {
                     FragmentHome fragmentHome = (FragmentHome) fragment;
-                    fragmentHome.showProductDetials(list.get(holder.getLayoutPosition()).getProduct_id());
+                    fragmentHome.showProductDetials(list.get(holder.getLayoutPosition()).getId());
                 }
                 else  if (context instanceof CategoryDetialsActivity) {
                     CategoryDetialsActivity categoryDetialsActivity = (CategoryDetialsActivity) context;

@@ -50,7 +50,7 @@ public class OfferProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             public void onClick(View view) {
                 if (fragment instanceof FragmentHome) {
                     FragmentHome fragmentHome = (FragmentHome) fragment;
-                    fragmentHome.showProductDetials(list.get(holder.getLayoutPosition()).getProduct_id());
+                    fragmentHome.showProductDetials(list.get(holder.getLayoutPosition()).getId());
                 }
             }
         });

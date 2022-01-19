@@ -8,7 +8,7 @@ public class WayModel implements Serializable {
     private String price;
     private boolean isselected;
 
-    public String getProduct_id() {
+    public String getId() {
         return product_id;
     }
 

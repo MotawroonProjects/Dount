@@ -13,7 +13,7 @@ public class ItemCartModel implements Serializable {
     private String title;
     private String image;
 
-    public String getProduct_id() {
+    public String getId() {
         return product_id;
     }
 

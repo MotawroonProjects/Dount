@@ -29,7 +29,7 @@
             android:paddingRight="8dp">
 
             <ImageView
-                image="@{model.photo}"
+                image="@{model.image}"
 
                 android:layout_width="36dp"
                 android:layout_height="36dp"
@@ -42,7 +42,7 @@
                 android:layout_marginStart="5dp"
                 android:ellipsize="end"
                 android:gravity="center"
-                android:text="@{model.title}"
+                android:text="@{model.name}"
                 android:textColor="@color/black"
                 android:textSize="13sp" />
         </LinearLayout>

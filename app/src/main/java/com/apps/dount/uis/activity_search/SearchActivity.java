@@ -17,6 +17,7 @@ import com.apps.dount.adapter.LatestProductAdapter;
 import com.apps.dount.adapter.OfferProductAdapter;
 import com.apps.dount.databinding.ActivitySearchBinding;
 import com.apps.dount.model.FilterModel;
+import com.apps.dount.model.ProductDataModel;
 import com.apps.dount.model.SingleDepartmentDataModel;
 import com.apps.dount.model.UserModel;
 import com.apps.dount.mvvm.ActivityCategoryDetialsMvvm;
@@ -26,6 +27,7 @@ import com.apps.dount.uis.activity_base.BaseActivity;
 import com.apps.dount.uis.activity_filter.FilterActivity;
 import com.apps.dount.uis.activity_product_detials.ProductDetialsActivity;
 
+import java.util.ArrayList;
 import java.util.logging.Filter;
 
 public class SearchActivity extends BaseActivity {
@@ -65,14 +67,14 @@ public class SearchActivity extends BaseActivity {
             }
             // binding.swipeRefresh.setRefreshing(isLoading);
         });
-        activitySearchMvvm.getCategoryData().observe(this, new Observer<SingleDepartmentDataModel>() {
+        activitySearchMvvm.getCategoryData().observe(this, new Observer<ProductDataModel>() {
             @Override
-            public void onChanged(SingleDepartmentDataModel singleDepartmentDataModel) {
+            public void onChanged(ProductDataModel singleDepartmentDataModel) {
                 binding.progBar.setVisibility(View.GONE);
                 if (singleDepartmentDataModel.getData() != null) {
-                    binding.setModel(singleDepartmentDataModel.getData());
-                    if (singleDepartmentDataModel.getData().getProducts() != null && singleDepartmentDataModel.getData().getProducts().size() > 0) {
-                        product2Adapter.updateList(singleDepartmentDataModel.getData().getProducts());
+                    //binding.setModel(singleDepartmentDataModel.getData());
+                    if (singleDepartmentDataModel.getData() != null && singleDepartmentDataModel.getData().size() > 0) {
+                        product2Adapter.updateList(singleDepartmentDataModel.getData());
                         binding.cardNoData.setVisibility(View.GONE);
                     } else {
                         binding.cardNoData.setVisibility(View.VISIBLE);
@@ -93,7 +95,9 @@ public class SearchActivity extends BaseActivity {
                 finish();
             }
         });
-        activitySearchMvvm.getDepartmentDetials(getLang(), catid);
+        filtermodel=new FilterModel();
+        filtermodel.setDepartments(new ArrayList<>());
+        activitySearchMvvm.getDepartmentDetials(filtermodel.getDepartments());
         launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
             if (req == 2 && result.getResultCode() == Activity.RESULT_OK) {
                 setResult(RESULT_OK);
@@ -101,7 +105,9 @@ public class SearchActivity extends BaseActivity {
             else   if (req == 3 && result.getResultCode() == Activity.RESULT_OK) {
                 if(result.getData().getSerializableExtra("data")!=null){
                 filtermodel=(FilterModel)result.getData().getSerializableExtra("data");
-            }}
+                    activitySearchMvvm.getDepartmentDetials(filtermodel.getDepartments());
+
+                }}
         });
         binding.imageFilter.setOnClickListener(new View.OnClickListener() {
             @Override

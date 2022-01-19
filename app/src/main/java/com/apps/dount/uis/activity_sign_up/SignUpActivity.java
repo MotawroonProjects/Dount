@@ -150,20 +150,14 @@ public class SignUpActivity extends BaseActivity {
         binding.btnSignup.setOnClickListener(view -> {
             if (model.isDataValid(this)) {
 
-                if (uri == null) {
-                    if (userModel == null) {
-                        activitySignupMvvm.signupWithOutImage(this, model, phone_code, phone);
-                    } else {
-                        activitySignupMvvm.updateProfileWithOutImage(this, model, userModel);
-                    }
-                } else {
+
                     if (userModel == null) {
 
                         activitySignupMvvm.signupWithImage(this, model, phone_code, phone, uri);
                     } else {
                         activitySignupMvvm.updateProfileWithImage(this, model, uri, userModel);
                     }
-                }
+
 
             }
         });

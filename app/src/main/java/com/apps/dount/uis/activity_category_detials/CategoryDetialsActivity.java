@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import com.apps.dount.R;
 import com.apps.dount.adapter.LatestProductAdapter;
 import com.apps.dount.databinding.ActivityCategoryDetialsBinding;
+import com.apps.dount.model.ProductDataModel;
 import com.apps.dount.model.SingleDepartmentDataModel;
 import com.apps.dount.model.UserModel;
 import com.apps.dount.mvvm.ActivityCategoryDetialsMvvm;
@@ -58,14 +59,14 @@ public class CategoryDetialsActivity extends BaseActivity {
             }
             // binding.swipeRefresh.setRefreshing(isLoading);
         });
-        categoryDetialsMvvm.getCategoryData().observe(this, new Observer<SingleDepartmentDataModel>() {
+        categoryDetialsMvvm.getCategoryData().observe(this, new Observer<ProductDataModel>() {
             @Override
-            public void onChanged(SingleDepartmentDataModel singleDepartmentDataModel) {
+            public void onChanged(ProductDataModel singleDepartmentDataModel) {
                 binding.progBar.setVisibility(View.GONE);
                 if (singleDepartmentDataModel.getData() != null) {
-                    binding.setModel(singleDepartmentDataModel.getData());
-                    if (singleDepartmentDataModel.getData().getProducts() != null && singleDepartmentDataModel.getData().getProducts().size() > 0) {
-                        product2Adapter.updateList(singleDepartmentDataModel.getData().getProducts());
+                  //  binding.setModel(singleDepartmentDataModel.getData());
+                    if (singleDepartmentDataModel.getData()!= null && singleDepartmentDataModel.getData().size() > 0) {
+                        product2Adapter.updateList(singleDepartmentDataModel.getData());
                         binding.cardNoData.setVisibility(View.GONE);
                     } else {
                         binding.cardNoData.setVisibility(View.VISIBLE);

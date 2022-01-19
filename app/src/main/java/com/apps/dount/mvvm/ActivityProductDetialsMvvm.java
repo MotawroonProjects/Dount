@@ -172,8 +172,8 @@ public class ActivityProductDetialsMvvm extends AndroidViewModel {
             itemCartModel.setQty(amount);
             itemCartModel.setTotal_price(total);
             itemCartModel.setProduct_price(price);
-            itemCartModel.setImage(productModel.getBackground());
-            itemCartModel.setTitle(productModel.getTitle());
+            itemCartModel.setImage(productModel.getImage());
+            itemCartModel.setTitle(productModel.getName());
             cartModelList.add(itemCartModel);
 
         } else {
@@ -213,7 +213,7 @@ public class ActivityProductDetialsMvvm extends AndroidViewModel {
             cartModelList = cartDataModel.getDetails();
             for (int index = 0; index < cartModelList.size(); index++) {
                 ItemCartModel cartModel = cartModelList.get(index);
-                if (product_id.equals(cartModel.getProduct_id())) {
+                if (product_id.equals(cartModel.getId())) {
                     pos = index;
                     return pos;
                 }

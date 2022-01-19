@@ -153,7 +153,7 @@ public class FragmentHomeMvvm extends AndroidViewModel {
         isLoadingLiveData.setValue(true);
 
         Api.getService(Tags.base_url)
-                .getOffers(lang)
+                .getProducts()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<Response<ProductDataModel>>() {

@@ -87,8 +87,11 @@ public class ActivitySignupMvvm extends AndroidViewModel {
         RequestBody phone_code_part = Common.getRequestBodyText(phone_code.replace("+", ""));
 
 
-        MultipartBody.Part image = Common.getMultiPart(context, uri, "photo");
+        MultipartBody.Part image=null;
+        if(uri!=null){
+            image = Common.getMultiPart(context, uri, "photo");
 
+        }
 
         Api.getService(Tags.base_url).signUpwithImage(name_part, seconded_name_part, phone_code_part, phone_part, code_part, image).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).unsubscribeOn(Schedulers.io()).subscribe(new Observer<Response<UserModel>>() {
             @Override
@@ -166,8 +169,11 @@ public class ActivitySignupMvvm extends AndroidViewModel {
         RequestBody user_part = Common.getRequestBodyText(userModel.getData().getId() + "");
 
 
-        MultipartBody.Part image = Common.getMultiPart(context, uri, "photo");
+        MultipartBody.Part image=null;
+        if(uri!=null){
+            image = Common.getMultiPart(context, uri, "photo");
 
+        }
 
         Api.getService(Tags.base_url).editprofilewithImage(firts_name_part, seconed_name_part, user_part, image).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).unsubscribeOn(Schedulers.io()).subscribe(new Observer<Response<UserModel>>() {
             @Override
