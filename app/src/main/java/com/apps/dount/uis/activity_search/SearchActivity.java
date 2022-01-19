@@ -104,6 +104,7 @@ public class SearchActivity extends BaseActivity {
             }
             else   if (req == 3 && result.getResultCode() == Activity.RESULT_OK) {
                 if(result.getData().getSerializableExtra("data")!=null){
+                    product2Adapter.updateList(new ArrayList<>());
                 filtermodel=(FilterModel)result.getData().getSerializableExtra("data");
                     activitySearchMvvm.getDepartmentDetials(filtermodel.getDepartments());
 
