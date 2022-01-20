@@ -32,7 +32,7 @@
                 android:layout_height="120dp"
                 android:layout_gravity="center"
                 android:scaleType="fitXY"
-                android:src="@drawable/meat" />
+                />
 
 
             <TextView

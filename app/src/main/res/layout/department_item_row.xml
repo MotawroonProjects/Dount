@@ -18,10 +18,9 @@
 
         <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/image"
-            image="@{model.image}"
+            image2="@{model.image}"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:src="@drawable/lamb"
 
             app:layout_constraintEnd_toEndOf="parent"
 
