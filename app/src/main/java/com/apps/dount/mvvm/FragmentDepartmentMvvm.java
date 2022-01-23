@@ -63,7 +63,7 @@ public class FragmentDepartmentMvvm extends AndroidViewModel {
     public void getDepartment(String lang) {
         isLoadingLiveData.postValue(true);
         Api.getService(Tags.base_url)
-                .getDepartments(lang)
+                .getDepartments()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
 

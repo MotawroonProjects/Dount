@@ -68,7 +68,7 @@
                             android:maxLines="3"
                             android:paddingStart="5dp"
                             android:paddingEnd="5dp"
-                            android:text="فرع شارع النصر"
+                            android:text="@{model.address}"
                             android:textAlignment="viewStart"
                             android:textColor="@color/colorPrimary"
                             android:textSize="14sp"

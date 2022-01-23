@@ -1,6 +1,7 @@
 package com.apps.dount.services;
 
 
+import com.apps.dount.model.BranchDataModel;
 import com.apps.dount.model.CartDataModel;
 import com.apps.dount.model.DepartmentDataModel;
 import com.apps.dount.model.OrderDataModel;
@@ -126,7 +127,7 @@ public interface Service {
     Single<Response<SliderDataModel>> getSlider();
 
     @GET("api/home/categories")
-    Single<Response<DepartmentDataModel>> getDepartments(@Header("lang") String lang);
+    Single<Response<DepartmentDataModel>> getDepartments();
 
     @GET("api/home/products")
     Single<Response<ProductDataModel>> getSingleDepartment(@Query(value = "category_ids") List<String> id);
@@ -136,7 +137,8 @@ public interface Service {
 
     @GET("api/home/products")
     Single<Response<ProductDataModel>> getProducts();
-
+    @GET("api/home/branches")
+    Single<Response<BranchDataModel>> getBranches();
     @GET("api/box")
     Single<Response<SingleProductDataModel>> getBox(@Header("lang") String lang);
 

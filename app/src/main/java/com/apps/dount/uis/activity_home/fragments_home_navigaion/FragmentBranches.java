@@ -12,17 +12,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.PagerSnapHelper;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.SnapHelper;
 
 
 import com.apps.dount.R;
 import com.apps.dount.adapter.BranchAdapter;
 import com.apps.dount.databinding.FragmentBranchesBinding;
 import com.apps.dount.model.BranchModel;
+import com.apps.dount.mvvm.FragmentBranchesMvvm;
 import com.apps.dount.uis.activity_base.BaseFragment;
 import com.apps.dount.uis.activity_home.HomeActivity;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -33,11 +30,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.material.bottomsheet.BottomSheetDialog;
 
-import java.text.NumberFormat;
-import java.util.ArrayList;
-import java.util.Currency;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -56,8 +49,8 @@ public class FragmentBranches extends BaseFragment implements OnMapReadyCallback
     private float zoom = 15.0f;
     private ActivityResultLauncher<String> permissionLauncher;
     private CompositeDisposable disposable = new CompositeDisposable();
-    private List<BranchModel> branchModels;
     private BranchAdapter branchAdapter;
+    private FragmentBranchesMvvm fragmentBranchesMvvm;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -109,18 +102,47 @@ public class FragmentBranches extends BaseFragment implements OnMapReadyCallback
 
     private void initView() {
         branchAdapter = new BranchAdapter(activity);
-        branchModels = new ArrayList<>();
-        branchModels.add(new BranchModel());
-        branchModels.add(new BranchModel());
-        branchModels.add(new BranchModel());
-        branchModels.add(new BranchModel());
-        branchModels.add(new BranchModel());
-        branchModels.add(new BranchModel());
+        fragmentBranchesMvvm = ViewModelProviders.of(this).get(FragmentBranchesMvvm.class);
+       // fragmentBranchesMvvm.getBranch().observe(activity, weddingHallModels -> branchAdapter.updateList(fragmentBranchesMvvm.getBranch().getValue()));
+fragmentBranchesMvvm.getBranch();
+        fragmentBranchesMvvm.getIsLoading().observe(activity, isLoading -> {
+            if (isLoading) {
+                binding.flLoading.setClickable(true);
+                binding.flLoading.setFocusable(true);
+                binding.progBar.setVisibility(View.VISIBLE);
+                binding.flLoading.setVisibility(View.VISIBLE);
+                binding.cardNoData.setVisibility(View.GONE);
+                branchAdapter.updateList(null);
+
+            }
+        });
+
+        fragmentBranchesMvvm.getBranch().observe(activity, new androidx.lifecycle.Observer<List<BranchModel>>() {
+            @Override
+            public void onChanged(List<BranchModel> branchModels) {
+                if (branchModels.size() > 0) {
+                    branchAdapter.updateList(fragmentBranchesMvvm.getBranch().getValue());
+                    updateMapData(branchModels);
+                    binding.cardNoData.setVisibility(View.GONE);
+                    binding.flLoading.setVisibility(View.GONE);
+
+                } else {
+                    binding.flLoading.setVisibility(View.VISIBLE);
+                    binding.progBar.setVisibility(View.GONE);
+                    binding.cardNoData.setVisibility(View.VISIBLE);
+                    branchAdapter.updateList(null);
+                    mMap.clear();
+                    binding.flLoading.setClickable(false);
+                    binding.flLoading.setFocusable(false);
+                }
+            }
+        });
+
 //        SnapHelper snapHelper = new PagerSnapHelper();
 //        snapHelper.attachToRecyclerView(binding.recView);
         binding.recView.setLayoutManager(new LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false));
         binding.recView.setAdapter(branchAdapter);
-        branchAdapter.updateList(branchModels);
+
         updateUI();
     }
 
@@ -141,12 +163,32 @@ public class FragmentBranches extends BaseFragment implements OnMapReadyCallback
             mMap.setTrafficEnabled(false);
             mMap.setBuildingsEnabled(false);
             mMap.setIndoorEnabled(true);
-
+            fragmentBranchesMvvm.getBranchData();
         }
     }
 
     private void addMarker(double lat, double lng) {
         mMap.addMarker(new MarkerOptions().position(new LatLng(lat, lng)).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
+
+    }
+
+    private void updateMapData(List<BranchModel> data) {
+
+        LatLngBounds.Builder bounds = new LatLngBounds.Builder();
+        for (BranchModel branchModel : data) {
+            bounds.include(new LatLng(Double.parseDouble(branchModel.getLatitude()), Double.parseDouble(branchModel.getLongitude())));
+            addMarker(Double.parseDouble(branchModel.getLatitude()), Double.parseDouble(branchModel.getLongitude()));
+        }
+
+        if (data.size() >= 2) {
+            mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds.build(), 100));
+
+        } else if (data.size() == 1) {
+            LatLng latLng = new LatLng(Double.parseDouble(data.get(0).getLatitude()), Double.parseDouble(data.get(0).getLongitude()));
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
+
+        }
+
 
     }
 
