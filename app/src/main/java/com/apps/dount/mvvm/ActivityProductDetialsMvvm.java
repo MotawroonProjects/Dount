@@ -14,6 +14,7 @@ import com.apps.dount.model.ItemCartModel;
 import com.apps.dount.model.ProductModel;
 import com.apps.dount.model.SingleProductDataModel;
 import com.apps.dount.model.StatusResponse;
+import com.apps.dount.model.UserModel;
 import com.apps.dount.preferences.Preferences;
 import com.apps.dount.remote.Api;
 import com.apps.dount.tags.Tags;
@@ -113,9 +114,9 @@ public class ActivityProductDetialsMvvm extends AndroidViewModel {
 
     }
 
-    public void addRemoveFavourite(String id, String user_id) {
+    public void addRemoveFavourite(String id, UserModel userModel) {
         Api.getService(Tags.base_url)
-                .addRemoveFav(user_id, id)
+                .addRemoveFav("Bearer "+userModel.getData().getAccess_token(), id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
 

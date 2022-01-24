@@ -45,7 +45,7 @@ public interface Service {
 
     @FormUrlEncoded
     @POST("api/auth/login")
-    Single<Response<UserModel>> login(@Field("phone") String phone);
+    Single<Response<UserModel>> login(@Field("phone_number") String phone_number);
 
     @FormUrlEncoded
     @POST("api/auth/register")
@@ -68,10 +68,8 @@ public interface Service {
 
     @Multipart
     @POST("api/auth/register")
-    Observable<Response<UserModel>> signUpwithImage(@Part("first_name") RequestBody first_name,
-                                                    @Part("last_name") RequestBody last_name,
-                                                    @Part("phone_code") RequestBody phone_code,
-                                                    @Part("phone") RequestBody phone,
+    Observable<Response<UserModel>> signUpwithImage(@Part("name") RequestBody name,
+                                                    @Part("phone_number") RequestBody phone_number,
                                                     @Part("register_by") RequestBody register_by,
                                                     @Part MultipartBody.Part logo
 
@@ -98,8 +96,8 @@ public interface Service {
     );
 
     @FormUrlEncoded
-    @POST("api/logout")
-    Single<Response<StatusResponse>> logout(@Field("user_id") String user_id,
+    @POST("api/auth/logout")
+    Single<Response<StatusResponse>> logout(@Header("Authorization") String authorization,
                                             @Field("token") String token
 
 
@@ -119,11 +117,11 @@ public interface Service {
     Single<Response<NotificationDataModel>> getNotifications(@Query(value = "user_id") String user_id);
 
 
-    @GET("api/my_favourites")
+    @GET("api/profile/favoriteProducts")
     Single<Response<ProductDataModel>> getFavourites(@Header("lang") String lang,
-                                                     @Query(value = "user_id") int user_id);
+                                                     @Header("Authorization") String authorization);
 
-    @GET("api/banners")
+    @GET("api/home/slider")
     Single<Response<SliderDataModel>> getSlider();
 
     @GET("api/home/categories")
@@ -162,8 +160,8 @@ public interface Service {
                                                @Field("message") String message);
 
     @FormUrlEncoded
-    @POST("api/make_favourite")
-    Single<Response<StatusResponse>> addRemoveFav(@Field("user_id") String user_id,
+    @POST("api/home/add-deleteFavorite")
+    Single<Response<StatusResponse>> addRemoveFav(@Header("Authorization") String authorization,
                                                   @Field("product_id") String product_id);
 
     @GET("api/shipping_price")

@@ -36,6 +36,63 @@ public class GeneralMethod {
         }
     }
 
+    @BindingAdapter("image3")
+    public static void image3(View view, String imageUrl) {
+        if (imageUrl != null) {
+            String imageUrl1 =imageUrl;
+
+            view.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+                @Override
+                public void onGlobalLayout() {
+                    view.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+
+
+                    if (view instanceof CircleImageView) {
+                        CircleImageView imageView = (CircleImageView) view;
+                        if (imageUrl1 != null) {
+                            RequestOptions options = new RequestOptions().override(view.getWidth(), view.getHeight());
+                            Glide.with(view.getContext()).asBitmap()
+                                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                                    .load(imageUrl1)
+                                    //.centerCrop()
+                                    .apply(options)
+                                    .into(imageView);
+                        }
+                    } else if (view instanceof RoundedImageView) {
+                        RoundedImageView imageView = (RoundedImageView) view;
+
+                        if (imageUrl1 != null) {
+
+                            RequestOptions options = new RequestOptions().override(view.getWidth(), view.getHeight());
+                            Glide.with(view.getContext()).asBitmap()
+                                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                                    .load(imageUrl1)
+                                    //.centerCrop()
+                                    .apply(options)
+                                    .into(imageView);
+
+                        }
+                    } else if (view instanceof ImageView) {
+                        ImageView imageView = (ImageView) view;
+
+                        if (imageUrl1 != null) {
+
+                            RequestOptions options = new RequestOptions().override(view.getWidth(), view.getHeight());
+                            Glide.with(view.getContext()).asBitmap()
+                                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                                    .load(imageUrl1)
+                                    //.centerCrop()
+                                    .apply(options)
+                                    .into(imageView);
+                        }
+                    }
+
+                }
+            });
+        }
+
+    }
+
     @BindingAdapter("image2")
     public static void image2(View view, String imageUrl) {
         if (imageUrl != null) {

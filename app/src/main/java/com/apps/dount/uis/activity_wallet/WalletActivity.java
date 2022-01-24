@@ -54,7 +54,7 @@ public class WalletActivity extends BaseActivity {
                 binding.setModel(userModel);
             }
         });
-        activityWalletMvvm.getProfile(userModel.getData().getId()+"");
+        activityWalletMvvm.getProfile(userModel.getData().getUser().getId()+"");
         binding.lShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

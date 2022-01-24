@@ -79,11 +79,11 @@ public class ActivitySignupMvvm extends AndroidViewModel {
         ProgressDialog dialog = Common.createProgressDialog(context, context.getResources().getString(R.string.wait));
         dialog.setCancelable(false);
         dialog.show();
-        RequestBody name_part = Common.getRequestBodyText(model.getFirst_name());
+        RequestBody name_part = Common.getRequestBodyText(model.getFirst_name()+" "+model.getSeconed_name());
         RequestBody seconded_name_part = Common.getRequestBodyText(model.getSeconed_name());
 
         RequestBody code_part = Common.getRequestBodyText(model.getCode() + "");
-        RequestBody phone_part = Common.getRequestBodyText(phone);
+        RequestBody phone_part = Common.getRequestBodyText(phone_code.replace("+", "")+phone);
         RequestBody phone_code_part = Common.getRequestBodyText(phone_code.replace("+", ""));
 
 
@@ -93,7 +93,7 @@ public class ActivitySignupMvvm extends AndroidViewModel {
 
         }
 
-        Api.getService(Tags.base_url).signUpwithImage(name_part, seconded_name_part, phone_code_part, phone_part, code_part, image).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).unsubscribeOn(Schedulers.io()).subscribe(new Observer<Response<UserModel>>() {
+        Api.getService(Tags.base_url).signUpwithImage(name_part, phone_part, code_part, image).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).unsubscribeOn(Schedulers.io()).subscribe(new Observer<Response<UserModel>>() {
             @Override
             public void onSubscribe(@NonNull Disposable d) {
                 disposable.add(d);
@@ -130,7 +130,7 @@ public class ActivitySignupMvvm extends AndroidViewModel {
         ProgressDialog dialog = Common.createProgressDialog(context, context.getResources().getString(R.string.wait));
         dialog.setCancelable(false);
         dialog.show();
-        Api.getService(Tags.base_url).editprofile(model.getFirst_name(), model.getSeconed_name() + "", userModel.getData().getId() + "").subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).unsubscribeOn(Schedulers.io()).subscribe(new SingleObserver<Response<UserModel>>() {
+        Api.getService(Tags.base_url).editprofile(model.getFirst_name(), model.getSeconed_name() + "", userModel.getData().getUser().getId() + "").subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).unsubscribeOn(Schedulers.io()).subscribe(new SingleObserver<Response<UserModel>>() {
             @Override
             public void onSubscribe(@NonNull Disposable d) {
                 disposable.add(d);
@@ -166,7 +166,7 @@ public class ActivitySignupMvvm extends AndroidViewModel {
         dialog.show();
         RequestBody firts_name_part = Common.getRequestBodyText(model.getFirst_name());
         RequestBody seconed_name_part = Common.getRequestBodyText(model.getSeconed_name());
-        RequestBody user_part = Common.getRequestBodyText(userModel.getData().getId() + "");
+        RequestBody user_part = Common.getRequestBodyText(userModel.getData().getUser().getId() + "");
 
 
         MultipartBody.Part image=null;

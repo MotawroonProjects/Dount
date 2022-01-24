@@ -41,7 +41,7 @@ public class SliderAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
         SliderBinding binding = DataBindingUtil.inflate(inflater, R.layout.slider, container, false);
-        binding.setPhoto(list.get(position).getPhoto());
+        binding.setPhoto(list.get(position).getImage());
         container.addView(binding.getRoot());
         return binding.getRoot();
     }

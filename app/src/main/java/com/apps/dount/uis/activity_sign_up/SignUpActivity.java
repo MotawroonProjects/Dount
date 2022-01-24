@@ -73,16 +73,16 @@ public class SignUpActivity extends BaseActivity {
         model = new SignUpModel();
         userModel = getUserModel();
         if (userModel != null) {
-            model.setFirst_name(userModel.getData().getFirst_name());
-            model.setSeconed_name(userModel.getData().getLast_name());
+            model.setFirst_name(userModel.getData().getUser().getName().split(" ")[0]);
+            model.setSeconed_name(userModel.getData().getUser().getName().split(" ")[1]);
             binding.llCode.setVisibility(View.GONE);
             binding.checkbox.setVisibility(View.GONE);
             binding.fl.setVisibility(View.VISIBLE);
             binding.top.setVisibility(View.GONE);
-            if (userModel.getData().getPhoto() != null) {
+            if (userModel.getData().getUser().getPhoto() != null) {
                 binding.icon.setVisibility(View.GONE);
                 //Log.e("ldlldl", Tags.base_url + userModel.getData().getPhoto());
-                Picasso.get().load(Tags.base_url + userModel.getData().getPhoto()).into(binding.image);
+                Picasso.get().load(Tags.base_url + userModel.getData().getUser().getPhoto()).into(binding.image);
             }
         }
         else{

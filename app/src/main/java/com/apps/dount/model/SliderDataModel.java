@@ -11,15 +11,10 @@ public class SliderDataModel extends StatusResponse implements Serializable {
     }
 
     public static class SliderModel implements Serializable {
-        private String id;
-        private String photo;
+        private String image;
 
-        public String getId() {
-            return id;
-        }
-
-        public String getPhoto() {
-            return photo;
+        public String getImage() {
+            return image;
         }
     }
 }

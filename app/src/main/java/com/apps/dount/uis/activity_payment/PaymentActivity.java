@@ -39,7 +39,6 @@ import com.apps.dount.uis.activity_my_orders.MyOrderActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-import eightbitlab.com.blurview.RenderScriptBlur;
 
 public class PaymentActivity extends BaseActivity {
     private ActivityPaymentBinding binding;
@@ -224,7 +223,7 @@ public class PaymentActivity extends BaseActivity {
         binding.btnComplete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cartDataModel.setUser_id(userModel.getData().getId());
+               // cartDataModel.setUser_id(userModel.getData().getUser().getId());
                 activityPaymentMvvm.sendOrder(cartDataModel, userModel);
             }
         });

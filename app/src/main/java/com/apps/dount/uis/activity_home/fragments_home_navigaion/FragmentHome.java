@@ -192,7 +192,7 @@ public class FragmentHome extends BaseFragment {
         sliderAdapter = new SliderAdapter(sliderModelList, activity);
         binding.pager.setAdapter(sliderAdapter);
         binding.pager.setClipToPadding(false);
-        binding.pager.setPadding(80, 0, 80, 0);
+        binding.pager.setPadding(80, 0, 80, 10);
         binding.pager.setPageMargin(20);
 
         fragmentHomeMvvm.getSlider();

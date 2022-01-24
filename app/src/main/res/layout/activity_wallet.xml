@@ -124,7 +124,6 @@
                                  android:layout_width="wrap_content"
                                  android:layout_height="wrap_content"
                                  android:layout_marginEnd="5dp"
-                                 android:text='@{model.data.total+""}'
                                  android:textColor="@color/color9"
                                  android:textSize="50sp" />
 
@@ -175,7 +174,7 @@
                                      android:layout_height="wrap_content"
                                      android:layout_gravity="center_vertical"
                                      android:layout_margin="5dp"
-                                     android:text='@{model.data.purchase_gifts+""}'
+                                     android:text='@{model.data.user.purchase_gifts+""}'
                                      android:textColor="@color/color9"
                                      android:textSize="18sp" />
 
@@ -228,7 +227,7 @@
                                      android:layout_height="wrap_content"
                                      android:layout_gravity="center_vertical"
                                      android:layout_margin="5dp"
-                                     android:text='@{model.data.share_gifts+""}'
+                                     android:text='@{model.data.user.share_gifts+""}'
                                      android:textColor="@color/color9"
                                      android:textSize="18sp" />
 

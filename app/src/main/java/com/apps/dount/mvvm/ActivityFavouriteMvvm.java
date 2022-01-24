@@ -58,7 +58,7 @@ public class ActivityFavouriteMvvm extends AndroidViewModel {
         isLoadingLiveData.setValue(true);
 
         Api.getService(Tags.base_url)
-                .getFavourites(lang, userModel.getData().getId())
+                .getFavourites(lang, "Bearer "+userModel.getData().getAccess_token())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<Response<ProductDataModel>>() {

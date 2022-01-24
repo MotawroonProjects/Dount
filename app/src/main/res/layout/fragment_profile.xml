@@ -55,7 +55,7 @@
 
                         <ImageView
                             android:id="@+id/image"
-                            image="@{model.data.photo}"
+                            image="@{model.data.user.photo}"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:scaleType="fitXY"
@@ -96,7 +96,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
                             android:layout_marginTop="10dp"
-                            android:text='@{model==null?@string/login:model.data.first_name+" "+model.data.last_name,default=@string/login}'
+                            android:text='@{model==null?@string/login:model.data.user.name,default=@string/login}'
                             android:textColor="@{model!=null?@color/black2:@color/color5}"
                             android:textSize="15sp"
 

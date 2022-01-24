@@ -12,11 +12,12 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:cardElevation="3dp"
         app:cardCornerRadius="10dp">
 
         <com.github.siyamed.shapeimageview.RoundedImageView
             android:id="@+id/sliderImage"
-            image="@{photo}"
+            image3="@{photo}"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitXY"

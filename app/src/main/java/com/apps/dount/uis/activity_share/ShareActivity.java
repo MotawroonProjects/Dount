@@ -47,7 +47,7 @@ public class ShareActivity extends BaseActivity {
 
         if (userModel != null) {
             try {
-                barcode = getResources().getString(R.string.app_link) + new URL(app_url) + "\n" + getResources().getString(R.string.shareContent) + userModel.getData().getCode() + getResources().getString(R.string.to_buy)+ "\n";
+                barcode = getResources().getString(R.string.app_link) + new URL(app_url) + "\n" + getResources().getString(R.string.shareContent) + userModel.getData().getUser().getCode() + getResources().getString(R.string.to_buy)+ "\n";
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             }

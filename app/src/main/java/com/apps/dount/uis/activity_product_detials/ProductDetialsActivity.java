@@ -54,7 +54,7 @@ public class ProductDetialsActivity extends BaseActivity {
         preferences = Preferences.getInstance();
         userModel = preferences.getUserData(this);
         if (userModel != null) {
-            user_id = userModel.getData().getId() + "";
+            user_id = userModel.getData().getUser().getId() + "";
         }
         binding.setUserModel(userModel);
         activityProductDetialsMvvm = ViewModelProviders.of(this).get(ActivityProductDetialsMvvm.class);
@@ -156,7 +156,7 @@ public class ProductDetialsActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 if (userModel != null) {
-                    activityProductDetialsMvvm.addRemoveFavourite(productmodel.getId(), user_id);
+                    activityProductDetialsMvvm.addRemoveFavourite(productmodel.getId(), userModel);
                 }
             }
         });
