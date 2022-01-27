@@ -123,6 +123,8 @@ public interface Service {
 
     @GET("api/home/slider")
     Single<Response<SliderDataModel>> getSlider();
+    @GET("api/home/second_slider")
+    Single<Response<SliderDataModel>> getofferSlider();
 
     @GET("api/home/categories")
     Single<Response<DepartmentDataModel>> getDepartments();
@@ -130,8 +132,8 @@ public interface Service {
     @GET("api/home/products")
     Single<Response<ProductDataModel>> getSingleDepartment(@Query(value = "category_ids") List<String> id);
 
-    @GET("api/offers")
-    Single<Response<ProductDataModel>> getOffers(@Header("lang") String lang);
+    @GET("api/home/offers")
+    Single<Response<ProductDataModel>> getOffers();
 
     @GET("api/home/products")
     Single<Response<ProductDataModel>> getProducts();
@@ -143,20 +145,17 @@ public interface Service {
     @GET("api/featured")
     Single<Response<DepartmentDataModel>> getFeatured(@Header("lang") String lang);
 
-    @GET("api/product")
-    Single<Response<SingleProductDataModel>> getSingleProduct(@Header("lang") String lang,
-                                                              @Query(value = "user_id") String user_id,
-                                                              @Query(value = "id") String id
-    );
+    @GET("api/home/one_product")
+    Single<Response<SingleProductDataModel>> getSingleProduct(@Query("product_id") String product_id);
 
     @GET("api/settings")
     Single<Response<SettingDataModel>> getSetting(@Header("lang") String lang);
 
     @FormUrlEncoded
-    @POST("api/contact_us")
+    @POST("api/contact/contact")
     Single<Response<StatusResponse>> contactUs(@Field("name") String name,
                                                @Field("email") String email,
-                                               @Field("title") String title,
+                                               @Field("subject") String subject,
                                                @Field("message") String message);
 
     @FormUrlEncoded

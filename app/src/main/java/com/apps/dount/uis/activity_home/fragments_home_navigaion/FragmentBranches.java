@@ -1,15 +1,20 @@
 package com.apps.dount.uis.activity_home.fragments_home_navigaion;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -19,9 +24,12 @@ import com.apps.dount.R;
 import com.apps.dount.adapter.BranchAdapter;
 import com.apps.dount.databinding.FragmentBranchesBinding;
 import com.apps.dount.model.BranchModel;
+import com.apps.dount.model.LocationModel;
 import com.apps.dount.mvvm.FragmentBranchesMvvm;
+import com.apps.dount.uis.activity_base.BaseActivity;
 import com.apps.dount.uis.activity_base.BaseFragment;
 import com.apps.dount.uis.activity_home.HomeActivity;
+import com.apps.dount.uis.activity_map.MapActivity;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -51,13 +59,20 @@ public class FragmentBranches extends BaseFragment implements OnMapReadyCallback
     private CompositeDisposable disposable = new CompositeDisposable();
     private BranchAdapter branchAdapter;
     private FragmentBranchesMvvm fragmentBranchesMvvm;
+    private LocationModel locationmodel;
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         activity = (HomeActivity) context;
         permissionLauncher = registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
+            if (isGranted) {
+                fragmentBranchesMvvm.initGoogleApi();
 
+            } else {
+                Toast.makeText(activity, "Permission denied", Toast.LENGTH_SHORT).show();
+
+            }
         });
     }
 
@@ -101,10 +116,16 @@ public class FragmentBranches extends BaseFragment implements OnMapReadyCallback
     }
 
     private void initView() {
+        locationmodel=new LocationModel(0,0,"");
         branchAdapter = new BranchAdapter(activity);
         fragmentBranchesMvvm = ViewModelProviders.of(this).get(FragmentBranchesMvvm.class);
        // fragmentBranchesMvvm.getBranch().observe(activity, weddingHallModels -> branchAdapter.updateList(fragmentBranchesMvvm.getBranch().getValue()));
 fragmentBranchesMvvm.getBranch();
+        fragmentBranchesMvvm.getLocationData().observe(this, locationModel -> {
+            addMarker(locationModel.getLat(), locationModel.getLng());
+            FragmentBranches.this.locationmodel = locationModel;
+            branchAdapter.updateLocation(locationModel);
+        });
         fragmentBranchesMvvm.getIsLoading().observe(activity, isLoading -> {
             if (isLoading) {
                 binding.flLoading.setClickable(true);
@@ -121,6 +142,7 @@ fragmentBranchesMvvm.getBranch();
             @Override
             public void onChanged(List<BranchModel> branchModels) {
                 if (branchModels.size() > 0) {
+                    branchAdapter.updateLocation(FragmentBranches.this.locationmodel);
                     branchAdapter.updateList(fragmentBranchesMvvm.getBranch().getValue());
                     updateMapData(branchModels);
                     binding.cardNoData.setVisibility(View.GONE);
@@ -142,9 +164,21 @@ fragmentBranchesMvvm.getBranch();
 //        snapHelper.attachToRecyclerView(binding.recView);
         binding.recView.setLayoutManager(new LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false));
         binding.recView.setAdapter(branchAdapter);
+        checkPermission();
 
         updateUI();
     }
+    private void checkPermission() {
+        if (ActivityCompat.checkSelfPermission(activity, BaseActivity.fineLocPerm) != PackageManager.PERMISSION_GRANTED) {
+            permissionLauncher.launch(BaseActivity.fineLocPerm);
+        } else {
+
+            fragmentBranchesMvvm.initGoogleApi();
+        }
+    }
+
+
+
 
 
     private void updateUI() {

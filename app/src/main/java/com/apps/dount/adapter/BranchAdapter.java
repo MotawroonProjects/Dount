@@ -18,6 +18,7 @@ import com.apps.dount.databinding.BranchRowBinding;
 import com.apps.dount.databinding.CartRowBinding;
 import com.apps.dount.model.BranchModel;
 import com.apps.dount.model.ItemCartModel;
+import com.apps.dount.model.LocationModel;
 import com.apps.dount.uis.activity_cart.CartActivity;
 
 import java.util.List;
@@ -60,10 +61,11 @@ public class BranchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         if (holder instanceof MyHolder) {
             MyHolder holderMsgLeft = (MyHolder) holder;
             holderMsgLeft.binding.setModel(list.get(position));
-            ViewGroup.MarginLayoutParams lp =
-                    (ViewGroup.MarginLayoutParams) holderMsgLeft.binding.card.getLayoutParams();
-            lp.setMargins(5, 140, 5, 5);
-            holderMsgLeft.itemView.setLayoutParams(lp);
+//            ViewGroup.MarginLayoutParams lp =
+//                    (ViewGroup.MarginLayoutParams) holderMsgLeft.binding.card.getLayoutParams();
+//            lp.setMargins(5, 240, 5, 5);
+
+           // holderMsgLeft.itemView.setLayoutParams(lp);
 
         } else if (holder instanceof MyHolderComplete) {
             MyHolderComplete holderMsgRight = (MyHolderComplete) holder;
@@ -123,6 +125,9 @@ public class BranchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             this.list = list;
         }
         notifyDataSetChanged();
+    }
+
+    public void updateLocation(LocationModel locationModel) {
     }
 
     public class MyHolder extends RecyclerView.ViewHolder {

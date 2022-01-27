@@ -72,7 +72,7 @@ public class FragmentOfferMvvm extends AndroidViewModel {
         isLoadingLiveData.setValue(true);
 
         Api.getService(Tags.base_url)
-                .getSlider()
+                .getofferSlider()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<Response<SliderDataModel>>() {
@@ -106,7 +106,7 @@ public class FragmentOfferMvvm extends AndroidViewModel {
         isLoadingLiveData.setValue(true);
 
         Api.getService(Tags.base_url)
-                .getOffers(lang)
+                .getOffers()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<Response<ProductDataModel>>() {

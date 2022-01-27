@@ -82,7 +82,7 @@ public class ActivityProductDetialsMvvm extends AndroidViewModel {
     public void getProductDetials(String lang, String id, String user_id) {
         isLoadingLivData.postValue(true);
         Api.getService(Tags.base_url)
-                .getSingleProduct(lang, user_id, id)
+                .getSingleProduct( id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
 
