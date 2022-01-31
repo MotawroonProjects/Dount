@@ -162,5 +162,5 @@
     <string name="receipt_from_the_branch">الاستلام من الفرع</string>
     <string name="your_request_has_been_successfully_sent">تم ارسال طلبك بنجاح </string>
     <string name="delivery_to">التوصيل الى : </string>
-    <string name="m">م</string>
+    <string name="m">كم</string>
 </resources>

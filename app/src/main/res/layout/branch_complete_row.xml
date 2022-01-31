@@ -8,6 +8,10 @@
             name="model"
             type="com.apps.dount.model.BranchModel" />
 
+        <variable
+            name="distance"
+            type="String" />
+
         <import type="android.view.View" />
     </data>
 
@@ -31,6 +35,7 @@
 
                 <com.makeramen.roundedimageview.RoundedImageView
 
+                    image3="@{model.image}"
                     android:layout_width="match_parent"
                     android:layout_height="140dp"
                     android:layout_margin="12dp"
@@ -43,82 +48,83 @@
             </FrameLayout>
 
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="12dp"
-                        android:layout_marginEnd="8dp"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="8dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
-                        <ImageView
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:padding="3dp"
-                            android:src="@drawable/ic_map"
-                            app:tint="@color/color9" />
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:padding="3dp"
+                    android:src="@drawable/ic_map"
+                    app:tint="@color/color9" />
 
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:ellipsize="end"
-                            android:gravity="start"
-                            android:maxLines="2"
-                            android:paddingStart="5dp"
-                            android:paddingEnd="5dp"
-                            android:text="@{model.address}"
-                            android:textAlignment="viewStart"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="14sp"
-                            android:textStyle="bold" />
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="30dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="12dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginBottom="12dp"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:padding="3dp"
-                            android:src="@drawable/ic_user3"
-                            app:tint="@color/color9" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:ellipsize="end"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="14sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:ellipsize="end"
-                            android:gravity="start"
-                            android:lines="1"
-                            android:maxLines="1"
-                            android:paddingStart="5dp"
-                            android:paddingEnd="5dp"
-                            android:text="@string/m"
-                            android:textAlignment="viewStart"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="12sp" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:gravity="start"
+                    android:maxLines="2"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"
+                    android:text="@{model.address}"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
 
 
-                    </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="12dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:padding="3dp"
+                    android:src="@drawable/ic_user3"
+                    app:tint="@color/color9" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="14sp"
+                    android:text="@{distance}"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:gravity="start"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"
+                    android:text="@string/m"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="12sp" />
+
+
+            </LinearLayout>
 
 
         </LinearLayout>

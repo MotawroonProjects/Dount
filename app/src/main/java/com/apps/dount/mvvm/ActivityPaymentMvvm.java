@@ -17,6 +17,8 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.apps.dount.R;
+import com.apps.dount.model.BranchDataModel;
+import com.apps.dount.model.BranchModel;
 import com.apps.dount.model.CartDataModel;
 import com.apps.dount.model.LocationModel;
 import com.apps.dount.model.PlaceGeocodeData;
@@ -40,6 +42,7 @@ import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.location.LocationSettingsResult;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
 
+import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
@@ -62,7 +65,8 @@ public class ActivityPaymentMvvm extends AndroidViewModel implements GoogleApiCl
     private MutableLiveData<Boolean> timeend;
     private MutableLiveData<String> ship;
     private MutableLiveData<Boolean> send;
-
+    private MutableLiveData<List<BranchModel>> branchModelMutableLiveData;
+    private MutableLiveData<Boolean> isLoadingLivData;
     private CompositeDisposable disposable = new CompositeDisposable();
     private PaymentActivity activity;
     private String lang;
@@ -71,6 +75,23 @@ public class ActivityPaymentMvvm extends AndroidViewModel implements GoogleApiCl
     public ActivityPaymentMvvm(@NonNull Application application) {
         super(application);
         context = application.getApplicationContext();
+    }
+    public LiveData<List<BranchModel>> getBranch() {
+        if (branchModelMutableLiveData == null) {
+            branchModelMutableLiveData = new MutableLiveData<>();
+        }
+        return branchModelMutableLiveData;
+    }
+
+
+
+
+
+    public MutableLiveData<Boolean> getIsLoading() {
+        if (isLoadingLivData == null) {
+            isLoadingLivData = new MutableLiveData<>();
+        }
+        return isLoadingLivData;
     }
 
     public LiveData<Boolean> getSend() {
@@ -314,6 +335,43 @@ public class ActivityPaymentMvvm extends AndroidViewModel implements GoogleApiCl
                 });
 
     }
+    public void getBranchData() {
+        isLoadingLivData.postValue(true);
+
+
+        Api.getService(Tags.base_url)
+                .getBranches()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+
+                .subscribe(new SingleObserver<Response<BranchDataModel>>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
+                        disposable.add(d);
+                    }
+
+                    @Override
+                    public void onSuccess(@NonNull Response<BranchDataModel> response) {
+                        isLoadingLivData.postValue(false);
+
+                        if (response.isSuccessful() && response.body() != null) {
+                            if (response.body().getStatus() == 200) {
+                                List<BranchModel> list = response.body().getData();
+                                branchModelMutableLiveData.setValue(list);
+                                Log.e("size",list.size()+"");
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        isLoadingLivData.setValue(false);
+                        Log.e(TAG, "onError: ", e);
+                    }
+                });
+
+    }
+
     public void startTimer() {
         timeend.postValue(false);
         Observable.intervalRange(1, 15, 1, 1, TimeUnit.SECONDS)

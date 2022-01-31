@@ -20,6 +20,8 @@ import com.apps.dount.model.BranchModel;
 import com.apps.dount.model.ItemCartModel;
 import com.apps.dount.model.LocationModel;
 import com.apps.dount.uis.activity_cart.CartActivity;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.maps.android.SphericalUtil;
 
 import java.util.List;
 
@@ -32,6 +34,7 @@ public class BranchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     private int oldPos = currentPos;
     private final int branch = 1;
     private final int branch_compelte = 2;
+    private LocationModel locationModel;
 
     public BranchAdapter(Context context) {
         this.context = context;
@@ -59,17 +62,22 @@ public class BranchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
 
         if (holder instanceof MyHolder) {
-            MyHolder holderMsgLeft = (MyHolder) holder;
-            holderMsgLeft.binding.setModel(list.get(position));
+            MyHolder myHolder = (MyHolder) holder;
+
+            myHolder.binding.setModel(list.get(position));
+
+
 //            ViewGroup.MarginLayoutParams lp =
-//                    (ViewGroup.MarginLayoutParams) holderMsgLeft.binding.card.getLayoutParams();
+//                    (ViewGroup.MarginLayoutParams) myHolder.binding.card.getLayoutParams();
 //            lp.setMargins(5, 240, 5, 5);
 
-           // holderMsgLeft.itemView.setLayoutParams(lp);
+            // myHolder.itemView.setLayoutParams(lp);
 
         } else if (holder instanceof MyHolderComplete) {
-            MyHolderComplete holderMsgRight = (MyHolderComplete) holder;
-            holderMsgRight.binding.setModel(list.get(position));
+            MyHolderComplete myHolderComplete = (MyHolderComplete) holder;
+            double distance = SphericalUtil.computeDistanceBetween(new LatLng(locationModel.getLat(), locationModel.getLng()), new LatLng(Double.parseDouble(list.get(position).getLatitude()), Double.parseDouble(list.get(position).getLongitude())))/1000;
+            myHolderComplete.binding.setDistance(distance + "");
+            myHolderComplete.binding.setModel(list.get(position));
 
 
         }
@@ -128,6 +136,7 @@ public class BranchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     }
 
     public void updateLocation(LocationModel locationModel) {
+        this.locationModel = locationModel;
     }
 
     public class MyHolder extends RecyclerView.ViewHolder {

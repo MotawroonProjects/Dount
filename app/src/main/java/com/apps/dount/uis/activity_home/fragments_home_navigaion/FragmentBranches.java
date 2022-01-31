@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,9 +24,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.apps.dount.R;
 import com.apps.dount.adapter.BranchAdapter;
 import com.apps.dount.databinding.FragmentBranchesBinding;
+import com.apps.dount.model.BranchDataModel;
 import com.apps.dount.model.BranchModel;
 import com.apps.dount.model.LocationModel;
 import com.apps.dount.mvvm.FragmentBranchesMvvm;
+import com.apps.dount.remote.Api;
+import com.apps.dount.tags.Tags;
 import com.apps.dount.uis.activity_base.BaseActivity;
 import com.apps.dount.uis.activity_base.BaseFragment;
 import com.apps.dount.uis.activity_home.HomeActivity;
@@ -44,10 +48,12 @@ import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
 import io.reactivex.Observer;
+import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+import retrofit2.Response;
 
 
 public class FragmentBranches extends BaseFragment implements OnMapReadyCallback {
@@ -116,13 +122,14 @@ public class FragmentBranches extends BaseFragment implements OnMapReadyCallback
     }
 
     private void initView() {
-        locationmodel=new LocationModel(0,0,"");
+        locationmodel = new LocationModel(0, 0, "");
         branchAdapter = new BranchAdapter(activity);
         fragmentBranchesMvvm = ViewModelProviders.of(this).get(FragmentBranchesMvvm.class);
-       // fragmentBranchesMvvm.getBranch().observe(activity, weddingHallModels -> branchAdapter.updateList(fragmentBranchesMvvm.getBranch().getValue()));
-fragmentBranchesMvvm.getBranch();
+        fragmentBranchesMvvm.setContext(activity);
+        // fragmentBranchesMvvm.getBranch().observe(activity, weddingHallModels -> branchAdapter.updateList(fragmentBranchesMvvm.getBranch().getValue()));
+        fragmentBranchesMvvm.getBranch();
         fragmentBranchesMvvm.getLocationData().observe(this, locationModel -> {
-            addMarker(locationModel.getLat(), locationModel.getLng());
+            // addMarker(locationModel.getLat(), locationModel.getLng());
             FragmentBranches.this.locationmodel = locationModel;
             branchAdapter.updateLocation(locationModel);
         });
@@ -168,6 +175,7 @@ fragmentBranchesMvvm.getBranch();
 
         updateUI();
     }
+
     private void checkPermission() {
         if (ActivityCompat.checkSelfPermission(activity, BaseActivity.fineLocPerm) != PackageManager.PERMISSION_GRANTED) {
             permissionLauncher.launch(BaseActivity.fineLocPerm);
@@ -176,9 +184,6 @@ fragmentBranchesMvvm.getBranch();
             fragmentBranchesMvvm.initGoogleApi();
         }
     }
-
-
-
 
 
     private void updateUI() {
@@ -201,9 +206,14 @@ fragmentBranchesMvvm.getBranch();
         }
     }
 
-    private void addMarker(double lat, double lng) {
-        mMap.addMarker(new MarkerOptions().position(new LatLng(lat, lng)).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
+    private void addMarker(double lat, double lng, String is_delivery) {
+        if(is_delivery.equals("yes")) {
+            mMap.addMarker(new MarkerOptions().position(new LatLng(lat, lng)).icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_map2)));
+        }
+        else{
+            mMap.addMarker(new MarkerOptions().position(new LatLng(lat, lng)).icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_map)));
 
+        }
     }
 
     private void updateMapData(List<BranchModel> data) {
@@ -211,7 +221,7 @@ fragmentBranchesMvvm.getBranch();
         LatLngBounds.Builder bounds = new LatLngBounds.Builder();
         for (BranchModel branchModel : data) {
             bounds.include(new LatLng(Double.parseDouble(branchModel.getLatitude()), Double.parseDouble(branchModel.getLongitude())));
-            addMarker(Double.parseDouble(branchModel.getLatitude()), Double.parseDouble(branchModel.getLongitude()));
+            addMarker(Double.parseDouble(branchModel.getLatitude()), Double.parseDouble(branchModel.getLongitude()),branchModel.getIs_delivery());
         }
 
         if (data.size() >= 2) {

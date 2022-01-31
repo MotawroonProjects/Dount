@@ -9,12 +9,14 @@ public class BranchModel implements Serializable {
     private String email;
     private String phone;
     private String address;
+    private String image;
+    private String longitude;
+    private String latitude;
     private String company_id;
     private String is_active;
+    private String is_delivery;
     private String created_at;
     private String updated_at;
-    private String latitude;
-    private String longitude;
     private boolean selected;
 
     public boolean isSelected() {
@@ -67,5 +69,13 @@ public class BranchModel implements Serializable {
 
     public String getLongitude() {
         return longitude;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public String getIs_delivery() {
+        return is_delivery;
     }
 }
