@@ -1,19 +1,34 @@
 package com.apps.dount.model;
 
+import android.content.Context;
+import android.widget.Toast;
+
+import com.apps.dount.R;
+
 import java.io.Serializable;
 import java.util.List;
 
+import io.reactivex.observers.TestObserver;
+
 public class CartDataModel implements Serializable {
     private List<ItemCartModel> details;
-    private int user_id;
-    private String address ;
+    private String reference_no;
+    private String branch_id="";
+
+    private String customer_id_hidden;
+    private String customer_id;
+    private double total_discount;
+    private double total_tax;
+    private double total_price;
+    private double order_tax;
+    private double grand_total;
+    private String is_delivary="";
+    private String receive_type;
+    private String notes;
+    private String payment_type;
+    private String address;
     private double latitude;
     private double longitude;
-    private String pay;
-    private double sub_total;
-    private double shipping;
-    private double total;
-
 
     public List<ItemCartModel> getDetails() {
         return details;
@@ -23,12 +38,120 @@ public class CartDataModel implements Serializable {
         this.details = details;
     }
 
-    public int getUser_id() {
-        return user_id;
+    public String getReference_no() {
+        return reference_no;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public String getBranch_id() {
+        return branch_id;
+    }
+
+
+
+    public String getCustomer_id_hidden() {
+        return customer_id_hidden;
+    }
+
+    public String getCustomer_id() {
+        return customer_id;
+    }
+
+
+
+    public double getTotal_discount() {
+        return total_discount;
+    }
+
+    public double getTotal_tax() {
+        return total_tax;
+    }
+
+    public double getTotal_price() {
+        return total_price;
+    }
+
+
+
+    public double getOrder_tax() {
+        return order_tax;
+    }
+
+    public double getGrand_total() {
+        return grand_total;
+    }
+
+    public String getIs_delivary() {
+        return is_delivary;
+    }
+
+    public String getReceive_type() {
+        return receive_type;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public String getPayment_type() {
+        return payment_type;
+    }
+
+    public void setReference_no(String reference_no) {
+        this.reference_no = reference_no;
+    }
+
+    public void setBranch_id(String branch_id) {
+        this.branch_id = branch_id;
+    }
+
+
+
+    public void setCustomer_id_hidden(String customer_id_hidden) {
+        this.customer_id_hidden = customer_id_hidden;
+    }
+
+    public void setCustomer_id(String customer_id) {
+        this.customer_id = customer_id;
+    }
+
+
+
+    public void setTotal_discount(double total_discount) {
+        this.total_discount = total_discount;
+    }
+
+    public void setTotal_tax(double total_tax) {
+        this.total_tax = total_tax;
+    }
+
+    public void setTotal_price(double total_price) {
+        this.total_price = total_price;
+    }
+
+
+
+    public void setOrder_tax(double order_tax) {
+        this.order_tax = order_tax;
+    }
+
+    public void setGrand_total(double grand_total) {
+        this.grand_total = grand_total;
+    }
+
+    public void setIs_delivary(String is_delivary) {
+        this.is_delivary = is_delivary;
+    }
+
+    public void setReceive_type(String receive_type) {
+        this.receive_type = receive_type;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
+
+    public void setPayment_type(String payment_type) {
+        this.payment_type = payment_type;
     }
 
     public String getAddress() {
@@ -54,36 +177,19 @@ public class CartDataModel implements Serializable {
     public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
+    public boolean isDataValid(Context context) {
+        if (!branch_id.isEmpty()) {
 
-    public String getPay() {
-        return pay;
-    }
 
-    public void setPay(String pay) {
-        this.pay = pay;
-    }
+            return true;
+        } else {
 
-    public double getSub_total() {
-        return sub_total;
-    }
+            if (branch_id.isEmpty()) {
+                Toast.makeText(context,context.getResources().getString(R.string.ch_branch),Toast.LENGTH_LONG).show();
+            }
 
-    public void setSub_total(double sub_total) {
-        this.sub_total = sub_total;
-    }
 
-    public double getShipping() {
-        return shipping;
-    }
-
-    public void setShipping(double shipping) {
-        this.shipping = shipping;
-    }
-
-    public double getTotal() {
-        return total;
-    }
-
-    public void setTotal(double total) {
-        this.total = total;
+            return false;
+        }
     }
 }

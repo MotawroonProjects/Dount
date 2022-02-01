@@ -123,6 +123,7 @@ public interface Service {
 
     @GET("api/home/slider")
     Single<Response<SliderDataModel>> getSlider();
+
     @GET("api/home/second_slider")
     Single<Response<SliderDataModel>> getofferSlider();
 
@@ -137,8 +138,10 @@ public interface Service {
 
     @GET("api/home/products")
     Single<Response<ProductDataModel>> getProducts();
+
     @GET("api/home/branches")
     Single<Response<BranchDataModel>> getBranches();
+
     @GET("api/box")
     Single<Response<SingleProductDataModel>> getBox(@Header("lang") String lang);
 
@@ -148,8 +151,6 @@ public interface Service {
     @GET("api/home/one_product")
     Single<Response<SingleProductDataModel>> getSingleProduct(@Query("product_id") String product_id);
 
-    @GET("api/settings")
-    Single<Response<SettingDataModel>> getSetting(@Header("lang") String lang);
 
     @FormUrlEncoded
     @POST("api/contact/contact")
@@ -167,8 +168,9 @@ public interface Service {
     Single<Response<ShipModel>> getship(@Query("latitude") String latitude,
                                         @Query("longitude") String longitude);
 
-    @POST("api/store_order")
-    Single<Response<StatusResponse>> sendOrder(@Body CartDataModel cartDataModel
+    @POST("api/order/storeOrder")
+    Single<Response<StatusResponse>> sendOrder(@Header("Authorization") String authorization,
+                                               @Body CartDataModel cartDataModel
     );
 
     @GET("api/my_orders")
@@ -179,4 +181,8 @@ public interface Service {
 
     @GET("api/profile")
     Single<Response<UserModel>> getProfile(@Query("id") String id);
+
+    @GET("api/terms/taxes")
+    Single<Response<SettingDataModel>> getSetting();
+
 }

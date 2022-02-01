@@ -175,16 +175,14 @@ public class ActivityVerificationMvvm extends AndroidViewModel {
             @Override
             public void onSuccess(@NonNull Response<UserModel> userModelResponse) {
                 dialog.dismiss();
-
+                Log.e("lllll", userModelResponse.code() + "" + phone_code.replace("+", "") + phone);
                 if (userModelResponse.isSuccessful()) {
                     Log.e("status", userModelResponse.body().getStatus() + "");
                     if (userModelResponse.body().getStatus() == 200) {
 
                         userModelMutableLiveData.postValue(userModelResponse.body());
-                    } else if (userModelResponse.body().getStatus() == 400) {
+                    } else if (userModelResponse.body().getStatus() == 422) {
                         found.postValue("not_found");
-                    } else if (userModelResponse.body().getStatus() == 409) {
-                        Toast.makeText(context, context.getResources().getString(R.string.user_blocked), Toast.LENGTH_LONG).show();
                     }
                 } else {
 
@@ -195,7 +193,7 @@ public class ActivityVerificationMvvm extends AndroidViewModel {
             @Override
             public void onError(@NonNull Throwable e) {
                 dialog.dismiss();
-
+                Log.e("llllll", e.toString());
             }
         });
     }

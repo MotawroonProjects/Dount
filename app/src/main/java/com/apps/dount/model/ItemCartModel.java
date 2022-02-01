@@ -3,15 +3,18 @@ package com.apps.dount.model;
 import java.io.Serializable;
 
 public class ItemCartModel implements Serializable {
+    private String product_code;
     private String product_id;
     private int qty;
-    private String order_desc;
-    private double product_price;
-    private double way_price;
-    private double wrap_price;
-    private double total_price;
-    private String title;
+    private String product_batch_id;
+    private String sale_unit;
+    private double net_unit_price;
+    private double discount;
+    private double tax_rate;
+    private double tax;
+    private double subtotal;
     private String image;
+    private String title;
 
     public String getId() {
         return product_id;
@@ -29,52 +32,72 @@ public class ItemCartModel implements Serializable {
         this.qty = qty;
     }
 
-    public String getOrder_desc() {
-        return order_desc;
+    public String getProduct_code() {
+        return product_code;
     }
 
-    public void setOrder_desc(String order_desc) {
-        this.order_desc = order_desc;
+    public void setProduct_code(String product_code) {
+        this.product_code = product_code;
     }
 
-    public double getProduct_price() {
-        return product_price;
+    public String getProduct_id() {
+        return product_id;
     }
 
-    public void setProduct_price(double product_price) {
-        this.product_price = product_price;
+    public String getProduct_batch_id() {
+        return product_batch_id;
     }
 
-    public double getWay_price() {
-        return way_price;
+    public void setProduct_batch_id(String product_batch_id) {
+        this.product_batch_id = product_batch_id;
     }
 
-    public void setWay_price(double way_price) {
-        this.way_price = way_price;
+    public String getSale_unit() {
+        return sale_unit;
     }
 
-    public double getWrap_price() {
-        return wrap_price;
+    public void setSale_unit(String sale_unit) {
+        this.sale_unit = sale_unit;
     }
 
-    public void setWrap_price(double wrap_price) {
-        this.wrap_price = wrap_price;
+    public double getNet_unit_price() {
+        return net_unit_price;
     }
 
-    public double getTotal_price() {
-        return total_price;
+    public void setNet_unit_price(double net_unit_price) {
+        this.net_unit_price = net_unit_price;
     }
 
-    public void setTotal_price(double total_price) {
-        this.total_price = total_price;
+    public double getDiscount() {
+        return discount;
     }
 
-    public String getTitle() {
-        return title;
+    public void setDiscount(double discount) {
+        this.discount = discount;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public double getTax_rate() {
+        return tax_rate;
+    }
+
+    public void setTax_rate(double tax_rate) {
+        this.tax_rate = tax_rate;
+    }
+
+    public double getTax() {
+        return tax;
+    }
+
+    public void setTax(double tax) {
+        this.tax = tax;
+    }
+
+    public double getSubtotal() {
+        return subtotal;
+    }
+
+    public void setSubtotal(double subtotal) {
+        this.subtotal = subtotal;
     }
 
     public String getImage() {
@@ -83,5 +106,13 @@ public class ItemCartModel implements Serializable {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }

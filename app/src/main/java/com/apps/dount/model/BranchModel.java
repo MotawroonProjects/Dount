@@ -19,6 +19,10 @@ public class BranchModel implements Serializable {
     private String updated_at;
     private boolean selected;
 
+    public BranchModel(String name) {
+        this.name = name;
+    }
+
     public boolean isSelected() {
         return selected;
     }

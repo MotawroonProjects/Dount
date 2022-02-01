@@ -22,6 +22,8 @@ import com.apps.dount.model.BranchModel;
 import com.apps.dount.model.CartDataModel;
 import com.apps.dount.model.LocationModel;
 import com.apps.dount.model.PlaceGeocodeData;
+import com.apps.dount.model.SettingDataModel;
+import com.apps.dount.model.SettingModel;
 import com.apps.dount.model.ShipModel;
 import com.apps.dount.model.StatusResponse;
 import com.apps.dount.model.UserModel;
@@ -41,6 +43,7 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.location.LocationSettingsResult;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
+import com.google.gson.Gson;
 
 import java.util.List;
 import java.util.Locale;
@@ -70,6 +73,7 @@ public class ActivityPaymentMvvm extends AndroidViewModel implements GoogleApiCl
     private CompositeDisposable disposable = new CompositeDisposable();
     private PaymentActivity activity;
     private String lang;
+    private MutableLiveData<SettingModel> mutableLiveData;
 
 
     public ActivityPaymentMvvm(@NonNull Application application) {
@@ -84,6 +88,13 @@ public class ActivityPaymentMvvm extends AndroidViewModel implements GoogleApiCl
     }
 
 
+
+    public MutableLiveData<SettingModel> getMutableLiveData() {
+        if (mutableLiveData == null) {
+            mutableLiveData = new MutableLiveData<>();
+        }
+        return mutableLiveData;
+    }
 
 
 
@@ -297,11 +308,14 @@ public class ActivityPaymentMvvm extends AndroidViewModel implements GoogleApiCl
     }
 
     public void sendOrder(CartDataModel cartDataModel, UserModel userModel) {
+        Gson gson = new Gson();
+        String user_data = gson.toJson(cartDataModel);
+        Log.e("data",user_data);
         ProgressDialog dialog = Common.createProgressDialog(activity, activity.getResources().getString(R.string.wait));
         dialog.setCancelable(false);
         dialog.show();
         Api.getService(Tags.base_url)
-                .sendOrder(cartDataModel)
+                .sendOrder( userModel.getData().getAccess_token(),cartDataModel)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
 
@@ -314,7 +328,7 @@ public class ActivityPaymentMvvm extends AndroidViewModel implements GoogleApiCl
                     @Override
                     public void onSuccess(@NonNull Response<StatusResponse> response) {
                         dialog.dismiss();
-//                        Log.e("slkdkdkkdk", response.code() + ""+cartDataModel.getLatitude()+" "+cartDataModel.getLongitude()+" "+response.body().getStatus());
+                        Log.e("kkkkk",response.code()+" "+response.body().getStatus());
                         if (response.isSuccessful() && response.body() != null) {
                             if (response.body().getStatus() == 200) {
 
@@ -374,7 +388,7 @@ public class ActivityPaymentMvvm extends AndroidViewModel implements GoogleApiCl
 
     public void startTimer() {
         timeend.postValue(false);
-        Observable.intervalRange(1, 15, 1, 1, TimeUnit.SECONDS)
+        Observable.intervalRange(1, 5, 1, 1, TimeUnit.SECONDS)
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<Long>() {
@@ -404,6 +418,38 @@ public class ActivityPaymentMvvm extends AndroidViewModel implements GoogleApiCl
                     }
                 });
 
+    }
+    public void getSetting() {
+
+
+        isLoadingLivData.setValue(true);
+
+        Api.getService(Tags.base_url)
+                .getSetting()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<Response<SettingDataModel>>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
+                        disposable.add(d);
+                    }
+
+                    @Override
+                    public void onSuccess(@NonNull Response<SettingDataModel> response) {
+                        isLoadingLivData.postValue(false);
+                        if (response.isSuccessful() && response.body() != null) {
+                            if (response.body().getStatus() == 200) {
+
+                                mutableLiveData.setValue(response.body().getData());
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        isLoadingLivData.setValue(false);
+                    }
+                });
     }
 
 

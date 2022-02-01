@@ -1,5 +1,6 @@
 package com.apps.dount.uis.activity_payment;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.AdapterView;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -25,14 +27,18 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.apps.dount.R;
 import com.apps.dount.adapter.OrderProductAdapter;
+import com.apps.dount.adapter.SpinnerBranchAdapter;
 import com.apps.dount.databinding.ActivityPaymentBinding;
+import com.apps.dount.model.BranchModel;
 import com.apps.dount.model.CartDataModel;
 import com.apps.dount.model.ItemCartModel;
 import com.apps.dount.model.LocationModel;
+import com.apps.dount.model.SettingModel;
 import com.apps.dount.model.UserModel;
 import com.apps.dount.mvvm.ActivityPaymentMvvm;
 import com.apps.dount.preferences.Preferences;
 import com.apps.dount.uis.activity_base.BaseActivity;
+import com.apps.dount.uis.activity_home.fragments_home_navigaion.FragmentBranches;
 import com.apps.dount.uis.activity_map.MapActivity;
 import com.apps.dount.uis.activity_my_orders.MyOrderActivity;
 
@@ -54,6 +60,9 @@ public class PaymentActivity extends BaseActivity {
     private int req = 1;
     private ActivityPaymentMvvm activityPaymentMvvm;
     private ActivityResultLauncher<String> permissionLauncher;
+    private SpinnerBranchAdapter spinnerBranchAdapter;
+    private BranchModel branchModel;
+    private SettingModel settingModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,21 +74,60 @@ public class PaymentActivity extends BaseActivity {
 
 
     private void initView() {
+        spinnerBranchAdapter = new SpinnerBranchAdapter(this);
         itemCartModelList = new ArrayList<>();
         manager = new GridLayoutManager(this, 1);
         binding.recView.setLayoutManager(manager);
-
         orderProductAdapter = new OrderProductAdapter(itemCartModelList, this);
         binding.recView.setAdapter(orderProductAdapter);
-
+        binding.spinner.setAdapter(spinnerBranchAdapter);
         binding.setLang(getLang());
         preferences = Preferences.getInstance();
         userModel = getUserModel();
         activityPaymentMvvm = ViewModelProviders.of(this).get(ActivityPaymentMvvm.class);
         checkdata();
-        cartDataModel.setPay("cash");
+        cartDataModel.setPayment_type("cash");
         activityPaymentMvvm.setContext(this);
         activityPaymentMvvm.setLang(getLang());
+        activityPaymentMvvm.getIsLoading().observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                if (aBoolean) {
+                    binding.progBar.setVisibility(View.VISIBLE);
+                    binding.nested.setVisibility(View.GONE);
+                    binding.btnComplete.setVisibility(View.GONE);
+
+                } else {
+                    binding.progBar.setVisibility(View.GONE);
+                    binding.nested.setVisibility(View.VISIBLE);
+                    binding.btnComplete.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+        activityPaymentMvvm.getMutableLiveData().observe(this, settingModels -> {
+            settingModel = settingModels;
+            if (settingModel != null && settingModel.getTax_for().equals("order")) {
+                cartDataModel.setOrder_tax((cartDataModel.getTotal_price() * settingModel.getTax_percentage()) / 100);
+            }
+            cartDataModel.setGrand_total(cartDataModel.getOrder_tax() + cartDataModel.getTotal_price());
+            binding.setTax(cartDataModel.getOrder_tax());
+            binding.setModel(cartDataModel);
+        });
+
+        activityPaymentMvvm.getBranch().observe(this, new androidx.lifecycle.Observer<List<BranchModel>>() {
+            @Override
+            public void onChanged(List<BranchModel> branchModels) {
+
+                if (branchModels != null && branchModels.size() > 0) {
+                    branchModels.add(0, new BranchModel(getResources().getString(R.string.ch_branch)));
+                    spinnerBranchAdapter.updateData(branchModels);
+                    spinnerBranchAdapter.notifyDataSetChanged();
+
+                } else {
+
+                }
+            }
+        });
         activityPaymentMvvm.getLocationData().observe(this, locationModel -> {
             cartDataModel.setAddress(locationModel.getAddress());
             cartDataModel.setLatitude(locationModel.getLat());
@@ -112,8 +160,8 @@ public class PaymentActivity extends BaseActivity {
             @Override
             public void onChanged(String s) {
                 if (s != null && !s.isEmpty()) {
-                    cartDataModel.setShipping(Double.parseDouble(s));
-                    cartDataModel.setTotal(cartDataModel.getSub_total() + cartDataModel.getShipping());
+//                    cartDataModel.setShipping(Double.parseDouble(s));
+//                    cartDataModel.setTotal(cartDataModel.getSub_total() + cartDataModel.getShipping());
                     binding.setModel(cartDataModel);
                 }
             }
@@ -148,28 +196,61 @@ public class PaymentActivity extends BaseActivity {
                 back();
             }
         });
-        binding.cardCountry.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                binding.expandLayout.expand(true);
-            }
-        });
-        binding.flArive.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                binding.expandLayout.collapse(true);
-            }
-        });
         binding.flDeliver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                cartDataModel.setBranch_id("");
+                cartDataModel.setIs_delivary("");
+                cartDataModel.setReceive_type("");
                 binding.expandLayout.collapse(true);
+            }
+        });
+        binding.flArive.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onClick(View view) {
+                if (branchModel.getIs_delivery().equals("yes")) {
+                    cartDataModel.setIs_delivary("yes");
+                    cartDataModel.setReceive_type("delivary");
+                    binding.tvDeliver.setText(getResources().getString(R.string.receipt_from_the_branch));
+                } else {
+                    cartDataModel.setIs_delivary("no");
+                    cartDataModel.setReceive_type("branch");
+                    binding.tvDeliver.setText(getResources().getString(R.string.home_delivery));
+
+                }
+
+                binding.expandLayout.collapse(true);
+            }
+        });
+        binding.spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                if (i != 0) {
+                    branchModel = activityPaymentMvvm.getBranch().getValue().get(i);
+                    cartDataModel.setBranch_id(branchModel.getId());
+
+                    if (branchModel.getIs_delivery().equals("yes")) {
+
+                        binding.tvDeliver.setText(getResources().getString(R.string.receipt_from_the_branch));
+                    } else {
+
+                        binding.tvDeliver.setText(getResources().getString(R.string.home_delivery));
+
+                    }
+                    binding.expandLayout.expand(true);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
             }
         });
         binding.flCash.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cartDataModel.setPay("cash");
+                cartDataModel.setPayment_type("cash");
                 binding.tvCash.setTextColor(getResources().getColor(R.color.white));
                 binding.imCash.setColorFilter(ContextCompat.getColor(PaymentActivity.this, R.color.white), PorterDuff.Mode.SRC_IN);
                 binding.tvOnline.setTextColor(getResources().getColor(R.color.color9));
@@ -210,6 +291,7 @@ public class PaymentActivity extends BaseActivity {
                 binding.flOnline.setBackground(getResources().getDrawable(R.drawable.small_color9_stroke_white));
                 binding.flWallet.setBackground(getResources().getDrawable(R.drawable.rounded_color9));
 
+
             }
         });
         binding.btChange.setOnClickListener(new View.OnClickListener() {
@@ -223,10 +305,19 @@ public class PaymentActivity extends BaseActivity {
         binding.btnComplete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               // cartDataModel.setUser_id(userModel.getData().getUser().getId());
-                activityPaymentMvvm.sendOrder(cartDataModel, userModel);
+                if (cartDataModel.isDataValid(PaymentActivity.this)) {
+                    cartDataModel.setCustomer_id(userModel.getData().getUser().getId());
+                    cartDataModel.setCustomer_id_hidden(userModel.getData().getUser().getId());
+                    cartDataModel.setNotes(binding.edtNotes.getText().toString().trim());
+
+                    // cartDataModel.setUser_id(userModel.getData().getUser().getId());
+                    activityPaymentMvvm.sendOrder(cartDataModel, userModel);
+                }
+
             }
         });
+        activityPaymentMvvm.getSetting();
+        activityPaymentMvvm.getBranchData();
         checkPermission();
     }
 
@@ -277,6 +368,8 @@ public class PaymentActivity extends BaseActivity {
     }
 
     public void openSheet() {
+        binding.nested.setVisibility(View.GONE);
+        binding.btnComplete.setVisibility(View.GONE);
 
         Animation animation = AnimationUtils.loadAnimation(this, R.anim.slide_up);
 

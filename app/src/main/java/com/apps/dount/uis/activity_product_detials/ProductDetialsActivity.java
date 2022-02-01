@@ -177,10 +177,9 @@ public class ProductDetialsActivity extends BaseActivity {
     }
 
     private void addTocart() {
-        double total = ((price * amount) );
-        ;
 
-        activityProductDetialsMvvm.add_to_cart(productmodel, amount, total, price, this);
+
+        activityProductDetialsMvvm.add_to_cart(productmodel, amount, this);
     }
 
 

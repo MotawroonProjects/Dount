@@ -4,6 +4,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -34,6 +38,9 @@ import com.apps.dount.uis.activity_base.BaseActivity;
 import com.apps.dount.uis.activity_base.BaseFragment;
 import com.apps.dount.uis.activity_home.HomeActivity;
 import com.apps.dount.uis.activity_map.MapActivity;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.CustomTarget;
+import com.bumptech.glide.request.transition.Transition;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -43,6 +50,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.io.ByteArrayOutputStream;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -207,12 +215,54 @@ public class FragmentBranches extends BaseFragment implements OnMapReadyCallback
     }
 
     private void addMarker(double lat, double lng, String is_delivery) {
-        if(is_delivery.equals("yes")) {
-            mMap.addMarker(new MarkerOptions().position(new LatLng(lat, lng)).icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_map2)));
-        }
-        else{
-            mMap.addMarker(new MarkerOptions().position(new LatLng(lat, lng)).icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_map)));
+        if (is_delivery.equals("yes")) {
+            Glide.with(this)
+                    .asBitmap()
+                    .load(R.drawable.ic_map2)
+                    .into(new CustomTarget<Bitmap>() {
+                        @Override
+                        public void onResourceReady(@NonNull Bitmap bitmap, @Nullable Transition<? super Bitmap> transition) {
 
+                            mMap.addMarker(new MarkerOptions().position(new LatLng(lat, lng)).icon(BitmapDescriptorFactory.fromBitmap(bitmap)));
+
+
+                        }
+
+                        @Override
+                        public void onLoadCleared(@Nullable Drawable placeholder) {
+
+                        }
+
+                        @Override
+                        public void onLoadFailed(@Nullable Drawable errorDrawable) {
+//                        super.onLoadFailed(errorDrawable);
+
+                        }
+                    });
+        } else {
+            Glide.with(this)
+                    .asBitmap()
+                    .load(R.drawable.ic_map)
+                    .into(new CustomTarget<Bitmap>() {
+                        @Override
+                        public void onResourceReady(@NonNull Bitmap bitmap, @Nullable Transition<? super Bitmap> transition) {
+
+                            mMap.addMarker(new MarkerOptions().position(new LatLng(lat, lng)).icon(BitmapDescriptorFactory.fromBitmap(bitmap)));
+
+
+                        }
+
+                        @Override
+                        public void onLoadCleared(@Nullable Drawable placeholder) {
+
+                        }
+
+                        @Override
+                        public void onLoadFailed(@Nullable Drawable errorDrawable) {
+//                        super.onLoadFailed(errorDrawable);
+
+                        }
+                    });
         }
     }
 
@@ -221,7 +271,7 @@ public class FragmentBranches extends BaseFragment implements OnMapReadyCallback
         LatLngBounds.Builder bounds = new LatLngBounds.Builder();
         for (BranchModel branchModel : data) {
             bounds.include(new LatLng(Double.parseDouble(branchModel.getLatitude()), Double.parseDouble(branchModel.getLongitude())));
-            addMarker(Double.parseDouble(branchModel.getLatitude()), Double.parseDouble(branchModel.getLongitude()),branchModel.getIs_delivery());
+            addMarker(Double.parseDouble(branchModel.getLatitude()), Double.parseDouble(branchModel.getLongitude()), branchModel.getIs_delivery());
         }
 
         if (data.size() >= 2) {

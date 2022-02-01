@@ -163,4 +163,7 @@
     <string name="your_request_has_been_successfully_sent">تم ارسال طلبك بنجاح </string>
     <string name="delivery_to">التوصيل الى : </string>
     <string name="m">كم</string>
+    <string name="ch_branch">Choose Branch</string>
+    <string name="home_delivery">Home Delivery</string>
+    <string name="order_tax">Order_Tax</string>
 </resources>

@@ -162,6 +162,9 @@
     <string name="your_request_has_been_successfully_sent">Your Request Has Been Successfully Sent</string>
     <string name="delivery_to">Delivery to :</string>
     <string name="m">KM</string>
+    <string name="ch_branch">Choose Branch</string>
+    <string name="home_delivery">Home Delivery</string>
+    <string name="order_tax">Order_Tax</string>
 
 
 </resources>

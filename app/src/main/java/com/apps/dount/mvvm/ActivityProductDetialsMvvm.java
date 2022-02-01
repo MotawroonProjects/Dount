@@ -82,7 +82,7 @@ public class ActivityProductDetialsMvvm extends AndroidViewModel {
     public void getProductDetials(String lang, String id, String user_id) {
         isLoadingLivData.postValue(true);
         Api.getService(Tags.base_url)
-                .getSingleProduct( id)
+                .getSingleProduct(id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
 
@@ -116,7 +116,7 @@ public class ActivityProductDetialsMvvm extends AndroidViewModel {
 
     public void addRemoveFavourite(String id, UserModel userModel) {
         Api.getService(Tags.base_url)
-                .addRemoveFav("Bearer "+userModel.getData().getAccess_token(), id)
+                .addRemoveFav( userModel.getData().getAccess_token(), id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
 
@@ -146,7 +146,7 @@ public class ActivityProductDetialsMvvm extends AndroidViewModel {
 
     }
 
-    public void add_to_cart(ProductModel productModel, int amount, double total, double price, Context context) {
+    public void add_to_cart(ProductModel productModel, int amount, Context context) {
         preferences = Preferences.getInstance();
         cartDataModel = preferences.getCartData(context);
 
@@ -171,16 +171,24 @@ public class ActivityProductDetialsMvvm extends AndroidViewModel {
             ItemCartModel itemCartModel = new ItemCartModel();
             itemCartModel.setProduct_id(productModel.getId());
             itemCartModel.setQty(amount);
-            itemCartModel.setTotal_price(total);
-            itemCartModel.setProduct_price(price);
+            itemCartModel.setSubtotal(itemCartModel.getQty() * Double.parseDouble(productModel.getPrice()));
+            itemCartModel.setProduct_batch_id("");
             itemCartModel.setImage(productModel.getImage());
             itemCartModel.setTitle(productModel.getName());
+            itemCartModel.setProduct_code(productModel.getCode());
+            itemCartModel.setDiscount(0);
+            itemCartModel.setNet_unit_price(Double.parseDouble(productModel.getPrice()));
+            itemCartModel.setProduct_code(productModel.getCode());
+            itemCartModel.setSale_unit("عدد");
+            itemCartModel.setTax(0);
+            itemCartModel.setTax_rate(0);
+
             cartModelList.add(itemCartModel);
 
         } else {
             ItemCartModel itemCartModel = cartModelList.get(pos);
             itemCartModel.setQty(itemCartModel.getQty() + amount);
-            itemCartModel.setTotal_price(itemCartModel.getTotal_price() + price);
+            itemCartModel.setSubtotal(itemCartModel.getQty() * Double.parseDouble(productModel.getPrice()));
             cartModelList.set(pos, itemCartModel);
         }
         if (cartDataModel == null) {
@@ -195,11 +203,9 @@ public class ActivityProductDetialsMvvm extends AndroidViewModel {
     private void calculateTotalCost() {
         double total = 0.0;
         for (ItemCartModel cartModel : cartModelList) {
-            total += cartModel.getTotal_price();
+            total += cartModel.getSubtotal();
         }
-        cartDataModel.setSub_total(total);
-        cartDataModel.setShipping(0);
-        cartDataModel.setTotal(total);
+        cartDataModel.setTotal_price(total);
         preferences.createUpdateCartData(context, cartDataModel);
         amount.postValue(cartModelList.size());
     }

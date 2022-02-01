@@ -103,7 +103,7 @@
                             android:ellipsize="end"
                             android:maxLines="2"
                             android:singleLine="true"
-                            android:text='@{model.product_price+""}'
+                            android:text='@{model.net_unit_price+""}'
                             android:textColor="@color/colorPrimary"
                             android:textSize="15sp"
 
@@ -227,7 +227,7 @@
                         android:ellipsize="end"
                         android:maxLines="2"
                         android:singleLine="true"
-                        android:text='@{model.total_price+""}'
+                        android:text='@{model.subtotal+""}'
                         android:textColor="@color/colorPrimary"
                         android:textSize="13sp"
 

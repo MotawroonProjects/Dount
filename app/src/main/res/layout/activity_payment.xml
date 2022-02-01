@@ -10,6 +10,10 @@
             type="String" />
 
         <variable
+            name="tax"
+            type="double" />
+
+        <variable
             name="title"
             type="String" />
 
@@ -20,12 +24,12 @@
         <variable
             name="locationModel"
             type="com.apps.dount.model.LocationModel" />
-
+<import type="android.view.View"/>
     </data>
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -110,10 +114,12 @@
                 >
 
                 <androidx.core.widget.NestedScrollView
+                    android:id="@+id/nested"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:fillViewport="true"
-                    android:padding="16dp">
+                    android:padding="16dp"
+                    android:visibility="gone">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -122,7 +128,6 @@
                         android:orientation="vertical">
 
                         <androidx.cardview.widget.CardView
-                            android:id="@+id/cardCountry"
                             android:layout_width="match_parent"
                             android:layout_height="70dp"
                             android:layout_margin="20dp"
@@ -138,7 +143,7 @@
                             <Spinner
                                 android:id="@+id/spinner"
                                 android:layout_width="match_parent"
-                                android:layout_height="48dp"
+                                android:layout_height="match_parent"
                                 android:clickable="false"
                                 android:longClickable="false"
 
@@ -421,6 +426,7 @@
                                 app:tint="@color/color4" />
 
                             <EditText
+                                android:id="@+id/edtNotes"
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_marginStart="8dp"
@@ -486,7 +492,6 @@
                                         android:layout_width="0dp"
                                         android:layout_height="wrap_content"
                                         android:layout_gravity="center_vertical"
-
                                         android:layout_weight="1"
                                         android:gravity="center_vertical"
                                         android:text="@string/subtotal"
@@ -501,7 +506,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_gravity="center_vertical"
                                         android:gravity="center_vertical"
-                                        android:text='@{model.sub_total+""}'
+                                        android:text='@{String.format("%.2f",model.total_price)+""}'
                                         android:textColor="@color/black"
                                         android:textSize="15sp" />
 
@@ -522,13 +527,15 @@
                                 <View
                                     android:layout_width="match_parent"
                                     android:layout_height="1px"
-                                    android:background="@color/gray19" />
+                                    android:background="@color/gray19"
+                                     />
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="15dp"
-                                    android:orientation="horizontal">
+                                    android:orientation="horizontal"
+                                    android:visibility='@{tax>0?View.VISIBLE:View.GONE}'>
 
                                     <TextView
                                         android:layout_width="0dp"
@@ -537,7 +544,7 @@
 
                                         android:layout_weight="1"
                                         android:gravity="center_vertical"
-                                        android:text="@string/shipping"
+                                        android:text="@string/order_tax"
                                         android:textColor="@color/black"
                                         android:textSize="15sp"
 
@@ -548,9 +555,8 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_gravity="center_vertical"
-
                                         android:gravity="center_vertical"
-                                        android:text='@{model.shipping+""}'
+                                        android:text='@{String.format("%.2f",tax)+""}'
                                         android:textColor="@color/black"
                                         android:textSize="15sp"
 
@@ -574,6 +580,59 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="1px"
                                     android:background="@color/gray19"
+                                    android:visibility="gone" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="15dp"
+                                    android:orientation="horizontal"
+                                    android:visibility="gone">
+
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_vertical"
+
+                                        android:layout_weight="1"
+                                        android:gravity="center_vertical"
+                                        android:text="@string/shipping"
+                                        android:textColor="@color/black"
+                                        android:textSize="15sp"
+
+                                        />
+
+                                    <TextView
+
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_vertical"
+
+                                        android:gravity="center_vertical"
+                                        android:textColor="@color/black"
+                                        android:textSize="15sp"
+
+                                        />
+
+                                    <TextView
+
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_vertical"
+
+                                        android:gravity="center_vertical"
+                                        android:text='@string/price2'
+                                        android:textColor="@color/black"
+                                        android:textSize="15sp"
+
+                                        />
+                                </LinearLayout>
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1px"
+                                    android:background="@color/gray19"
+                                    android:visibility="gone"
 
                                     />
 
@@ -605,7 +664,7 @@
                                         android:layout_gravity="center_vertical"
 
                                         android:gravity="center_vertical"
-                                        android:text='@{model.total+""}'
+                                        android:text='@{String.format("%.2f",model.grand_total)+""}'
                                         android:textColor="@color/black"
                                         android:textSize="15sp"
 
@@ -648,6 +707,11 @@
 
                     />
 
+                <ProgressBar
+                    android:id="@+id/progBar"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center" />
             </FrameLayout>
         </LinearLayout>
 
@@ -762,6 +826,7 @@
                                         android:src="@drawable/deliver2" />
 
                                     <TextView
+                                        android:id="@+id/tvDeliver"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginStart="4dp"

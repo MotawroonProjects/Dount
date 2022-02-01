@@ -10,7 +10,7 @@
 
         <variable
             name="distance"
-            type="String" />
+            type="double" />
 
         <import type="android.view.View" />
     </data>
@@ -105,7 +105,7 @@
                     android:ellipsize="end"
                     android:textColor="@color/colorPrimary"
                     android:textSize="14sp"
-                    android:text="@{distance}"
+                    android:text='@{String.format("%.2f",distance)}'
                     android:textStyle="bold" />
 
                 <TextView

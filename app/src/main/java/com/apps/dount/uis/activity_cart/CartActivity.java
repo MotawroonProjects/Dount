@@ -155,11 +155,10 @@ public class CartActivity extends BaseActivity {
         total = 0;
         for (ItemCartModel model : itemCartModelList) {
 
-            total += model.getTotal_price();
+            total += model.getSubtotal();
 
         }
-        cartDataModel.setSub_total(total);
-        cartDataModel.setTotal(cartDataModel.getSub_total() + cartDataModel.getShipping());
+        cartDataModel.setTotal_price(total);
         binding.tvTotal.setText(total + "");
         //   binding.tvtotal.setText(String.valueOf(total));
     }
