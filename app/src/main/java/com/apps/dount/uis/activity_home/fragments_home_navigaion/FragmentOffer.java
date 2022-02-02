@@ -1,32 +1,31 @@
 package com.apps.dount.uis.activity_home.fragments_home_navigaion;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.apps.dount.R;
-import com.apps.dount.adapter.DepartmentAdapter;
-import com.apps.dount.adapter.LatestProductAdapter;
 import com.apps.dount.adapter.OfferProductAdapter;
 import com.apps.dount.adapter.SliderAdapter;
-import com.apps.dount.databinding.FragmentDepartmentBinding;
 import com.apps.dount.databinding.FragmentOfferBinding;
-import com.apps.dount.model.DepartmentModel;
 import com.apps.dount.model.ProductModel;
 import com.apps.dount.model.SliderDataModel;
-import com.apps.dount.mvvm.FragmentHomeMvvm;
 import com.apps.dount.mvvm.FragmentOfferMvvm;
 import com.apps.dount.uis.activity_base.BaseFragment;
 import com.apps.dount.uis.activity_home.HomeActivity;
+import com.apps.dount.uis.activity_product_detials.ProductDetialsActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,12 +38,15 @@ import io.reactivex.disposables.CompositeDisposable;
 public class FragmentOffer extends BaseFragment {
     private FragmentOfferBinding binding;
     private HomeActivity activity;
-    private FragmentOfferMvvm fragmentHomeMvvm;
+    private FragmentOfferMvvm fragmentOfferMvvm;
     private OfferProductAdapter offerProductAdapter;
     private SliderAdapter sliderAdapter;
     private List<SliderDataModel.SliderModel> sliderModelList;
     private CompositeDisposable disposable = new CompositeDisposable();
     private Timer timer;
+    private ActivityResultLauncher<Intent> launcher;
+    private int req;
+
     public static FragmentOffer newInstance() {
         FragmentOffer fragment = new FragmentOffer();
         return fragment;
@@ -54,6 +56,12 @@ public class FragmentOffer extends BaseFragment {
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         activity = (HomeActivity) context;
+        launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+            if (req == 2 && result.getResultCode() == Activity.RESULT_OK) {
+                activity.updateCartCount();
+                fragmentOfferMvvm.getOffers(getLang(),getUserModel());
+            }
+        });
     }
 
     @Override
@@ -72,9 +80,9 @@ public class FragmentOffer extends BaseFragment {
 
     private void initView() {
         sliderModelList = new ArrayList<>();
-        fragmentHomeMvvm = ViewModelProviders.of(this).get(FragmentOfferMvvm.class);
+        fragmentOfferMvvm = ViewModelProviders.of(this).get(FragmentOfferMvvm.class);
 
-        fragmentHomeMvvm.getIsLoading().observe(activity, isLoading -> {
+        fragmentOfferMvvm.getIsLoading().observe(activity, isLoading -> {
             if (isLoading) {
                 binding.progBarSlider.setVisibility(View.VISIBLE);
 
@@ -82,7 +90,7 @@ public class FragmentOffer extends BaseFragment {
             }
             // binding.swipeRefresh.setRefreshing(isLoading);
         });
-        fragmentHomeMvvm.getSliderDataModelMutableLiveData().observe(activity, new androidx.lifecycle.Observer<SliderDataModel>() {
+        fragmentOfferMvvm.getSliderDataModelMutableLiveData().observe(activity, new androidx.lifecycle.Observer<SliderDataModel>() {
             @Override
             public void onChanged(SliderDataModel sliderDataModel) {
 
@@ -99,7 +107,7 @@ public class FragmentOffer extends BaseFragment {
         });
 
 
-        fragmentHomeMvvm.getOfferList().observe(activity, new androidx.lifecycle.Observer<List<ProductModel>>() {
+        fragmentOfferMvvm.getOfferList().observe(activity, new androidx.lifecycle.Observer<List<ProductModel>>() {
             @Override
             public void onChanged(List<ProductModel> productModels) {
                 if (productModels != null && productModels.size() > 0) {
@@ -115,10 +123,9 @@ public class FragmentOffer extends BaseFragment {
         });
 
 
-        offerProductAdapter = new OfferProductAdapter(activity, this,getUserModel());
+        offerProductAdapter = new OfferProductAdapter(activity, this, getUserModel());
         binding.recView.setLayoutManager(new GridLayoutManager(activity, 1));
         binding.recView.setAdapter(offerProductAdapter);
-
 
 
         sliderAdapter = new SliderAdapter(sliderModelList, activity);
@@ -127,10 +134,11 @@ public class FragmentOffer extends BaseFragment {
         binding.pager.setPadding(20, 0, 20, 0);
         binding.pager.setPageMargin(20);
 
-        fragmentHomeMvvm.getSlider();
-        fragmentHomeMvvm.getOffers(getLang());
+        fragmentOfferMvvm.getSlider();
+        fragmentOfferMvvm.getOffers(getLang(), getUserModel());
 
     }
+
     public class MyTask extends TimerTask {
         @Override
         public void run() {
@@ -146,6 +154,13 @@ public class FragmentOffer extends BaseFragment {
 
         }
 
+    }
+
+    public void showProductDetials(String productid) {
+        req = 2;
+        Intent intent = new Intent(activity, ProductDetialsActivity.class);
+        intent.putExtra("proid", productid);
+        launcher.launch(intent);
     }
 
 }

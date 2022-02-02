@@ -16,6 +16,7 @@ import com.apps.dount.databinding.ProductOfferRowBinding;
 import com.apps.dount.model.ProductModel;
 import com.apps.dount.model.UserModel;
 import com.apps.dount.uis.activity_home.fragments_home_navigaion.FragmentHome;
+import com.apps.dount.uis.activity_home.fragments_home_navigaion.FragmentOffer;
 
 import java.util.List;
 
@@ -51,6 +52,10 @@ public class OfferProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 if (fragment instanceof FragmentHome) {
                     FragmentHome fragmentHome = (FragmentHome) fragment;
                     fragmentHome.showProductDetials(list.get(holder.getLayoutPosition()).getId());
+                }
+                else    if (fragment instanceof FragmentOffer) {
+                    FragmentOffer fragmentOffer = (FragmentOffer) fragment;
+                    fragmentOffer.showProductDetials(list.get(holder.getLayoutPosition()).getId());
                 }
             }
         });

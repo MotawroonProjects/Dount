@@ -79,10 +79,14 @@ public class ActivityProductDetialsMvvm extends AndroidViewModel {
         return addremove;
     }
 
-    public void getProductDetials(String lang, String id, String user_id) {
+    public void getProductDetials(String lang, String id, UserModel userModel) {
+        String token = null;
+        if(userModel!=null){
+            token=userModel.getData().getAccess_token();
+        }
         isLoadingLivData.postValue(true);
         Api.getService(Tags.base_url)
-                .getSingleProduct(id)
+                .getSingleProduct(token,id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
 

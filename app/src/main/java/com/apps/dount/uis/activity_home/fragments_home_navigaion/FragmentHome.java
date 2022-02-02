@@ -69,6 +69,7 @@ public class FragmentHome extends BaseFragment {
         launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
             if (req == 2 && result.getResultCode() == Activity.RESULT_OK) {
                 activity.updateCartCount();
+                fragmentHomeMvvm.getOffers(getLang(),getUserModel());
             }
         });
     }

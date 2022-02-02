@@ -113,8 +113,8 @@ public interface Service {
     );
 
 
-    @GET("api/my_notifications")
-    Single<Response<NotificationDataModel>> getNotifications(@Query(value = "user_id") String user_id);
+    @GET("api/notification/notification")
+    Single<Response<NotificationDataModel>> getNotifications(@Query(value = "customer_id") String customer_id);
 
 
     @GET("api/profile/favoriteProducts")
@@ -134,7 +134,7 @@ public interface Service {
     Single<Response<ProductDataModel>> getSingleDepartment(@Query(value = "category_ids") List<String> id);
 
     @GET("api/home/offers")
-    Single<Response<ProductDataModel>> getOffers();
+    Single<Response<ProductDataModel>> getOffers(@Header("Authorization") String authorization);
 
     @GET("api/home/products")
     Single<Response<ProductDataModel>> getProducts(@Header("Authorization") String authorization);
@@ -149,7 +149,8 @@ public interface Service {
     Single<Response<DepartmentDataModel>> getFeatured(@Header("lang") String lang);
 
     @GET("api/home/one_product")
-    Single<Response<SingleProductDataModel>> getSingleProduct(@Query("product_id") String product_id);
+    Single<Response<SingleProductDataModel>> getSingleProduct(@Header("Authorization") String authorization,
+                                                              @Query("product_id") String product_id);
 
 
     @FormUrlEncoded

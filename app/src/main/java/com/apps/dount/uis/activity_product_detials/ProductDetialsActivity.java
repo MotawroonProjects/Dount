@@ -160,7 +160,7 @@ public class ProductDetialsActivity extends BaseActivity {
                 }
             }
         });
-        activityProductDetialsMvvm.getProductDetials(getLang(), proid, user_id);
+        activityProductDetialsMvvm.getProductDetials(getLang(), proid, getUserModel());
     }
 
     private void back() {
