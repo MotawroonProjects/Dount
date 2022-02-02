@@ -197,7 +197,7 @@ public class FragmentHome extends BaseFragment {
 
         fragmentHomeMvvm.getSlider();
         fragmentHomeMvvm.getDepartment(getLang());
-        fragmentHomeMvvm.getOffers(getLang());
+        fragmentHomeMvvm.getOffers(getLang(),getUserModel());
         binding.llSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

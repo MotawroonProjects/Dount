@@ -137,7 +137,7 @@ public interface Service {
     Single<Response<ProductDataModel>> getOffers();
 
     @GET("api/home/products")
-    Single<Response<ProductDataModel>> getProducts();
+    Single<Response<ProductDataModel>> getProducts(@Header("Authorization") String authorization);
 
     @GET("api/home/branches")
     Single<Response<BranchDataModel>> getBranches();
@@ -173,14 +173,14 @@ public interface Service {
                                                @Body CartDataModel cartDataModel
     );
 
-    @GET("api/my_orders")
-    Single<Response<OrderDataModel>> getMyOrders(@Query("user_id") String user_id);
+    @GET("api/order/newOrders")
+    Single<Response<OrderDataModel>> getMyOrders(@Header("Authorization") String authorization);
 
-    @GET("api/order_details")
+    @GET("api/order/one_order")
     Single<Response<SingleOrderDataModel>> getSingleOrders(@Query(value = "order_id") String order_id);
 
-    @GET("api/profile")
-    Single<Response<UserModel>> getProfile(@Query("id") String id);
+    @GET("api/profile/getProfile")
+    Single<Response<UserModel>> getProfile(@Header("Authorization") String authorization);
 
     @GET("api/terms/taxes")
     Single<Response<SettingDataModel>> getSetting();

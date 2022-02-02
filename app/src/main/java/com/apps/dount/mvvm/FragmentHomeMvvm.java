@@ -15,6 +15,7 @@ import com.apps.dount.model.ProductDataModel;
 import com.apps.dount.model.ProductModel;
 import com.apps.dount.model.SingleProductDataModel;
 import com.apps.dount.model.SliderDataModel;
+import com.apps.dount.model.UserModel;
 import com.apps.dount.remote.Api;
 import com.apps.dount.tags.Tags;
 
@@ -37,7 +38,6 @@ public class FragmentHomeMvvm extends AndroidViewModel {
     private MutableLiveData<List<ProductModel>> offerlistMutableLiveData;
 
 
-
     public FragmentHomeMvvm(@NonNull Application application) {
         super(application);
         context = application.getApplicationContext();
@@ -49,7 +49,6 @@ public class FragmentHomeMvvm extends AndroidViewModel {
         }
         return offerlistMutableLiveData;
     }
-
 
 
     public MutableLiveData<SliderDataModel> getSliderDataModelMutableLiveData() {
@@ -73,7 +72,6 @@ public class FragmentHomeMvvm extends AndroidViewModel {
         }
         return departmentLivData;
     }
-
 
 
     public void getSlider() {
@@ -147,13 +145,17 @@ public class FragmentHomeMvvm extends AndroidViewModel {
 
     }
 
-    public void getOffers(String lang) {
+    public void getOffers(String lang, UserModel userModel) {
 
+        String token = null;
+        if (userModel != null) {
+            token = userModel.getData().getAccess_token();
+        }
 
         isLoadingLiveData.setValue(true);
 
         Api.getService(Tags.base_url)
-                .getProducts()
+                .getProducts(token)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<Response<ProductDataModel>>() {

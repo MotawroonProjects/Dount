@@ -58,7 +58,7 @@ public class ActivityMyOrdersMvvm extends AndroidViewModel {
         isLoadingLiveData.setValue(true);
 
         Api.getService(Tags.base_url)
-                .getMyOrders(userModel.getData().getUser().getId() + "")
+                .getMyOrders(userModel.getData().getAccess_token() )
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<Response<OrderDataModel>>() {

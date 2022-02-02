@@ -41,9 +41,9 @@ public class ActivityWalletMvvm extends AndroidViewModel {
 
 
 
-    public void getProfile(String user_id) {
+    public void getProfile(String token) {
         isLoadingLiveData.postValue(true);
-        Api.getService(Tags.base_url).getProfile(user_id).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).unsubscribeOn(Schedulers.io()).subscribe(new SingleObserver<Response<UserModel>>() {
+        Api.getService(Tags.base_url).getProfile(token).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).unsubscribeOn(Schedulers.io()).subscribe(new SingleObserver<Response<UserModel>>() {
             @Override
             public void onSubscribe(@NonNull Disposable d) {
                 disposable.add(d);

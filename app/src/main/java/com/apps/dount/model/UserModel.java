@@ -11,6 +11,8 @@ public class UserModel extends StatusResponse {
 
     public static class Data implements Serializable {
         private User user;
+        private User data;
+
         private String access_token;
         private String token_type;
         private String expires_in;
@@ -18,6 +20,10 @@ public class UserModel extends StatusResponse {
 
         public User getUser() {
             return user;
+        }
+
+        public User getData() {
+            return data;
         }
 
         public String getAccess_token() {
@@ -40,7 +46,7 @@ public class UserModel extends StatusResponse {
             this.firebase_token = firebase_token;
         }
 
-        public class User implements Serializable{
+        public class User implements Serializable {
             private String id;
             private String customer_group_id;
             private String user_id;
@@ -64,6 +70,7 @@ public class UserModel extends StatusResponse {
             private String is_active;
             private String created_at;
             private String updated_at;
+            private String total;
 
             public String getId() {
                 return id;
@@ -155,6 +162,10 @@ public class UserModel extends StatusResponse {
 
             public String getUpdated_at() {
                 return updated_at;
+            }
+
+            public String getTotal() {
+                return total;
             }
         }
     }

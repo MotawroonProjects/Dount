@@ -328,7 +328,7 @@ public class ActivityPaymentMvvm extends AndroidViewModel implements GoogleApiCl
                     @Override
                     public void onSuccess(@NonNull Response<StatusResponse> response) {
                         dialog.dismiss();
-                        Log.e("kkkkk",response.code()+" "+response.body().getStatus());
+                        Log.e("kkkkk",response.code()+"");
                         if (response.isSuccessful() && response.body() != null) {
                             if (response.body().getStatus() == 200) {
 

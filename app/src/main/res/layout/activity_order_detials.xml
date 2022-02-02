@@ -178,7 +178,7 @@
                                     android:ellipsize="end"
                                     android:gravity="end"
                                     android:maxLines="2"
-                                    android:text="@{model.total}"
+                                    android:text="@{model.grand_total}"
                                     android:textColor="@color/color9"
                                     android:textSize="15sp"
                                     android:textStyle="bold" />
@@ -191,7 +191,7 @@
                                     android:ellipsize="end"
                                     android:gravity="end"
                                     android:maxLines="2"
-                                    android:text="د.إ"
+                                    android:text="@string/price2"
                                     android:textColor="@color/black"
                                     android:textSize="15sp" />
                             </LinearLayout>
@@ -227,7 +227,7 @@
                                             android:ellipsize="end"
                                             android:gravity="end"
                                             android:maxLines="2"
-                                            android:text="@{model.day}"
+                                            android:text='@{model.created_at.split("T")[0]}'
                                             android:textColor="@color/gray10"
                                             android:textSize="15sp" />
                                     </LinearLayout>
@@ -236,11 +236,13 @@
                                 <FrameLayout
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
+                                    android:visibility="gone"
                                     android:layout_weight="1">
 
                                     <LinearLayout
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
+                                        android:visibility="gone"
                                         android:orientation="horizontal">
 
                                         <ImageView
@@ -258,7 +260,6 @@
                                             android:ellipsize="end"
                                             android:gravity="end"
                                             android:maxLines="2"
-                                            android:text='@{lang.equals("ar")?model.time.replace("PM","م").replace("AM","ص"):model.time}'
                                             android:textColor="@color/gray10"
                                             android:textSize="15sp" />
                                     </LinearLayout>

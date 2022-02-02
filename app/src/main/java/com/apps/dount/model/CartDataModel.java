@@ -15,7 +15,6 @@ public class CartDataModel implements Serializable {
     private String reference_no;
     private String branch_id="";
 
-    private String customer_id_hidden;
     private String customer_id;
     private double total_discount;
     private double total_tax;
@@ -26,7 +25,7 @@ public class CartDataModel implements Serializable {
     private String receive_type;
     private String notes;
     private String payment_type;
-    private String address;
+    private String address="";
     private double latitude;
     private double longitude;
 
@@ -48,9 +47,6 @@ public class CartDataModel implements Serializable {
 
 
 
-    public String getCustomer_id_hidden() {
-        return customer_id_hidden;
-    }
 
     public String getCustomer_id() {
         return customer_id;
@@ -106,9 +102,7 @@ public class CartDataModel implements Serializable {
 
 
 
-    public void setCustomer_id_hidden(String customer_id_hidden) {
-        this.customer_id_hidden = customer_id_hidden;
-    }
+
 
     public void setCustomer_id(String customer_id) {
         this.customer_id = customer_id;

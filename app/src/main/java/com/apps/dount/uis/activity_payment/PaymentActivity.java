@@ -307,7 +307,6 @@ public class PaymentActivity extends BaseActivity {
             public void onClick(View view) {
                 if (cartDataModel.isDataValid(PaymentActivity.this)) {
                     cartDataModel.setCustomer_id(userModel.getData().getUser().getId());
-                    cartDataModel.setCustomer_id_hidden(userModel.getData().getUser().getId());
                     cartDataModel.setNotes(binding.edtNotes.getText().toString().trim());
 
                     // cartDataModel.setUser_id(userModel.getData().getUser().getId());
