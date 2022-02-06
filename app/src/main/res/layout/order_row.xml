@@ -81,7 +81,7 @@
                     android:layout_gravity="center"
                     android:background="@drawable/small_stroke_color4_white"
                     android:gravity="center"
-                    android:padding="10dp"
+                    android:padding="3dp"
                     android:textColor="@color/colorAccent"
                     android:textSize="14sp" />
 

@@ -184,7 +184,7 @@ public interface Service {
     Single<Response<SingleOrderDataModel>> getSingleOrders(@Header("Authorization") String authorization,
                                                            @Query(value = "order_id") String order_id);
 
-    @GET("api/profile/getProfile")
+    @GET("api/auth/getProfile")
     Single<Response<UserModel>> getProfile(@Header("Authorization") String authorization);
 
     @GET("api/terms/taxes")

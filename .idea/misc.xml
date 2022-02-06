@@ -170,9 +170,11 @@
         <entry key="..\:/Dount/app/src/main/res/layout/activity_about_app.xml" value="0.1" />
         <entry key="..\:/Dount/app/src/main/res/layout/activity_contact_us.xml" value="0.1" />
         <entry key="..\:/Dount/app/src/main/res/layout/activity_map.xml" value="0.1" />
+        <entry key="..\:/Dount/app/src/main/res/layout/activity_notification.xml" value="0.103515625" />
         <entry key="..\:/Dount/app/src/main/res/layout/activity_order_detials.xml" value="0.15" />
         <entry key="..\:/Dount/app/src/main/res/layout/activity_orders.xml" value="0.1" />
         <entry key="..\:/Dount/app/src/main/res/layout/activity_payment.xml" value="0.1" />
+        <entry key="..\:/Dount/app/src/main/res/layout/activity_product_detials.xml" value="0.103515625" />
         <entry key="..\:/Dount/app/src/main/res/layout/activity_wallet.xml" value="0.1" />
         <entry key="..\:/Dount/app/src/main/res/layout/branch_complete_row.xml" value="0.1" />
         <entry key="..\:/Dount/app/src/main/res/layout/branch_row.xml" value="0.1" />
@@ -183,7 +185,7 @@
         <entry key="..\:/Dount/app/src/main/res/layout/latest_product_row.xml" value="0.1" />
         <entry key="..\:/Dount/app/src/main/res/layout/order_product_row.xml" value="0.1" />
         <entry key="..\:/Dount/app/src/main/res/layout/order_product_row2.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/order_row.xml" value="0.1" />
+        <entry key="..\:/Dount/app/src/main/res/layout/order_row.xml" value="0.15" />
         <entry key="..\:/Dount/app/src/main/res/layout/previous_order_row.xml" value="0.1" />
         <entry key="..\:/Dount/app/src/main/res/layout/product_offer_row.xml" value="0.1" />
         <entry key="..\:/Dount/app/src/main/res/layout/spinner_row.xml" value="0.10344827586206896" />
@@ -322,8 +324,6 @@
         <entry key="..\:/android/FlutterProjects/Wedding/app/src/main/res/layout/activity_main.xml" value="0.1935185185185185" />
         <entry key="..\:/android/FlutterProjects/Wedding/app/src/main/res/layout/activity_splash.xml" value="0.20416666666666666" />
         <entry key="..\:/android/FlutterProjects/Wedding/app/src/main/res/layout/toolbar.xml" value="0.1935185185185185" />
-        <entry key="..\:/android/Projects/Dount/app/src/main/res/layout/activity_cart.xml" value="0.16666666666666666" />
-        <entry key="..\:/android/Projects/Dount/app/src/main/res/layout/activity_payment.xml" value="0.15555555555555556" />
         <entry key="..\:/android/Projects/Wedding/app/src/main/res/drawable/btn_change_lang.xml" value="0.2203125" />
         <entry key="..\:/android/Projects/Wedding/app/src/main/res/drawable/ic_call.xml" value="0.2203125" />
         <entry key="..\:/android/Projects/Wedding/app/src/main/res/drawable/ic_edit_account.xml" value="0.2203125" />

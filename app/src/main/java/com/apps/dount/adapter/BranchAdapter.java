@@ -63,7 +63,6 @@ public class BranchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
         if (holder instanceof MyHolder) {
             MyHolder myHolder = (MyHolder) holder;
-
             myHolder.binding.setModel(list.get(position));
 
 

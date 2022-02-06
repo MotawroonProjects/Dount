@@ -29,9 +29,9 @@ public class ProductDetialsActivity extends BaseActivity {
 
     private ProductModel productmodel;
 
-    private boolean isDataChanged = false,isfav=false;
+    private boolean isDataChanged = false, isfav = false;
     private double price;
-    private int amount=1;
+    private int amount = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,14 +72,14 @@ public class ProductDetialsActivity extends BaseActivity {
             @Override
             public void onChanged(Boolean aBoolean) {
                 if (aBoolean) {
-                    isfav=true;
+                    isfav = true;
                     if (productmodel != null) {
 
-                            if (productmodel.isIs_favorite()) {
-                                productmodel.setIs_favorite(false);
-                            } else {
-                                productmodel.setIs_favorite(true);
-                            }
+                        if (productmodel.isIs_favorite()) {
+                            productmodel.setIs_favorite(false);
+                        } else {
+                            productmodel.setIs_favorite(true);
+                        }
 
                         binding.setModel(productmodel);
 
@@ -109,16 +109,16 @@ public class ProductDetialsActivity extends BaseActivity {
                     ProductDetialsActivity.this.productmodel = singleProductDataModel.getData();
                     binding.setModel(singleProductDataModel.getData());
 //                        if (singleProductDataModel.getData().getOffer() == null) {
-                            price = Double.parseDouble(singleProductDataModel.getData().getPrice());
-                            binding.tvTotal.setText(price + "");
+                    price = Double.parseDouble(singleProductDataModel.getData().getPrice());
+                    binding.tvTotal.setText(((String.format("%.2f", price * amount))) + "");
 //                        } else {
 //                            price = Double.parseDouble(singleProductDataModel.getData().getOffer().getPrice_after());
 //                            binding.tvTotal.setText(price + "");
 //
 //                        }
-                    }
-
                 }
+
+            }
 
         });
         //  setUpToolbar(binding.toolbar, getString(R.string.contact_us), R.color.white, R.color.black);
@@ -133,7 +133,7 @@ public class ProductDetialsActivity extends BaseActivity {
         binding.imageIncrease.setOnClickListener(view -> {
             amount++;
             binding.tvAmount.setText(String.valueOf(amount));
-            binding.tvTotal.setText(((price * amount) ) + "");
+            binding.tvTotal.setText(((String.format("%.2f", price * amount))) + "");
 
         });
 
@@ -141,16 +141,16 @@ public class ProductDetialsActivity extends BaseActivity {
             if (amount > 1) {
                 amount--;
                 binding.tvAmount.setText(String.valueOf(amount));
-                binding.tvTotal.setText(((price * amount)) + "");
+                binding.tvTotal.setText(((String.format("%.2f", price * amount))) + "");
 
             }
         });
         binding.flTotal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    addTocart();
+                addTocart();
 
-                }
+            }
         });
         binding.checkbox.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -164,7 +164,7 @@ public class ProductDetialsActivity extends BaseActivity {
     }
 
     private void back() {
-        if (isDataChanged||isfav) {
+        if (isDataChanged || isfav) {
             Log.error("ldldll", String.valueOf(isDataChanged));
             setResult(RESULT_OK);
         }

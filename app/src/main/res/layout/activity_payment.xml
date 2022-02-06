@@ -776,8 +776,8 @@
                                 android:layout_marginEnd="5dp"
                                 android:layout_weight="1"
                                 android:background="@drawable/small_color9_stroke_white"
-                                android:paddingLeft="20dp"
-                                android:paddingRight="20dp">
+                                android:paddingLeft="5dp"
+                                android:paddingRight="5dp">
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -811,8 +811,8 @@
                                 android:layout_marginEnd="5dp"
                                 android:layout_weight="1"
                                 android:background="@drawable/small_color9_stroke_white"
-                                android:paddingLeft="20dp"
-                                android:paddingRight="20dp">
+                                android:paddingLeft="5dp"
+                                android:paddingRight="5dp">
 
                                 <LinearLayout
                                     android:layout_width="match_parent"

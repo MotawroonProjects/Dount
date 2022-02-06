@@ -54,6 +54,7 @@ public class HomeActivityMvvm extends AndroidViewModel {
             public void onSuccess(@NonNull Response<StatusResponse> statusResponseResponse) {
                 dialog.dismiss();
                 if (statusResponseResponse.isSuccessful()) {
+                    Log.e("lllll",statusResponseResponse.code()+""+statusResponseResponse.body().getStatus());
                     if (statusResponseResponse.body().getStatus() == 200) {
                         logout.postValue(true);
                     }
@@ -71,7 +72,7 @@ public class HomeActivityMvvm extends AndroidViewModel {
         FirebaseInstanceId.getInstance().getInstanceId().addOnCompleteListener((Activity) context, task -> {
             if (task.isSuccessful()) {
                 String token = task.getResult().getToken();
-
+Log.e("sssss",token);
                 Api.getService(Tags.base_url).updateFirebasetoken(token, userModel.getData().getUser().getId() + "", "android").subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).unsubscribeOn(Schedulers.io()).subscribe(new SingleObserver<Response<StatusResponse>>() {
                     @Override
                     public void onSubscribe(@NonNull Disposable d) {
@@ -81,6 +82,7 @@ public class HomeActivityMvvm extends AndroidViewModel {
                     @Override
                     public void onSuccess(@NonNull Response<StatusResponse> statusResponseResponse) {
                         if (statusResponseResponse.isSuccessful()) {
+                            Log.e("lllll",statusResponseResponse.body().getStatus()+"");
                             if (statusResponseResponse.body().getStatus() == 200) {
                                 firebase.postValue(token);
                                 Log.e("token", "updated successfully");
