@@ -60,7 +60,7 @@ public class ShareActivity extends BaseActivity {
         binding.llShare.setOnClickListener(view -> {
             Intent intent = new Intent(Intent.ACTION_SEND);
             intent.setType("text/plain");
-            intent.putExtra(Intent.EXTRA_TITLE, "تطبيق اكابر للذبائح");
+            intent.putExtra(Intent.EXTRA_TITLE, "تطبيق دونات");
             intent.putExtra(Intent.EXTRA_TEXT, barcode);
             startActivity(intent);
         });
