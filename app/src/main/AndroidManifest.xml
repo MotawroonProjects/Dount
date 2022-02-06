@@ -33,7 +33,13 @@
             android:windowSoftInputMode="adjustPan">
 
         </activity>
+        <activity
+            android:name=".uis.activity_web_view.AboutUsActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan">
 
+        </activity>
         <activity
             android:name="com.apps.dount.uis.activity_map.MapActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
@@ -124,28 +130,23 @@
         <activity
             android:name="com.apps.dount.uis.activity_sign_up.SignUpActivity"
             android:exported="false"
-            android:windowSoftInputMode="adjustResize"
-            />
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".uis.activity_filter.FilterActivity"
             android:exported="false"
-            android:windowSoftInputMode="adjustResize"
-            />
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".uis.activity_search.SearchActivity"
             android:exported="false"
-            android:windowSoftInputMode="adjustResize"
-            />
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name="com.apps.dount.uis.activity_verification_code.VerificationCodeActivity"
             android:exported="false"
-            android:windowSoftInputMode="adjustResize"
-            />
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name="com.apps.dount.uis.activity_login.LoginActivity"
             android:exported="true"
-            android:windowSoftInputMode="adjustResize"
-            >
+            android:windowSoftInputMode="adjustResize">
 
         </activity>
         <activity

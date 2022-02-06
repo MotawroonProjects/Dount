@@ -4,6 +4,7 @@ import android.app.Application;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.Uri;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -164,7 +165,7 @@ public class ActivitySignupMvvm extends AndroidViewModel {
         ProgressDialog dialog = Common.createProgressDialog(context, context.getResources().getString(R.string.wait));
         dialog.setCancelable(false);
         dialog.show();
-        RequestBody firts_name_part = Common.getRequestBodyText(model.getFirst_name());
+        RequestBody firts_name_part = Common.getRequestBodyText(model.getFirst_name()+" "+model.getFirst_name());
         RequestBody seconed_name_part = Common.getRequestBodyText(model.getSeconed_name());
         RequestBody user_part = Common.getRequestBodyText(userModel.getData().getUser().getId() + "");
 
@@ -175,7 +176,7 @@ public class ActivitySignupMvvm extends AndroidViewModel {
 
         }
 
-        Api.getService(Tags.base_url).editprofilewithImage(firts_name_part, seconed_name_part, user_part, image).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).unsubscribeOn(Schedulers.io()).subscribe(new Observer<Response<UserModel>>() {
+        Api.getService(Tags.base_url).editprofilewithImage(firts_name_part, user_part, image).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).unsubscribeOn(Schedulers.io()).subscribe(new Observer<Response<UserModel>>() {
             @Override
             public void onSubscribe(@NonNull Disposable d) {
                 disposable.add(d);
@@ -186,7 +187,7 @@ public class ActivitySignupMvvm extends AndroidViewModel {
                 dialog.dismiss();
 
                 if (userModelResponse.isSuccessful()) {
-                   // Log.e(";;dlldld",userModelResponse.body().getStatus()+"");
+Log.e("lllll",userModelResponse.body().getStatus()+"");
                     if (userModelResponse.body().getStatus() == 200) {
 
                         userModelMutableLiveData.postValue(userModelResponse.body());

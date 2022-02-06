@@ -3,6 +3,8 @@ package com.apps.dount.uis.activity_search;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -40,6 +42,7 @@ public class SearchActivity extends BaseActivity {
     private ActivityResultLauncher<Intent> launcher;
     private int req = 1;
     private FilterModel filtermodel;
+    private String query;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +80,7 @@ public class SearchActivity extends BaseActivity {
                         product2Adapter.updateList(singleDepartmentDataModel.getData());
                         binding.cardNoData.setVisibility(View.GONE);
                     } else {
+                        product2Adapter.updateList(new ArrayList<>());
                         binding.cardNoData.setVisibility(View.VISIBLE);
 
                     }
@@ -86,7 +90,7 @@ public class SearchActivity extends BaseActivity {
         //  setUpToolbar(binding.toolbar, getString(R.string.contact_us), R.color.white, R.color.black);
         binding.setLang(getLang());
 
-        product2Adapter = new OfferProductAdapter(this,null,userModel);
+        product2Adapter = new OfferProductAdapter(this, null, userModel);
         binding.recView.setLayoutManager(new GridLayoutManager(this, 1));
         binding.recView.setAdapter(product2Adapter);
         binding.imBack.setOnClickListener(new View.OnClickListener() {
@@ -95,25 +99,42 @@ public class SearchActivity extends BaseActivity {
                 finish();
             }
         });
-        filtermodel=new FilterModel();
+        filtermodel = new FilterModel();
         filtermodel.setDepartments(new ArrayList<>());
-        activitySearchMvvm.getDepartmentDetials(filtermodel.getDepartments());
+        activitySearchMvvm.getDepartmentDetials(filtermodel.getDepartments(), query);
         launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
-            if (req == 2 && result.getResultCode() == Activity.RESULT_OK) {
-                setResult(RESULT_OK);
-            }
-            else   if (req == 3 && result.getResultCode() == Activity.RESULT_OK) {
-                if(result.getData().getSerializableExtra("data")!=null){
+            if (req == 3 && result.getResultCode() == Activity.RESULT_OK) {
+                if (result.getData().getSerializableExtra("data") != null) {
                     product2Adapter.updateList(new ArrayList<>());
-                filtermodel=(FilterModel)result.getData().getSerializableExtra("data");
-                    activitySearchMvvm.getDepartmentDetials(filtermodel.getDepartments());
+                    filtermodel = (FilterModel) result.getData().getSerializableExtra("data");
+                    activitySearchMvvm.getDepartmentDetials(filtermodel.getDepartments(), query);
 
-                }}
+                }
+            }
         });
+        binding.edtSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                query = binding.edtSearch.getText().toString();
+                activitySearchMvvm.getDepartmentDetials(filtermodel.getDepartments(), query);
+
+            }
+        });
+
         binding.imageFilter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                req=3;
+                req = 3;
                 Intent intent = new Intent(SearchActivity.this, FilterActivity.class);
                 launcher.launch(intent);
             }

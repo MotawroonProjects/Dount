@@ -83,8 +83,8 @@
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
                                 android:text="@string/order_detials"
-                                android:textSize="18sp"
                                 android:textColor="@color/black2"
+                                android:textSize="18sp"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -122,8 +122,7 @@
                         app:cardBackgroundColor="@color/white"
                         app:cardCornerRadius="8dp"
                         app:cardElevation="3dp"
-
-                        >
+                        app:contentPadding="4dp">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -236,14 +235,14 @@
                                 <FrameLayout
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:visibility="gone"
-                                    android:layout_weight="1">
+                                    android:layout_weight="1"
+                                    android:visibility="gone">
 
                                     <LinearLayout
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:visibility="gone"
-                                        android:orientation="horizontal">
+                                        android:orientation="horizontal"
+                                        android:visibility="gone">
 
                                         <ImageView
                                             android:layout_width="24dp"
@@ -271,7 +270,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="8dp"
-                                android:orientation="horizontal">
+                                android:orientation="horizontal"
+                                android:visibility="gone">
 
                                 <ImageView
                                     android:layout_width="24dp"
@@ -379,7 +379,7 @@
                                         android:id="@+id/tv_order1"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="10/11/2021 03:00 م"
+
                                         android:textColor="@color/gray12"
                                         android:textSize="13sp"
                                         android:textStyle="bold" />
@@ -453,7 +453,7 @@
                                         android:id="@+id/tv_order2"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="10/11/2021 03:00 م"
+
                                         android:textColor="@color/gray12" />
 
                                 </LinearLayout>
@@ -520,7 +520,7 @@
 
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="10/11/2021 03:00 م"
+
                                     android:textColor="@color/gray12"
                                     android:textSize="17sp"
 
@@ -591,7 +591,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:gravity="center_vertical"
-                                    android:text="10/11/2021 03:00 م"
+
                                     android:textColor="@color/gray12"
                                     android:textSize="17sp"
 
@@ -649,7 +649,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:gravity="center_vertical"
-                                    android:text="10/11/2021 03:00 م"
+
                                     android:textColor="@color/gray12"
                                     android:textSize="17sp"
 

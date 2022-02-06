@@ -38,6 +38,7 @@ public class ProductModel implements Serializable {
     private String created_at;
     private String updated_at;
     private boolean is_favorite;
+    private double price_tax;
 
     public String getId() {
         return id;
@@ -177,5 +178,9 @@ public class ProductModel implements Serializable {
 
     public void setIs_favorite(boolean is_favorite) {
         this.is_favorite = is_favorite;
+    }
+
+    public double getPrice_tax() {
+        return price_tax;
     }
 }

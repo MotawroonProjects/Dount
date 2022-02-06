@@ -1,20 +1,18 @@
 package com.apps.dount.mvvm;
 
 import android.app.Application;
-import android.content.Context;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.apps.dount.model.ProductDataModel;
-import com.apps.dount.model.ProductDataModel;
+
+import com.apps.dount.model.SettingDataModel;
+import com.apps.dount.model.SettingModel;
+import com.apps.dount.model.UserSettingsModel;
 import com.apps.dount.remote.Api;
 import com.apps.dount.tags.Tags;
-
-import java.util.List;
+import com.apps.dount.uis.activity_payment.PaymentActivity;
 
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -23,28 +21,26 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import retrofit2.Response;
 
-public class ActivitySearchMvvm extends AndroidViewModel {
-    private static final String TAG = "ActivitySearchMvvm";
-    private Context context;
+public class FragmentProfileGeneralMvvm extends AndroidViewModel {
 
-    private MutableLiveData<Boolean> isLoadingLivData;
+
 
     private CompositeDisposable disposable = new CompositeDisposable();
-    private MutableLiveData<ProductDataModel> departmentLivData;
+    private MutableLiveData<Boolean> isLoadingLivData;
+    private MutableLiveData<SettingModel> mutableLiveData;
 
-
-    public ActivitySearchMvvm(@NonNull Application application) {
+    public FragmentProfileGeneralMvvm(@NonNull Application application) {
         super(application);
-        context = application.getApplicationContext();
     }
 
-    public LiveData<ProductDataModel> getCategoryData() {
-        if (departmentLivData == null) {
-            departmentLivData = new MutableLiveData<>();
-
+    public MutableLiveData<SettingModel> getMutableLiveData() {
+        if (mutableLiveData == null) {
+            mutableLiveData = new MutableLiveData<>();
         }
-        return departmentLivData;
+        return mutableLiveData;
     }
+
+
 
     public MutableLiveData<Boolean> getIsLoading() {
         if (isLoadingLivData == null) {
@@ -52,48 +48,38 @@ public class ActivitySearchMvvm extends AndroidViewModel {
         }
         return isLoadingLivData;
     }
+    public void getSetting() {
 
-    public void getDepartmentDetials( List<String> id,String query) {
-        isLoadingLivData.postValue(true);
+
+        isLoadingLivData.setValue(true);
+
         Api.getService(Tags.base_url)
-                .getSingleDepartment( id,query)
+                .getAbout()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-
-                .subscribe(new SingleObserver<Response<ProductDataModel>>() {
+                .subscribe(new SingleObserver<Response<SettingModel>>() {
                     @Override
                     public void onSubscribe(@NonNull Disposable d) {
                         disposable.add(d);
                     }
 
                     @Override
-                    public void onSuccess(@NonNull Response<ProductDataModel> response) {
+                    public void onSuccess(@NonNull Response<SettingModel> response) {
                         isLoadingLivData.postValue(false);
-
                         if (response.isSuccessful() && response.body() != null) {
                             if (response.body().getStatus() == 200) {
 
-                                departmentLivData.postValue(response.body());
-
+                                mutableLiveData.setValue(response.body());
                             }
                         }
                     }
 
                     @Override
                     public void onError(@NonNull Throwable e) {
-                        isLoadingLivData.postValue(false);
-                        Log.e(TAG, "onError: ", e);
+                        isLoadingLivData.setValue(false);
                     }
                 });
-
     }
 
-
-    @Override
-    protected void onCleared() {
-        super.onCleared();
-        disposable.clear();
-
-    }
 
 }

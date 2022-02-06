@@ -2,6 +2,7 @@ package com.apps.dount.mvvm;
 
 import android.app.Application;
 import android.content.Context;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -71,6 +72,7 @@ public class ActivityMyOrdersMvvm extends AndroidViewModel {
                     public void onSuccess(@NonNull Response<OrderDataModel> response) {
                         isLoadingLiveData.postValue(false);
                         if (response.isSuccessful() && response.body() != null) {
+                            Log.e("sss",response.body().getStatus()+"");
                             if (response.body().getStatus() == 200) {
                                 // List<ProductModel> list = response.body().getData();
                                 listMutableLiveData.setValue(response.body().getData());
@@ -81,6 +83,8 @@ public class ActivityMyOrdersMvvm extends AndroidViewModel {
                     @Override
                     public void onError(@NonNull Throwable e) {
                         isLoadingLiveData.setValue(false);
+                        Log.e("sss",e.toString());
+
                     }
                 });
     }

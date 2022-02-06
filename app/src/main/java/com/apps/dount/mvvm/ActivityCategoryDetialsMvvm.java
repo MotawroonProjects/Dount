@@ -59,7 +59,7 @@ public class ActivityCategoryDetialsMvvm extends AndroidViewModel {
         ids.add(id);
         isLoadingLivData.postValue(true);
         Api.getService(Tags.base_url)
-                .getSingleDepartment(ids)
+                .getSingleDepartment(ids,null)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
 
