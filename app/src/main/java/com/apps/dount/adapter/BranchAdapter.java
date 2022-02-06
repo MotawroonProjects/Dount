@@ -1,5 +1,6 @@
 package com.apps.dount.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -127,6 +128,7 @@ public class BranchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     public void updateList(List<BranchModel> list) {
         if (list != null) {
             this.list = list;
