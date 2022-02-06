@@ -184,7 +184,7 @@ public class ActivityProductDetialsMvvm extends AndroidViewModel {
             itemCartModel.setNet_unit_price(Double.parseDouble(productModel.getPrice()));
             itemCartModel.setProduct_code(productModel.getCode());
             itemCartModel.setSale_unit("عدد");
-            itemCartModel.setTax(0);
+            itemCartModel.setTax(productModel.getPrice_tax());
             itemCartModel.setTax_rate(0);
 
             cartModelList.add(itemCartModel);

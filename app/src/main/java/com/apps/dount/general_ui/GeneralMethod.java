@@ -343,15 +343,15 @@ public class GeneralMethod {
 
     @BindingAdapter("order_status")
     public static void orderStatus(TextView textView, String status) {
-        if (status.equals("new")) {
+        if (status.equals("append")) {
             textView.setText(textView.getContext().getString(R.string.order_sent));
         } else if (status.equals("accepted")) {
             textView.setText(textView.getContext().getString(R.string.delivered_to_the_delegate));
 
-        } else if (status.equals("delivering")) {
+        } else if (status.equals("on_way")) {
             textView.setText(textView.getContext().getString(R.string.delivery_in_progress));
 
-        } else if (status.equals("ended")) {
+        } else if (status.equals("done")) {
             textView.setText(textView.getContext().getString(R.string.end));
 
         }

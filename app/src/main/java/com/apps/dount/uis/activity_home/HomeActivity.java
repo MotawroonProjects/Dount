@@ -189,4 +189,8 @@ public class HomeActivity extends BaseActivity implements Listeners.Verification
         super.onResume();
         updateCartCount();
     }
+
+    public void llogout() {
+        homeActivityMvvm.logout(this,getUserModel());
+    }
 }

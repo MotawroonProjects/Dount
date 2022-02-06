@@ -18,13 +18,13 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.SavedStateHandle;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.navigation.NavBackStackEntry;
-import androidx.navigation.Navigation;
 
 import com.apps.dount.R;
 import com.apps.dount.databinding.FragmentProfileBinding;
+import com.apps.dount.model.SettingModel;
+import com.apps.dount.mvvm.FragmentProfileGeneralMvvm;
 import com.apps.dount.uis.activity_base.BaseFragment;
 import com.apps.dount.uis.activity_contact_us.ContactUsActivity;
 import com.apps.dount.uis.activity_favourite.FavouriteActivity;
@@ -32,10 +32,10 @@ import com.apps.dount.uis.activity_home.HomeActivity;
 import com.apps.dount.uis.activity_language.LanguageActivity;
 import com.apps.dount.uis.activity_login.LoginActivity;
 import com.apps.dount.uis.activity_my_orders.MyOrderActivity;
-import com.apps.dount.uis.activity_previous_orders.PreviousOrderActivity;
 import com.apps.dount.uis.activity_share.ShareActivity;
 import com.apps.dount.uis.activity_sign_up.SignUpActivity;
 import com.apps.dount.uis.activity_wallet.WalletActivity;
+import com.apps.dount.uis.activity_web_view.AboutUsActivity;
 
 import java.util.List;
 
@@ -44,6 +44,7 @@ public class FragmentProfile extends BaseFragment {
     private static final String TAG = FragmentProfile.class.getName();
     private HomeActivity activity;
     private FragmentProfileBinding binding;
+    private FragmentProfileGeneralMvvm fragmentProfileGeneralMvvm;
     private ActivityResultLauncher<Intent> launcher;
     private int req = 1;
 
@@ -54,7 +55,8 @@ public class FragmentProfile extends BaseFragment {
         launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
             if (req == 1 && result.getResultCode() == Activity.RESULT_OK) {
                 binding.setModel(getUserModel());
-            } else if (req == 2 && result.getResultCode() == Activity.RESULT_OK&&result.getData()!=null) {
+                activity.updateFirebase();
+            } else if (req == 2 && result.getResultCode() == Activity.RESULT_OK && result.getData() != null) {
                 String lang = result.getData().getStringExtra("lang");
                 activity.refreshActivity(lang);
             }
@@ -77,11 +79,27 @@ public class FragmentProfile extends BaseFragment {
     }
 
     private void initView() {
+        fragmentProfileGeneralMvvm = ViewModelProviders.of(this).get(FragmentProfileGeneralMvvm.class);
+        fragmentProfileGeneralMvvm.getIsLoading().observe(activity, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+
+            }
+        });
+        fragmentProfileGeneralMvvm.getMutableLiveData().observe(activity, new Observer<SettingModel>() {
+            @Override
+            public void onChanged(SettingModel settingModel) {
+                if (settingModel != null) {
+                    Intent intent = new Intent(activity, AboutUsActivity.class);
+                    intent.putExtra("url", settingModel.getData());
+                    startActivity(intent);
+                }
+            }
+        });
         if (getUserModel() != null) {
             binding.setModel(getUserModel());
         }
         binding.setLang(getLang());
-
 
 
         binding.llLanguage.setOnClickListener(v -> {
@@ -124,6 +142,12 @@ public class FragmentProfile extends BaseFragment {
                 navigateToLoginActivity();
             }
         });
+        binding.llAbout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fragmentProfileGeneralMvvm.getSetting();
+            }
+        });
 
 //        binding.cardpreviousOrder.setOnClickListener(view -> {
 //            if (getUserModel() != null) {
@@ -164,6 +188,12 @@ public class FragmentProfile extends BaseFragment {
                 startActivity(intent);
             }
         });
+        binding.llLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                activity.llogout();
+            }
+        });
     }
 
     private void navigateToLoginActivity() {
@@ -172,6 +202,7 @@ public class FragmentProfile extends BaseFragment {
         launcher.launch(intent);
 
     }
+
     private void navigationToSignupActivity() {
         req = 1;
         Intent intent = new Intent(activity, SignUpActivity.class);
@@ -219,8 +250,6 @@ public class FragmentProfile extends BaseFragment {
         }
 
     }
-
-
 
 
 }

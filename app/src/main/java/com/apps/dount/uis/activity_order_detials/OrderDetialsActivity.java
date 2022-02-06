@@ -73,20 +73,20 @@ public class OrderDetialsActivity extends BaseActivity {
             }
         });
         // updateUi1();
-        activityOrderDetialsMvvm.getorderDetials(order_id);
+        activityOrderDetialsMvvm.getorderDetials(order_id,getUserModel());
 
     }
 
     private void updateData(OrderModel orderModel) {
         this.orderModel = orderModel;
         order2ProductAdapter.updateList(orderModel.getDetials());
-        if (orderModel.getStatus().equals("new")) {
+        if (orderModel.getStatus().equals("append")) {
             updateUi2();
         } else if (orderModel.getStatus().equals("accepted")) {
             updateUi3();
-        } else if (orderModel.getStatus().equals("delivering")) {
+        } else if (orderModel.getStatus().equals("on_way")) {
             updateUi4();
-        } else if (orderModel.getStatus().equals("ended")) {
+        } else if (orderModel.getStatus().equals("done")) {
             updateUi5();
         }
     }

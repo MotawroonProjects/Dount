@@ -10,6 +10,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.apps.dount.model.OrderModel;
 import com.apps.dount.model.SingleOrderDataModel;
+import com.apps.dount.model.UserModel;
 import com.apps.dount.remote.Api;
 import com.apps.dount.tags.Tags;
 import com.google.android.gms.maps.GoogleMap;
@@ -63,10 +64,10 @@ public class ActivityPreviousOrderDetialsMvvm extends AndroidViewModel {
         return orderModelMutableLiveData;
     }
 
-    public void getorderDetials(String id) {
+    public void getorderDetials(String id, UserModel  userModel) {
         isLoadingLivData.postValue(true);
         Api.getService(Tags.base_url)
-                .getSingleOrders(id)
+                .getSingleOrders(userModel.getData().getAccess_token(),id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
 

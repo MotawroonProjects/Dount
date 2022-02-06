@@ -2,7 +2,7 @@ package com.apps.dount.model;
 
 import java.io.Serializable;
 
-public class SettingModel implements Serializable {
+public class SettingModel extends StatusResponse implements Serializable {
     private int id;
     private String site_title;
     private String site_logo;
@@ -20,6 +20,7 @@ public class SettingModel implements Serializable {
     private String about;
     private String tax_for;
     private int tax_percentage;
+    private String data;
 
     public int getId() {
         return id;
@@ -87,5 +88,9 @@ public class SettingModel implements Serializable {
 
     public int getTax_percentage() {
         return tax_percentage;
+    }
+
+    public String getData() {
+        return data;
     }
 }

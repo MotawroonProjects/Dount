@@ -32,21 +32,19 @@
 
             <ImageView
                 android:id="@+id/image"
+                image="@{model.product.image}"
                 android:layout_width="40dp"
+
                 android:layout_height="40dp"
-
                 android:layout_gravity="center"
-                android:layout_marginStart="10dp"
-                android:src="@drawable/logo"
-
-                />
+                android:layout_marginStart="10dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingStart="20dp"
                 android:paddingEnd="20dp"
-                android:text=""
+                android:text="@{model.product.name}"
                 android:textColor="@color/gray20"
                 android:textSize="14sp"
 

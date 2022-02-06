@@ -80,7 +80,7 @@ public class PreviousOrderDetialsActivity extends BaseActivity implements OnMapR
                 finish();
             }
         });
-        activityPreviousOrderDetialsMvvm.getorderDetials(order_id);
+        activityPreviousOrderDetialsMvvm.getorderDetials(order_id,getUserModel());
         updateUI();
 
     }

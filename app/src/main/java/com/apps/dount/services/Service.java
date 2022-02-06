@@ -10,6 +10,7 @@ import com.apps.dount.model.ProductDataModel;
 import com.apps.dount.model.NotificationDataModel;
 import com.apps.dount.model.PlaceGeocodeData;
 import com.apps.dount.model.SettingDataModel;
+import com.apps.dount.model.SettingModel;
 import com.apps.dount.model.ShipModel;
 import com.apps.dount.model.SingleDepartmentDataModel;
 import com.apps.dount.model.SingleOrderDataModel;
@@ -86,11 +87,11 @@ public interface Service {
     );
 
     @Multipart
-    @POST("api/updateProfile")
-    Observable<Response<UserModel>> editprofilewithImage(@Part("first_name") RequestBody first_name,
-                                                         @Part("last_name") RequestBody last_name,
-                                                         @Part("user_id") RequestBody user_id,
-                                                         @Part MultipartBody.Part logo
+    @POST("api/auth/update_profile")
+    Observable<Response<UserModel>> editprofilewithImage(
+            @Part("name") RequestBody first_name,
+            @Part("id") RequestBody id,
+            @Part MultipartBody.Part logo
 
 
     );
@@ -98,14 +99,14 @@ public interface Service {
     @FormUrlEncoded
     @POST("api/auth/logout")
     Single<Response<StatusResponse>> logout(@Header("Authorization") String authorization,
-                                            @Field("token") String token
+                                            @Field("phone_token") String phone_token
 
 
     );
 
     @FormUrlEncoded
-    @POST("api/store_user_token")
-    Single<Response<StatusResponse>> updateFirebasetoken(@Field("token") String token,
+    @POST("api/auth/inser_token")
+    Single<Response<StatusResponse>> updateFirebasetoken(@Field("phone_token") String phone_token,
                                                          @Field("user_id") String user_id,
                                                          @Field("type") String type
 
@@ -131,7 +132,9 @@ public interface Service {
     Single<Response<DepartmentDataModel>> getDepartments();
 
     @GET("api/home/products")
-    Single<Response<ProductDataModel>> getSingleDepartment(@Query(value = "category_ids") List<String> id);
+    Single<Response<ProductDataModel>> getSingleDepartment(@Query(value = "category_ids[]") List<String> id,
+                                                           @Query("search") String search
+    );
 
     @GET("api/home/offers")
     Single<Response<ProductDataModel>> getOffers(@Header("Authorization") String authorization);
@@ -178,7 +181,8 @@ public interface Service {
     Single<Response<OrderDataModel>> getMyOrders(@Header("Authorization") String authorization);
 
     @GET("api/order/one_order")
-    Single<Response<SingleOrderDataModel>> getSingleOrders(@Query(value = "order_id") String order_id);
+    Single<Response<SingleOrderDataModel>> getSingleOrders(@Header("Authorization") String authorization,
+                                                           @Query(value = "order_id") String order_id);
 
     @GET("api/profile/getProfile")
     Single<Response<UserModel>> getProfile(@Header("Authorization") String authorization);
@@ -186,4 +190,6 @@ public interface Service {
     @GET("api/terms/taxes")
     Single<Response<SettingDataModel>> getSetting();
 
+    @GET("api/terms/about")
+    Single<Response<SettingModel>> getAbout();
 }

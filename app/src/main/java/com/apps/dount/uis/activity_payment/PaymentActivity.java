@@ -107,7 +107,7 @@ public class PaymentActivity extends BaseActivity {
         activityPaymentMvvm.getMutableLiveData().observe(this, settingModels -> {
             settingModel = settingModels;
             if (settingModel != null && settingModel.getTax_for().equals("order")) {
-                cartDataModel.setOrder_tax((cartDataModel.getTotal_price() * settingModel.getTax_percentage()) / 100);
+                cartDataModel.setTotal_tax((cartDataModel.getTotal_price() * settingModel.getTax_percentage()) / 100);
             }
             cartDataModel.setGrand_total(cartDataModel.getOrder_tax() + cartDataModel.getTotal_price());
             binding.setTax(cartDataModel.getOrder_tax());
@@ -266,6 +266,7 @@ public class PaymentActivity extends BaseActivity {
         binding.flOnline.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                cartDataModel.setPayment_type("electronic_payment");
                 binding.tvCash.setTextColor(getResources().getColor(R.color.color9));
                 binding.imCash.setColorFilter(ContextCompat.getColor(PaymentActivity.this, R.color.color9), PorterDuff.Mode.SRC_IN);
                 binding.tvOnline.setTextColor(getResources().getColor(R.color.white));
@@ -281,6 +282,8 @@ public class PaymentActivity extends BaseActivity {
         binding.flWallet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                cartDataModel.setPayment_type("wallet");
+
                 binding.tvCash.setTextColor(getResources().getColor(R.color.color9));
                 binding.imCash.setColorFilter(ContextCompat.getColor(PaymentActivity.this, R.color.color9), PorterDuff.Mode.SRC_IN);
                 binding.tvOnline.setTextColor(getResources().getColor(R.color.color9));
