@@ -158,7 +158,11 @@ public class FragmentBranches extends BaseFragment implements OnMapReadyCallback
             public void onChanged(List<BranchModel> branchModels) {
                 if (branchModels.size() > 0) {
                     branchAdapter.updateLocation(FragmentBranches.this.locationmodel);
-                    branchAdapter.updateList(fragmentBranchesMvvm.getBranch().getValue());
+                    BranchModel branchModel =branchModels.get(0);
+                    branchModel.setSelected(true);
+                    branchModels.set(0,branchModel);
+
+                    branchAdapter.updateList(branchModels);
                     updateMapData(branchModels);
                     binding.cardNoData.setVisibility(View.GONE);
                     binding.flLoading.setVisibility(View.GONE);

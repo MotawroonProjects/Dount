@@ -1,6 +1,7 @@
 package com.apps.dount.general_ui;
 
 import android.net.Uri;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.EditText;
@@ -40,7 +41,7 @@ public class GeneralMethod {
     public static void image3(View view, String imageUrl) {
         if (imageUrl != null) {
             String imageUrl1 =imageUrl;
-
+            Log.e("ssss",imageUrl1);
             view.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
                 @Override
                 public void onGlobalLayout() {
