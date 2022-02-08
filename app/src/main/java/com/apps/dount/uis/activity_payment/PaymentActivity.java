@@ -109,8 +109,8 @@ public class PaymentActivity extends BaseActivity {
             if (settingModel != null && settingModel.getTax_for().equals("order")) {
                 cartDataModel.setTotal_tax((cartDataModel.getTotal_price() * settingModel.getTax_percentage()) / 100);
             }
-            cartDataModel.setGrand_total(cartDataModel.getOrder_tax() + cartDataModel.getTotal_price());
-            binding.setTax(cartDataModel.getOrder_tax());
+            cartDataModel.setGrand_total( cartDataModel.getTotal_tax()+cartDataModel.getTotal_price());
+            binding.setTax(cartDataModel.getTotal_tax());
             binding.setModel(cartDataModel);
         });
 

@@ -86,6 +86,11 @@ public class FragmentProfile extends BaseFragment {
 
             }
         });
+        fragmentProfileGeneralMvvm.logout.observe(activity, aBoolean -> {
+            if (aBoolean) {
+                logout();
+            }
+        });
         fragmentProfileGeneralMvvm.getMutableLiveData().observe(activity, new Observer<SettingModel>() {
             @Override
             public void onChanged(SettingModel settingModel) {
@@ -191,7 +196,7 @@ public class FragmentProfile extends BaseFragment {
         binding.llLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                activity.llogout();
+                fragmentProfileGeneralMvvm.logout(activity,getUserModel());
             }
         });
     }
@@ -209,11 +214,7 @@ public class FragmentProfile extends BaseFragment {
         launcher.launch(intent);
     }
 
-    private void logout() {
-        clearUserModel(activity);
-        binding.setModel(null);
-        binding.image.setImageResource(R.drawable.circle_avatar);
-    }
+
 
     private void rateApp() {
         String appId = activity.getPackageName();
@@ -251,5 +252,12 @@ public class FragmentProfile extends BaseFragment {
 
     }
 
+    private void logout() {
 
+        clearUserModel(activity);
+        binding.setModel(null);
+        binding.image.setImageResource(R.drawable.circle_avatar);
+
+        navigateToLoginActivity();
+    }
 }

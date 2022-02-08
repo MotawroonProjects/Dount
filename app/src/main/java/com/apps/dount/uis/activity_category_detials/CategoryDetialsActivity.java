@@ -64,7 +64,7 @@ public class CategoryDetialsActivity extends BaseActivity {
             public void onChanged(ProductDataModel singleDepartmentDataModel) {
                 binding.progBar.setVisibility(View.GONE);
                 if (singleDepartmentDataModel.getData() != null) {
-                  //  binding.setModel(singleDepartmentDataModel.getData());
+                  // binding.setModel(singleDepartmentDataModel.getData());
                     if (singleDepartmentDataModel.getData()!= null && singleDepartmentDataModel.getData().size() > 0) {
                         product2Adapter.updateList(singleDepartmentDataModel.getData());
                         binding.cardNoData.setVisibility(View.GONE);

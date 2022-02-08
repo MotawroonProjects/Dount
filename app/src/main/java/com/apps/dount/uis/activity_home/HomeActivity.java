@@ -79,7 +79,12 @@ public class HomeActivity extends BaseActivity implements Listeners.Verification
         NavigationUI.setupWithNavController(binding.bottomNav, navController);
         NavigationUI.setupWithNavController(binding.toolBar, navController);
         NavigationUI.setupActionBarWithNavController(this, navController);
-
+        launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+            updateCartCount();
+            if (getUserModel() != null) {
+                updateFirebase();
+            }
+        });
 
 //        navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
 //            if (binding.toolBar.getNavigationIcon() != null) {
@@ -91,7 +96,6 @@ public class HomeActivity extends BaseActivity implements Listeners.Verification
 
 //
 //        toggle.setHomeAsUpIndicator(R.drawable.ic_menu);
-
 
 
         homeActivityMvvm.logout.observe(this, aBoolean -> {
@@ -121,8 +125,8 @@ public class HomeActivity extends BaseActivity implements Listeners.Verification
         }
 
         binding.flCart.setOnClickListener(v -> {
-                Intent intent = new Intent(this, CartActivity.class);
-                startActivity(intent);
+            Intent intent = new Intent(this, CartActivity.class);
+            launcher.launch(intent);
 
         });
 
@@ -150,7 +154,7 @@ public class HomeActivity extends BaseActivity implements Listeners.Verification
         if (currentFragmentId == R.id.home) {
             finish();
 
-        }  else {
+        } else {
             navController.popBackStack();
         }
 
@@ -173,7 +177,13 @@ public class HomeActivity extends BaseActivity implements Listeners.Verification
         clearUserModel(this);
         userModel = getUserModel();
         binding.setModel(null);
-       // navigationToLoginActivity();
+        navigationToLoginActivity();
+    }
+
+    private void navigationToLoginActivity() {
+        Intent intent = new Intent(this, LoginActivity.class);
+        launcher.launch(intent);
+
     }
 
     public void updateCartCount() {
@@ -191,6 +201,6 @@ public class HomeActivity extends BaseActivity implements Listeners.Verification
     }
 
     public void llogout() {
-        homeActivityMvvm.logout(this,getUserModel());
+        homeActivityMvvm.logout(this, getUserModel());
     }
 }

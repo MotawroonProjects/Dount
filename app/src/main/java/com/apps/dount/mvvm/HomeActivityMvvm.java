@@ -54,7 +54,7 @@ public class HomeActivityMvvm extends AndroidViewModel {
             public void onSuccess(@NonNull Response<StatusResponse> statusResponseResponse) {
                 dialog.dismiss();
                 if (statusResponseResponse.isSuccessful()) {
-                    Log.e("lllll",statusResponseResponse.code()+""+statusResponseResponse.body().getStatus());
+                    Log.e("logout",statusResponseResponse.code()+""+statusResponseResponse.body().getStatus());
                     if (statusResponseResponse.body().getStatus() == 200) {
                         logout.postValue(true);
                     }

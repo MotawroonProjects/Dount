@@ -94,6 +94,7 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
                         android:orientation="horizontal">
 
                         <ImageView
@@ -149,6 +150,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="3px"
+                android:visibility="gone"
                 android:layout_marginTop="8dp"
                 android:layout_marginRight="16dp"
                 android:layout_marginLeft="16dp"
@@ -159,6 +161,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
              android:layout_marginTop="7dp"
+                android:visibility="gone"
                 android:layout_marginBottom="7dp"
                >
 

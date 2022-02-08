@@ -164,32 +164,6 @@
         <entry key="..\:/AndroidProjects/Wedding-master/app/src/main/res/layout/fragment_edit_profile.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidProjects/Wedding-master/app/src/main/res/layout/fragment_profile.xml" value="0.24010416666666667" />
         <entry key="..\:/AndroidProjects/Wedding-master/app/src/main/res/layout/toolbar.xml" value="0.25416666666666665" />
-        <entry key="..\:/Dount/app/src/main/res/drawable/ic_map.xml" value="0.1325" />
-        <entry key="..\:/Dount/app/src/main/res/drawable/ic_map2.xml" value="0.1325" />
-        <entry key="..\:/Dount/app/src/main/res/drawable/ic_pin.xml" value="0.1325" />
-        <entry key="..\:/Dount/app/src/main/res/layout/activity_about_app.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/activity_contact_us.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/activity_map.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/activity_notification.xml" value="0.103515625" />
-        <entry key="..\:/Dount/app/src/main/res/layout/activity_order_detials.xml" value="0.15" />
-        <entry key="..\:/Dount/app/src/main/res/layout/activity_orders.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/activity_payment.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/activity_product_detials.xml" value="0.103515625" />
-        <entry key="..\:/Dount/app/src/main/res/layout/activity_wallet.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/branch_complete_row.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/branch_row.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/cart_row.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/department_item_row.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/fragment_branches.xml" value="0.75" />
-        <entry key="..\:/Dount/app/src/main/res/layout/fragment_profile.xml" value="0.14625" />
-        <entry key="..\:/Dount/app/src/main/res/layout/latest_product_row.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/order_product_row.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/order_product_row2.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/order_row.xml" value="0.15" />
-        <entry key="..\:/Dount/app/src/main/res/layout/previous_order_row.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/product_offer_row.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/spinner_row.xml" value="0.10344827586206896" />
-        <entry key="..\:/Dount/app/src/main/res/layout/toolbar.xml" value="0.1" />
         <entry key="..\:/Users/Ahmed/AndroidStudioProjects/Akkaber/app/src/main/res/drawable/bottom_nav_item_bg.xml" value="0.25092592592592594" />
         <entry key="..\:/Users/Ahmed/AndroidStudioProjects/Akkaber/app/src/main/res/drawable/checkbox_bg.xml" value="0.1140625" />
         <entry key="..\:/Users/Ahmed/AndroidStudioProjects/Akkaber/app/src/main/res/drawable/circle_primary.xml" value="0.26615384615384613" />
@@ -227,6 +201,7 @@
         <entry key="..\:/Users/Ahmed/AndroidStudioProjects/Akkaber/app/src/main/res/layout/latest_product_row.xml" value="0.1" />
         <entry key="..\:/Users/Ahmed/AndroidStudioProjects/Akkaber/app/src/main/res/layout/main_department_item_row.xml" value="0.1" />
         <entry key="..\:/Users/Ahmed/AndroidStudioProjects/Akkaber/app/src/main/res/layout/offer_item_row.xml" value="0.1" />
+        <entry key="..\:/Users/Ahmed/AndroidStudioProjects/Akkaber/app/src/main/res/layout/order_row.xml" value="0.1" />
         <entry key="..\:/Users/Ahmed/AndroidStudioProjects/Akkaber/app/src/main/res/layout/product_row.xml" value="0.1" />
         <entry key="..\:/Users/Ahmed/AndroidStudioProjects/Akkaber/app/src/main/res/layout/slider.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Ahmed/AndroidStudioProjects/Akkaber/app/src/main/res/layout/sub_product_item_row.xml" value="0.1" />

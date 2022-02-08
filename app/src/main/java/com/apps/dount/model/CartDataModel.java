@@ -19,7 +19,6 @@ public class CartDataModel implements Serializable {
     private double total_discount;
     private double total_tax;
     private double total_price;
-    private double order_tax;
     private double grand_total;
     private String is_delivary="";
     private String receive_type;
@@ -68,9 +67,6 @@ public class CartDataModel implements Serializable {
 
 
 
-    public double getOrder_tax() {
-        return order_tax;
-    }
 
     public double getGrand_total() {
         return grand_total;
@@ -124,9 +120,6 @@ public class CartDataModel implements Serializable {
 
 
 
-    public void setOrder_tax(double order_tax) {
-        this.order_tax = order_tax;
-    }
 
     public void setGrand_total(double grand_total) {
         this.grand_total = grand_total;
