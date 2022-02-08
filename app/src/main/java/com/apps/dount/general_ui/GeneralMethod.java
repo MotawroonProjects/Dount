@@ -40,8 +40,8 @@ public class GeneralMethod {
     @BindingAdapter("image3")
     public static void image3(View view, String imageUrl) {
         if (imageUrl != null) {
-            String imageUrl1 =imageUrl;
-            Log.e("ssss",imageUrl1);
+            String imageUrl1 = imageUrl;
+            Log.e("ssss", imageUrl1);
             view.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
                 @Override
                 public void onGlobalLayout() {
@@ -212,7 +212,7 @@ public class GeneralMethod {
     @BindingAdapter("user_image")
     public static void user_image(View view, String imageUrl) {
 
-
+        imageUrl = Tags.base_url + imageUrl;
         if (view instanceof CircleImageView) {
             CircleImageView imageView = (CircleImageView) view;
             if (imageUrl != null) {

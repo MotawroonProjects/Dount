@@ -55,7 +55,7 @@
 
                         <ImageView
                             android:id="@+id/image"
-                            image3="@{model.data.user.photo}"
+                            user_image="@{model.data.user.photo}"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:scaleType="fitXY"
