@@ -73,22 +73,45 @@ public class OrderDetialsActivity extends BaseActivity {
             }
         });
         // updateUi1();
-        activityOrderDetialsMvvm.getorderDetials(order_id,getUserModel());
+        activityOrderDetialsMvvm.getorderDetials(order_id, getUserModel());
 
     }
 
     private void updateData(OrderModel orderModel) {
         this.orderModel = orderModel;
         order2ProductAdapter.updateList(orderModel.getDetials());
-        if (orderModel.getStatus().equals("append")) {
-            updateUi2();
-        } else if (orderModel.getStatus().equals("accepted")) {
-            updateUi3();
-        } else if (orderModel.getStatus().equals("on_way")) {
-            updateUi4();
-        } else if (orderModel.getStatus().equals("done")) {
-            updateUi5();
+        if (orderModel.getIs_delivary().equals("yes")) {
+            if (orderModel.getStatus().equals("append") && orderModel.getDelivery_status().equals("append")) {
+                updateUi1();
+            } else if (orderModel.getStatus().equals("accept") && orderModel.getDelivery_status().equals("append")) {
+                updateUi2();
+            } else if (orderModel.getStatus().equals("accept") && orderModel.getDelivery_status().equals("accepted")) {
+                updateUi3();
+            } else if (orderModel.getStatus().equals("accept") && orderModel.getDelivery_status().equals("on_way")) {
+                updateUi4();
+            } else if (orderModel.getStatus().equals("end") && orderModel.getDelivery_status().equals("done")) {
+                updateUi5();
+            }
+        } else {
+            binding.image3.setVisibility(View.GONE);
+            binding.image4.setVisibility(View.GONE);
+            binding.view31.setVisibility(View.GONE);
+            binding.view3.setVisibility(View.GONE);
+            binding.view4.setVisibility(View.GONE);
+            binding.view41.setVisibility(View.GONE);
+            binding.tv3.setVisibility(View.GONE);
+            binding.tv4.setVisibility(View.GONE);
+            binding.ll3.setVisibility(View.GONE);
+            binding.ll4.setVisibility(View.GONE);
+            if (orderModel.getStatus().equals("append") && orderModel.getDelivery_status().equals("append")) {
+                updateUi1();
+            } else if (orderModel.getStatus().equals("accept") && orderModel.getDelivery_status().equals("append")) {
+                updateUi2();
+            } else if (orderModel.getStatus().equals("end") && orderModel.getDelivery_status().equals("done")) {
+                updateUi5();
+            }
         }
+
     }
 
     private void updateUi1() {
@@ -97,7 +120,7 @@ public class OrderDetialsActivity extends BaseActivity {
         binding.tv3.setTextColor(getResources().getColor(R.color.gray11));
         binding.tv4.setTextColor(getResources().getColor(R.color.gray11));
         binding.tv5.setTextColor(getResources().getColor(R.color.gray11));
-        binding.tvOrder1.setVisibility(View.VISIBLE);
+        binding.tvOrder1.setVisibility(View.GONE);
         binding.tvOrder2.setVisibility(View.GONE);
         binding.tvOrder3.setVisibility(View.GONE);
         binding.tvOrder4.setVisibility(View.GONE);
@@ -125,13 +148,13 @@ public class OrderDetialsActivity extends BaseActivity {
     }
 
     private void updateUi2() {
-        binding.tv1.setTextColor(getResources().getColor(R.color.gray11));
+        binding.tv1.setTextColor(getResources().getColor(R.color.color9));
         binding.tv2.setTextColor(getResources().getColor(R.color.color9));
         binding.tv3.setTextColor(getResources().getColor(R.color.gray11));
         binding.tv4.setTextColor(getResources().getColor(R.color.gray11));
         binding.tv5.setTextColor(getResources().getColor(R.color.gray11));
-        binding.tvOrder1.setVisibility(View.VISIBLE);
-        binding.tvOrder2.setVisibility(View.VISIBLE);
+        binding.tvOrder1.setVisibility(View.GONE);
+        binding.tvOrder2.setVisibility(View.GONE);
         binding.tvOrder3.setVisibility(View.GONE);
         binding.tvOrder4.setVisibility(View.GONE);
         binding.tvOrder5.setVisibility(View.GONE);
@@ -158,14 +181,14 @@ public class OrderDetialsActivity extends BaseActivity {
     }
 
     private void updateUi3() {
-        binding.tv1.setTextColor(getResources().getColor(R.color.gray11));
-        binding.tv2.setTextColor(getResources().getColor(R.color.gray11));
+        binding.tv1.setTextColor(getResources().getColor(R.color.color9));
+        binding.tv2.setTextColor(getResources().getColor(R.color.color9));
         binding.tv3.setTextColor(getResources().getColor(R.color.color9));
         binding.tv4.setTextColor(getResources().getColor(R.color.gray11));
         binding.tv5.setTextColor(getResources().getColor(R.color.gray11));
-        binding.tvOrder1.setVisibility(View.VISIBLE);
-        binding.tvOrder2.setVisibility(View.VISIBLE);
-        binding.tvOrder3.setVisibility(View.VISIBLE);
+        binding.tvOrder1.setVisibility(View.GONE);
+        binding.tvOrder2.setVisibility(View.GONE);
+        binding.tvOrder3.setVisibility(View.GONE);
         binding.tvOrder4.setVisibility(View.GONE);
         binding.tvOrder5.setVisibility(View.GONE);
         binding.image1.setBackground(getResources().getDrawable(R.drawable.circle_color9));
@@ -191,15 +214,15 @@ public class OrderDetialsActivity extends BaseActivity {
     }
 
     private void updateUi4() {
-        binding.tv1.setTextColor(getResources().getColor(R.color.gray11));
-        binding.tv2.setTextColor(getResources().getColor(R.color.gray11));
-        binding.tv3.setTextColor(getResources().getColor(R.color.gray11));
+        binding.tv1.setTextColor(getResources().getColor(R.color.color9));
+        binding.tv2.setTextColor(getResources().getColor(R.color.color9));
+        binding.tv3.setTextColor(getResources().getColor(R.color.color9));
         binding.tv4.setTextColor(getResources().getColor(R.color.color9));
         binding.tv5.setTextColor(getResources().getColor(R.color.gray11));
-        binding.tvOrder1.setVisibility(View.VISIBLE);
-        binding.tvOrder2.setVisibility(View.VISIBLE);
-        binding.tvOrder3.setVisibility(View.VISIBLE);
-        binding.tvOrder4.setVisibility(View.VISIBLE);
+        binding.tvOrder1.setVisibility(View.GONE);
+        binding.tvOrder2.setVisibility(View.GONE);
+        binding.tvOrder3.setVisibility(View.GONE);
+        binding.tvOrder4.setVisibility(View.GONE);
         binding.tvOrder5.setVisibility(View.GONE);
         binding.image1.setBackground(getResources().getDrawable(R.drawable.circle_color9));
         binding.image2.setBackground(getResources().getDrawable(R.drawable.circle_color9));
@@ -224,16 +247,16 @@ public class OrderDetialsActivity extends BaseActivity {
     }
 
     private void updateUi5() {
-        binding.tv1.setTextColor(getResources().getColor(R.color.gray11));
-        binding.tv2.setTextColor(getResources().getColor(R.color.gray11));
-        binding.tv3.setTextColor(getResources().getColor(R.color.gray11));
-        binding.tv4.setTextColor(getResources().getColor(R.color.gray11));
+        binding.tv1.setTextColor(getResources().getColor(R.color.color9));
+        binding.tv2.setTextColor(getResources().getColor(R.color.color9));
+        binding.tv3.setTextColor(getResources().getColor(R.color.color9));
+        binding.tv4.setTextColor(getResources().getColor(R.color.color9));
         binding.tv5.setTextColor(getResources().getColor(R.color.color9));
-        binding.tvOrder1.setVisibility(View.VISIBLE);
-        binding.tvOrder2.setVisibility(View.VISIBLE);
-        binding.tvOrder3.setVisibility(View.VISIBLE);
-        binding.tvOrder4.setVisibility(View.VISIBLE);
-        binding.tvOrder5.setVisibility(View.VISIBLE);
+        binding.tvOrder1.setVisibility(View.GONE);
+        binding.tvOrder2.setVisibility(View.GONE);
+        binding.tvOrder3.setVisibility(View.GONE);
+        binding.tvOrder4.setVisibility(View.GONE);
+        binding.tvOrder5.setVisibility(View.GONE);
         binding.image1.setBackground(getResources().getDrawable(R.drawable.circle_color9));
         binding.image2.setBackground(getResources().getDrawable(R.drawable.circle_color9));
         binding.image3.setBackground(getResources().getDrawable(R.drawable.circle_color9));

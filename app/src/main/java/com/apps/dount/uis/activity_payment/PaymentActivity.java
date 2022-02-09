@@ -209,13 +209,13 @@ public class PaymentActivity extends BaseActivity {
             @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View view) {
-                if (branchModel.getIs_delivery().equals("yes")) {
-                    cartDataModel.setIs_delivary("yes");
-                    cartDataModel.setReceive_type("delivary");
-                    binding.tvDeliver.setText(getResources().getString(R.string.receipt_from_the_branch));
-                } else {
+                if (branchModel.getIs_delivery().equals("no")) {
                     cartDataModel.setIs_delivary("no");
                     cartDataModel.setReceive_type("branch");
+                    binding.tvDeliver.setText(getResources().getString(R.string.receipt_from_the_branch));
+                } else {
+                    cartDataModel.setIs_delivary("yes");
+                    cartDataModel.setReceive_type("delivary");
                     binding.tvDeliver.setText(getResources().getString(R.string.home_delivery));
 
                 }
@@ -230,7 +230,7 @@ public class PaymentActivity extends BaseActivity {
                     branchModel = activityPaymentMvvm.getBranch().getValue().get(i);
                     cartDataModel.setBranch_id(branchModel.getId());
 
-                    if (branchModel.getIs_delivery().equals("yes")) {
+                    if (branchModel.getIs_delivery().equals("no")) {
 
                         binding.tvDeliver.setText(getResources().getString(R.string.receipt_from_the_branch));
                     } else {
