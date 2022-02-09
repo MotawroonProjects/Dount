@@ -127,6 +127,11 @@ public class FragmentHome extends BaseFragment {
 
 
             }
+            else{
+                binding.progBarSlider.setVisibility(View.GONE);
+                binding.progBarDepartment.setVisibility(View.GONE);
+                binding.progBarOffers.setVisibility(View.GONE);
+            }
             // binding.swipeRefresh.setRefreshing(isLoading);
         });
         fragmentHomeMvvm.getSliderDataModelMutableLiveData().observe(activity, new androidx.lifecycle.Observer<SliderDataModel>() {

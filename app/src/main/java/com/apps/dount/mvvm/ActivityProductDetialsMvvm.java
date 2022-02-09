@@ -132,9 +132,8 @@ public class ActivityProductDetialsMvvm extends AndroidViewModel {
 
                     @Override
                     public void onSuccess(@NonNull Response<StatusResponse> response) {
-
                         if (response.isSuccessful() && response.body() != null) {
-                            if (response.body().getStatus() == 200) {
+                            if (response.body().getStatus() == 200||response.body().getStatus()==201) {
 
                                 addremove.postValue(true);
 

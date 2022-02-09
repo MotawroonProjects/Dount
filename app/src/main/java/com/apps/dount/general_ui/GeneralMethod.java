@@ -213,6 +213,7 @@ public class GeneralMethod {
     public static void user_image(View view, String imageUrl) {
 
         imageUrl = Tags.base_url + imageUrl;
+        Log.e("ssssss",imageUrl);
         if (view instanceof CircleImageView) {
             CircleImageView imageView = (CircleImageView) view;
             if (imageUrl != null) {

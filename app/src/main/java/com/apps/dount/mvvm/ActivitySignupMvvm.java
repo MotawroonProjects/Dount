@@ -165,7 +165,7 @@ public class ActivitySignupMvvm extends AndroidViewModel {
         ProgressDialog dialog = Common.createProgressDialog(context, context.getResources().getString(R.string.wait));
         dialog.setCancelable(false);
         dialog.show();
-        RequestBody firts_name_part = Common.getRequestBodyText(model.getFirst_name()+" "+model.getFirst_name());
+        RequestBody firts_name_part = Common.getRequestBodyText(model.getFirst_name()+" "+model.getSeconed_name());
         RequestBody seconed_name_part = Common.getRequestBodyText(model.getSeconed_name());
         RequestBody user_part = Common.getRequestBodyText(userModel.getData().getUser().getId() + "");
 
