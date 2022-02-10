@@ -11,6 +11,8 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.apps.dount.model.ProductDataModel;
 import com.apps.dount.model.ProductDataModel;
+import com.apps.dount.model.StatusResponse;
+import com.apps.dount.model.UserModel;
 import com.apps.dount.remote.Api;
 import com.apps.dount.tags.Tags;
 
@@ -32,13 +34,19 @@ public class ActivityCategoryDetialsMvvm extends AndroidViewModel {
 
     private CompositeDisposable disposable = new CompositeDisposable();
     private MutableLiveData<ProductDataModel> departmentLivData;
+    private MutableLiveData<Boolean> addremove;
 
 
     public ActivityCategoryDetialsMvvm(@NonNull Application application) {
         super(application);
         context = application.getApplicationContext();
     }
-
+    public MutableLiveData<Boolean> getFav() {
+        if (addremove == null) {
+            addremove = new MutableLiveData<>();
+        }
+        return addremove;
+    }
     public LiveData<ProductDataModel> getCategoryData() {
         if (departmentLivData == null) {
             departmentLivData = new MutableLiveData<>();
@@ -54,12 +62,16 @@ public class ActivityCategoryDetialsMvvm extends AndroidViewModel {
         return isLoadingLivData;
     }
 
-    public void getDepartmentDetials(String lang, String id) {
+    public void getDepartmentDetials(String lang, String id, UserModel userModel) {
+        String token = null;
+        if(userModel!=null){
+            token=userModel.getData().getAccess_token();
+        }
         List<String> ids=new ArrayList<>();
         ids.add(id);
         isLoadingLivData.postValue(true);
         Api.getService(Tags.base_url)
-                .getSingleDepartment(ids,null)
+                .getSingleDepartment(ids,null,token)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
 
@@ -96,6 +108,37 @@ public class ActivityCategoryDetialsMvvm extends AndroidViewModel {
     protected void onCleared() {
         super.onCleared();
         disposable.clear();
+
+    }
+    public void addRemoveFavourite(String id, UserModel userModel) {
+        Api.getService(Tags.base_url)
+                .addRemoveFav( userModel.getData().getAccess_token(), id)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+
+                .subscribe(new SingleObserver<Response<StatusResponse>>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
+                        disposable.add(d);
+                    }
+
+                    @Override
+                    public void onSuccess(@NonNull Response<StatusResponse> response) {
+                        Log.e("lllll",response.body().getStatus()+""+id+" "+userModel.getData().getAccess_token());
+                        if (response.isSuccessful() && response.body() != null) {
+                            if (response.body().getStatus() == 200||response.body().getStatus()==201) {
+
+                                addremove.postValue(true);
+
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        Log.e(TAG, "onError: ", e);
+                    }
+                });
 
     }
 

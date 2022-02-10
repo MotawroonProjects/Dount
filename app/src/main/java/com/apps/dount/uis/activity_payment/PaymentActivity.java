@@ -199,10 +199,17 @@ public class PaymentActivity extends BaseActivity {
         binding.flDeliver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (branchModel.getIs_delivery().equals("yes")) {
+                    cartDataModel.setIs_delivary("no");
+                    cartDataModel.setReceive_type("branch");
+                }
+                else{
                 cartDataModel.setBranch_id("");
                 cartDataModel.setIs_delivary("");
                 cartDataModel.setReceive_type("");
+                }
                 binding.expandLayout.collapse(true);
+
             }
         });
         binding.flArive.setOnClickListener(new View.OnClickListener() {
@@ -212,11 +219,11 @@ public class PaymentActivity extends BaseActivity {
                 if (branchModel.getIs_delivery().equals("no")) {
                     cartDataModel.setIs_delivary("no");
                     cartDataModel.setReceive_type("branch");
-                    binding.tvDeliver.setText(getResources().getString(R.string.receipt_from_the_branch));
+                   // binding.tvDeliver.setText(getResources().getString(R.string.receipt_from_the_branch));
                 } else {
                     cartDataModel.setIs_delivary("yes");
                     cartDataModel.setReceive_type("delivary");
-                    binding.tvDeliver.setText(getResources().getString(R.string.home_delivery));
+                    //binding.tvDeliver.setText(getResources().getString(R.string.home_delivery));
 
                 }
 
@@ -231,12 +238,13 @@ public class PaymentActivity extends BaseActivity {
                     cartDataModel.setBranch_id(branchModel.getId());
 
                     if (branchModel.getIs_delivery().equals("no")) {
+                        binding.tvDeliver2.setText(getResources().getString(R.string.delivery_from_another_branch));
 
                         binding.tvDeliver.setText(getResources().getString(R.string.receipt_from_the_branch));
                     } else {
 
                         binding.tvDeliver.setText(getResources().getString(R.string.home_delivery));
-
+                        binding.tvDeliver2.setText(getResources().getString(R.string.receipt_from_the_branch));
                     }
                     binding.expandLayout.expand(true);
                 }

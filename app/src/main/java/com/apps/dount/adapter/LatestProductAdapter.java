@@ -59,6 +59,20 @@ public class LatestProductAdapter extends RecyclerView.Adapter<RecyclerView.View
 
             }
         });
+        myHolder.binding.checkbox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (fragment instanceof FragmentHome) {
+                    FragmentHome fragmentHome = (FragmentHome) fragment;
+                    fragmentHome.addremovefave(holder.getLayoutPosition());
+                }
+                else  if (context instanceof CategoryDetialsActivity) {
+                    CategoryDetialsActivity categoryDetialsActivity = (CategoryDetialsActivity) context;
+                    categoryDetialsActivity.addremovefave(holder.getLayoutPosition());
+                }
+
+            }
+        });
     }
 
     @Override
@@ -68,6 +82,11 @@ public class LatestProductAdapter extends RecyclerView.Adapter<RecyclerView.View
         } else {
             return 0;
         }
+    }
+
+    public void updateList(List<ProductModel> productModelList, int layoutPosition) {
+        this.list=productModelList;
+        notifyItemChanged(layoutPosition);
     }
 
 

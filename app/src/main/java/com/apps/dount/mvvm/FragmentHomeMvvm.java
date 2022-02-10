@@ -15,6 +15,7 @@ import com.apps.dount.model.ProductDataModel;
 import com.apps.dount.model.ProductModel;
 import com.apps.dount.model.SingleProductDataModel;
 import com.apps.dount.model.SliderDataModel;
+import com.apps.dount.model.StatusResponse;
 import com.apps.dount.model.UserModel;
 import com.apps.dount.remote.Api;
 import com.apps.dount.tags.Tags;
@@ -36,13 +37,19 @@ public class FragmentHomeMvvm extends AndroidViewModel {
     private MutableLiveData<Boolean> isLoadingLiveData;
     private MutableLiveData<List<DepartmentModel>> departmentLivData;
     private MutableLiveData<List<ProductModel>> offerlistMutableLiveData;
+    private MutableLiveData<Boolean> addremove;
 
 
     public FragmentHomeMvvm(@NonNull Application application) {
         super(application);
         context = application.getApplicationContext();
     }
-
+    public MutableLiveData<Boolean> getFav() {
+        if (addremove == null) {
+            addremove = new MutableLiveData<>();
+        }
+        return addremove;
+    }
     public MutableLiveData<List<ProductModel>> getOfferList() {
         if (offerlistMutableLiveData == null) {
             offerlistMutableLiveData = new MutableLiveData<>();
@@ -52,6 +59,7 @@ public class FragmentHomeMvvm extends AndroidViewModel {
 
 
     public MutableLiveData<SliderDataModel> getSliderDataModelMutableLiveData() {
+
         if (sliderDataModelMutableLiveData == null) {
             sliderDataModelMutableLiveData = new MutableLiveData<>();
         }
@@ -188,4 +196,36 @@ public class FragmentHomeMvvm extends AndroidViewModel {
         super.onCleared();
         disposable.clear();
     }
+    public void addRemoveFavourite(String id, UserModel userModel) {
+        Api.getService(Tags.base_url)
+                .addRemoveFav( userModel.getData().getAccess_token(), id)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+
+                .subscribe(new SingleObserver<Response<StatusResponse>>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
+                        disposable.add(d);
+                    }
+
+                    @Override
+                    public void onSuccess(@NonNull Response<StatusResponse> response) {
+                        Log.e("lllll",response.body().getStatus()+""+id+" "+userModel.getData().getAccess_token());
+                        if (response.isSuccessful() && response.body() != null) {
+                            if (response.body().getStatus() == 200||response.body().getStatus()==201) {
+
+                                addremove.postValue(true);
+
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        Log.e(TAG, "onError: ", e);
+                    }
+                });
+
+    }
+
 }

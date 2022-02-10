@@ -152,6 +152,7 @@
                             android:layout_gravity="end"
                             android:layout_marginTop="10dp"
                             android:layout_marginEnd="20dp"
+                            android:visibility='@{userModel==null?View.GONE:View.VISIBLE,default=gone}'
                             android:button="@drawable/checkbox_bg"
                             android:checked='@{model.is_favorite?true:false}'
                             android:clickable="false"

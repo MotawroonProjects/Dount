@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.apps.dount.R;
 import com.apps.dount.adapter.OrdersAdapter;
@@ -20,6 +21,7 @@ import com.apps.dount.preferences.Preferences;
 import com.apps.dount.uis.activity_base.BaseActivity;
 import com.apps.dount.uis.activity_order_detials.OrderDetialsActivity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MyOrderActivity extends BaseActivity {
@@ -48,8 +50,10 @@ public class MyOrderActivity extends BaseActivity {
             @Override
             public void onChanged(Boolean aBoolean) {
                 if (aBoolean) {
+                    binding.swipeRefresh.setRefreshing(true);
                     binding.progBar.setVisibility(View.VISIBLE);
                 } else {
+                    binding.swipeRefresh.setRefreshing(false);
                     binding.progBar.setVisibility(View.GONE);
                 }
             }
@@ -59,6 +63,11 @@ public class MyOrderActivity extends BaseActivity {
             public void onChanged(List<OrderModel> orderModels) {
                 if (orderModels != null) {
                     ordersAdapter.updateList(orderModels);
+                    binding.cardNoData.setVisibility(View.GONE);
+                }
+                else{
+                    ordersAdapter.updateList(new ArrayList<>());
+                    binding.cardNoData.setVisibility(View.VISIBLE);
                 }
             }
         });
@@ -68,6 +77,12 @@ public class MyOrderActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 finish();
+            }
+        });
+        binding.swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                activityMyOrdersMvvm.getOrders();
             }
         });
         activityMyOrdersMvvm.getOrders(userModel);

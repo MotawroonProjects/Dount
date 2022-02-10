@@ -46,6 +46,7 @@ public class FragmentOffer extends BaseFragment {
     private Timer timer;
     private ActivityResultLauncher<Intent> launcher;
     private int req;
+    private int layoutPosition;
 
     public static FragmentOffer newInstance() {
         FragmentOffer fragment = new FragmentOffer();
@@ -133,7 +134,23 @@ public class FragmentOffer extends BaseFragment {
         binding.pager.setClipToPadding(false);
         binding.pager.setPadding(20, 0, 20, 0);
         binding.pager.setPageMargin(20);
-
+        fragmentOfferMvvm.getFav().observe(activity, new androidx.lifecycle.Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                if(aBoolean){
+                    List<ProductModel> productModelList=fragmentOfferMvvm.getOfferList().getValue();
+                    ProductModel productModel=productModelList.get(layoutPosition);
+                    if(productModel.isIs_favorite()){
+                        productModel.setIs_favorite(false);
+                    }
+                    else {
+                        productModel.setIs_favorite(true);
+                    }
+                    productModelList.set(layoutPosition,productModel);
+                    offerProductAdapter.updateList(productModelList,layoutPosition);
+                }
+            }
+        });
         fragmentOfferMvvm.getSlider();
         fragmentOfferMvvm.getOffers(getLang(), getUserModel());
 
@@ -162,5 +179,8 @@ public class FragmentOffer extends BaseFragment {
         intent.putExtra("proid", productid);
         launcher.launch(intent);
     }
-
+    public void addremovefave(int layoutPosition) {
+        this.layoutPosition=layoutPosition;
+        fragmentOfferMvvm.addRemoveFavourite(fragmentOfferMvvm.getOfferList().getValue().get(layoutPosition).getId(), getUserModel());
+    }
 }

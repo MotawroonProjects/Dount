@@ -2,6 +2,7 @@ package com.apps.dount.uis.activity_favourite;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -10,17 +11,29 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.apps.dount.R;
 import com.apps.dount.adapter.FavouriteAdapter;
 import com.apps.dount.databinding.ActivityFavouriteBinding;
 import com.apps.dount.model.ProductModel;
+import com.apps.dount.model.StatusResponse;
+import com.apps.dount.model.UserModel;
 import com.apps.dount.mvvm.ActivityFavouriteMvvm;
+import com.apps.dount.remote.Api;
+import com.apps.dount.tags.Tags;
 import com.apps.dount.uis.activity_base.BaseActivity;
 import com.apps.dount.uis.activity_product_detials.ProductDetialsActivity;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import io.reactivex.SingleObserver;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
+import retrofit2.Response;
 
 public class FavouriteActivity extends BaseActivity {
     private ActivityFavouriteBinding binding;
@@ -28,6 +41,7 @@ public class FavouriteActivity extends BaseActivity {
     private FavouriteAdapter adapter;
     private ActivityResultLauncher<Intent> launcher;
     private int req = 1;
+    private int layoutPosition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +60,14 @@ public class FavouriteActivity extends BaseActivity {
             binding.swipeRefresh.setRefreshing(isLoading);
         });
 
-
+        activityFavouriteMvvm.getFav().observe(this, new androidx.lifecycle.Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                if(aBoolean){
+                   adapter.remove(layoutPosition);
+                }
+            }
+        });
         activityFavouriteMvvm.getFavouriteList().observe(this, list -> {
             adapter.updateList(new ArrayList<>());
 
@@ -88,4 +109,11 @@ public class FavouriteActivity extends BaseActivity {
         launcher.launch(intent);
 
     }
+
+    public void addremovefave(int layoutPosition) {
+            this.layoutPosition=layoutPosition;
+            activityFavouriteMvvm.addRemoveFavourite(activityFavouriteMvvm.getFavouriteList().getValue().get(layoutPosition).getId(), getUserModel());
+
+    }
+
 }

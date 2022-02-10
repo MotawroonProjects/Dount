@@ -9,6 +9,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.apps.dount.model.ProductDataModel;
 import com.apps.dount.model.ProductModel;
+import com.apps.dount.model.StatusResponse;
 import com.apps.dount.model.UserModel;
 import com.apps.dount.remote.Api;
 import com.apps.dount.tags.Tags;
@@ -30,6 +31,7 @@ public class ActivityFavouriteMvvm extends AndroidViewModel {
     private MutableLiveData<Boolean> isLoadingLiveData;
 
     private CompositeDisposable disposable = new CompositeDisposable();
+    private MutableLiveData<Boolean> addremove;
 
     public ActivityFavouriteMvvm(@NonNull Application application) {
         super(application);
@@ -41,7 +43,12 @@ public class ActivityFavouriteMvvm extends AndroidViewModel {
         }
         return listMutableLiveData;
     }
-
+    public MutableLiveData<Boolean> getFav() {
+        if (addremove == null) {
+            addremove = new MutableLiveData<>();
+        }
+        return addremove;
+    }
     public MutableLiveData<Boolean> getIsLoading() {
         if (isLoadingLiveData == null) {
             isLoadingLiveData = new MutableLiveData<>();
@@ -86,4 +93,37 @@ public class ActivityFavouriteMvvm extends AndroidViewModel {
                     }
                 });
     }
+    public void addRemoveFavourite(String id, UserModel userModel) {
+        Api.getService(Tags.base_url)
+                .addRemoveFav( userModel.getData().getAccess_token(), id)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+
+                .subscribe(new SingleObserver<Response<StatusResponse>>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
+                        disposable.add(d);
+                    }
+
+                    @Override
+                    public void onSuccess(@NonNull Response<StatusResponse> response) {
+                        Log.e("lllll",response.body().getStatus()+""+id+" "+userModel.getData().getAccess_token());
+                        if (response.isSuccessful() && response.body() != null) {
+                            if (response.body().getStatus() == 200||response.body().getStatus()==201) {
+
+                                addremove.postValue(true);
+
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+
+                        //Log.e(TAG, "onError: ", e);
+                    }
+                });
+
+    }
+
 }

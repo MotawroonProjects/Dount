@@ -20,6 +20,7 @@ import com.apps.dount.adapter.OfferProductAdapter;
 import com.apps.dount.databinding.ActivitySearchBinding;
 import com.apps.dount.model.FilterModel;
 import com.apps.dount.model.ProductDataModel;
+import com.apps.dount.model.ProductModel;
 import com.apps.dount.model.SingleDepartmentDataModel;
 import com.apps.dount.model.UserModel;
 import com.apps.dount.mvvm.ActivityCategoryDetialsMvvm;
@@ -30,6 +31,7 @@ import com.apps.dount.uis.activity_filter.FilterActivity;
 import com.apps.dount.uis.activity_product_detials.ProductDetialsActivity;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Filter;
 
 public class SearchActivity extends BaseActivity {
@@ -43,6 +45,7 @@ public class SearchActivity extends BaseActivity {
     private int req = 1;
     private FilterModel filtermodel;
     private String query;
+    private int layoutPosition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +90,23 @@ public class SearchActivity extends BaseActivity {
                 }
             }
         });
+        activitySearchMvvm.getFav().observe(this, new androidx.lifecycle.Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                if(aBoolean){
+                    List<ProductModel> productModelList=activitySearchMvvm.getCategoryData().getValue().getData();
+                    ProductModel productModel=productModelList.get(layoutPosition);
+                    if(productModel.isIs_favorite()){
+                        productModel.setIs_favorite(false);
+                    }
+                    else {
+                        productModel.setIs_favorite(true);
+                    }
+                    productModelList.set(layoutPosition,productModel);
+                    product2Adapter.updateList(productModelList,layoutPosition);
+                }
+            }
+        });
         //  setUpToolbar(binding.toolbar, getString(R.string.contact_us), R.color.white, R.color.black);
         binding.setLang(getLang());
 
@@ -101,13 +121,13 @@ public class SearchActivity extends BaseActivity {
         });
         filtermodel = new FilterModel();
         filtermodel.setDepartments(new ArrayList<>());
-        activitySearchMvvm.getDepartmentDetials(filtermodel.getDepartments(), query);
+        activitySearchMvvm.getDepartmentDetials(filtermodel.getDepartments(), query,getUserModel());
         launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
             if (req == 3 && result.getResultCode() == Activity.RESULT_OK) {
                 if (result.getData().getSerializableExtra("data") != null) {
                     product2Adapter.updateList(new ArrayList<>());
                     filtermodel = (FilterModel) result.getData().getSerializableExtra("data");
-                    activitySearchMvvm.getDepartmentDetials(filtermodel.getDepartments(), query);
+                    activitySearchMvvm.getDepartmentDetials(filtermodel.getDepartments(), query,getUserModel());
 
                 }
             }
@@ -126,7 +146,7 @@ public class SearchActivity extends BaseActivity {
             @Override
             public void afterTextChanged(Editable editable) {
                 query = binding.edtSearch.getText().toString();
-                activitySearchMvvm.getDepartmentDetials(filtermodel.getDepartments(), query);
+                activitySearchMvvm.getDepartmentDetials(filtermodel.getDepartments(), query,getUserModel());
 
             }
         });
@@ -147,5 +167,9 @@ public class SearchActivity extends BaseActivity {
         Intent intent = new Intent(this, ProductDetialsActivity.class);
         intent.putExtra("proid", productid);
         launcher.launch(intent);
+    }
+    public void addremovefave(int layoutPosition) {
+        this.layoutPosition=layoutPosition;
+        activitySearchMvvm.addRemoveFavourite(activitySearchMvvm.getCategoryData().getValue().getData().get(layoutPosition).getId(), getUserModel());
     }
 }

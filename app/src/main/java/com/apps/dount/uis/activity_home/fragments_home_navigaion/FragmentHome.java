@@ -61,6 +61,7 @@ public class FragmentHome extends BaseFragment {
     private Timer timer;
     private ActivityResultLauncher<Intent> launcher;
     private int req = 1;
+    private int layoutPosition;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -69,10 +70,11 @@ public class FragmentHome extends BaseFragment {
         launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
             if (req == 2 && result.getResultCode() == Activity.RESULT_OK) {
                 activity.updateCartCount();
-                fragmentHomeMvvm.getOffers(getLang(),getUserModel());
-                if(getUserModel()!=null){
-                activity.updateFirebase();
-            }}
+                fragmentHomeMvvm.getOffers(getLang(), getUserModel());
+                if (getUserModel() != null) {
+                    activity.updateFirebase();
+                }
+            }
         });
     }
 
@@ -126,13 +128,29 @@ public class FragmentHome extends BaseFragment {
                 binding.progBarOffers.setVisibility(View.VISIBLE);
 
 
-            }
-            else{
+            } else {
                 binding.progBarSlider.setVisibility(View.GONE);
                 binding.progBarDepartment.setVisibility(View.GONE);
                 binding.progBarOffers.setVisibility(View.GONE);
             }
             // binding.swipeRefresh.setRefreshing(isLoading);
+        });
+        fragmentHomeMvvm.getFav().observe(activity, new androidx.lifecycle.Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                if(aBoolean){
+                    List<ProductModel> productModelList=fragmentHomeMvvm.getOfferList().getValue();
+                    ProductModel productModel=productModelList.get(layoutPosition);
+                    if(productModel.isIs_favorite()){
+                        productModel.setIs_favorite(false);
+                    }
+                    else {
+                        productModel.setIs_favorite(true);
+                    }
+                    productModelList.set(layoutPosition,productModel);
+                    latestProductAdapter.updateList(productModelList,layoutPosition);
+                }
+            }
         });
         fragmentHomeMvvm.getSliderDataModelMutableLiveData().observe(activity, new androidx.lifecycle.Observer<SliderDataModel>() {
             @Override
@@ -205,7 +223,7 @@ public class FragmentHome extends BaseFragment {
 
         fragmentHomeMvvm.getSlider();
         fragmentHomeMvvm.getDepartment(getLang());
-        fragmentHomeMvvm.getOffers(getLang(),getUserModel());
+        fragmentHomeMvvm.getOffers(getLang(), getUserModel());
         binding.llSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -235,6 +253,11 @@ public class FragmentHome extends BaseFragment {
         Intent intent = new Intent(activity, ProductDetialsActivity.class);
         intent.putExtra("proid", productid);
         launcher.launch(intent);
+    }
+
+    public void addremovefave(int layoutPosition) {
+        this.layoutPosition=layoutPosition;
+        fragmentHomeMvvm.addRemoveFavourite(fragmentHomeMvvm.getOfferList().getValue().get(layoutPosition).getId(), getUserModel());
     }
 
     public class MyTask extends TimerTask {

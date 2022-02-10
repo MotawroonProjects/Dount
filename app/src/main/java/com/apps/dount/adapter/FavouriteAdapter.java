@@ -51,6 +51,15 @@ public class FavouriteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                 }
             }
         });
+        myHolder.binding.checkbox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(context instanceof FavouriteActivity){
+                    FavouriteActivity favouriteActivity=(FavouriteActivity) context;
+                    favouriteActivity.addremovefave(holder.getLayoutPosition());
+                }
+            }
+        });
     }
 
     @Override
@@ -60,6 +69,11 @@ public class FavouriteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         } else {
             return 0;
         }
+    }
+
+    public void remove(int layoutPosition) {
+        list.remove(layoutPosition);
+        notifyItemRemoved(layoutPosition);
     }
 
     public static class MyHolder extends RecyclerView.ViewHolder {
