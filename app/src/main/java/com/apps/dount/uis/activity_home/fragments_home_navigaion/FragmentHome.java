@@ -138,17 +138,16 @@ public class FragmentHome extends BaseFragment {
         fragmentHomeMvvm.getFav().observe(activity, new androidx.lifecycle.Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {
-                if(aBoolean){
-                    List<ProductModel> productModelList=fragmentHomeMvvm.getOfferList().getValue();
-                    ProductModel productModel=productModelList.get(layoutPosition);
-                    if(productModel.isIs_favorite()){
+                if (aBoolean) {
+                    List<ProductModel> productModelList = fragmentHomeMvvm.getOfferList().getValue();
+                    ProductModel productModel = productModelList.get(layoutPosition);
+                    if (productModel.isIs_favorite()) {
                         productModel.setIs_favorite(false);
-                    }
-                    else {
+                    } else {
                         productModel.setIs_favorite(true);
                     }
-                    productModelList.set(layoutPosition,productModel);
-                    latestProductAdapter.updateList(productModelList,layoutPosition);
+                    productModelList.set(layoutPosition, productModel);
+                    latestProductAdapter.updateList(productModelList, layoutPosition);
                 }
             }
         });
@@ -256,7 +255,7 @@ public class FragmentHome extends BaseFragment {
     }
 
     public void addremovefave(int layoutPosition) {
-        this.layoutPosition=layoutPosition;
+        this.layoutPosition = layoutPosition;
         fragmentHomeMvvm.addRemoveFavourite(fragmentHomeMvvm.getOfferList().getValue().get(layoutPosition).getId(), getUserModel());
     }
 

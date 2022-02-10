@@ -59,7 +59,7 @@ public class ActivityMyOrdersMvvm extends AndroidViewModel {
         isLoadingLiveData.setValue(true);
 
         Api.getService(Tags.base_url)
-                .getMyOrders(userModel.getData().getAccess_token() )
+                .getMyOrders(userModel.getData().getAccess_token())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<Response<OrderDataModel>>() {
@@ -72,7 +72,7 @@ public class ActivityMyOrdersMvvm extends AndroidViewModel {
                     public void onSuccess(@NonNull Response<OrderDataModel> response) {
                         isLoadingLiveData.postValue(false);
                         if (response.isSuccessful() && response.body() != null) {
-                            Log.e("sss",response.body().getStatus()+"");
+                            Log.e("sss", response.body().getStatus() + "");
                             if (response.body().getStatus() == 200) {
                                 // List<ProductModel> list = response.body().getData();
                                 listMutableLiveData.setValue(response.body().getData());
@@ -83,7 +83,7 @@ public class ActivityMyOrdersMvvm extends AndroidViewModel {
                     @Override
                     public void onError(@NonNull Throwable e) {
                         isLoadingLiveData.setValue(false);
-                        Log.e("sss",e.toString());
+                        Log.e("sss", e.toString());
 
                     }
                 });

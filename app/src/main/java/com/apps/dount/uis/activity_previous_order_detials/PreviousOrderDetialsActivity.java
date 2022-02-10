@@ -37,6 +37,7 @@ public class PreviousOrderDetialsActivity extends BaseActivity implements OnMapR
     private Order2ProductAdapter order2ProductAdapter;
     private GoogleMap mMap;
     private float zoom = 15.0f;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,7 +81,7 @@ public class PreviousOrderDetialsActivity extends BaseActivity implements OnMapR
                 finish();
             }
         });
-        activityPreviousOrderDetialsMvvm.getorderDetials(order_id,getUserModel());
+        activityPreviousOrderDetialsMvvm.getorderDetials(order_id, getUserModel());
         updateUI();
 
     }
@@ -89,11 +90,12 @@ public class PreviousOrderDetialsActivity extends BaseActivity implements OnMapR
         this.orderModel = orderModel;
         order2ProductAdapter.updateList(orderModel.getDetials());
         binding.setModel(orderModel);
-        if(mMap!=null){
+        if (mMap != null) {
             addMarker(Double.parseDouble(orderModel.getLatitude()), Double.parseDouble(orderModel.getLatitude()));
 
         }
     }
+
     private void updateUI() {
         SupportMapFragment supportMapFragment = SupportMapFragment.newInstance();
         getSupportFragmentManager().beginTransaction().replace(R.id.map, supportMapFragment).commit();

@@ -80,6 +80,7 @@ public class ActivityPaymentMvvm extends AndroidViewModel implements GoogleApiCl
         super(application);
         context = application.getApplicationContext();
     }
+
     public LiveData<List<BranchModel>> getBranch() {
         if (branchModelMutableLiveData == null) {
             branchModelMutableLiveData = new MutableLiveData<>();
@@ -88,14 +89,12 @@ public class ActivityPaymentMvvm extends AndroidViewModel implements GoogleApiCl
     }
 
 
-
     public MutableLiveData<SettingModel> getMutableLiveData() {
         if (mutableLiveData == null) {
             mutableLiveData = new MutableLiveData<>();
         }
         return mutableLiveData;
     }
-
 
 
     public MutableLiveData<Boolean> getIsLoading() {
@@ -112,6 +111,7 @@ public class ActivityPaymentMvvm extends AndroidViewModel implements GoogleApiCl
 
         return send;
     }
+
     public LiveData<Boolean> getTime() {
         if (timeend == null) {
             timeend = new MutableLiveData<>();
@@ -310,12 +310,12 @@ public class ActivityPaymentMvvm extends AndroidViewModel implements GoogleApiCl
     public void sendOrder(CartDataModel cartDataModel, UserModel userModel) {
         Gson gson = new Gson();
         String user_data = gson.toJson(cartDataModel);
-        Log.e("data",user_data);
+        Log.e("data", user_data);
         ProgressDialog dialog = Common.createProgressDialog(activity, activity.getResources().getString(R.string.wait));
         dialog.setCancelable(false);
         dialog.show();
         Api.getService(Tags.base_url)
-                .sendOrder( userModel.getData().getAccess_token(),cartDataModel)
+                .sendOrder(userModel.getData().getAccess_token(), cartDataModel)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
 
@@ -328,14 +328,13 @@ public class ActivityPaymentMvvm extends AndroidViewModel implements GoogleApiCl
                     @Override
                     public void onSuccess(@NonNull Response<StatusResponse> response) {
                         dialog.dismiss();
-                        Log.e("kkkkk",response.code()+"");
+                        Log.e("kkkkk", response.code() + "");
                         if (response.isSuccessful() && response.body() != null) {
                             if (response.body().getStatus() == 200) {
 
                                 send.postValue(true);
 
-                            }
-                            else if(response.body().getStatus()==409){
+                            } else if (response.body().getStatus() == 409) {
                                 send.postValue(false);
                             }
                         }
@@ -349,6 +348,7 @@ public class ActivityPaymentMvvm extends AndroidViewModel implements GoogleApiCl
                 });
 
     }
+
     public void getBranchData() {
         isLoadingLivData.postValue(true);
 
@@ -372,7 +372,7 @@ public class ActivityPaymentMvvm extends AndroidViewModel implements GoogleApiCl
                             if (response.body().getStatus() == 200) {
                                 List<BranchModel> list = response.body().getData();
                                 branchModelMutableLiveData.setValue(list);
-                                Log.e("size",list.size()+"");
+                                Log.e("size", list.size() + "");
                             }
                         }
                     }
@@ -401,8 +401,6 @@ public class ActivityPaymentMvvm extends AndroidViewModel implements GoogleApiCl
                     public void onNext(@NonNull Long aLong) {
 
 
-
-
                     }
 
                     @Override
@@ -419,6 +417,7 @@ public class ActivityPaymentMvvm extends AndroidViewModel implements GoogleApiCl
                 });
 
     }
+
     public void getSetting() {
 
 

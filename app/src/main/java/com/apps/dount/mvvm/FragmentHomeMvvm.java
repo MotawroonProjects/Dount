@@ -44,12 +44,14 @@ public class FragmentHomeMvvm extends AndroidViewModel {
         super(application);
         context = application.getApplicationContext();
     }
+
     public MutableLiveData<Boolean> getFav() {
         if (addremove == null) {
             addremove = new MutableLiveData<>();
         }
         return addremove;
     }
+
     public MutableLiveData<List<ProductModel>> getOfferList() {
         if (offerlistMutableLiveData == null) {
             offerlistMutableLiveData = new MutableLiveData<>();
@@ -196,9 +198,10 @@ public class FragmentHomeMvvm extends AndroidViewModel {
         super.onCleared();
         disposable.clear();
     }
+
     public void addRemoveFavourite(String id, UserModel userModel) {
         Api.getService(Tags.base_url)
-                .addRemoveFav( userModel.getData().getAccess_token(), id)
+                .addRemoveFav(userModel.getData().getAccess_token(), id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
 
@@ -210,9 +213,9 @@ public class FragmentHomeMvvm extends AndroidViewModel {
 
                     @Override
                     public void onSuccess(@NonNull Response<StatusResponse> response) {
-                        Log.e("lllll",response.body().getStatus()+""+id+" "+userModel.getData().getAccess_token());
+                        Log.e("lllll", response.body().getStatus() + "" + id + " " + userModel.getData().getAccess_token());
                         if (response.isSuccessful() && response.body() != null) {
-                            if (response.body().getStatus() == 200||response.body().getStatus()==201) {
+                            if (response.body().getStatus() == 200 || response.body().getStatus() == 201) {
 
                                 addremove.postValue(true);
 

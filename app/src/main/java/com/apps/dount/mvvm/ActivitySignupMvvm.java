@@ -80,16 +80,16 @@ public class ActivitySignupMvvm extends AndroidViewModel {
         ProgressDialog dialog = Common.createProgressDialog(context, context.getResources().getString(R.string.wait));
         dialog.setCancelable(false);
         dialog.show();
-        RequestBody name_part = Common.getRequestBodyText(model.getFirst_name()+" "+model.getSeconed_name());
+        RequestBody name_part = Common.getRequestBodyText(model.getFirst_name() + " " + model.getSeconed_name());
         RequestBody seconded_name_part = Common.getRequestBodyText(model.getSeconed_name());
 
         RequestBody code_part = Common.getRequestBodyText(model.getCode() + "");
-        RequestBody phone_part = Common.getRequestBodyText(phone_code.replace("+", "")+phone);
+        RequestBody phone_part = Common.getRequestBodyText(phone_code.replace("+", "") + phone);
         RequestBody phone_code_part = Common.getRequestBodyText(phone_code.replace("+", ""));
 
 
-        MultipartBody.Part image=null;
-        if(uri!=null){
+        MultipartBody.Part image = null;
+        if (uri != null) {
             image = Common.getMultiPart(context, uri, "photo");
 
         }
@@ -165,13 +165,13 @@ public class ActivitySignupMvvm extends AndroidViewModel {
         ProgressDialog dialog = Common.createProgressDialog(context, context.getResources().getString(R.string.wait));
         dialog.setCancelable(false);
         dialog.show();
-        RequestBody firts_name_part = Common.getRequestBodyText(model.getFirst_name()+" "+model.getSeconed_name());
+        RequestBody firts_name_part = Common.getRequestBodyText(model.getFirst_name() + " " + model.getSeconed_name());
         RequestBody seconed_name_part = Common.getRequestBodyText(model.getSeconed_name());
         RequestBody user_part = Common.getRequestBodyText(userModel.getData().getUser().getId() + "");
 
 
-        MultipartBody.Part image=null;
-        if(uri!=null){
+        MultipartBody.Part image = null;
+        if (uri != null) {
             image = Common.getMultiPart(context, uri, "photo");
 
         }
@@ -187,7 +187,7 @@ public class ActivitySignupMvvm extends AndroidViewModel {
                 dialog.dismiss();
 
                 if (userModelResponse.isSuccessful()) {
-Log.e("lllll",userModelResponse.body().getStatus()+"");
+                    Log.e("lllll", userModelResponse.body().getStatus() + "");
                     if (userModelResponse.body().getStatus() == 200) {
 
                         userModelMutableLiveData.postValue(userModelResponse.body());

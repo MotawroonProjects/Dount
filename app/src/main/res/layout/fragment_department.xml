@@ -4,86 +4,83 @@
     xmlns:tools="http://schemas.android.com/tools">
 
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color6"
+        android:paddingTop="56dp">
 
-        <FrameLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/color6"
-            android:paddingTop="56dp"
-            >
+            android:orientation="vertical">
 
-            <LinearLayout
+
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:id="@+id/swipeRefresh"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_height="match_parent">
 
-
-                <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-                    android:id="@+id/swipeRefresh"
+                <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                            <FrameLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent">
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recViewHall"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="3dp"
 
-                                <androidx.recyclerview.widget.RecyclerView
-                                    android:id="@+id/recViewHall"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:layout_marginTop="3dp"
-
-                                    />
+                        />
 
 
-                            </FrameLayout>
+                </FrameLayout>
 
 
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-                </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+        </LinearLayout>
 
-            </LinearLayout>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardNoData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="8dp"
+            android:visibility="gone"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="2dp"
+            app:contentPadding="16sp">
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardNoData"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_margin="8dp"
-                android:visibility="gone"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="5dp"
-                app:cardElevation="2dp"
-                app:contentPadding="16sp">
+                android:gravity="center"
+                android:orientation="vertical">
 
-                <LinearLayout
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:text="@string/sorry"
+                    android:textColor="@color/black"
+                    android:textSize="36sp"
+                    android:textStyle="bold" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="@string/sorry"
-                        android:textColor="@color/black"
-                        android:textSize="36sp"
-                        android:textStyle="bold" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="12dp"
+                    android:text="@string/no_services_to_show"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="12dp"
-                        android:text="@string/no_services_to_show"
-                        android:textColor="@color/black"
-                        android:textSize="16sp" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-        </FrameLayout>
+    </FrameLayout>
 
 
 </layout>

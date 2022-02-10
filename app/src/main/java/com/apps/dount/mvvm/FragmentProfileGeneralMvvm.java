@@ -31,7 +31,6 @@ import retrofit2.Response;
 public class FragmentProfileGeneralMvvm extends AndroidViewModel {
 
 
-
     private CompositeDisposable disposable = new CompositeDisposable();
     private MutableLiveData<Boolean> isLoadingLivData;
     private MutableLiveData<SettingModel> mutableLiveData;
@@ -49,13 +48,13 @@ public class FragmentProfileGeneralMvvm extends AndroidViewModel {
     }
 
 
-
     public MutableLiveData<Boolean> getIsLoading() {
         if (isLoadingLivData == null) {
             isLoadingLivData = new MutableLiveData<>();
         }
         return isLoadingLivData;
     }
+
     public void getSetting() {
 
 
@@ -103,7 +102,7 @@ public class FragmentProfileGeneralMvvm extends AndroidViewModel {
             public void onSuccess(@NonNull Response<StatusResponse> statusResponseResponse) {
                 dialog.dismiss();
                 if (statusResponseResponse.isSuccessful()) {
-                    Log.e("logout",statusResponseResponse.code()+""+statusResponseResponse.body().getStatus());
+                    Log.e("logout", statusResponseResponse.code() + "" + statusResponseResponse.body().getStatus());
                     if (statusResponseResponse.body().getStatus() == 200) {
                         logout.postValue(true);
                     }

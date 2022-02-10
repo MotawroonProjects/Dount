@@ -50,14 +50,15 @@ public class CategoryFilterAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         myHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(context instanceof FilterActivity){
-                    FilterActivity activity=(FilterActivity)context;
+                if (context instanceof FilterActivity) {
+                    FilterActivity activity = (FilterActivity) context;
                     activity.addDepartid(list.get(holder.getLayoutPosition()));
                 }
             }
         });
 
     }
+
     @Override
     public int getItemCount() {
         if (list != null) {
@@ -66,7 +67,6 @@ public class CategoryFilterAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             return 0;
         }
     }
-
 
 
     public static class MyHolder extends RecyclerView.ViewHolder {
@@ -80,6 +80,7 @@ public class CategoryFilterAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         }
 
     }
+
     public void updateList(List<DepartmentModel> list) {
         if (list != null) {
             this.list = list;

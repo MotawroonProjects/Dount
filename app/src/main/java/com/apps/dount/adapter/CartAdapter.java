@@ -59,7 +59,7 @@ public class CartAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
             int amount = model2.getQty() + 1;
             model2.setQty(amount);
-            model2.setSubtotal((model2.getSubtotal() * amount) );
+            model2.setSubtotal((model2.getSubtotal() * amount));
             activity.increase_decrease(model2, myHolder.getAdapterPosition());
         });
 
@@ -69,7 +69,7 @@ public class CartAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             if (model2.getQty() > 1) {
                 int amount = model2.getQty() - 1;
                 model2.setQty(amount);
-                model2.setSubtotal((model2.getSubtotal() * amount) );
+                model2.setSubtotal((model2.getSubtotal() * amount));
                 activity.increase_decrease(model2, myHolder.getAdapterPosition());
             }
 

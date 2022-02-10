@@ -23,10 +23,11 @@ public class FavouriteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     private LayoutInflater inflater;
 
     private UserModel userModel;
-    public FavouriteAdapter(Context context,UserModel userModel) {
+
+    public FavouriteAdapter(Context context, UserModel userModel) {
         this.context = context;
         inflater = LayoutInflater.from(context);
-        this.userModel=userModel;
+        this.userModel = userModel;
 
     }
 
@@ -45,8 +46,8 @@ public class FavouriteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         myHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(context instanceof FavouriteActivity){
-                    FavouriteActivity favouriteActivity=(FavouriteActivity) context;
+                if (context instanceof FavouriteActivity) {
+                    FavouriteActivity favouriteActivity = (FavouriteActivity) context;
                     favouriteActivity.showdetials(list.get(holder.getLayoutPosition()));
                 }
             }
@@ -54,8 +55,8 @@ public class FavouriteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         myHolder.binding.checkbox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(context instanceof FavouriteActivity){
-                    FavouriteActivity favouriteActivity=(FavouriteActivity) context;
+                if (context instanceof FavouriteActivity) {
+                    FavouriteActivity favouriteActivity = (FavouriteActivity) context;
                     favouriteActivity.addremovefave(holder.getLayoutPosition());
                 }
             }
@@ -90,9 +91,8 @@ public class FavouriteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         if (list != null) {
             this.list = list;
 
-        }
-        else{
-            this.list .clear();
+        } else {
+            this.list.clear();
         }
         notifyDataSetChanged();
     }

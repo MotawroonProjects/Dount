@@ -63,8 +63,8 @@ public class FavouriteActivity extends BaseActivity {
         activityFavouriteMvvm.getFav().observe(this, new androidx.lifecycle.Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {
-                if(aBoolean){
-                   adapter.remove(layoutPosition);
+                if (aBoolean) {
+                    adapter.remove(layoutPosition);
                 }
             }
         });
@@ -87,7 +87,7 @@ public class FavouriteActivity extends BaseActivity {
 
         binding.llBack.setOnClickListener(view -> finish());
 
-        adapter = new FavouriteAdapter(this,getUserModel());
+        adapter = new FavouriteAdapter(this, getUserModel());
         LinearLayoutManager layoutManager = new GridLayoutManager(getBaseContext(), 1);
         binding.recyclerFavourite.setLayoutManager(layoutManager);
         binding.recyclerFavourite.setAdapter(adapter);
@@ -111,8 +111,8 @@ public class FavouriteActivity extends BaseActivity {
     }
 
     public void addremovefave(int layoutPosition) {
-            this.layoutPosition=layoutPosition;
-            activityFavouriteMvvm.addRemoveFavourite(activityFavouriteMvvm.getFavouriteList().getValue().get(layoutPosition).getId(), getUserModel());
+        this.layoutPosition = layoutPosition;
+        activityFavouriteMvvm.addRemoveFavourite(activityFavouriteMvvm.getFavouriteList().getValue().get(layoutPosition).getId(), getUserModel());
 
     }
 

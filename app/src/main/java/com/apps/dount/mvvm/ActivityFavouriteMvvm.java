@@ -43,12 +43,14 @@ public class ActivityFavouriteMvvm extends AndroidViewModel {
         }
         return listMutableLiveData;
     }
+
     public MutableLiveData<Boolean> getFav() {
         if (addremove == null) {
             addremove = new MutableLiveData<>();
         }
         return addremove;
     }
+
     public MutableLiveData<Boolean> getIsLoading() {
         if (isLoadingLiveData == null) {
             isLoadingLiveData = new MutableLiveData<>();
@@ -79,7 +81,7 @@ public class ActivityFavouriteMvvm extends AndroidViewModel {
                     public void onSuccess(@NonNull Response<ProductDataModel> response) {
                         isLoadingLiveData.postValue(false);
                         if (response.isSuccessful() && response.body() != null) {
-                            Log.e("ddlldldl",response.body().getStatus()+"");
+                            Log.e("ddlldldl", response.body().getStatus() + "");
                             if (response.body().getStatus() == 200) {
                                 // List<ProductModel> list = response.body().getData();
                                 listMutableLiveData.setValue(response.body().getData());
@@ -93,9 +95,10 @@ public class ActivityFavouriteMvvm extends AndroidViewModel {
                     }
                 });
     }
+
     public void addRemoveFavourite(String id, UserModel userModel) {
         Api.getService(Tags.base_url)
-                .addRemoveFav( userModel.getData().getAccess_token(), id)
+                .addRemoveFav(userModel.getData().getAccess_token(), id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
 
@@ -107,9 +110,9 @@ public class ActivityFavouriteMvvm extends AndroidViewModel {
 
                     @Override
                     public void onSuccess(@NonNull Response<StatusResponse> response) {
-                        Log.e("lllll",response.body().getStatus()+""+id+" "+userModel.getData().getAccess_token());
+                        Log.e("lllll", response.body().getStatus() + "" + id + " " + userModel.getData().getAccess_token());
                         if (response.isSuccessful() && response.body() != null) {
-                            if (response.body().getStatus() == 200||response.body().getStatus()==201) {
+                            if (response.body().getStatus() == 200 || response.body().getStatus() == 201) {
 
                                 addremove.postValue(true);
 

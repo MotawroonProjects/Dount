@@ -43,7 +43,6 @@ public class ContactUsActivity extends BaseActivity {
 //         setUpToolbar(binding.toolbar, getString(R.string.contact_us), R.color.white, R.color.black);
 
 
-
         contactUsModel = new ContactUsModel();
         if (userModel != null) {
             contactUsModel.setName(userModel.getData().getUser().getName());

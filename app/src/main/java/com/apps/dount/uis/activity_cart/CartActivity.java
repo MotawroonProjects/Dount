@@ -159,7 +159,7 @@ public class CartActivity extends BaseActivity {
 
         }
         cartDataModel.setTotal_price(total);
-        binding.tvTotal.setText(String.format("%.2f",total) + "");
+        binding.tvTotal.setText(String.format("%.2f", total) + "");
         //   binding.tvtotal.setText(String.valueOf(total));
     }
 

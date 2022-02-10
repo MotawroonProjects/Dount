@@ -32,13 +32,13 @@ public class ActivityWalletMvvm extends AndroidViewModel {
 
 
     }
+
     public MutableLiveData<Boolean> getIsLoading() {
         if (isLoadingLiveData == null) {
             isLoadingLiveData = new MutableLiveData<>();
         }
         return isLoadingLiveData;
     }
-
 
 
     public void getProfile(String token) {
@@ -51,10 +51,10 @@ public class ActivityWalletMvvm extends AndroidViewModel {
 
             @Override
             public void onSuccess(@NonNull Response<UserModel> userModelResponse) {
-               isLoadingLiveData.postValue(false);
+                isLoadingLiveData.postValue(false);
 
                 if (userModelResponse.isSuccessful()) {
-                   // Log.e("status", userModelResponse.body().getStatus() + "");
+                    // Log.e("status", userModelResponse.body().getStatus() + "");
                     if (userModelResponse.body().getStatus() == 200) {
 
                         userModelMutableLiveData.postValue(userModelResponse.body());
@@ -67,7 +67,7 @@ public class ActivityWalletMvvm extends AndroidViewModel {
 
             @Override
             public void onError(@NonNull Throwable e) {
-              isLoadingLiveData.postValue(false);
+                isLoadingLiveData.postValue(false);
 
             }
         });

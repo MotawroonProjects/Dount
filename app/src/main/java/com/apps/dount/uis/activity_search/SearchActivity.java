@@ -93,17 +93,16 @@ public class SearchActivity extends BaseActivity {
         activitySearchMvvm.getFav().observe(this, new androidx.lifecycle.Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {
-                if(aBoolean){
-                    List<ProductModel> productModelList=activitySearchMvvm.getCategoryData().getValue().getData();
-                    ProductModel productModel=productModelList.get(layoutPosition);
-                    if(productModel.isIs_favorite()){
+                if (aBoolean) {
+                    List<ProductModel> productModelList = activitySearchMvvm.getCategoryData().getValue().getData();
+                    ProductModel productModel = productModelList.get(layoutPosition);
+                    if (productModel.isIs_favorite()) {
                         productModel.setIs_favorite(false);
-                    }
-                    else {
+                    } else {
                         productModel.setIs_favorite(true);
                     }
-                    productModelList.set(layoutPosition,productModel);
-                    product2Adapter.updateList(productModelList,layoutPosition);
+                    productModelList.set(layoutPosition, productModel);
+                    product2Adapter.updateList(productModelList, layoutPosition);
                 }
             }
         });
@@ -121,13 +120,13 @@ public class SearchActivity extends BaseActivity {
         });
         filtermodel = new FilterModel();
         filtermodel.setDepartments(new ArrayList<>());
-        activitySearchMvvm.getDepartmentDetials(filtermodel.getDepartments(), query,getUserModel());
+        activitySearchMvvm.getDepartmentDetials(filtermodel.getDepartments(), query, getUserModel());
         launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
             if (req == 3 && result.getResultCode() == Activity.RESULT_OK) {
                 if (result.getData().getSerializableExtra("data") != null) {
                     product2Adapter.updateList(new ArrayList<>());
                     filtermodel = (FilterModel) result.getData().getSerializableExtra("data");
-                    activitySearchMvvm.getDepartmentDetials(filtermodel.getDepartments(), query,getUserModel());
+                    activitySearchMvvm.getDepartmentDetials(filtermodel.getDepartments(), query, getUserModel());
 
                 }
             }
@@ -146,7 +145,7 @@ public class SearchActivity extends BaseActivity {
             @Override
             public void afterTextChanged(Editable editable) {
                 query = binding.edtSearch.getText().toString();
-                activitySearchMvvm.getDepartmentDetials(filtermodel.getDepartments(), query,getUserModel());
+                activitySearchMvvm.getDepartmentDetials(filtermodel.getDepartments(), query, getUserModel());
 
             }
         });
@@ -168,8 +167,9 @@ public class SearchActivity extends BaseActivity {
         intent.putExtra("proid", productid);
         launcher.launch(intent);
     }
+
     public void addremovefave(int layoutPosition) {
-        this.layoutPosition=layoutPosition;
+        this.layoutPosition = layoutPosition;
         activitySearchMvvm.addRemoveFavourite(activitySearchMvvm.getCategoryData().getValue().getData().get(layoutPosition).getId(), getUserModel());
     }
 }

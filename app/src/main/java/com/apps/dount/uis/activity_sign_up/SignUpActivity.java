@@ -84,8 +84,7 @@ public class SignUpActivity extends BaseActivity {
                 //Log.e("ldlldl", Tags.base_url + userModel.getData().getPhoto());
                 Picasso.get().load(Tags.base_url + userModel.getData().getUser().getPhoto()).into(binding.image);
             }
-        }
-        else{
+        } else {
             binding.fl.setVisibility(View.GONE);
             binding.top.setVisibility(View.VISIBLE);
         }
@@ -151,12 +150,12 @@ public class SignUpActivity extends BaseActivity {
             if (model.isDataValid(this)) {
 
 
-                    if (userModel == null) {
+                if (userModel == null) {
 
-                        activitySignupMvvm.signupWithImage(this, model, phone_code, phone, uri);
-                    } else {
-                        activitySignupMvvm.updateProfileWithImage(this, model, uri, userModel);
-                    }
+                    activitySignupMvvm.signupWithImage(this, model, phone_code, phone, uri);
+                } else {
+                    activitySignupMvvm.updateProfileWithImage(this, model, uri, userModel);
+                }
 
 
             }

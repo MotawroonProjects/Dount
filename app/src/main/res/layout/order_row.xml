@@ -73,10 +73,11 @@
                     android:layout_weight="1"
 
                     />
+
                 <Button
                     android:id="@+id/btnServices"
-                    order_status="@{model.status}"
                     delivery="@{model.delivery_status}"
+                    order_status="@{model.status}"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
@@ -90,81 +91,75 @@
             </LinearLayout>
 
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:orientation="horizontal">
 
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_calender"
+                    app:tint="@color/color5" />
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="4dp"
-                        android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginStart="8dp"
+                    android:ellipsize="end"
+                    android:gravity="end"
+                    android:maxLines="2"
+                    android:text='@{model.created_at.split("T")[0]}'
+                    android:textColor="@color/gray10"
+                    android:textSize="15sp" />
 
-                        <ImageView
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:layout_gravity="center"
-                            android:src="@drawable/ic_calender"
-                            app:tint="@color/color5" />
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1px"
+                    android:layout_weight="1" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="end"
-                            android:layout_marginStart="8dp"
-                            android:ellipsize="end"
-                            android:gravity="end"
-                            android:maxLines="2"
-                            android:text='@{model.created_at.split("T")[0]}'
-                            android:textColor="@color/gray10"
-                            android:textSize="15sp" />
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="1px"
-                            android:layout_weight="1"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="5dp"
-                            android:text="@{model.grand_total}"
-                            android:textColor="@color/black"
-                            android:textSize="12sp"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:text="@{model.grand_total}"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
 
-                            />
+                    />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="5dp"
-                            android:text="@string/price2"
-                            android:textColor="@color/black"
-                            android:textSize="11sp"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:text="@string/price2"
+                    android:textColor="@color/black"
+                    android:textSize="11sp"
 
-                            />
+                    />
 
-                    </LinearLayout>
-
-
-
-
-
+            </LinearLayout>
 
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="3px"
-                android:visibility="gone"
+                android:layout_marginLeft="16dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginRight="16dp"
-                android:layout_marginLeft="16dp"
                 android:background="@color/color1"
-               />
+                android:visibility="gone" />
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-             android:layout_marginTop="7dp"
-                android:visibility="gone"
+                android:layout_marginTop="7dp"
                 android:layout_marginBottom="7dp"
-               >
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <LinearLayout
                     android:id="@+id/llEdit"
@@ -172,12 +167,12 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="1"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/view1"
                     android:gravity="center"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/view1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <ImageView
 
@@ -205,11 +200,11 @@
                     android:layout_width="1dp"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
-                    app:layout_constraintTop_toTopOf="parent"
+                    android:background="@color/gray24"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    android:background="@color/gray24" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <LinearLayout
                     android:id="@+id/llDelete"
@@ -218,11 +213,11 @@
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:gravity="center"
-                    app:layout_constraintStart_toEndOf="@+id/view1"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
+                    android:orientation="horizontal"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    android:orientation="horizontal">
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/view1"
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <ImageView
                         android:layout_width="20dp"

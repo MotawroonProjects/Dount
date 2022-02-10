@@ -13,18 +13,18 @@ import io.reactivex.observers.TestObserver;
 public class CartDataModel implements Serializable {
     private List<ItemCartModel> details;
     private String reference_no;
-    private String branch_id="";
+    private String branch_id = "";
 
     private String customer_id;
     private double total_discount;
     private double total_tax;
     private double total_price;
     private double grand_total;
-    private String is_delivary="";
+    private String is_delivary = "";
     private String receive_type;
     private String notes;
     private String payment_type;
-    private String address="";
+    private String address = "";
     private double latitude;
     private double longitude;
 
@@ -45,12 +45,9 @@ public class CartDataModel implements Serializable {
     }
 
 
-
-
     public String getCustomer_id() {
         return customer_id;
     }
-
 
 
     public double getTotal_discount() {
@@ -64,8 +61,6 @@ public class CartDataModel implements Serializable {
     public double getTotal_price() {
         return total_price;
     }
-
-
 
 
     public double getGrand_total() {
@@ -97,13 +92,9 @@ public class CartDataModel implements Serializable {
     }
 
 
-
-
-
     public void setCustomer_id(String customer_id) {
         this.customer_id = customer_id;
     }
-
 
 
     public void setTotal_discount(double total_discount) {
@@ -117,8 +108,6 @@ public class CartDataModel implements Serializable {
     public void setTotal_price(double total_price) {
         this.total_price = total_price;
     }
-
-
 
 
     public void setGrand_total(double grand_total) {
@@ -164,6 +153,7 @@ public class CartDataModel implements Serializable {
     public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
+
     public boolean isDataValid(Context context) {
         if (!branch_id.isEmpty()) {
 
@@ -172,7 +162,7 @@ public class CartDataModel implements Serializable {
         } else {
 
             if (branch_id.isEmpty()) {
-                Toast.makeText(context,context.getResources().getString(R.string.ch_branch),Toast.LENGTH_LONG).show();
+                Toast.makeText(context, context.getResources().getString(R.string.ch_branch), Toast.LENGTH_LONG).show();
             }
 
 

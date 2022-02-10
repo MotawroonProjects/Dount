@@ -196,7 +196,7 @@ public class FragmentProfile extends BaseFragment {
         binding.llLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                fragmentProfileGeneralMvvm.logout(activity,getUserModel());
+                fragmentProfileGeneralMvvm.logout(activity, getUserModel());
             }
         });
     }
@@ -213,7 +213,6 @@ public class FragmentProfile extends BaseFragment {
         Intent intent = new Intent(activity, SignUpActivity.class);
         launcher.launch(intent);
     }
-
 
 
     private void rateApp() {

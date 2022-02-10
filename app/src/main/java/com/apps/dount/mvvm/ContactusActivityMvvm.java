@@ -28,8 +28,6 @@ public class ContactusActivityMvvm extends AndroidViewModel {
     private Context context;
 
 
-
-
     public MutableLiveData<Boolean> send = new MutableLiveData<>();
 
     private CompositeDisposable disposable = new CompositeDisposable();
@@ -39,7 +37,6 @@ public class ContactusActivityMvvm extends AndroidViewModel {
         context = application.getApplicationContext();
 
     }
-
 
 
     public void contactus(Context context, ContactUsModel contactUsModel) {

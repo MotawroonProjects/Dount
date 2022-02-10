@@ -213,7 +213,7 @@ public class GeneralMethod {
     public static void user_image(View view, String imageUrl) {
 
         imageUrl = Tags.base_url + imageUrl;
-        Log.e("ssssss",imageUrl);
+        Log.e("ssssss", imageUrl);
         if (view instanceof CircleImageView) {
             CircleImageView imageView = (CircleImageView) view;
             if (imageUrl != null) {
@@ -343,22 +343,20 @@ public class GeneralMethod {
 
     }
 
-    @BindingAdapter({"order_status","delivery"})
-    public static void orderStatus(TextView textView, String status,String delivery) {
-        if (status.equals("append")&&delivery.equals("append")) {
+    @BindingAdapter({"order_status", "delivery"})
+    public static void orderStatus(TextView textView, String status, String delivery) {
+        if (status.equals("append") && delivery.equals("append")) {
             textView.setText(textView.getContext().getString(R.string.order_sent));
-        }
-        else if (status.equals("accept")&&delivery.equals("append")) {
+        } else if (status.equals("accept") && delivery.equals("append")) {
             textView.setText(textView.getContext().getString(R.string.preparing));
 
-        }
-        else if (status.equals("accept")&&delivery.equals("accepted")) {
+        } else if (status.equals("accept") && delivery.equals("accepted")) {
             textView.setText(textView.getContext().getString(R.string.delivered_to_the_delegate));
 
-        } else if (status.equals("accept")&&delivery.equals("on_way")) {
+        } else if (status.equals("accept") && delivery.equals("on_way")) {
             textView.setText(textView.getContext().getString(R.string.delivery_in_progress));
 
-        } else if (status.equals("end")&&delivery.equals("done")) {
+        } else if (status.equals("end") && delivery.equals("done")) {
             textView.setText(textView.getContext().getString(R.string.end));
 
         }

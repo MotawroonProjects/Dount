@@ -41,8 +41,7 @@
                         image="@{model.image}"
                         android:layout_width="match_parent"
                         android:layout_height="80dp"
-                        android:layout_margin="8dp"
-                         />
+                        android:layout_margin="8dp" />
 
                     <TextView
                         android:layout_width="wrap_content"

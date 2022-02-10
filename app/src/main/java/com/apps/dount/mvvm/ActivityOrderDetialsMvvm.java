@@ -53,7 +53,7 @@ public class ActivityOrderDetialsMvvm extends AndroidViewModel {
     public void getorderDetials(String id, UserModel userModel) {
         isLoadingLivData.postValue(true);
         Api.getService(Tags.base_url)
-                .getSingleOrders(userModel.getData().getAccess_token(),id)
+                .getSingleOrders(userModel.getData().getAccess_token(), id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
 

@@ -48,8 +48,7 @@ public class OrdersAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 if (context instanceof MyOrderActivity) {
                     MyOrderActivity myOrderActivity = (MyOrderActivity) context;
                     myOrderActivity.show(list.get(holder.getLayoutPosition()));
-                }
-                else   if (context instanceof PreviousOrderActivity) {
+                } else if (context instanceof PreviousOrderActivity) {
                     PreviousOrderActivity myOrderActivity = (PreviousOrderActivity) context;
                     myOrderActivity.show(list.get(holder.getLayoutPosition()));
                 }

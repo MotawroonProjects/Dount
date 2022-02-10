@@ -24,7 +24,8 @@
         <variable
             name="locationModel"
             type="com.apps.dount.model.LocationModel" />
-<import type="android.view.View"/>
+
+        <import type="android.view.View" />
     </data>
 
     <FrameLayout
@@ -527,8 +528,7 @@
                                 <View
                                     android:layout_width="match_parent"
                                     android:layout_height="1px"
-                                    android:background="@color/gray19"
-                                     />
+                                    android:background="@color/gray19" />
 
                                 <LinearLayout
                                     android:layout_width="match_parent"

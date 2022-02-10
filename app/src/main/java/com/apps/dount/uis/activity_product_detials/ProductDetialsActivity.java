@@ -73,7 +73,7 @@ public class ProductDetialsActivity extends BaseActivity {
             public void onChanged(Boolean aBoolean) {
                 if (aBoolean) {
                     isfav = true;
-                    Log.error("lllll",";;llll");
+                    Log.error("lllll", ";;llll");
                     if (productmodel != null) {
 
                         if (productmodel.isIs_favorite()) {
@@ -166,7 +166,7 @@ public class ProductDetialsActivity extends BaseActivity {
 
     private void back() {
         if (isDataChanged || isfav) {
-           // Log.error("ldldll", String.valueOf(isDataChanged));
+            // Log.error("ldldll", String.valueOf(isDataChanged));
             setResult(RESULT_OK);
         }
         finish();

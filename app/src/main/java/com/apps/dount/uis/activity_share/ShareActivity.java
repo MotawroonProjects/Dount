@@ -47,7 +47,7 @@ public class ShareActivity extends BaseActivity {
 
         if (userModel != null) {
             try {
-                barcode = getResources().getString(R.string.app_link) + new URL(app_url) + "\n" + getResources().getString(R.string.shareContent) + userModel.getData().getUser().getCode() + getResources().getString(R.string.to_buy)+ "\n";
+                barcode = getResources().getString(R.string.app_link) + new URL(app_url) + "\n" + getResources().getString(R.string.shareContent) + userModel.getData().getUser().getCode() + getResources().getString(R.string.to_buy) + "\n";
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             }
@@ -66,7 +66,7 @@ public class ShareActivity extends BaseActivity {
         });
 
         binding.llBack.setOnClickListener(view -> finish());
-       GenerateCode();
+        GenerateCode();
     }
 
     private void GenerateCode() {
@@ -92,8 +92,7 @@ public class ShareActivity extends BaseActivity {
         }
         if (bm != null) {
             binding.image.setImageBitmap(bm);
-        }
-        else{
+        } else {
             binding.image.setVisibility(View.GONE);
         }
 

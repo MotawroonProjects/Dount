@@ -53,12 +53,10 @@ public class OfferProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 if (fragment instanceof FragmentHome) {
                     FragmentHome fragmentHome = (FragmentHome) fragment;
                     fragmentHome.showProductDetials(list.get(holder.getLayoutPosition()).getId());
-                }
-                else    if (fragment instanceof FragmentOffer) {
+                } else if (fragment instanceof FragmentOffer) {
                     FragmentOffer fragmentOffer = (FragmentOffer) fragment;
                     fragmentOffer.showProductDetials(list.get(holder.getLayoutPosition()).getId());
-                }
-                else    if (context instanceof SearchActivity) {
+                } else if (context instanceof SearchActivity) {
                     SearchActivity searchActivity = (SearchActivity) context;
                     searchActivity.showProductDetials(list.get(holder.getLayoutPosition()).getId());
                 }
@@ -67,11 +65,10 @@ public class OfferProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         myHolder.binding.checkbox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                 if (fragment instanceof FragmentOffer) {
+                if (fragment instanceof FragmentOffer) {
                     FragmentOffer fragmentOffer = (FragmentOffer) fragment;
                     fragmentOffer.addremovefave(holder.getLayoutPosition());
-                }
-                else    if (context instanceof SearchActivity) {
+                } else if (context instanceof SearchActivity) {
                     SearchActivity searchActivity = (SearchActivity) context;
                     searchActivity.addremovefave(holder.getLayoutPosition());
                 }
@@ -89,7 +86,7 @@ public class OfferProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     }
 
     public void updateList(List<ProductModel> productModelList, int layoutPosition) {
-        this.list=productModelList;
+        this.list = productModelList;
         notifyItemChanged(layoutPosition);
     }
 

@@ -81,12 +81,12 @@ public class ActivityProductDetialsMvvm extends AndroidViewModel {
 
     public void getProductDetials(String lang, String id, UserModel userModel) {
         String token = null;
-        if(userModel!=null){
-            token=userModel.getData().getAccess_token();
+        if (userModel != null) {
+            token = userModel.getData().getAccess_token();
         }
         isLoadingLivData.postValue(true);
         Api.getService(Tags.base_url)
-                .getSingleProduct(token,id)
+                .getSingleProduct(token, id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
 
@@ -120,7 +120,7 @@ public class ActivityProductDetialsMvvm extends AndroidViewModel {
 
     public void addRemoveFavourite(String id, UserModel userModel) {
         Api.getService(Tags.base_url)
-                .addRemoveFav( userModel.getData().getAccess_token(), id)
+                .addRemoveFav(userModel.getData().getAccess_token(), id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
 
@@ -133,7 +133,7 @@ public class ActivityProductDetialsMvvm extends AndroidViewModel {
                     @Override
                     public void onSuccess(@NonNull Response<StatusResponse> response) {
                         if (response.isSuccessful() && response.body() != null) {
-                            if (response.body().getStatus() == 200||response.body().getStatus()==201) {
+                            if (response.body().getStatus() == 200 || response.body().getStatus() == 201) {
 
                                 addremove.postValue(true);
 

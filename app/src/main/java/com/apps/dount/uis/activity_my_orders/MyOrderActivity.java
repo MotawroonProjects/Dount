@@ -64,8 +64,7 @@ public class MyOrderActivity extends BaseActivity {
                 if (orderModels != null) {
                     ordersAdapter.updateList(orderModels);
                     binding.cardNoData.setVisibility(View.GONE);
-                }
-                else{
+                } else {
                     ordersAdapter.updateList(new ArrayList<>());
                     binding.cardNoData.setVisibility(View.VISIBLE);
                 }

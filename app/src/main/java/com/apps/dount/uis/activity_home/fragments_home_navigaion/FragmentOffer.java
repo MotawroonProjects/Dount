@@ -60,7 +60,7 @@ public class FragmentOffer extends BaseFragment {
         launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
             if (req == 2 && result.getResultCode() == Activity.RESULT_OK) {
                 activity.updateCartCount();
-                fragmentOfferMvvm.getOffers(getLang(),getUserModel());
+                fragmentOfferMvvm.getOffers(getLang(), getUserModel());
             }
         });
     }
@@ -137,17 +137,16 @@ public class FragmentOffer extends BaseFragment {
         fragmentOfferMvvm.getFav().observe(activity, new androidx.lifecycle.Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {
-                if(aBoolean){
-                    List<ProductModel> productModelList=fragmentOfferMvvm.getOfferList().getValue();
-                    ProductModel productModel=productModelList.get(layoutPosition);
-                    if(productModel.isIs_favorite()){
+                if (aBoolean) {
+                    List<ProductModel> productModelList = fragmentOfferMvvm.getOfferList().getValue();
+                    ProductModel productModel = productModelList.get(layoutPosition);
+                    if (productModel.isIs_favorite()) {
                         productModel.setIs_favorite(false);
-                    }
-                    else {
+                    } else {
                         productModel.setIs_favorite(true);
                     }
-                    productModelList.set(layoutPosition,productModel);
-                    offerProductAdapter.updateList(productModelList,layoutPosition);
+                    productModelList.set(layoutPosition, productModel);
+                    offerProductAdapter.updateList(productModelList, layoutPosition);
                 }
             }
         });
@@ -179,8 +178,9 @@ public class FragmentOffer extends BaseFragment {
         intent.putExtra("proid", productid);
         launcher.launch(intent);
     }
+
     public void addremovefave(int layoutPosition) {
-        this.layoutPosition=layoutPosition;
+        this.layoutPosition = layoutPosition;
         fragmentOfferMvvm.addRemoveFavourite(fragmentOfferMvvm.getOfferList().getValue().get(layoutPosition).getId(), getUserModel());
     }
 }

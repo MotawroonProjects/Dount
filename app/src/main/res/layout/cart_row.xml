@@ -76,11 +76,11 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
                         android:background="@color/white"
                         android:gravity="center"
                         android:padding="5dp"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginEnd="20dp"
                         android:text="@{model.title}"
                         android:textColor="@color/color5"
                         android:textSize="14sp" />
@@ -92,7 +92,6 @@
                         android:layout_marginEnd="20dp"
                         android:gravity="end"
                         android:orientation="horizontal">
-
 
 
                         <TextView

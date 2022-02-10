@@ -47,9 +47,9 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import retrofit2.Response;
 
-public class FragmentBranchesMvvm extends AndroidViewModel  implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener {
+public class FragmentBranchesMvvm extends AndroidViewModel implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener {
     private static final String TAG = "FragmentNearMvvm";
-   
+
     private Context context;
     private GoogleApiClient googleApiClient;
     private LocationRequest locationRequest;
@@ -70,17 +70,12 @@ public class FragmentBranchesMvvm extends AndroidViewModel  implements GoogleApi
     }
 
 
-
-
     public LiveData<List<BranchModel>> getBranch() {
         if (branchModelMutableLiveData == null) {
             branchModelMutableLiveData = new MutableLiveData<>();
         }
         return branchModelMutableLiveData;
     }
-
-
-
 
 
     public MutableLiveData<Boolean> getIsLoading() {
@@ -115,7 +110,7 @@ public class FragmentBranchesMvvm extends AndroidViewModel  implements GoogleApi
                             if (response.body().getStatus() == 200) {
                                 List<BranchModel> list = response.body().getData();
                                 branchModelMutableLiveData.setValue(list);
-                                Log.e("size",list.size()+"");
+                                Log.e("size", list.size() + "");
                             }
                         }
                     }
@@ -128,6 +123,7 @@ public class FragmentBranchesMvvm extends AndroidViewModel  implements GoogleApi
                 });
 
     }
+
     public LiveData<LocationModel> getLocationData() {
         if (locationModelMutableLiveData == null) {
             locationModelMutableLiveData = new MutableLiveData<>();
@@ -213,7 +209,7 @@ public class FragmentBranchesMvvm extends AndroidViewModel  implements GoogleApi
     public void onLocationChanged(Location location) {
         double lat = location.getLatitude();
         double lng = location.getLongitude();
-        LocationModel locationModel=new LocationModel(lat,lng,"");
+        LocationModel locationModel = new LocationModel(lat, lng, "");
         locationModelMutableLiveData.postValue(locationModel);
         if (googleApiClient != null) {
             LocationServices.getFusedLocationProviderClient(activity).removeLocationUpdates(locationCallback);
@@ -237,7 +233,6 @@ public class FragmentBranchesMvvm extends AndroidViewModel  implements GoogleApi
             }
         }
     }
-
 
 
 }

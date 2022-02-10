@@ -35,7 +35,6 @@ public class FragmentDepartmentMvvm extends AndroidViewModel {
     private MutableLiveData<List<DepartmentModel>> departmentLivData;
 
 
-
     public FragmentDepartmentMvvm(@NonNull Application application) {
         super(application);
         context = application.getApplicationContext();
@@ -56,8 +55,6 @@ public class FragmentDepartmentMvvm extends AndroidViewModel {
         }
         return departmentLivData;
     }
-
-
 
 
     public void getDepartment(String lang) {
@@ -97,7 +94,6 @@ public class FragmentDepartmentMvvm extends AndroidViewModel {
                 });
 
     }
-
 
 
     @Override

@@ -66,17 +66,16 @@ public class CategoryDetialsActivity extends BaseActivity {
         categoryDetialsMvvm.getFav().observe(this, new androidx.lifecycle.Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {
-                if(aBoolean){
-                    List<ProductModel> productModelList=categoryDetialsMvvm.getCategoryData().getValue().getData();
-                    ProductModel productModel=productModelList.get(layoutPosition);
-                    if(productModel.isIs_favorite()){
+                if (aBoolean) {
+                    List<ProductModel> productModelList = categoryDetialsMvvm.getCategoryData().getValue().getData();
+                    ProductModel productModel = productModelList.get(layoutPosition);
+                    if (productModel.isIs_favorite()) {
                         productModel.setIs_favorite(false);
-                    }
-                    else {
+                    } else {
                         productModel.setIs_favorite(true);
                     }
-                    productModelList.set(layoutPosition,productModel);
-                    product2Adapter.updateList(productModelList,layoutPosition);
+                    productModelList.set(layoutPosition, productModel);
+                    product2Adapter.updateList(productModelList, layoutPosition);
                 }
             }
         });
@@ -85,8 +84,8 @@ public class CategoryDetialsActivity extends BaseActivity {
             public void onChanged(ProductDataModel singleDepartmentDataModel) {
                 binding.progBar.setVisibility(View.GONE);
                 if (singleDepartmentDataModel.getData() != null) {
-                  // binding.setModel(singleDepartmentDataModel.getData());
-                    if (singleDepartmentDataModel.getData()!= null && singleDepartmentDataModel.getData().size() > 0) {
+                    // binding.setModel(singleDepartmentDataModel.getData());
+                    if (singleDepartmentDataModel.getData() != null && singleDepartmentDataModel.getData().size() > 0) {
                         product2Adapter.updateList(singleDepartmentDataModel.getData());
                         binding.cardNoData.setVisibility(View.GONE);
                     } else {
@@ -109,7 +108,7 @@ public class CategoryDetialsActivity extends BaseActivity {
                 finish();
             }
         });
-        categoryDetialsMvvm.getDepartmentDetials(getLang(), catid,getUserModel());
+        categoryDetialsMvvm.getDepartmentDetials(getLang(), catid, getUserModel());
         launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
             if (req == 2 && result.getResultCode() == Activity.RESULT_OK) {
                 setResult(RESULT_OK);
@@ -126,7 +125,7 @@ public class CategoryDetialsActivity extends BaseActivity {
     }
 
     public void addremovefave(int layoutPosition) {
-        this.layoutPosition=layoutPosition;
+        this.layoutPosition = layoutPosition;
         categoryDetialsMvvm.addRemoveFavourite(categoryDetialsMvvm.getCategoryData().getValue().getData().get(layoutPosition).getId(), getUserModel());
     }
 }

@@ -40,12 +40,14 @@ public class ActivitySearchMvvm extends AndroidViewModel {
         super(application);
         context = application.getApplicationContext();
     }
+
     public MutableLiveData<Boolean> getFav() {
         if (addremove == null) {
             addremove = new MutableLiveData<>();
         }
         return addremove;
     }
+
     public LiveData<ProductDataModel> getCategoryData() {
         if (departmentLivData == null) {
             departmentLivData = new MutableLiveData<>();
@@ -61,14 +63,14 @@ public class ActivitySearchMvvm extends AndroidViewModel {
         return isLoadingLivData;
     }
 
-    public void getDepartmentDetials( List<String> id,String query,UserModel userModel) {
+    public void getDepartmentDetials(List<String> id, String query, UserModel userModel) {
         String token = null;
-        if(userModel!=null){
-            token=userModel.getData().getAccess_token();
+        if (userModel != null) {
+            token = userModel.getData().getAccess_token();
         }
         isLoadingLivData.postValue(true);
         Api.getService(Tags.base_url)
-                .getSingleDepartment( id,query,token)
+                .getSingleDepartment(id, query, token)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
 
@@ -107,9 +109,10 @@ public class ActivitySearchMvvm extends AndroidViewModel {
         disposable.clear();
 
     }
+
     public void addRemoveFavourite(String id, UserModel userModel) {
         Api.getService(Tags.base_url)
-                .addRemoveFav( userModel.getData().getAccess_token(), id)
+                .addRemoveFav(userModel.getData().getAccess_token(), id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
 
@@ -121,9 +124,9 @@ public class ActivitySearchMvvm extends AndroidViewModel {
 
                     @Override
                     public void onSuccess(@NonNull Response<StatusResponse> response) {
-                        Log.e("lllll",response.body().getStatus()+""+id+" "+userModel.getData().getAccess_token());
+                        Log.e("lllll", response.body().getStatus() + "" + id + " " + userModel.getData().getAccess_token());
                         if (response.isSuccessful() && response.body() != null) {
-                            if (response.body().getStatus() == 200||response.body().getStatus()==201) {
+                            if (response.body().getStatus() == 200 || response.body().getStatus() == 201) {
 
                                 addremove.postValue(true);
 

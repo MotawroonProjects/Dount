@@ -64,10 +64,10 @@ public class ActivityPreviousOrderDetialsMvvm extends AndroidViewModel {
         return orderModelMutableLiveData;
     }
 
-    public void getorderDetials(String id, UserModel  userModel) {
+    public void getorderDetials(String id, UserModel userModel) {
         isLoadingLivData.postValue(true);
         Api.getService(Tags.base_url)
-                .getSingleOrders(userModel.getData().getAccess_token(),id)
+                .getSingleOrders(userModel.getData().getAccess_token(), id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
 

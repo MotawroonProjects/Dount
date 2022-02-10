@@ -41,6 +41,7 @@ public class FragmentDepartment extends BaseFragment {
     private FragmentDepartmentMvvm fragmentDepartmentMvvm;
     private ActivityResultLauncher<Intent> launcher;
     private int req = 1;
+
     public static FragmentDepartment newInstance() {
         FragmentDepartment fragment = new FragmentDepartment();
         return fragment;

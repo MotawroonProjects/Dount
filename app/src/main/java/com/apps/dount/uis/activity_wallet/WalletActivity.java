@@ -31,8 +31,8 @@ public class WalletActivity extends BaseActivity {
     }
 
     private void initView() {
-        preferences=Preferences.getInstance();
-        userModel=getUserModel();
+        preferences = Preferences.getInstance();
+        userModel = getUserModel();
         activityWalletMvvm = ViewModelProviders.of(this).get(ActivityWalletMvvm.class);
         //  setUpToolbar(binding.toolbar, getString(R.string.contact_us), R.color.white, R.color.black);
         binding.setLang(getLang());

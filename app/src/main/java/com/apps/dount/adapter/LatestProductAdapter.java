@@ -25,12 +25,13 @@ public class LatestProductAdapter extends RecyclerView.Adapter<RecyclerView.View
     private Context context;
     private LayoutInflater inflater;
     private Fragment fragment;
-   private UserModel userModel;
+    private UserModel userModel;
+
     public LatestProductAdapter(Context context, Fragment fragment, UserModel userModel) {
         this.context = context;
         inflater = LayoutInflater.from(context);
         this.fragment = fragment;
-        this.userModel=userModel;
+        this.userModel = userModel;
     }
 
     @NonNull
@@ -51,8 +52,7 @@ public class LatestProductAdapter extends RecyclerView.Adapter<RecyclerView.View
                 if (fragment instanceof FragmentHome) {
                     FragmentHome fragmentHome = (FragmentHome) fragment;
                     fragmentHome.showProductDetials(list.get(holder.getLayoutPosition()).getId());
-                }
-                else  if (context instanceof CategoryDetialsActivity) {
+                } else if (context instanceof CategoryDetialsActivity) {
                     CategoryDetialsActivity categoryDetialsActivity = (CategoryDetialsActivity) context;
                     categoryDetialsActivity.showProductDetials(list.get(holder.getLayoutPosition()).getId());
                 }
@@ -65,8 +65,7 @@ public class LatestProductAdapter extends RecyclerView.Adapter<RecyclerView.View
                 if (fragment instanceof FragmentHome) {
                     FragmentHome fragmentHome = (FragmentHome) fragment;
                     fragmentHome.addremovefave(holder.getLayoutPosition());
-                }
-                else  if (context instanceof CategoryDetialsActivity) {
+                } else if (context instanceof CategoryDetialsActivity) {
                     CategoryDetialsActivity categoryDetialsActivity = (CategoryDetialsActivity) context;
                     categoryDetialsActivity.addremovefave(holder.getLayoutPosition());
                 }
@@ -85,7 +84,7 @@ public class LatestProductAdapter extends RecyclerView.Adapter<RecyclerView.View
     }
 
     public void updateList(List<ProductModel> productModelList, int layoutPosition) {
-        this.list=productModelList;
+        this.list = productModelList;
         notifyItemChanged(layoutPosition);
     }
 

@@ -109,7 +109,7 @@ public class PaymentActivity extends BaseActivity {
             if (settingModel != null && settingModel.getTax_for().equals("order")) {
                 cartDataModel.setTotal_tax((cartDataModel.getTotal_price() * settingModel.getTax_percentage()) / 100);
             }
-            cartDataModel.setGrand_total( cartDataModel.getTotal_tax()+cartDataModel.getTotal_price());
+            cartDataModel.setGrand_total(cartDataModel.getTotal_tax() + cartDataModel.getTotal_price());
             binding.setTax(cartDataModel.getTotal_tax());
             binding.setModel(cartDataModel);
         });
@@ -202,11 +202,10 @@ public class PaymentActivity extends BaseActivity {
                 if (branchModel.getIs_delivery().equals("yes")) {
                     cartDataModel.setIs_delivary("no");
                     cartDataModel.setReceive_type("branch");
-                }
-                else{
-                cartDataModel.setBranch_id("");
-                cartDataModel.setIs_delivary("");
-                cartDataModel.setReceive_type("");
+                } else {
+                    cartDataModel.setBranch_id("");
+                    cartDataModel.setIs_delivary("");
+                    cartDataModel.setReceive_type("");
                 }
                 binding.expandLayout.collapse(true);
 
@@ -219,7 +218,7 @@ public class PaymentActivity extends BaseActivity {
                 if (branchModel.getIs_delivery().equals("no")) {
                     cartDataModel.setIs_delivary("no");
                     cartDataModel.setReceive_type("branch");
-                   // binding.tvDeliver.setText(getResources().getString(R.string.receipt_from_the_branch));
+                    // binding.tvDeliver.setText(getResources().getString(R.string.receipt_from_the_branch));
                 } else {
                     cartDataModel.setIs_delivary("yes");
                     cartDataModel.setReceive_type("delivary");
