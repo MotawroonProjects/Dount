@@ -204,7 +204,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginEnd="5dp"
-                            android:text='@{model!=null?String.format("%.2f",Double.parseDouble(model.price)):""}'
+                            android:text='@{model!=null?String.format("%.2f",model.price_tax):""}'
                             android:textColor="@color/colorPrimary"
                             android:textSize="12sp"
                             android:textStyle="bold" />

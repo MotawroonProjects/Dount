@@ -174,13 +174,13 @@ public class ActivityProductDetialsMvvm extends AndroidViewModel {
             ItemCartModel itemCartModel = new ItemCartModel();
             itemCartModel.setProduct_id(productModel.getId());
             itemCartModel.setQty(amount);
-            itemCartModel.setSubtotal(itemCartModel.getQty() * Double.parseDouble(productModel.getPrice()));
+            itemCartModel.setSubtotal(itemCartModel.getQty() * productModel.getPrice_tax());
             itemCartModel.setProduct_batch_id("");
             itemCartModel.setImage(productModel.getImage());
             itemCartModel.setTitle(productModel.getName());
             itemCartModel.setProduct_code(productModel.getCode());
             itemCartModel.setDiscount(0);
-            itemCartModel.setNet_unit_price(Double.parseDouble(productModel.getPrice()));
+            itemCartModel.setNet_unit_price(productModel.getPrice_tax());
             itemCartModel.setProduct_code(productModel.getCode());
             itemCartModel.setSale_unit("عدد");
             itemCartModel.setTax(productModel.getPrice_tax());
@@ -191,7 +191,7 @@ public class ActivityProductDetialsMvvm extends AndroidViewModel {
         } else {
             ItemCartModel itemCartModel = cartModelList.get(pos);
             itemCartModel.setQty(itemCartModel.getQty() + amount);
-            itemCartModel.setSubtotal(itemCartModel.getQty() * Double.parseDouble(productModel.getPrice()));
+            itemCartModel.setSubtotal(itemCartModel.getQty() * productModel.getPrice_tax());
             cartModelList.set(pos, itemCartModel);
         }
         if (cartDataModel == null) {

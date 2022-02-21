@@ -164,60 +164,6 @@
         <entry key="..\:/AndroidProjects/Wedding-master/app/src/main/res/layout/fragment_edit_profile.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidProjects/Wedding-master/app/src/main/res/layout/fragment_profile.xml" value="0.24010416666666667" />
         <entry key="..\:/AndroidProjects/Wedding-master/app/src/main/res/layout/toolbar.xml" value="0.25416666666666665" />
-        <entry key="..\:/Dount/app/src/main/res/drawable/ic_close.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/drawable/rounded_gray9.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/activity_about_app.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/activity_cart.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/activity_category_detials.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/activity_contact_us.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/activity_favourite.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/activity_filter.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/activity_intro_slider.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/activity_language.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/activity_login.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/activity_map.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/activity_notification.xml" value="0.11875" />
-        <entry key="..\:/Dount/app/src/main/res/layout/activity_order_detials.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/activity_orders.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/activity_payment.xml" value="0.260989010989011" />
-        <entry key="..\:/Dount/app/src/main/res/layout/activity_previous_order_detials.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/activity_product_detials.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/activity_search.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/activity_share.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/activity_sign_up.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/activity_splash.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/activity_verification_code.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/activity_wallet.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/bottom_sheet_dialog.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/branch_complete_row.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/branch_row.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/cart_row.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/category_row.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/depart_filter_row.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/department_item_row.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/exo_player_layout.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/favourite_row.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/fragment_branches.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/fragment_department.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/fragment_home.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/fragment_offer.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/fragment_profile.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/intro_row.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/latest_product_row.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/notification_row.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/order_product_row.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/order_product_row2.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/order_row.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/previous_order_row.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/product_offer_row.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/product_row.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/size_row.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/slider.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/spinner_row.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/toolbar.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/type_row.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/way_row.xml" value="0.1" />
-        <entry key="..\:/Dount/app/src/main/res/layout/wrap_row.xml" value="0.1" />
         <entry key="..\:/Users/Ahmed/AndroidStudioProjects/Akkaber/app/src/main/res/drawable/bottom_nav_item_bg.xml" value="0.25092592592592594" />
         <entry key="..\:/Users/Ahmed/AndroidStudioProjects/Akkaber/app/src/main/res/drawable/checkbox_bg.xml" value="0.1140625" />
         <entry key="..\:/Users/Ahmed/AndroidStudioProjects/Akkaber/app/src/main/res/drawable/circle_primary.xml" value="0.26615384615384613" />
@@ -353,6 +299,10 @@
         <entry key="..\:/android/FlutterProjects/Wedding/app/src/main/res/layout/activity_main.xml" value="0.1935185185185185" />
         <entry key="..\:/android/FlutterProjects/Wedding/app/src/main/res/layout/activity_splash.xml" value="0.20416666666666666" />
         <entry key="..\:/android/FlutterProjects/Wedding/app/src/main/res/layout/toolbar.xml" value="0.1935185185185185" />
+        <entry key="..\:/android/Projects/Dount/app/src/main/res/layout/favourite_row.xml" value="0.17916666666666667" />
+        <entry key="..\:/android/Projects/Dount/app/src/main/res/layout/latest_product_row.xml" value="0.16666666666666666" />
+        <entry key="..\:/android/Projects/Dount/app/src/main/res/layout/product_offer_row.xml" value="0.16666666666666666" />
+        <entry key="..\:/android/Projects/Dount/app/src/main/res/layout/product_row.xml" value="0.16666666666666666" />
         <entry key="..\:/android/Projects/Wedding/app/src/main/res/drawable/btn_change_lang.xml" value="0.2203125" />
         <entry key="..\:/android/Projects/Wedding/app/src/main/res/drawable/ic_call.xml" value="0.2203125" />
         <entry key="..\:/android/Projects/Wedding/app/src/main/res/drawable/ic_edit_account.xml" value="0.2203125" />

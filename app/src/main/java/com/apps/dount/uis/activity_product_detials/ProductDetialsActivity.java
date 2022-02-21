@@ -110,7 +110,7 @@ public class ProductDetialsActivity extends BaseActivity {
                     ProductDetialsActivity.this.productmodel = singleProductDataModel.getData();
                     binding.setModel(singleProductDataModel.getData());
 //                        if (singleProductDataModel.getData().getOffer() == null) {
-                    price = Double.parseDouble(singleProductDataModel.getData().getPrice());
+                    price =singleProductDataModel.getData().getPrice_tax();
                     binding.tvTotal.setText(((String.format("%.2f", price * amount))) + "");
 //                        } else {
 //                            price = Double.parseDouble(singleProductDataModel.getData().getOffer().getPrice_after());
