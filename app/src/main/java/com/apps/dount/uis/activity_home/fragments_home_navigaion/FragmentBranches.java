@@ -137,7 +137,7 @@ public class FragmentBranches extends BaseFragment implements OnMapReadyCallback
         // fragmentBranchesMvvm.getBranch().observe(activity, weddingHallModels -> branchAdapter.updateList(fragmentBranchesMvvm.getBranch().getValue()));
         fragmentBranchesMvvm.getBranch();
         fragmentBranchesMvvm.getLocationData().observe(this, locationModel -> {
-            // addMarker(locationModel.getLat(), locationModel.getLng());
+            addMarker(locationModel.getLat(), locationModel.getLng());
             FragmentBranches.this.locationmodel = locationModel;
             branchAdapter.updateLocation(locationModel);
         });
@@ -270,23 +270,55 @@ public class FragmentBranches extends BaseFragment implements OnMapReadyCallback
         }
     }
 
+    private void addMarker(double lat, double lng) {
+
+        Glide.with(this)
+                .asBitmap()
+                .load(R.drawable.ic_pin)
+                .into(new CustomTarget<Bitmap>() {
+                    @Override
+                    public void onResourceReady(@NonNull Bitmap bitmap, @Nullable Transition<? super Bitmap> transition) {
+
+                        mMap.addMarker(new MarkerOptions().position(new LatLng(lat, lng)).icon(BitmapDescriptorFactory.fromBitmap(bitmap)));
+
+
+                    }
+
+                    @Override
+                    public void onLoadCleared(@Nullable Drawable placeholder) {
+
+                    }
+
+                    @Override
+                    public void onLoadFailed(@Nullable Drawable errorDrawable) {
+//                        super.onLoadFailed(errorDrawable);
+
+                    }
+                });
+
+    }
+
     private void updateMapData(List<BranchModel> data) {
+        try {
 
-        LatLngBounds.Builder bounds = new LatLngBounds.Builder();
-        for (BranchModel branchModel : data) {
-            bounds.include(new LatLng(Double.parseDouble(branchModel.getLatitude()), Double.parseDouble(branchModel.getLongitude())));
-            addMarker(Double.parseDouble(branchModel.getLatitude()), Double.parseDouble(branchModel.getLongitude()), branchModel.getIs_delivery());
+
+            LatLngBounds.Builder bounds = new LatLngBounds.Builder();
+            for (BranchModel branchModel : data) {
+                bounds.include(new LatLng(Double.parseDouble(branchModel.getLatitude()), Double.parseDouble(branchModel.getLongitude())));
+                addMarker(Double.parseDouble(branchModel.getLatitude()), Double.parseDouble(branchModel.getLongitude()), branchModel.getIs_delivery());
+            }
+
+            if (data.size() >= 2) {
+                mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds.build(), 100));
+
+            } else if (data.size() == 1) {
+                LatLng latLng = new LatLng(Double.parseDouble(data.get(0).getLatitude()), Double.parseDouble(data.get(0).getLongitude()));
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
+
+            }
+        } catch (Exception e) {
+
         }
-
-        if (data.size() >= 2) {
-            mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds.build(), 100));
-
-        } else if (data.size() == 1) {
-            LatLng latLng = new LatLng(Double.parseDouble(data.get(0).getLatitude()), Double.parseDouble(data.get(0).getLongitude()));
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
-
-        }
-
 
     }
 

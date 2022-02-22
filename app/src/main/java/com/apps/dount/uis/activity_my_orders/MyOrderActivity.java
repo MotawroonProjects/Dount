@@ -2,6 +2,7 @@ package com.apps.dount.uis.activity_my_orders;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.databinding.DataBindingUtil;
@@ -61,10 +62,13 @@ public class MyOrderActivity extends BaseActivity {
         activityMyOrdersMvvm.getOrders().observe(this, new Observer<List<OrderModel>>() {
             @Override
             public void onChanged(List<OrderModel> orderModels) {
-                if (orderModels != null) {
+                Log.e("lllll",orderModels.size()+"");
+                if (orderModels != null&&orderModels.size()>0) {
                     ordersAdapter.updateList(orderModels);
                     binding.cardNoData.setVisibility(View.GONE);
                 } else {
+                    Log.e("lllll",orderModels.size()+"");
+
                     ordersAdapter.updateList(new ArrayList<>());
                     binding.cardNoData.setVisibility(View.VISIBLE);
                 }

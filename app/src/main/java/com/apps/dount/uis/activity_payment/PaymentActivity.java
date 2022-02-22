@@ -202,10 +202,15 @@ public class PaymentActivity extends BaseActivity {
                 if (branchModel.getIs_delivery().equals("yes")) {
                     cartDataModel.setIs_delivary("no");
                     cartDataModel.setReceive_type("branch");
+                    binding.lldelivery.setVisibility(View.GONE);
+                    binding.llmap.setVisibility(View.GONE);
+
                 } else {
                     cartDataModel.setBranch_id("");
                     cartDataModel.setIs_delivary("");
                     cartDataModel.setReceive_type("");
+                    binding.lldelivery.setVisibility(View.GONE);
+                    binding.llmap.setVisibility(View.GONE);
                 }
                 binding.expandLayout.collapse(true);
 
@@ -218,10 +223,16 @@ public class PaymentActivity extends BaseActivity {
                 if (branchModel.getIs_delivery().equals("no")) {
                     cartDataModel.setIs_delivary("no");
                     cartDataModel.setReceive_type("branch");
+                    binding.lldelivery.setVisibility(View.GONE);
+                    binding.llmap.setVisibility(View.GONE);
                     // binding.tvDeliver.setText(getResources().getString(R.string.receipt_from_the_branch));
                 } else {
                     cartDataModel.setIs_delivary("yes");
                     cartDataModel.setReceive_type("delivary");
+                    binding.lldelivery.setVisibility(View.VISIBLE);
+                    binding.llmap.setVisibility(View.VISIBLE);
+                    checkPermission();
+
                     //binding.tvDeliver.setText(getResources().getString(R.string.home_delivery));
 
                 }
@@ -327,7 +338,6 @@ public class PaymentActivity extends BaseActivity {
         });
         activityPaymentMvvm.getSetting();
         activityPaymentMvvm.getBranchData();
-        checkPermission();
     }
 
     private void checkPermission() {

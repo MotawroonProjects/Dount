@@ -75,7 +75,14 @@ public class BranchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
         } else if (holder instanceof MyHolderComplete) {
             MyHolderComplete myHolderComplete = (MyHolderComplete) holder;
-            double distance = SphericalUtil.computeDistanceBetween(new LatLng(locationModel.getLat(), locationModel.getLng()), new LatLng(Double.parseDouble(list.get(position).getLatitude()), Double.parseDouble(list.get(position).getLongitude()))) / 1000;
+            double distance=0;
+            try {
+                 distance = SphericalUtil.computeDistanceBetween(new LatLng(locationModel.getLat(), locationModel.getLng()), new LatLng(Double.parseDouble(list.get(position).getLatitude()), Double.parseDouble(list.get(position).getLongitude()))) / 1000;
+
+            }
+            catch (Exception e){
+
+            }
             myHolderComplete.binding.setDistance(distance);
             myHolderComplete.binding.setModel(list.get(position));
 

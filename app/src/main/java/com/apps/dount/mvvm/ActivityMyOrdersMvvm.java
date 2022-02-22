@@ -71,8 +71,9 @@ public class ActivityMyOrdersMvvm extends AndroidViewModel {
                     @Override
                     public void onSuccess(@NonNull Response<OrderDataModel> response) {
                         isLoadingLiveData.postValue(false);
+                     //   Log.e("oooo",response.code()+"");
                         if (response.isSuccessful() && response.body() != null) {
-                            Log.e("sss", response.body().getStatus() + "");
+                          //  Log.e("sss", response.body().getStatus() + "");
                             if (response.body().getStatus() == 200) {
                                 // List<ProductModel> list = response.body().getData();
                                 listMutableLiveData.setValue(response.body().getData());
