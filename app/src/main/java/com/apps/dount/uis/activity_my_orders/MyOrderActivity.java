@@ -62,12 +62,10 @@ public class MyOrderActivity extends BaseActivity {
         activityMyOrdersMvvm.getOrders().observe(this, new Observer<List<OrderModel>>() {
             @Override
             public void onChanged(List<OrderModel> orderModels) {
-                Log.e("lllll",orderModels.size()+"");
                 if (orderModels != null&&orderModels.size()>0) {
                     ordersAdapter.updateList(orderModels);
                     binding.cardNoData.setVisibility(View.GONE);
                 } else {
-                    Log.e("lllll",orderModels.size()+"");
 
                     ordersAdapter.updateList(new ArrayList<>());
                     binding.cardNoData.setVisibility(View.VISIBLE);
