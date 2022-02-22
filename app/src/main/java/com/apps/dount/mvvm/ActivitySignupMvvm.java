@@ -103,9 +103,7 @@ public class ActivitySignupMvvm extends AndroidViewModel {
             @Override
             public void onNext(@NonNull Response<UserModel> userModelResponse) {
                 dialog.dismiss();
-                Log.e("oooooo",userModelResponse.code()+"");
                 if (userModelResponse.isSuccessful()) {
-                    Log.e("lllll",userModelResponse.body().getStatus()+"");
                     if (userModelResponse.body().getStatus() == 200) {
 
                         userModelMutableLiveData.postValue(userModelResponse.body());
