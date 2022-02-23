@@ -80,11 +80,8 @@ public class MyOrderActivity extends BaseActivity {
                 finish();
             }
         });
-        binding.swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                activityMyOrdersMvvm.getOrders();
-            }
+        binding.swipeRefresh.setOnRefreshListener(() -> {
+            activityMyOrdersMvvm.getOrders(getUserModel());
         });
         activityMyOrdersMvvm.getOrders(userModel);
     }
