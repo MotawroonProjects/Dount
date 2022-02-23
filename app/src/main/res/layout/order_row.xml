@@ -125,7 +125,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="5dp"
-                    android:text="@{model.grand_total}"
+                    android:text='@{model!=null?String.format("%.2f",Double.parseDouble(model.grand_total)):""}'
                     android:textColor="@color/black"
                     android:textSize="12sp"
 
