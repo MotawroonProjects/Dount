@@ -11,7 +11,6 @@ public class UserModel extends StatusResponse {
 
     public static class Data implements Serializable {
         private User user;
-        private User data;
 
         private String access_token;
         private String token_type;
@@ -22,9 +21,7 @@ public class UserModel extends StatusResponse {
             return user;
         }
 
-        public User getData() {
-            return data;
-        }
+
 
         public String getAccess_token() {
             return access_token;

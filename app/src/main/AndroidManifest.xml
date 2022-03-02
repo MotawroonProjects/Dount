@@ -26,6 +26,15 @@
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup"
         tools:targetApi="q">
+        <service
+            android:name=".notifications.FireBaseMessaging"
+            android:enabled="true"
+            android:exported="false"
+            android:stopWithTask="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
         <activity
             android:name=".uis.activity_previous_order_detials.PreviousOrderDetialsActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
