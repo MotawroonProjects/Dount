@@ -177,7 +177,7 @@
                                     android:ellipsize="end"
                                     android:gravity="end"
                                     android:maxLines="2"
-                                    android:text="@{model.grand_total}"
+                                    android:text='@{model!=null?String.format("%.2f",Double.parseDouble(model.grand_total)):""}'
                                     android:textColor="@color/color9"
                                     android:textSize="15sp"
                                     android:textStyle="bold" />
