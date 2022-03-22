@@ -40,6 +40,7 @@ public class ProductModel implements Serializable {
     private boolean is_favorite;
     private double price_tax;
 
+
     public String getId() {
         return id;
     }
