@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -151,57 +152,59 @@ public class FragmentHome extends BaseFragment {
                 }
             }
         });
-        fragmentHomeMvvm.getSliderDataModelMutableLiveData().observe(activity, new androidx.lifecycle.Observer<SliderDataModel>() {
-            @Override
-            public void onChanged(SliderDataModel sliderDataModel) {
+        fragmentHomeMvvm.getSliderDataModelMutableLiveData().observe(activity, list -> {
+            if (list != null) {
 
-                if (sliderDataModel.getData() != null) {
-                    binding.progBarSlider.setVisibility(View.GONE);
-                    sliderModelList.clear();
-                    sliderModelList.addAll(sliderDataModel.getData());
-                    sliderAdapter.notifyDataSetChanged();
-                    timer = new Timer();
-                    timer.scheduleAtFixedRate(new MyTask(), 3000, 3000);
-                }
-
+                binding.progBarSlider.setVisibility(View.GONE);
+                sliderModelList.clear();
+                sliderModelList.addAll(list);
+                sliderAdapter.notifyDataSetChanged();
+                timer = new Timer();
+                timer.scheduleAtFixedRate(new MyTask(), 3000, 3000);
             }
         });
 
-        fragmentHomeMvvm.getCategoryData().observe(activity, new androidx.lifecycle.Observer<List<DepartmentModel>>() {
-            @Override
-            public void onChanged(List<DepartmentModel> departmentModels) {
-                if (departmentModels.size() > 0) {
-                    binding.progBarDepartment.setVisibility(View.GONE);
+        fragmentHomeMvvm.getCategoryData().observe(activity, list -> {
+                    if (list != null) {
+                        Log.e("size2", list.size() + "");
 
-                    departmentAdapter.updateList(departmentModels);
-                    binding.tvNoCategory.setVisibility(View.GONE);
+                        if (list.size() > 0) {
+                            binding.progBarDepartment.setVisibility(View.GONE);
 
-                    //binding.cardNoData.setVisibility(View.GONE);
-                } else {
-                    binding.progBarDepartment.setVisibility(View.GONE);
 
-                    binding.tvNoCategory.setVisibility(View.VISIBLE);
+                            binding.tvNoCategory.setVisibility(View.GONE);
 
-                    //binding.cardNoData.setVisibility(View.VISIBLE);
+                        } else {
+                            binding.progBarDepartment.setVisibility(View.GONE);
+
+                            binding.tvNoCategory.setVisibility(View.VISIBLE);
+
+
+                        }
+                        departmentAdapter.updateList(list);
+                    }
 
                 }
-            }
-        });
+        );
 
-        fragmentHomeMvvm.getOfferList().observe(activity, new androidx.lifecycle.Observer<List<ProductModel>>() {
-            @Override
-            public void onChanged(List<ProductModel> productModels) {
-                if (productModels != null && productModels.size() > 0) {
+        fragmentHomeMvvm.getOfferList().observe(activity, list -> {
+
+            if (list != null) {
+
+                Log.e("size", list.size() + "");
+
+                if (list.size() > 0) {
                     binding.progBarOffers.setVisibility(View.GONE);
-
-                    latestProductAdapter.updateList(productModels);
                     binding.tvNoOffer.setVisibility(View.GONE);
-
                 } else {
                     binding.progBarOffers.setVisibility(View.GONE);
 
                     binding.tvNoOffer.setVisibility(View.VISIBLE);
                 }
+
+                latestProductAdapter.updateList(list);
+
+
             }
         });
 
@@ -223,13 +226,10 @@ public class FragmentHome extends BaseFragment {
         fragmentHomeMvvm.getSlider();
         fragmentHomeMvvm.getDepartment(getLang());
         fragmentHomeMvvm.getOffers(getLang(), getUserModel());
-        binding.llSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                req = 2;
-                Intent intent = new Intent(activity, SearchActivity.class);
-                launcher.launch(intent);
-            }
+        binding.llSearch.setOnClickListener(view -> {
+            req = 2;
+            Intent intent = new Intent(activity, SearchActivity.class);
+            launcher.launch(intent);
         });
     }
 

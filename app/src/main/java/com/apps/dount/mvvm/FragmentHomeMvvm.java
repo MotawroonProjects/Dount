@@ -32,12 +32,13 @@ import retrofit2.Response;
 public class FragmentHomeMvvm extends AndroidViewModel {
     private static final String TAG = "FragmentHomeMvvm";
     private Context context;
-    private MutableLiveData<SliderDataModel> sliderDataModelMutableLiveData;
-    private CompositeDisposable disposable = new CompositeDisposable();
+    private MutableLiveData<List<SliderDataModel.SliderModel>> sliderDataModelMutableLiveData;
     private MutableLiveData<Boolean> isLoadingLiveData;
     private MutableLiveData<List<DepartmentModel>> departmentLivData;
     private MutableLiveData<List<ProductModel>> offerlistMutableLiveData;
     private MutableLiveData<Boolean> addremove;
+    private CompositeDisposable disposable = new CompositeDisposable();
+
 
 
     public FragmentHomeMvvm(@NonNull Application application) {
@@ -60,7 +61,7 @@ public class FragmentHomeMvvm extends AndroidViewModel {
     }
 
 
-    public MutableLiveData<SliderDataModel> getSliderDataModelMutableLiveData() {
+    public MutableLiveData<List<SliderDataModel.SliderModel>> getSliderDataModelMutableLiveData() {
 
         if (sliderDataModelMutableLiveData == null) {
             sliderDataModelMutableLiveData = new MutableLiveData<>();
@@ -75,7 +76,7 @@ public class FragmentHomeMvvm extends AndroidViewModel {
         return isLoadingLiveData;
     }
 
-    public LiveData<List<DepartmentModel>> getCategoryData() {
+    public MutableLiveData<List<DepartmentModel>> getCategoryData() {
         if (departmentLivData == null) {
             departmentLivData = new MutableLiveData<>();
 
@@ -101,11 +102,12 @@ public class FragmentHomeMvvm extends AndroidViewModel {
 
                     @Override
                     public void onSuccess(@NonNull Response<SliderDataModel> response) {
+
                         isLoadingLiveData.postValue(false);
 
                         if (response.isSuccessful() && response.body() != null) {
                             if (response.body().getStatus() == 200) {
-                                sliderDataModelMutableLiveData.postValue(response.body());
+                                getSliderDataModelMutableLiveData().setValue(response.body().getData());
                             }
                         }
                     }
@@ -132,13 +134,12 @@ public class FragmentHomeMvvm extends AndroidViewModel {
 
                     @Override
                     public void onSuccess(@NonNull Response<DepartmentDataModel> response) {
-                        isLoadingLiveData.postValue(false);
-
+                        isLoadingLiveData.setValue(false);
                         if (response.isSuccessful() && response.body() != null) {
                             if (response.body().getStatus() == 200) {
                                 List<DepartmentModel> list = response.body().getData();
                                 if (list.size() > 0) {
-                                    departmentLivData.setValue(list);
+                                    getCategoryData().setValue(list);
                                 }
 
 
@@ -180,7 +181,7 @@ public class FragmentHomeMvvm extends AndroidViewModel {
                         if (response.isSuccessful() && response.body() != null) {
                             if (response.body().getStatus() == 200) {
                                 // List<ProductModel> list = response.body().getData();
-                                offerlistMutableLiveData.setValue(response.body().getData());
+                                getOfferList().setValue(response.body().getData());
                             }
                         }
                     }
@@ -213,7 +214,6 @@ public class FragmentHomeMvvm extends AndroidViewModel {
 
                     @Override
                     public void onSuccess(@NonNull Response<StatusResponse> response) {
-                        Log.e("lllll", response.body().getStatus() + "" + id + " " + userModel.getData().getAccess_token());
                         if (response.isSuccessful() && response.body() != null) {
                             if (response.body().getStatus() == 200 || response.body().getStatus() == 201) {
 
