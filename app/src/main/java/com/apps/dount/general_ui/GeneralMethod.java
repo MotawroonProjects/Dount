@@ -345,6 +345,9 @@ public class GeneralMethod {
 
     @BindingAdapter({"order_status", "delivery"})
     public static void orderStatus(TextView textView, String status, String delivery) {
+
+        Log.e("daaa",status+"__"+delivery);
+
         if (status.equals("append") && delivery.equals("append")) {
             textView.setText(textView.getContext().getString(R.string.order_sent));
         } else if (status.equals("accept") && delivery.equals("append")) {

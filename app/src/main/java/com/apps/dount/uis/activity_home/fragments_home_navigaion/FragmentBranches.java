@@ -199,9 +199,14 @@ public class FragmentBranches extends BaseFragment implements OnMapReadyCallback
 
 
     private void updateUI() {
-        SupportMapFragment supportMapFragment = SupportMapFragment.newInstance();
-        getChildFragmentManager().beginTransaction().replace(R.id.map, supportMapFragment).commit();
-        supportMapFragment.getMapAsync(this);
+        try {
+            SupportMapFragment supportMapFragment = SupportMapFragment.newInstance();
+            getChildFragmentManager().beginTransaction().replace(R.id.map, supportMapFragment).commit();
+            supportMapFragment.getMapAsync(this);
+        }catch (Exception e){
+
+        }
+
 
 
     }

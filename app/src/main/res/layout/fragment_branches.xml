@@ -64,7 +64,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/delivery_available"
                             android:textColor="@color/color2"
-                            android:textSize="15sp" />
+                            android:textSize="12sp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -87,9 +87,12 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/un_delivery_available"
+                            android:text="@string/receipt_from_the_branch"
                             android:textColor="@color/colorPrimary"
-                            android:textSize="15sp" />
+                            android:textSize="10sp"
+                            android:lines="1"
+                            android:ellipsize="end"
+                            />
                     </LinearLayout>
 
                 </LinearLayout>
