@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -122,13 +123,12 @@ public class SearchActivity extends BaseActivity {
         filtermodel.setDepartments(new ArrayList<>());
         activitySearchMvvm.getDepartmentDetials(filtermodel.getDepartments(), query, getUserModel());
         launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
-            if (req == 3 && result.getResultCode() == Activity.RESULT_OK) {
-                if (result.getData().getSerializableExtra("data") != null) {
-                    product2Adapter.updateList(new ArrayList<>());
-                    filtermodel = (FilterModel) result.getData().getSerializableExtra("data");
-                    activitySearchMvvm.getDepartmentDetials(filtermodel.getDepartments(), query, getUserModel());
+            if (req == 3 && result.getResultCode() == Activity.RESULT_OK&&result.getData()!=null) {
+                product2Adapter.updateList(new ArrayList<>());
+                filtermodel = (FilterModel) result.getData().getSerializableExtra("data");
+                Log.e("ss",filtermodel.getDepartments().size()+"");
+                activitySearchMvvm.getDepartmentDetials(filtermodel.getDepartments(), query, getUserModel());
 
-                }
             }
         });
         binding.edtSearch.addTextChangedListener(new TextWatcher() {

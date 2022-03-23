@@ -132,7 +132,7 @@ public interface Service {
     Single<Response<DepartmentDataModel>> getDepartments();
 
     @GET("api/home/products")
-    Single<Response<ProductDataModel>> getSingleDepartment(@Query(value = "category_ids[]") List<String> id,
+    Single<Response<ProductDataModel>> getSingleDepartment(@Query("category_id[]") List<String> id,
                                                            @Query("search") String search,
                                                            @Header("Authorization") String authorization
     );

@@ -3,6 +3,7 @@ package com.apps.dount.uis.activity_filter;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -50,9 +51,10 @@ public class FilterActivity extends BaseActivity {
 
 
     private void initView() {
+        Log.e("asda", "asda");
         departments = new ArrayList<>();
         departmentModels = new ArrayList<>();
-        filterModel=new FilterModel();
+        filterModel = new FilterModel();
         preferences = Preferences.getInstance();
         userModel = preferences.getUserData(this);
         activityFilterMvvm = ViewModelProviders.of(this).get(ActivityFilterMvvm.class);
@@ -134,7 +136,6 @@ public class FilterActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
 
-                filterModel.setDepartments(departments);
                 Intent intent = getIntent();
                 intent.putExtra("data", filterModel);
                 setResult(RESULT_OK, intent);
@@ -147,10 +148,19 @@ public class FilterActivity extends BaseActivity {
 
 
     public void addDepartid(DepartmentModel subCategoryDataModel) {
-        if (departments.contains(subCategoryDataModel.getId())) {
-            departments.remove(subCategoryDataModel.getId());
+        if (subCategoryDataModel.isChecked()) {
+            if (!departments.contains(subCategoryDataModel.getId())) {
+                departments.add(subCategoryDataModel.getId());
+            }
         } else {
-            departments.add(subCategoryDataModel.getId());
+            if (departments.contains(subCategoryDataModel.getId())) {
+                departments.remove(subCategoryDataModel.getId());
+            }
         }
+
+
+        filterModel.setDepartments(departments);
+
+
     }
 }

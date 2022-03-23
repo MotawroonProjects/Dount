@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -47,13 +48,12 @@ public class CategoryFilterAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         MyHolder myHolder = (MyHolder) holder;
         myHolder.binding.setModel(list.get(position));
 
-        myHolder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (context instanceof FilterActivity) {
-                    FilterActivity activity = (FilterActivity) context;
-                    activity.addDepartid(list.get(holder.getLayoutPosition()));
-                }
+        myHolder.binding.rb.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (context instanceof FilterActivity) {
+                FilterActivity activity = (FilterActivity) context;
+                DepartmentModel model = list.get(myHolder.getLayoutPosition());
+                model.setChecked(isChecked);
+                activity.addDepartid(model);
             }
         });
 

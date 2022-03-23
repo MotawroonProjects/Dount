@@ -12,6 +12,7 @@ public class DepartmentModel implements Serializable {
     private String is_active;
     private String created_at;
     private String updated_at;
+    private boolean isChecked;
 
     public String getId() {
         return id;
@@ -43,5 +44,13 @@ public class DepartmentModel implements Serializable {
 
     public String getUpdated_at() {
         return updated_at;
+    }
+
+    public boolean isChecked() {
+        return isChecked;
+    }
+
+    public void setChecked(boolean checked) {
+        isChecked = checked;
     }
 }
