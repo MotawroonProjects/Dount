@@ -165,6 +165,8 @@
     <string name="ch_branch">Choose Branch</string>
     <string name="home_delivery">Home Delivery</string>
     <string name="order_tax">Order Tax</string>
+    <string name="payment_suc">Payment Success</string>
+    <string name="payment_faild">Payment Faild</string>
 
 
 </resources>

@@ -5,6 +5,7 @@ import com.apps.dount.model.BranchDataModel;
 import com.apps.dount.model.CartDataModel;
 import com.apps.dount.model.DepartmentDataModel;
 import com.apps.dount.model.OrderDataModel;
+import com.apps.dount.model.PaymentDataModel;
 import com.apps.dount.model.PlaceMapDetailsData;
 import com.apps.dount.model.ProductDataModel;
 import com.apps.dount.model.NotificationDataModel;
@@ -174,8 +175,8 @@ public interface Service {
                                         @Query("longitude") String longitude);
 
     @POST("api/order/storeOrder")
-    Single<Response<StatusResponse>> sendOrder(@Header("Authorization") String authorization,
-                                               @Body CartDataModel cartDataModel
+    Single<Response<PaymentDataModel>> sendOrder(@Header("Authorization") String authorization,
+                                                 @Body CartDataModel cartDataModel
     );
 
     @GET("api/order/newOrders")

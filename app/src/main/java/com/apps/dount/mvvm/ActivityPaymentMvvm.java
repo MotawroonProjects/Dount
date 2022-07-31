@@ -21,6 +21,7 @@ import com.apps.dount.model.BranchDataModel;
 import com.apps.dount.model.BranchModel;
 import com.apps.dount.model.CartDataModel;
 import com.apps.dount.model.LocationModel;
+import com.apps.dount.model.PaymentDataModel;
 import com.apps.dount.model.PlaceGeocodeData;
 import com.apps.dount.model.SettingDataModel;
 import com.apps.dount.model.SettingModel;
@@ -67,7 +68,7 @@ public class ActivityPaymentMvvm extends AndroidViewModel implements GoogleApiCl
     private MutableLiveData<LocationModel> locationModelMutableLiveData;
     private MutableLiveData<Boolean> timeend;
     private MutableLiveData<String> ship;
-    private MutableLiveData<Boolean> send;
+    private MutableLiveData<PaymentDataModel> send;
     private MutableLiveData<List<BranchModel>> branchModelMutableLiveData;
     private MutableLiveData<Boolean> isLoadingLivData;
     private CompositeDisposable disposable = new CompositeDisposable();
@@ -104,7 +105,7 @@ public class ActivityPaymentMvvm extends AndroidViewModel implements GoogleApiCl
         return isLoadingLivData;
     }
 
-    public LiveData<Boolean> getSend() {
+    public LiveData<PaymentDataModel> getSend() {
         if (send == null) {
             send = new MutableLiveData<>();
         }
@@ -319,22 +320,22 @@ public class ActivityPaymentMvvm extends AndroidViewModel implements GoogleApiCl
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
 
-                .subscribe(new SingleObserver<Response<StatusResponse>>() {
+                .subscribe(new SingleObserver<Response<PaymentDataModel>>() {
                     @Override
                     public void onSubscribe(@NonNull Disposable d) {
                         disposable.add(d);
                     }
 
                     @Override
-                    public void onSuccess(@NonNull Response<StatusResponse> response) {
+                    public void onSuccess(@NonNull Response<PaymentDataModel> response) {
                         dialog.dismiss();
                         if (response.isSuccessful() && response.body() != null) {
                             if (response.body().getStatus() == 200) {
 
-                                send.postValue(true);
+                                send.postValue(response.body());
 
                             } else if (response.body().getStatus() == 409) {
-                                send.postValue(false);
+                                send.postValue(null);
                             }
                         }
                     }

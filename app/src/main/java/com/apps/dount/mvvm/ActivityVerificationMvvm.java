@@ -144,7 +144,7 @@ public class ActivityVerificationMvvm extends AndroidViewModel {
 
 
     public void checkValidCode(String code, VerificationCodeActivity activity) {
-       // login(activity);
+        login(activity);
         if (verificationId != null) {
             PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationId, code);
             mAuth.signInWithCredential(credential)

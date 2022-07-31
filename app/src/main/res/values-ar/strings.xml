@@ -166,4 +166,6 @@
     <string name="ch_branch">اختر الفرع</string>
     <string name="home_delivery">توصيل المنزل </string>
     <string name="order_tax">الضريبة</string>
+    <string name="payment_suc">تم الدفع بنجاح</string>
+    <string name="payment_faild">فشل الدفع</string>
 </resources>

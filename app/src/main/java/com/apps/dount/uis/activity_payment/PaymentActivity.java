@@ -33,6 +33,7 @@ import com.apps.dount.model.BranchModel;
 import com.apps.dount.model.CartDataModel;
 import com.apps.dount.model.ItemCartModel;
 import com.apps.dount.model.LocationModel;
+import com.apps.dount.model.PaymentDataModel;
 import com.apps.dount.model.SettingModel;
 import com.apps.dount.model.UserModel;
 import com.apps.dount.mvvm.ActivityPaymentMvvm;
@@ -138,13 +139,27 @@ public class PaymentActivity extends BaseActivity {
 
 
         });
-        activityPaymentMvvm.getSend().observe(this, new Observer<Boolean>() {
+        activityPaymentMvvm.getSend().observe(this, new Observer<PaymentDataModel>() {
             @Override
-            public void onChanged(Boolean aBoolean) {
-                if (aBoolean) {
-                    openSheet();
-                } else {
-                    Toast.makeText(PaymentActivity.this, getResources().getString(R.string.wallet_not), Toast.LENGTH_LONG).show();
+            public void onChanged(PaymentDataModel paymentDataModel) {
+                req = 2;
+                if(paymentDataModel!=null){
+                if (paymentDataModel.getData().getUrl()!=null){
+               // Toast.makeText(PaymentActivity.this, getResources().getString(R.string.succ), Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(PaymentActivity.this, PaypalwebviewActivity.class);
+                intent.putExtra("url", paymentDataModel.getData().getUrl());
+
+                launcher.launch(intent);}
+                else{
+
+                        openSheet();
+
+                }
+                }
+                else {
+
+                        Toast.makeText(PaymentActivity.this, getResources().getString(R.string.wallet_not), Toast.LENGTH_LONG).show();
+
                 }
             }
         });
@@ -177,6 +192,9 @@ public class PaymentActivity extends BaseActivity {
                 binding.setLocationModel(locationModel);
                 activityPaymentMvvm.getShip(locationModel.getLat(), locationModel.getLng());
 
+            }
+            else  if (result.getResultCode() == Activity.RESULT_OK && req == 2) {
+              openSheet();
             }
         });
         permissionLauncher = registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
